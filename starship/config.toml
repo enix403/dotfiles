@@ -1,0 +1,141 @@
+
+format = """
+[╭─](blue)[\\[](bold blue) $username[@](blue)$hostname [\\] --](bold blue) [\\(](bold blue)$status[\\) --](bold blue) [\\[](bold blue) $battery[\\]](bold blue)
+[├─](blue)[\\[](bold blue) $directory [\\]](bold blue) ([-- \\[](bold blue) $git_branch [\\]](bold blue))
+[╰──](blue)[\\[](bold blue) [\\$](purple) [\\]](bold blue) 
+"""
+
+# Enabled modules
+
+# battery.disabled = true
+# line_break.disabled = true
+# directory.disabled = true
+# username.disabled = true
+# hostname.disabled = true
+# git_branch.disabled = true
+# status.disabled = true
+
+# Disabled modules
+
+git_commit.disabled = true
+git_state.disabled = true
+git_metrics.disabled = true
+git_status.disabled = true
+cmd_duration.disabled = true
+memory_usage.disabled = true
+shlvl.disabled = true
+kubernetes.disabled = true
+vcsh.disabled = true
+hg_branch.disabled = true
+docker_context.disabled = true
+package.disabled = true
+cmake.disabled = true
+dart.disabled = true
+deno.disabled = true
+dotnet.disabled = true
+elixir.disabled = true
+elm.disabled = true
+erlang.disabled = true
+golang.disabled = true
+helm.disabled = true
+java.disabled = true
+julia.disabled = true
+kotlin.disabled = true
+nim.disabled = true
+nodejs.disabled = true
+ocaml.disabled = true
+perl.disabled = true
+php.disabled = true
+purescript.disabled = true
+python.disabled = true
+red.disabled = true
+ruby.disabled = true
+rust.disabled = true
+scala.disabled = true
+swift.disabled = true
+terraform.disabled = true
+vlang.disabled = true
+vagrant.disabled = true
+zig.disabled = true
+nix_shell.disabled = true
+conda.disabled = true
+aws.disabled = true
+gcloud.disabled = true
+openstack.disabled = true
+env_var.disabled = true
+crystal.disabled = true
+custom.disabled = true
+lua.disabled = true
+jobs.disabled = true
+time.disabled = true
+shell.disabled = true
+character.disabled = true
+
+
+
+[battery]
+full_symbol        = "  "
+charging_symbol    = "  "
+discharging_symbol = "  "
+unknown_symbol     = "  "
+empty_symbol       = "  "
+
+[[battery.display]]
+threshold = 30
+style = "bold red"
+
+[[battery.display]]
+threshold = 50
+style = "bold yellow"
+
+[[battery.display]]
+threshold = 70
+style = "bold cyan"
+
+[[battery.display]]
+threshold = 100
+style = "bold green"
+
+[directory]
+truncation_length = 20
+truncate_to_repo = false
+format = "[$path]($style)( -- [$read_only]($read_only_style))"
+style = "bold yellow"
+home_symbol = " "
+read_only=" "
+read_only_style="bold red"
+
+[username]
+style_user = "bold green"
+style_root = "bold red"
+format = "[$user]($style)"
+disabled = false
+show_always = true
+
+[hostname]
+ssh_only = false
+format =  "[$hostname](cyan)"
+disabled = false
+
+
+[git_branch]
+symbol = ""
+style="bold red"
+truncation_length = 20
+truncation_symbol = ""
+format = "on [$symbol git:$branch]($style)"
+
+[status]
+style = "fg:purple"
+
+symbol = ""
+success_symbol = ""
+not_executable_symbol = ""
+not_found_symbol = ""
+sigint_symbol = ""
+signal_symbol = ""
+recognize_signal_code = true
+
+format = '( [$symbol ( $common_meaning$signal_name )$int]($style) )'
+map_symbol = true
+disabled = false

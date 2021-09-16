@@ -1,0 +1,215 @@
+;==========================================================
+;
+;   ██████╗  ██████╗ ██╗  ██╗   ██╗██████╗  █████╗ ██████╗
+;   ██╔══██╗██╔═══██╗██║  ╚██╗ ██╔╝██╔══██╗██╔══██╗██╔══██╗
+;   ██████╔╝██║   ██║██║   ╚████╔╝ ██████╔╝███████║██████╔╝
+;   ██╔═══╝ ██║   ██║██║    ╚██╔╝  ██╔══██╗██╔══██║██╔══██╗
+;   ██║     ╚██████╔╝███████╗██║   ██████╔╝██║  ██║██║  ██║
+;   ╚═╝      ╚═════╝ ╚══════╝╚═╝   ╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═╝
+;
+;==========================================================
+
+[colors]
+background = #2E3440
+buffer = #4c566a
+foreground = #D8DEE9
+nord6 = #ECEFF4
+nord7 = #8FBCBB
+nord8 = #88C0D0
+nord9 = #81A1C1
+nord10 = #5E81AC
+urgent = #BF616A
+warning = #D08770
+notify = #EBCB8B
+success = #A3BE8C
+function = #B48EAD
+
+[bar/main]
+bottom = false
+override-redirect = false
+fixed-center = true
+
+width = 100%
+height = 18
+offset-x = 0
+offset-y = 0
+
+background = #00000000
+foreground = ${colors.foreground}
+
+line-size = 2
+line-color = #f00
+
+border-top-size = 3
+border-bottom-size = 0
+border-left-size = 5
+border-right-size = 5
+border-color = #00000000
+
+padding-left = 0
+padding-right = 0
+
+module-margin-left = 3
+module-margin-right = 0
+
+font-0 = Fira Sans:size=10,1
+font-1 = Font Awesome 5 Brands,Font Awesome 5 Brands Regular:style=Regular
+font-2 = Font Awesome 5 Free,Font Awesome 5 Free Solid:style=Solid
+font-3 = Font Awesome 5 Free,Font Awesome 5 Free Regular:style=Regular
+
+tray-position = left
+cursor-click = pointer
+cursor-scroll = ns-resize
+
+modules-left = i3
+modules-center = title
+modules-right = memory cpu temperature pulseaudio wlan date battery
+
+
+[module/i3]
+type = internal/i3
+format = <label-state> <label-mode>
+index-sort = true
+wrapping-scroll = false
+
+label = "   %name%   " 
+label-focused = ${self.label} 
+label-unfocused = ${self.label} 
+label-visible = ${self.label} 
+label-urgent = ${self.label} 
+
+label-focused-background = ${colors.background}
+label-focused-foreground = ${colors.foreground}
+label-focused-underline= ${colors.nord9}
+label-focused-padding = 1
+label-unfocused-background = ${colors.background}
+label-unfocused-foreground = ${colors.foreground}
+label-unfocused-underline = ${colors.buffer}
+label-unfocused-padding = 1
+label-visible-background = ${colors.background}
+label-visible-foreground = ${colors.foreground}
+label-visible-underline = ${colors.buffer}
+label-visible-padding = 1
+label-urgent-background = ${colors.warning}
+label-urgent-padding = 1
+label-mode-foreground = #000
+label-mode-background = ${colors.background}
+label-mode-padding = 1
+
+[module/battery]
+type = internal/battery
+battery = BAT1
+adapter = ACAD
+full-at = 98
+
+format-charging = <animation-charging> <label-charging>
+format-charging-underline = #ffb52a
+
+format-discharging = <animation-discharging> <label-discharging>
+format-discharging-underline = ${self.format-charging-underline}
+
+format-full-prefix = " "
+format-full-prefix-foreground = ${colors.foreground-alt}
+format-full-underline = ${self.format-charging-underline}
+
+ramp-capacity-0 = 
+ramp-capacity-1 = 
+ramp-capacity-2 = 
+ramp-capacity-foreground = ${colors.foreground-alt}
+
+animation-charging-0 = 
+animation-charging-1 = 
+animation-charging-2 = 
+animation-charging-foreground = ${colors.foreground-alt}
+animation-charging-framerate = 750
+
+animation-discharging-0 = 
+animation-discharging-1 = 
+animation-discharging-2 = 
+animation-discharging-foreground = ${colors.foreground-alt}
+animation-discharging-framerate = 750
+
+[module/title]
+type = internal/xwindow
+format-foreground = ${colors.foreground}
+format-underline = ${colors.nord9}
+format-padding = 1
+format-background = ${colors.background}
+label-maxlen = 50
+label-empty = Desktop
+
+[module/cpu]
+type = internal/cpu
+interval = 2
+format-underline = ${colors.function}
+format-padding = 1
+format-background = ${colors.background}
+label = " %percentage:2%%"
+
+[module/memory]
+type = internal/memory
+interval = 2
+format-underline = ${colors.nord10}
+format-padding = 1
+format-background = ${colors.background}
+label = "  %percentage_used%%"
+
+[module/wlan]
+type = internal/network
+interface = wlp5s0
+interval = 3.0
+format-connected-padding = 1
+format-connected-background = ${colors.background}
+format-connected = <label-connected>
+format-connected-underline = ${colors.success}
+label-connected =  %essid%
+format-disconnected-padding = 1
+format-disconnected-background = ${colors.warning}
+format-disconnected = <label-disconnected>
+format-disconnected-underline = ${self.format-connected-underline}
+label-disconnected = %ifname% disconnected
+label-disconnected-foreground = ${colors.foreground}
+
+[module/date]
+type = internal/date
+interval = 60
+date = %d-%b-%Y
+time = %I:%M %p
+date-alt = %I:%M %p %A, %B %d, %Y
+
+format-underline = ${colors.nord6}
+format-padding = 2
+format-background = ${colors.background}
+label =   %time% %date%
+
+[module/pulseaudio]
+type = internal/pulseaudio
+format-volume = <label-volume>
+format-volume-padding = 1
+format-volume-background = ${colors.background}
+label-volume =  %percentage%%
+label-volume-foreground = ${root.foreground}
+format-volume-underline = ${colors.nord7}
+label-muted = 
+label-muted-foreground = ${colors.buffer}
+
+[module/temperature]
+type = internal/temperature
+thermal-zone = 0
+format = <label>
+format-underline = ${colors.warning}
+format-padding = 1
+format-background = ${colors.background}
+label =  %temperature-c%
+
+[settings]
+screenchange-reload = true
+;compositing-background = xor
+;compositing-background = screen
+;compositing-foreground = source
+;compositing-border = over
+pseudo-transparency = true
+
+[global/wm]
+margin-top = 10
+margin-bottom = 10
