@@ -1,16 +1,16 @@
 #!/usr/bin/env bash
 
-
-echo "This script will overwrite your current confiuration. Make sure to take a backup before proceeding."
-read -p "Do you want to continue? [Y/n]: " -r
-echo # move to a new line
+echo -e '\033[1mThis script will overwrite your current confiuration. Make sure to take a backup before proceeding.\033[0m'
+echo -ne '\033[1mDo you want to continue? [y/N]: \033[0m'
+read -r
+echo
 if [[ ! $REPLY =~ ^[Yy]$ ]]
 then
-    echo
     echo "Operation aborted"
     [[ "$0" = "$BASH_SOURCE" ]] && exit 1 || return 1
 fi
 
+echo "Not implemented yet :)"
 exit
 
 # Get the absolute script path
