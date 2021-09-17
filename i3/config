@@ -117,6 +117,7 @@ set $ws8 "8"
 set $ws9 "9"
 set $ws10 "10"
 
+set $ws_scratch "255. Scratch"
 set $ws_empty "256. Empty"
 
 # switch to workspace
@@ -145,6 +146,10 @@ bindsym $mod+$ctrl+Shift+0 move container to workspace $ws10
 
 bindsym $mod+d workspace $ws_empty
 
+bindsym $mod+Shift+l workspace $ws_scratch
+bindsym $mod+$ctrl+Shift+l move container to workspace $ws_scratch
+
+
 # ================================ Execs ================================
 
 # bar {
@@ -152,9 +157,8 @@ bindsym $mod+d workspace $ws_empty
     # status_command i3blocks -c ~/.config/i3/i3blocks.conf
 # }
 
-
 exec_always --no-startup-id feh --bg-scale $HOME/Pictures/wallpapers/mountains.jpg
-exec_always --no-startup-id picom --no-fading-openclose
+exec_always --no-startup-id $HOME/.config/picom/start.sh
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 
 # ================================ Config Options ================================

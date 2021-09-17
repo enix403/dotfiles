@@ -1,3 +1,10 @@
+function print_sep_lines() {
+    for arg in "$@"
+    do
+        echo $arg;
+    done
+}
+
 alias mkf="touch"
 alias mkd="mkdir"
 alias cls="clear"
@@ -7,15 +14,25 @@ alias grep='grep --color=auto'
 
 alias ls="ls --color=auto -lh --group-directories-first"
 alias la="ls --color=auto -Alh --group-directories-first"
-alias mnt='sudo mount -o umask=0022,gid="$GID",uid="$UID"' # mount with user previliges
 
+# putting a whitespace after the second 'xargs' notifies the shell to also try and match an alias for
+# the next token, thus allowing us to use shell aliases within the xargs command
+# e.g `echo some-stuff | xargs la` will try to find an alias for the (next) `la` command, which it does
+# find (see above aliases) so the command will become:
+# `echo some-stuff | xargs ls --color=auto -Alh --group-directories-first`
+alias xargs='xargs '
+# Note: if you do want to use the actual 'la' command (not the alias) then just wrap it in quotes like: xargs "la"
+
+alias sudo='sudo '
+
+alias mnt='sudo mount -o umask=0022,gid="$GID",uid="$UID"' # mount with user previliges
 alias gitlog="git log --oneline --color=always"
 
 # ================ functions for common tasks ================
 
 function network-info() { http --json get "http://ifconfig.me/all.json" }
 function deldockerlogs() { sudo find /var/lib/docker/containers/ -type f -name "*.log" -delete }
-function mth() { echo $(( "$1" )) }
+function mth() { echo $(( $1 )) }
 function mkf-exe() { touch $1 && chmod +x $1; } # make an executable file (script)
 
 function gen-rand-key() {
