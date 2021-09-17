@@ -106,9 +106,9 @@ client.focused_inactive $inactive-bg-color  $inactive-bg-color $inactive-text-co
 client.urgent           $urgent-bg-color    $urgent-bg-color   $text-color          $urgent-bg-color
 
 # ================================ Workspaces ================================
-set $ws1 "1.    Terminal"
-set $ws2 "2.    Code"
-set $ws3 "3.    Firefox"
+set $ws1 "1.    Firefox"
+set $ws2 "2.    Terminal"
+set $ws3 "3.    Code"
 set $ws4 "4"
 set $ws5 "5"
 set $ws6 "6"
