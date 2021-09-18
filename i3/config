@@ -109,8 +109,8 @@ client.urgent           $urgent-bg-color    $urgent-bg-color   $text-color      
 set $ws1 "1.    Firefox"
 set $ws2 "2.    Terminal"
 set $ws3 "3.    Code"
-set $ws4 "4"
-set $ws5 "5"
+set $ws4 "4.    Target"
+set $ws5 "5.    Other"
 set $ws6 "6"
 set $ws7 "7"
 set $ws8 "8"
@@ -146,7 +146,7 @@ bindsym $mod+$ctrl+Shift+0 move container to workspace $ws10
 
 bindsym $mod+d workspace $ws_empty
 
-bindsym $mod+Shift+l workspace $ws_scratch
+bindsym $mod+l workspace $ws_scratch
 bindsym $mod+$ctrl+Shift+l move container to workspace $ws_scratch
 
 
