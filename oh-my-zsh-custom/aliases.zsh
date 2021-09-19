@@ -44,7 +44,7 @@ function start-sublime-project() {
     if [[ $project_file != "" ]]
     then
        echo "Using project file: $project_file"
-       subl --project $project_file
+       subl -a --project $project_file
     else
         echo "No .sublime-project file found"
         return 1
