@@ -35,7 +35,7 @@ alias mnt='sudo mount -o umask=0022,gid="$GID",uid="$UID"' # mount with user pre
 alias kitty_ssh="kitty +kitten ssh"
 alias gpu_vendor='glxinfo | grep --color "server glx vendor string"'
 alias dotfiles='cd "$DOTFILES_PATH"'
-alias opendotfiles='cd "$DOTFILES_PATH" && subl -a .'
+alias opendotfiles='subl -a "$DOTFILES_PATH"'
 
 # ================ functions for common tasks ================
 
