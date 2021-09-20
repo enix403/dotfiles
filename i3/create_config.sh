@@ -17,7 +17,6 @@ rm -f $_config_file && touch $_config_file
 
 exe="$SCRIPTPATH/$SCRIPTNAME"
 echo -e "# ================ Required Keybindings and Setup ================\n" >> $_config_file
-echo "exec --no-startup-id $exe # Regenerate this config on every login" >> $_config_file
 echo "bindsym \$mod+Shift+F2 exec --no-startup-id $exe && i3-msg restart" >> $_config_file 
 echo "bindsym \$mod+Shift+F3 exec --no-startup-id $exe && i3-msg reload" >> $_config_file 
 
