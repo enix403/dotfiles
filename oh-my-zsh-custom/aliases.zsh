@@ -29,10 +29,13 @@ alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo
 alias gitlog="git log --oneline --color=always"
 alias sclone="git clone --depth 1 --single-branch"    # Shallow clone a git repo
 
+export DOTFILES_PATH=~/dotfiles
+
 alias mnt='sudo mount -o umask=0022,gid="$GID",uid="$UID"' # mount with user previliges
 alias kitty_ssh="kitty +kitten ssh"
 alias gpu_vendor='glxinfo | grep --color "server glx vendor string"'
-alias dotfiles="cd ~/dotfiles"
+alias dotfiles='cd "$DOTFILES_PATH"'
+alias opendotfiles='cd "$DOTFILES_PATH" && subl -a .'
 
 # ================ functions for common tasks ================
 
