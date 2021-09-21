@@ -5,7 +5,7 @@ alias where="which"
 alias more=less
 
 alias cp="cp -i"                          # confirm before overwriting something
-alias cp="mv -i"                          # confirm before overwriting something
+alias mv="mv -i"                          # confirm before overwriting something
 alias df='df -h'                          # human-readable sizes
 alias free='free -h'                      # human-readable sizes
 alias grep='grep --color=auto'
