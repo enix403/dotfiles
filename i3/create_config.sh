@@ -1,12 +1,11 @@
 #!/usr/bin/env bash
 
+# Note: Do not symlink this file (you may symlink the parent `i3` directory) to any other location because
+#       this script relies on come convoluted path handling logic
 
 # Get the absolute script path
-# https://stackoverflow.com/a/4774063
-SCRIPTPATH="$( cd -- "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P)"
-SCRIPTPATH=$(echo $SCRIPTPATH | sed -e 's#/$##')
-
-SCRIPTNAME="$(basename "$(test -L "$0" && readlink "$0" || echo "$0")")"
+SCRIPTPATH="$(cd "$(dirname "$0")" && pwd)"
+SCRIPTNAME=$(basename "$0")
 
 _confd_dir_name="conf.d"
 
