@@ -33,6 +33,7 @@ export DOTFILES_PATH=~/dotfiles
 
 alias mnt='sudo mount -o umask=0022,gid="$GID",uid="$UID"' # mount with user previliges
 alias kitty_ssh="kitty +kitten ssh"
+alias icat="kitty +kitten icat"
 alias gpu_vendor='glxinfo | grep --color "server glx vendor string"'
 alias dotfiles='cd "$DOTFILES_PATH"'
 
@@ -41,6 +42,30 @@ alias dotfiles='cd "$DOTFILES_PATH"'
 function opendotfiles() { subl "$@" "$DOTFILES_PATH" }
 function network-info() { http --json get "http://ifconfig.me/all.json" }
 function deldockerlogs() { sudo find /var/lib/docker/containers/ -type f -name "*.log" -delete }
+
+function viewcolor() { 
+    if [[ $1 == '' ]];
+    then
+        cat << EOF
+Usage: viewcolor COLOR [SIZE]
+
+Previews the given color
+      COLOR is the color to display e.g 'blue', 'rgb(123, 56, 7)'
+      SIZE is the output image size in the format WIDTHxHEIGHT e.g: 32x32
+
+Example:
+      viewcolor 'blue'
+      viewcolor '#ff0000' 100x100
+      viewcolor 'rgb(10, 20, 30)'
+
+For supported COLOR formats, see https://www.imagemagick.org/script/color.php
+
+Note: ImageMagick and icat are required
+EOF
+    return 2;
+    fi
+    echo; convert -size ${2:-100x100} "xc:$1" png:- | icat --align=left 
+}
 
 # Do some math: mth "56 + 80"
 function mth() { echo $(( $1 )) }
