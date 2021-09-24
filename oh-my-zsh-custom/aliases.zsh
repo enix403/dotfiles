@@ -35,10 +35,10 @@ alias mnt='sudo mount -o umask=0022,gid="$GID",uid="$UID"' # mount with user pre
 alias kitty_ssh="kitty +kitten ssh"
 alias gpu_vendor='glxinfo | grep --color "server glx vendor string"'
 alias dotfiles='cd "$DOTFILES_PATH"'
-alias opendotfiles='subl -a "$DOTFILES_PATH"'
 
 # ================ functions for common tasks ================
 
+function opendotfiles() { subl "$@" "$DOTFILES_PATH" }
 function network-info() { http --json get "http://ifconfig.me/all.json" }
 function deldockerlogs() { sudo find /var/lib/docker/containers/ -type f -name "*.log" -delete }
 
@@ -60,7 +60,7 @@ function start-sublime-project() {
     if [[ $project_file != "" ]]
     then
        echo "Using project file: $project_file"
-       subl -a --project $project_file
+       subl "$@" $project_file
     else
         echo "No .sublime-project file found"
         return 1
