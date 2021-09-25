@@ -1,7 +1,7 @@
 
 format = """
 [╭─](blue)[\\[](bold blue) $username[@](blue)$hostname [\\] --](bold blue) [\\(](bold blue)$status[\\) --](bold blue) [\\[](bold blue) $battery[\\]](bold blue)
-[├─](blue)[\\[](bold blue) $directory [\\]](bold blue) ([-- \\[](bold blue) $git_branch [\\]](bold blue))
+[├─](blue)[\\[](bold blue) $directory [\\]](bold blue)( [-- \\[](bold blue) $git_branch [\\]](bold blue))( [-- \\[](bold blue) $python [\\]](bold blue))
 [╰──](blue)[\\[](bold blue) [\\$](purple) [\\]](bold blue) 
 """
 
@@ -14,6 +14,7 @@ format = """
 # hostname.disabled = true
 # git_branch.disabled = true
 # status.disabled = true
+# python.disabled = true
 
 # Disabled modules
 
@@ -47,7 +48,6 @@ ocaml.disabled = true
 perl.disabled = true
 php.disabled = true
 purescript.disabled = true
-python.disabled = true
 red.disabled = true
 ruby.disabled = true
 rust.disabled = true
@@ -139,3 +139,15 @@ recognize_signal_code = true
 format = '( [$symbol ( $common_meaning$signal_name )$int]($style) )'
 map_symbol = true
 disabled = false
+
+[python]
+symbol = " "
+format = '[${symbol}( $version)( \($virtualenv\))]($style)'
+style='green'
+
+detect_extensions = []
+detect_files = []
+detect_folders = []
+
+python_binary = ["python", "python3", "python2"]
+
