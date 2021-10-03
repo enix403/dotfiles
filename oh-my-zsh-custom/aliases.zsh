@@ -11,6 +11,7 @@ alias free='free -h'                      # human-readable sizes
 alias grep='grep --color=auto'
 alias ls="ls --color=auto -lh --group-directories-first"
 alias la="ls --color=auto -Alh --group-directories-first"
+alias diskusage="df -h | grep -vE \"^(tmpfs|run|dev)\""
 
 # putting a whitespace after the second 'xargs' notifies the shell to also try and match an alias for
 # the next token, thus allowing us to use shell aliases within the xargs command
