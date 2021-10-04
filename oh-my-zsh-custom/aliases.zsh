@@ -11,7 +11,6 @@ alias free='free -h'                      # human-readable sizes
 alias grep='grep --color=auto'
 alias ls="ls --color=auto -lh --group-directories-first"
 alias la="ls --color=auto -Alh --group-directories-first"
-alias diskusage="df -h | grep -vE \"^(tmpfs|run|dev)\""
 
 # putting a whitespace after the second 'xargs' notifies the shell to also try and match an alias for
 # the next token, thus allowing us to use shell aliases within the xargs command
@@ -37,9 +36,17 @@ alias kitty_ssh="kitty +kitten ssh"
 alias icat="kitty +kitten icat"
 alias gpu_vendor='glxinfo | grep --color "server glx vendor string"'
 alias dotfiles='cd "$DOTFILES_PATH"'
+alias diskusage="df -h | grep -vE \"^(tmpfs|run|dev)\""
+alias bat='bat --theme="gruvbox-dark"'
 
 # ================ functions for common tasks ================
 
+function set_active_wall() {
+    local active_wall_target=~/Pictures/wallpapers/ACTIVE_WALLPAPER
+    rm -rf "$active_wall_target"
+    ln -rs "$1" "$active_wall_target"
+    feh --bg-scale "$active_wall_target"  
+}
 function opendotfiles() { subl "$@" "$DOTFILES_PATH" }
 function network-info() { http --json get "http://ifconfig.me/all.json" }
 function deldockerlogs() { sudo find /var/lib/docker/containers/ -type f -name "*.log" -delete }
