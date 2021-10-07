@@ -10,7 +10,7 @@
 ;==========================================================
 
 [colors]
-background = #2E3440
+# background = #0fffffff
 buffer = #4c566a
 foreground = #D8DEE9
 nord6 = #ECEFF4
@@ -34,16 +34,16 @@ height = 18
 offset-x = 0
 offset-y = 0
 
-background = #00000000
+background = #80303030
 foreground = ${colors.foreground}
 
 line-size = 2
 line-color = #f00
 
-border-top-size = 3
+border-top-size = 0
 border-bottom-size = 0
-border-left-size = 5
-border-right-size = 5
+border-left-size = 0
+border-right-size = 0
 border-color = #00000000
 
 padding-left = 0
@@ -63,7 +63,7 @@ cursor-scroll = ns-resize
 
 modules-left = i3
 modules-center = title
-modules-right = memory cpu temperature pulseaudio wlan date battery
+modules-right = memory cpu temperature pulseaudio date battery
 
 
 [module/i3]
@@ -78,22 +78,22 @@ label-unfocused = ${self.label}
 label-visible = ${self.label} 
 label-urgent = ${self.label} 
 
-label-focused-background = ${colors.background}
+# label-focused-background = ${colors.background}
 label-focused-foreground = ${colors.foreground}
 label-focused-underline= ${colors.nord9}
 label-focused-padding = 1
-label-unfocused-background = ${colors.background}
+# label-unfocused-background = ${colors.background}
 label-unfocused-foreground = ${colors.foreground}
 label-unfocused-underline = ${colors.buffer}
 label-unfocused-padding = 1
-label-visible-background = ${colors.background}
+# label-visible-background = ${colors.background}
 label-visible-foreground = ${colors.foreground}
 label-visible-underline = ${colors.buffer}
 label-visible-padding = 1
 label-urgent-background = ${colors.warning}
 label-urgent-padding = 1
 label-mode-foreground = #000
-label-mode-background = ${colors.background}
+# label-mode-background = ${colors.background}
 label-mode-padding = 1
 
 [module/battery]
@@ -134,7 +134,7 @@ type = internal/xwindow
 format-foreground = ${colors.foreground}
 format-underline = ${colors.nord9}
 format-padding = 1
-format-background = ${colors.background}
+# format-background = ${colors.background}
 label-maxlen = 50
 label-empty = Desktop
 
@@ -143,7 +143,7 @@ type = internal/cpu
 interval = 2
 format-underline = ${colors.function}
 format-padding = 1
-format-background = ${colors.background}
+# format-background = ${colors.background}
 label = " %percentage:2%%"
 
 [module/memory]
@@ -151,24 +151,24 @@ type = internal/memory
 interval = 2
 format-underline = ${colors.nord10}
 format-padding = 1
-format-background = ${colors.background}
+# format-background = ${colors.background}
 label = "  %percentage_used%%"
 
-[module/wlan]
-type = internal/network
-interface = wlp5s0
-interval = 3.0
-format-connected-padding = 1
-format-connected-background = ${colors.background}
-format-connected = <label-connected>
-format-connected-underline = ${colors.success}
-label-connected =  %essid%
-format-disconnected-padding = 1
-format-disconnected-background = ${colors.warning}
-format-disconnected = <label-disconnected>
-format-disconnected-underline = ${self.format-connected-underline}
-label-disconnected = %ifname% disconnected
-label-disconnected-foreground = ${colors.foreground}
+; [module/wlan]
+; type = internal/network
+; interface = wlp5s0
+; interval = 3.0
+; format-connected-padding = 1
+; format-connected-background = ${colors.background}
+; format-connected = <label-connected>
+; format-connected-underline = ${colors.success}
+; label-connected =  %essid%
+; format-disconnected-padding = 1
+; format-disconnected-background = ${colors.warning}
+; format-disconnected = <label-disconnected>
+; format-disconnected-underline = ${self.format-connected-underline}
+; label-disconnected = %ifname% disconnected
+; label-disconnected-foreground = ${colors.foreground}
 
 [module/date]
 type = internal/date
@@ -179,14 +179,14 @@ date-alt = %I:%M %p %A, %B %d, %Y
 
 format-underline = ${colors.nord6}
 format-padding = 2
-format-background = ${colors.background}
+# format-background = ${colors.background}
 label =   %time% %date%
 
 [module/pulseaudio]
 type = internal/pulseaudio
 format-volume = <label-volume>
 format-volume-padding = 1
-format-volume-background = ${colors.background}
+# format-volume-background = ${colors.background}
 label-volume =  %percentage%%
 label-volume-foreground = ${root.foreground}
 format-volume-underline = ${colors.nord7}
@@ -199,7 +199,7 @@ thermal-zone = 0
 format = <label>
 format-underline = ${colors.warning}
 format-padding = 1
-format-background = ${colors.background}
+# format-background = ${colors.background}
 label =  %temperature-c%
 
 [settings]

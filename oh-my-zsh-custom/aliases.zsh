@@ -22,6 +22,8 @@ alias xargs='xargs '
 
 alias sudo='sudo '
 
+alias kr="killall -9 ranger" # Ranger likes to freeze a lot, and I Ctrl+Z my way out of it and use this alias to clean it up
+
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
@@ -38,6 +40,9 @@ alias gpu_vendor='glxinfo | grep --color "server glx vendor string"'
 alias dotfiles='cd "$DOTFILES_PATH"'
 alias diskusage="df -h | grep -vE \"^(tmpfs|run|dev)\""
 alias bat='bat --theme="gruvbox-dark"'
+alias rh='ranger ~'
+alias rr='ranger .'
+alias feh-img="feh --scale-down --auto-zoom --draw-filename"
 
 # ================ functions for common tasks ================
 
@@ -50,6 +55,24 @@ function set_active_wall() {
 function opendotfiles() { subl "$@" "$DOTFILES_PATH" }
 function network-info() { http --json get "http://ifconfig.me/all.json" }
 function deldockerlogs() { sudo find /var/lib/docker/containers/ -type f -name "*.log" -delete }
+
+function ranger {
+    local IFS=$'\t\n'
+    local tempfile="$(mktemp -t tmp.XXXXXX)"
+    local ranger_cmd=(
+        command
+        ranger
+        --cmd="map Q chain shell echo %d > "$tempfile"; quitall;"
+        --cmd="map q chain shell echo %d > "$tempfile"; quit;"
+    )
+    
+    ${ranger_cmd[@]} "$@"
+    if [[ -f "$tempfile" ]] && [[ "$(cat -- "$tempfile")" != "$(echo -n `pwd`)" ]]; then
+        cd -- "$(cat "$tempfile")" || return
+    fi
+    command rm -f -- "$tempfile" 2>/dev/null
+    clear
+}
 
 function viewcolor() { 
     if [[ $1 == '' ]];
