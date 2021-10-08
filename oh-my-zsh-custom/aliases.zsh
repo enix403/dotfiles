@@ -101,7 +101,7 @@ EOF
 # Do some math: mth "56 + 80"
 function mth() { echo $(( $1 )) }
 
-# Make an executable file
+# Make executable files
 function mkf_exe() { 
     all_args=( "$@" ) 
     touch "${all_args[@]}"
