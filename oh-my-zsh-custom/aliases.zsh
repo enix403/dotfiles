@@ -37,12 +37,13 @@ alias mnt='sudo mount -o umask=0022,gid="$GID",uid="$UID"' # mount with user pre
 alias kitty_ssh="kitty +kitten ssh"
 alias icat="kitty +kitten icat"
 alias gpu_vendor='glxinfo | grep --color "server glx vendor string"'
+alias fix_indent="prettier --tab-width 4 --write"
 alias dotfiles='cd "$DOTFILES_PATH"'
 alias diskusage="df -h | grep -vE \"^(tmpfs|run|dev)\""
 alias bat='bat --theme="gruvbox-dark"'
 alias rh='ranger ~'
 alias rr='ranger .'
-alias feh-img="feh --scale-down --auto-zoom --draw-filename"
+alias feh_img="feh --scale-down --auto-zoom --draw-filename"
 
 # ================ functions for common tasks ================
 
@@ -50,11 +51,10 @@ function set_active_wall() {
     local active_wall_target=~/Pictures/wallpapers/ACTIVE_WALLPAPER
     rm -rf "$active_wall_target"
     ln -rs "$1" "$active_wall_target"
-    feh --bg-scale "$active_wall_target"  
+    feh --bg-scale "$active_wall_target"
 }
 function opendotfiles() { subl "$@" "$DOTFILES_PATH" }
-function network-info() { http --json get "http://ifconfig.me/all.json" }
-function deldockerlogs() { sudo find /var/lib/docker/containers/ -type f -name "*.log" -delete }
+function network_info() { http --json get "http://ifconfig.me/all.json" }
 
 function ranger {
     local IFS=$'\t\n'
@@ -102,25 +102,15 @@ EOF
 function mth() { echo $(( $1 )) }
 
 # Make an executable file
-function mkf-exe() { touch $1 && chmod +x $1; } 
+function mkf_exe() { 
+    all_args=( "$@" ) 
+    touch "${all_args[@]}"
+    chmod +x "${all_args[@]}" 
+} 
 
-# Give me a random generic key that can be used for a variety of purposes
-# Note: It optionally takes an argument specifying the length of the key, for example: gen-rand-key 128
-function gen-rand-key() {
+# Returns a random ASCII key of the specified length: gen_rand_key 60
+function gen_rand_key() {
     tr -dc 'A-Za-z0-9!#$%&()*+,-./:;<=>?@[\]_{|}' </dev/urandom | head -c ${1:-64}; echo
-}
-
-# Find a .sublime-project file in the current working directory and open it in sublime text 
-function start-sublime-project() {
-    project_file=$(find . -maxdepth 1 -type f -iname "*.sublime-project" | head -1)
-    if [[ $project_file != "" ]]
-    then
-       echo "Using project file: $project_file"
-       subl "$@" $project_file
-    else
-        echo "No .sublime-project file found"
-        return 1
-    fi
 }
 
 # Print each argument given on a new line (I need it sometimes for debugging)
