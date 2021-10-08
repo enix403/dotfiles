@@ -41,8 +41,8 @@ alias fix_indent="prettier --tab-width 4 --write"
 alias dotfiles='cd "$DOTFILES_PATH"'
 alias diskusage="df -h | grep -vE \"^(tmpfs|run|dev)\""
 alias bat='bat --theme="gruvbox-dark"'
-alias rh='ranger ~'
-alias rr='ranger .'
+alias rh='ranger ~ && clear'
+alias rr='ranger . && clear'
 alias feh_img="feh --scale-down --auto-zoom --draw-filename"
 
 # ================ functions for common tasks ================
@@ -71,7 +71,6 @@ function ranger {
         cd -- "$(cat "$tempfile")" || return
     fi
     command rm -f -- "$tempfile" 2>/dev/null
-    clear
 }
 
 function viewcolor() { 
