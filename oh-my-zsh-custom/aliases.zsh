@@ -33,6 +33,7 @@ alias sclone="git clone --depth 1 --single-branch"    # Shallow clone a git repo
 
 export DOTFILES_PATH=~/dotfiles
 
+alias rscopy="rsync -av --progress"
 alias mnt='sudo mount -o umask=0022,gid="$GID",uid="$UID"' # mount with user previliges
 alias kitty_ssh="kitty +kitten ssh"
 alias icat="kitty +kitten icat"

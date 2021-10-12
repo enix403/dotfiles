@@ -302,7 +302,7 @@ handle_mime() {
                 local pygmentize_format='terminal'
                 local highlight_format='ansi'
             fi
-            env COLORTERM=8bit bat --theme="gruvbox-dark" --color=always --style="plain" --wrap \
+            env COLORTERM=8bit bat --theme="gruvbox-dark" --color=always --style="plain" --wrap character \
                 -- "${FILE_PATH}" && exit 5
             exit 2;;
 
