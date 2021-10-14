@@ -56,6 +56,7 @@ function set_active_wall() {
 }
 function opendotfiles() { subl "$@" "$DOTFILES_PATH" }
 function network_info() { http --json get "http://ifconfig.me/all.json" }
+function clear_history() { echo "" > $HISTFILE; exec $SHELL; }
 
 function ranger {
     local IFS=$'\t\n'
