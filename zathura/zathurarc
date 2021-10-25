@@ -1,0 +1,3 @@
+# Just so I get all the necessary syntax highlighting for *.conf files in
+# my text editor
+include "./config.conf"
