@@ -121,7 +121,7 @@ disabled = false
 [git_branch]
 symbol = ""
 style="bold red"
-truncation_length = 20
+truncation_length = 50
 truncation_symbol = ""
 format = "on [$symbol git:$branch]($style)"
 

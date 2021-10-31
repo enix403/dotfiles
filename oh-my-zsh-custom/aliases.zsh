@@ -45,6 +45,7 @@ alias bat='bat --theme="gruvbox-dark"'
 alias rh='ranger ~ && clear'
 alias rr='ranger . && clear'
 alias feh_img="feh --scale-down --auto-zoom --draw-filename"
+alias gdf="git difftool --dir-diff"
 
 # ================ functions for common tasks ================
 
