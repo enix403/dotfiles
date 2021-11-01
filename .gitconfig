@@ -1,0 +1,21 @@
+[user]
+	email = fog.code000@gmail.com
+	name = enix403
+[credential]
+	helper = store
+[alias]
+	br = branch
+	st = status
+	co = checkout
+	cm = commit
+	sw = switch
+[pager]
+	branch = false
+[init]
+	defaultBranch = master
+[diff]
+	tool = meld
+[difftool]
+    prompt = false
+[difftool "meld"]
+    cmd = meld "$LOCAL" "$REMOTE"
