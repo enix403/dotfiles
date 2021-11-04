@@ -55,9 +55,14 @@ function set_active_wall() {
     ln -rs "$1" "$active_wall_target"
     feh --bg-scale "$active_wall_target"
 }
+
+
 function opendotfiles() { subl "$@" "$DOTFILES_PATH" }
 function network_info() { http --json get "http://ifconfig.me/all.json" }
 function clear_history() { echo "" > $HISTFILE; exec $SHELL; }
+
+function icat_url { curl "$1" -o - --silent | icat --stdin yes }
+function wall_url { curl "$1" -o - | feh --bg-scale - }
 
 function ranger {
     local IFS=$'\t\n'
