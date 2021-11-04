@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # Note: Do not symlink this file (you may symlink the parent `i3` directory) to any other location because
-#       this script relies on come convoluted path handling logic
+#       this script relies on some convoluted path handling logic
 
 # Get the absolute script path
 SCRIPTPATH="$(cd "$(dirname "$0")" && pwd)"
