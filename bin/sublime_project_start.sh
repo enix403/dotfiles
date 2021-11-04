@@ -7,5 +7,5 @@ then
    subl "$@" $project_file
 else
     echo "No .sublime-project file found"
-    return 1
+    exit 1
 fi
