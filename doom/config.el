@@ -151,6 +151,21 @@
  :desc "Create project in given folder"
  :n "p n" #'projectile-add-known-project)
 
+(map!
+ :leader
+ :desc "Open vterm"
+ :n "o t" #'+vterm/here
+ )
+
+(map! :nvi "C-O" #'+vterm/here)
+
+(map!
+ :leader
+ :desc "Open vterm popup"
+ :n "o T" #'+vterm/toggle
+ )
+
+
 ;; Smooth scrolling
 ;; (setq mouse-wheel-scroll-amount '(1 ((shift) . 1))) ;; one line at a time
 ;; (setq mouse-wheel-progressive-speed nil) ;; don't accelerate scrolling
@@ -197,9 +212,37 @@
    centaur-tabs
    (centaur-tabs-change-fonts "Fira Sans Medium" 100)
    (defun centaur-tabs-buffer-groups () "" (list (cond
-        ((derived-mode-p 'prog-mode 'dired-mode 'vterm-mode) "Project")
+                ((derived-mode-p
+                  'prog-mode
+                  'dired-mode
+                  'vterm-mode
+                  'gitignore-mode
+                  'gitconfig-mode
+                  ) "Project")
         (t "Other")
     )))
 
    (setq centaur-tabs-buffer-groups-function #'centaur-tabs-buffer-groups)
   )
+
+(defvar killed-file-list nil
+  "List of recently killed files.")
+
+(defun add-file-to-killed-file-list ()
+  "If buffer is associated with a file name, add that file to the
+`killed-file-list' when killing the buffer."
+  (when buffer-file-name
+    (push buffer-file-name killed-file-list)))
+
+(add-hook 'kill-buffer-hook #'add-file-to-killed-file-list)
+
+(defun reopen-killed-file ()
+  "Reopen the most recently killed file, if one exists."
+  (interactive)
+  (when killed-file-list
+    (find-file (pop killed-file-list))))
+
+
+(map! :nvieomrg [(control shift t)] #'reopen-killed-file)
+
+(good-scroll-mode 1)
