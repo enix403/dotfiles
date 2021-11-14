@@ -33,13 +33,16 @@
 ;;(require 'treemacs-all-the-icons)
 ;;(treemacs-load-theme "all-the-icons")
 
-(setq doom-theme 'doom-solarized-dark)
+;; (setq doom-theme 'doom-solarized-dark)
+(setq doom-theme 'doom-gruvbox)
 (setq doom-font (font-spec :family "Fira Code"
                            :size 9.0))
 (setq doom-variable-pitch-font (font-spec :family "Fira Sans"
                                           :size 13))
 (setq doom-themes-treemacs-theme "doom-colors")
 ;; (setq doom-themes-treemacs-enable-variable-pitch nil)
+
+(set-face-bold-p 'bold nil)
 
 (setq display-line-numbers-type t)
 (setq projectile-auto-discover nil)
@@ -139,7 +142,7 @@
 (map! :nvi "C-K" #'kill-whole-line)
 (map! :nvi "C-D" #'duplicate-line)
 (map! :nvi "C-p" #'projectile-find-file)
-(map! :nvi "C-I" #'treemacs-find-file)
+(map! :nvi [(control shift i)] #'treemacs-find-file)
 
 (map! :nvi [(control meta left)]  #'centaur-tabs-backward)
 (map! :nvi [(control meta right)] #'centaur-tabs-forward)
@@ -218,6 +221,7 @@
                   'vterm-mode
                   'gitignore-mode
                   'gitconfig-mode
+                  'gfm-mode
                   ) "Project")
         (t "Other")
     )))
@@ -246,3 +250,6 @@
 (map! :nvieomrg [(control shift t)] #'reopen-killed-file)
 
 (good-scroll-mode 1)
+
+(setq lsp-semantic-tokens-enable t)
+(setq lsp-clangd-binary-path "/usr/bin/clangd")
