@@ -52,6 +52,9 @@ source $ZSH/oh-my-zsh.sh
 export STARSHIP_CONFIG="$HOME/.config/starship/config.toml"
 eval "$(starship init zsh)"
 
+# Disable auto-removal of ending slash for directory paths when pressing space after tab completion
+setopt no_auto_remove_slash
+
 # remove path duplicates
 typeset -U PATH 
 
