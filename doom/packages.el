@@ -66,4 +66,4 @@
 (package! lsp-pyright)
 (package! elisp-format)
 (package! good-scroll)
-(package! cyberpunk-theme)
+(package! highlight-indent-guides)

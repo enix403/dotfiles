@@ -85,8 +85,8 @@
 (map! :v "C-c" #'evil-yank)
 (map! :ni "C-c" #'evil-collection-magit-yank-whole-line)
 
-(map! :v "C-x" #'kill-region)
 (map! :ni "C-x" #'kill-whole-line)
+(map! :v "C-x" #'kill-region)
 
 
 (defun move-text-internal (arg)
@@ -206,7 +206,11 @@
   (interactive)
   (keyboard-indent (* -1 (or arg 1))))
 
-(map! :nvi "TAB" #'keyboard-indent)
+;; (map! :nvi "TAB" #'keyboard-indent)
+
+(map! :nvi "TAB" #'my/indent)
+(map! :nvi "<tab>" #'my/indent)
+
 
 (setq centaur-tabs-style "bar")
 (setq centaur-tabs-height 18)
@@ -249,7 +253,11 @@
 
 (map! :nvieomrg [(control shift t)] #'reopen-killed-file)
 
-(good-scroll-mode 1)
+(good-scroll-mode 50)
+(highlight-indent-guides-mode)
 
 (setq lsp-semantic-tokens-enable t)
 (setq lsp-clangd-binary-path "/usr/bin/clangd")
+
+
+(setq good-scroll-algorithm #'good-scroll-linear)
