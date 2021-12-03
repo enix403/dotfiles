@@ -1,0 +1,14 @@
+arcticicestudio.nord-visual-studio-code
+BeardedBear.beardedicons
+emmanuelbeziat.vscode-great-icons
+fileicons.file-icons
+GeForceLegend.vscode-glsl
+iocave.customize-ui
+iocave.monkey-patch
+kevinkyang.auto-comment-blocks
+llvm-vs-code-extensions.vscode-clangd
+ms-pyright.pyright
+slevesque.shader
+twxs.cmake
+vscode-icons-team.vscode-icons
+webfreak.debug

@@ -1,0 +1,122 @@
+{
+    /* =============================================== */
+    /* =============================================== */
+    /* =================== Theming =================== */
+    /* =============================================== */
+    /* =============================================== */
+
+    "workbench.colorTheme": "Nord",
+    "workbench.iconTheme": "bearded-icons",
+
+    /* ============================================= */
+    /* ============================================= */
+    /* =================== Fonts =================== */
+    /* ============================================= */
+    /* ============================================= */
+
+    "editor.fontFamily": "Fira Code",
+    "editor.fontSize": 12,
+    "editor.lineHeight": 1.2,
+    "editor.letterSpacing": -0.35,
+    "terminal.integrated.fontFamily": "Fira Code",
+    "terminal.integrated.fontSize": 12,
+    "debug.console.fontFamily": "Fira Code",
+    "debug.console.fontSize": 12,
+    
+    // "editor.fontLigatures": true,
+    "editor.fontLigatures": "'calt', 'ss03'",
+
+
+    /* ============================================== */
+    /* ============================================== */
+    /* =================== Cursor =================== */
+    /* ============================================== */
+    /* ============================================== */
+
+    "editor.cursorSmoothCaretAnimation": false,
+    "editor.cursorWidth": 2,
+    "editor.cursorBlinking": "smooth",
+    "editor.cursorStyle": "line",
+    "terminal.integrated.cursorStyle": "line",
+
+    /* ============================================== */
+    /* ============================================== */
+    /* =================== Sidebar ================== */
+    /* ============================================== */
+    /* ============================================== */
+
+    "workbench.tree.indent": 20,
+    "workbench.tree.renderIndentGuides": "always",
+
+    /* =================================================================== */
+    /* =================================================================== */
+    /* =================== Other Visual Customizations =================== */
+    /* =================================================================== */
+    /* =================================================================== */
+
+    "editor.renderLineHighlight": "gutter",
+    "editor.semanticHighlighting.enabled": true,
+    "editor.links": false,
+    "editor.minimap.enabled": false,
+    "workbench.sideBar.location": "right",
+    // "editor.smoothScrolling": true,
+
+    "workbench.colorCustomizations": {
+        "[Nord]": {
+            "editorSuggestWidget.focusHighlightForeground": "#88c0d0",
+            "editorSuggestWidget.selectedForeground": "#d8dee9",
+            "list.focusHighlightForeground": "#eceff4",
+            "quickInputList.focusForeground": "#2e3440",
+        }
+    },
+
+
+    /* ================================================= */
+    /* ================================================= */
+    /* ================== CustomizeUI ================== */
+    /* ================================================= */
+    /* ================================================= */
+
+    "customizeUI.listRowHeight": 17,
+    "customizeUI.font.regular": "Fira Sans Medium",
+    "customizeUI.activityBarHideSettings": true,
+
+    "customizeUI.stylesheet": {
+
+        // Center sidebar text and icons
+        ".explorer-viewlet .editor-group, .explorer-viewlet .explorer-item":
+                "height: 100%; line-height: inherit",
+
+        ".monaco-tl-row .monaco-icon-label:before":
+            "height: 100%; position: relative; top: -0.5px"
+    },
+
+    /* ====================================================== */
+    /* ====================================================== */
+    /* ================ Behavioural Settings ================ */
+    /* ====================================================== */
+    /* ====================================================== */
+
+    "breadcrumbs.enabled": true,
+    "git.enabled": false,
+
+    "clangd.serverCompletionRanking": false,
+    "clangd.semanticHighlighting": true,
+    "debug.terminal.clearBeforeReusing": true,
+    "debug.allowBreakpointsEverywhere": true,
+    "terminal.integrated.allowChords": false,
+    
+    "explorer.autoReveal": false,
+
+    /* ====================================================== */
+    /* ====================================================== */
+    /* ================= File Associations ================== */
+    /* ====================================================== */
+    /* ====================================================== */
+
+    "files.associations": {
+        ".clangd": "yaml",
+        ".clang-format": "yaml",
+        "*.obj": "properties"
+    }
+}
