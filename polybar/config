@@ -34,7 +34,7 @@ height = 25
 offset-x = 0
 offset-y = 0
 
-background = #45303030
+background = #60303030
 foreground = ${colors.foreground}
 
 line-size = 2

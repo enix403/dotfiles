@@ -41,7 +41,7 @@ alias icat="kitty +kitten icat"
 alias gpu_vendor='glxinfo | grep --color "server glx vendor string"'
 alias fix_indent="prettier --tab-width 4 --write"
 alias dotfiles='cd "$DOTFILES_PATH"'
-alias diskusage="df -h | grep -vE \"^(tmpfs|run|dev)\""
+alias diskusage="df -h | grep -vE \"^(tmpfs|run|dev)\" | (sed -u 1q; sort)"
 alias bat='bat --theme="gruvbox-dark"'
 alias rh='ranger ~ && clear'
 alias rr='ranger . && clear'
