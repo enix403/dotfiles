@@ -98,7 +98,7 @@ label-mode-padding = 1
 
 [module/battery]
 type = internal/battery
-battery = BAT1
+battery = BAT0
 adapter = ACAD
 full-at = 98
 
