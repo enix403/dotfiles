@@ -3,6 +3,7 @@ alias mkd="mkdir"
 alias cls="clear"
 alias where="which"
 alias more=less
+alias ip="ip -c"
 
 alias cp="cp -i"                          # confirm before overwriting something
 alias mv="mv -i"                          # confirm before overwriting something
