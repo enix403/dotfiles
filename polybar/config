@@ -25,16 +25,16 @@ success = #A3BE8C
 function = #B48EAD
 
 [bar/main]
-bottom = false
+bottom = true
 override-redirect = false
 fixed-center = true
 
 width = 100%
-height = 18
+height = 25
 offset-x = 0
 offset-y = 0
 
-background = #80303030
+background = #45303030
 foreground = ${colors.foreground}
 
 line-size = 2
@@ -52,7 +52,7 @@ padding-right = 0
 module-margin-left = 3
 module-margin-right = 0
 
-font-0 = Fira Sans:size=10,1
+font-0 = Fira Sans:size=12,1
 font-1 = Font Awesome 5 Brands,Font Awesome 5 Brands Regular:style=Regular
 font-2 = Font Awesome 5 Free,Font Awesome 5 Free Solid:style=Solid
 font-3 = Font Awesome 5 Free,Font Awesome 5 Free Regular:style=Regular
