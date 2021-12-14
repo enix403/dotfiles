@@ -47,6 +47,7 @@ alias rh='ranger ~ && clear'
 alias rr='ranger . && clear'
 alias feh_img="feh --scale-down --auto-zoom --draw-filename"
 alias gdf="git difftool --dir-diff"
+alias acv="source .venv/bin/activate" # I mostly name my python virtual environments `.venv`
 
 # ================ functions for common tasks ================
 
