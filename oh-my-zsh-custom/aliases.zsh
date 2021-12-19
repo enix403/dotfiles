@@ -23,7 +23,7 @@ alias xargs='xargs '
 
 alias sudo='sudo '
 
-alias kr="killall -9 ranger" # Ranger likes to freeze a lot, and I Ctrl+Z my way out of it and use this alias to clean it up
+alias py='python'
 
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
@@ -34,6 +34,7 @@ alias sclone="git clone --depth 1 --single-branch"    # Shallow clone a git repo
 
 export DOTFILES_PATH=~/dotfiles
 
+alias kr="killall -9 ranger" # Ranger likes to freeze a lot, and I Ctrl+Z my way out of it and use this alias to clean it up
 alias rscopy="rsync -av --progress"
 alias mnt='sudo mount -o umask=0022,gid="$GID",uid="$UID"' # mount with user previliges
 alias kitty_ssh="kitty +kitten ssh"
@@ -48,6 +49,11 @@ alias rr='ranger . && clear'
 alias feh_img="feh --scale-down --auto-zoom --draw-filename"
 alias gdf="git difftool --dir-diff"
 alias acv="source .venv/bin/activate" # I mostly name my python virtual environments `.venv`
+
+# Prepend line numbers before each line of piped input
+# Use it like:
+#       some-command-with-multiple-output-lines | linize
+alias linize="cat -n | sed 's/^[ 0-9]*[0-9]/\o033[34m&:\o033[0m/'"
 
 # ================ functions for common tasks ================
 
