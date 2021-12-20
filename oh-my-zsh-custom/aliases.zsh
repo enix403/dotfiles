@@ -49,6 +49,8 @@ alias rr='ranger . && clear'
 alias feh_img="feh --scale-down --auto-zoom --draw-filename"
 alias gdf="git difftool --dir-diff"
 alias acv="source .venv/bin/activate" # I mostly name my python virtual environments `.venv`
+alias redfilter='redshift -PO'
+alias resetredfilter='redshift -PO 6500'
 
 # Prepend line numbers before each line of piped input
 # Use it like:

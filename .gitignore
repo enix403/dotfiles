@@ -1,3 +1,4 @@
 bin/ngrok
 bin/code
 gtk-3.0/bookmarks
+bin/slogin_track_manager.sh
