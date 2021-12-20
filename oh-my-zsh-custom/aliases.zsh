@@ -47,6 +47,8 @@ alias rh='ranger ~ && clear'
 alias rr='ranger . && clear'
 alias feh_img="feh --scale-down --auto-zoom --draw-filename"
 alias gdf="git difftool --dir-diff"
+alias redfilter='redshift -PO'
+alias resetredfilter='redshift -PO 6500'
 
 # ================ functions for common tasks ================
 
