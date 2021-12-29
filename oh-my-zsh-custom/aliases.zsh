@@ -10,8 +10,8 @@ alias mv="mv -i"                          # confirm before overwriting something
 alias df='df -h'                          # human-readable sizes
 alias free='free -h'                      # human-readable sizes
 alias grep='grep --color=auto'
-alias ls="ls --color=auto -lh --group-directories-first"
-alias la="ls --color=auto -Alh --group-directories-first"
+alias ls="LC_COLLATE=C ls --color=auto -lh --group-directories-first"
+alias la="LC_COLLATE=C ls --color=auto -Alh --group-directories-first"
 
 # putting a whitespace after the second 'xargs' notifies the shell to also try and match an alias for
 # the next token, thus allowing us to use shell aliases within the xargs command
@@ -51,6 +51,11 @@ alias gdf="git difftool --dir-diff"
 alias acv="source .venv/bin/activate" # I mostly name my python virtual environments `.venv`
 alias redfilter='redshift -PO'
 alias resetredfilter='redshift -PO 6500'
+alias walp='feh --bg-scale'
+
+# Use this to find files using most diskspace ("ddu = debug du")
+# ddu ~/some/folder/*
+alias ddu="du -Pshx"
 
 # Prepend line numbers before each line of piped input
 # Use it like:

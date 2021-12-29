@@ -1,3 +1,5 @@
+# export QT_QPA_PLATFORMTHEME=qt5ct
+
 export PATH=$HOME/bin:/usr/local/bin:$PATH
 export ZSH="$HOME/.oh-my-zsh"
 
