@@ -4,6 +4,7 @@ filetype plugin indent on
 set tabstop=4
 set shiftwidth=4
 set expandtab
+set autoindent
 set laststatus=2
 
 " More config
@@ -19,6 +20,15 @@ noremap <silent> <C-S>          :update<CR>
 vnoremap <silent> <C-S>         <C-C>:update<CR>
 inoremap <silent> <C-S>         <C-O>:update<CR>
 
+nnoremap <silent> <C-@> i
+
+inoremap <C-S-K> <C-o>"_dd
+noremap <C-S-K> "_dd
+
+inoremap <C-S-D> <C-o>"lyy<C-o>"lp
+noremap <C-S-D> "lyy"lp
+
+inoremap jj <Esc>
 
 let &t_EI = "\<Esc>[1 q"
 let &t_SI = "\<Esc>[5 q"

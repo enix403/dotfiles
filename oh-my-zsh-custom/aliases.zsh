@@ -1,5 +1,6 @@
 alias mkf="touch"
 alias mkd="mkdir"
+alias uz="unzip"
 alias cls="clear"
 alias where="which"
 alias more=less
@@ -24,6 +25,7 @@ alias xargs='xargs '
 alias sudo='sudo '
 
 alias py='python'
+alias opd='zathura'
 
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
@@ -46,7 +48,7 @@ alias diskusage="df -h | grep -vE \"^(tmpfs|run|dev)\" | (sed -u 1q; sort)"
 alias bat='bat --theme="gruvbox-dark"'
 alias rh='ranger ~ && clear'
 alias rr='ranger . && clear'
-alias feh_img="feh --scale-down --auto-zoom --draw-filename"
+alias feh_img="feh --scale-down --auto-zoom --draw-filename --action9 \";feh --bg-scale '%f'\""
 alias gdf="git difftool --dir-diff"
 alias acv="source .venv/bin/activate" # I mostly name my python virtual environments `.venv`
 alias redfilter='redshift -PO'
@@ -55,7 +57,7 @@ alias walp='feh --bg-scale'
 
 # Use this to find files using most diskspace ("ddu = debug du")
 # ddu ~/some/folder/*
-alias ddu="du -Pshx"
+alias ddu="du -Pcshx"
 
 # Prepend line numbers before each line of piped input
 # Use it like:
