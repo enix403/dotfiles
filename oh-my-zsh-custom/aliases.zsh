@@ -123,6 +123,8 @@ EOF
     echo; convert -size ${2:-100x100} "xc:$1" png:- | icat --align=left 
 }
 
+function colitf() { py -c "print(tuple(r/255.0 for r in [$1]))"; }
+
 # Do some math: mth "56 + 80"
 function mth() { echo $(( $1 )) }
 
