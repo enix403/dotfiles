@@ -3,11 +3,11 @@
 export PATH=$HOME/bin:/usr/local/bin:$PATH
 export ZSH="$HOME/.oh-my-zsh"
 
-function set_win_title(){
-    echo -ne "\033]0; $USER: $(basename "$PWD") \007"
-}
+# function set_win_title(){
+#    echo -ne "\033]0; $USER: $(basename "$PWD") \007"
+#}
 
-precmd_functions+=(set_win_title)
+# precmd_functions+=(set_win_title)
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"

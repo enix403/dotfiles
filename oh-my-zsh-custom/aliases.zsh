@@ -3,7 +3,6 @@ alias mkd="mkdir"
 alias uz="unzip"
 alias cls="clear"
 alias where="which"
-alias more=less
 alias ip="ip -c"
 
 alias cp="cp -i"                          # confirm before overwriting something
@@ -42,9 +41,8 @@ alias rscopy="rsync -av --progress"
 alias mnt='sudo mount -o umask=0022,gid="$GID",uid="$UID"' # mount with user previliges
 alias kitty_ssh="kitty +kitten ssh"
 alias icat="kitty +kitten icat"
-alias gpu_vendor='glxinfo | grep --color "server glx vendor string"'
 alias fix_indent="prettier --tab-width 4 --write"
-alias dotfiles='cd "$DOTFILES_PATH"'
+alias dots='cd "$DOTFILES_PATH"'
 alias diskusage="df -h | grep -vE \"^(tmpfs|run|dev)\" | (sed -u 1q; sort)"
 alias bat='bat --theme="gruvbox-dark"'
 alias rh='ranger ~ && clear'
@@ -56,8 +54,8 @@ alias redfilter='redshift -PO'
 alias resetredfilter='redshift -PO 6500'
 alias walp='feh --bg-scale'
 
-# Use this to find files using most diskspace ("ddu = debug du")
-# ddu ~/some/folder/*
+# Find files eating up diskspace ("ddu = debug du")
+# ddu /some/folder/*
 alias ddu="du -Pcshx"
 
 # Prepend line numbers before each line of piped input
@@ -66,6 +64,8 @@ alias ddu="du -Pcshx"
 alias linize="cat -n | sed 's/^[ 0-9]*[0-9]/\o033[34m&:\o033[0m/'"
 
 # ================ functions for common tasks ================
+
+function bgopen() { xdg-open "$@" & disown; }
 
 function set_active_wall() {
     local active_wall_target=~/Pictures/wallpapers/ACTIVE_WALLPAPER
@@ -123,7 +123,7 @@ EOF
     echo; convert -size ${2:-100x100} "xc:$1" png:- | icat --align=left 
 }
 
-function colitf() { py -c "print(tuple(r/255.0 for r in [$1]))"; }
+function colitf() { python -c "print(tuple(r/255.0 for r in [$1]))"; }
 
 # Do some math: mth "56 + 80"
 function mth() { echo $(( $1 )) }
@@ -140,10 +140,15 @@ function gen_rand_key() {
     tr -dc 'A-Za-z0-9!#$%&()*+,-./:;<=>?@[\]_{|}' </dev/urandom | head -c ${1:-64}; echo
 }
 
-# Print each argument given on a new line (I need it sometimes for debugging)
+# Print each argument given on a new line (It is needed sometimes for debugging)
 function print_sep_lines() {
     for arg in "$@"
     do
         echo $arg;
     done
 }
+
+
+function fl()  { sudo chvt "${1:-6}"; }
+function flx() { sudo chvt "${1:-6}"; logout }
+
