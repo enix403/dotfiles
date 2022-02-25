@@ -26,6 +26,7 @@ alias sudo='sudo '
 
 alias py='python'
 alias opd='zathura'
+alias stc='macchanger'
 
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert

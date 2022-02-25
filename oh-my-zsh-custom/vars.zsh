@@ -1,4 +1,5 @@
 export EDITOR=vim
+export RUSTC_WRAPPER=sccache
 
 # To Change cursor
 #   echo -e "\e[6 q"
