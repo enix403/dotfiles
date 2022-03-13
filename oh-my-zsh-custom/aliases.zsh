@@ -1,8 +1,8 @@
 alias mkf="touch"
 alias mkd="mkdir"
+alias uz="unzip"
 alias cls="clear"
 alias where="which"
-alias more=less
 alias ip="ip -c"
 
 alias cp="cp -i"                          # confirm before overwriting something
@@ -10,8 +10,9 @@ alias mv="mv -i"                          # confirm before overwriting something
 alias df='df -h'                          # human-readable sizes
 alias free='free -h'                      # human-readable sizes
 alias grep='grep --color=auto'
-alias ls="ls --color=auto -lh --group-directories-first"
-alias la="ls --color=auto -Alh --group-directories-first"
+alias ls="LC_COLLATE=C ls --color=auto -lh --group-directories-first"
+alias la="LC_COLLATE=C ls --color=auto -Alh --group-directories-first"
+alias lsblk="lsblk --fs"
 
 # putting a whitespace after the second 'xargs' notifies the shell to also try and match an alias for
 # the next token, thus allowing us to use shell aliases within the xargs command
@@ -23,7 +24,9 @@ alias xargs='xargs '
 
 alias sudo='sudo '
 
-alias kr="killall -9 ranger" # Ranger likes to freeze a lot, and I Ctrl+Z my way out of it and use this alias to clean it up
+alias py='python'
+alias opd='zathura'
+alias stc='macchanger'
 
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
@@ -34,23 +37,36 @@ alias sclone="git clone --depth 1 --single-branch"    # Shallow clone a git repo
 
 export DOTFILES_PATH=~/dotfiles
 
+alias kr="killall -9 ranger" # Ranger likes to freeze a lot, and I Ctrl+Z my way out of it and use this alias to clean it up
 alias rscopy="rsync -av --progress"
 alias mnt='sudo mount -o umask=0022,gid="$GID",uid="$UID"' # mount with user previliges
 alias kitty_ssh="kitty +kitten ssh"
 alias icat="kitty +kitten icat"
-alias gpu_vendor='glxinfo | grep --color "server glx vendor string"'
 alias fix_indent="prettier --tab-width 4 --write"
-alias dotfiles='cd "$DOTFILES_PATH"'
-alias diskusage="df -h | grep -vE \"^(tmpfs|run|dev)\""
+alias dots='cd "$DOTFILES_PATH"'
+alias diskusage="df -h | grep -vE \"^(tmpfs|run|dev)\" | (sed -u 1q; sort)"
 alias bat='bat --theme="gruvbox-dark"'
 alias rh='ranger ~ && clear'
 alias rr='ranger . && clear'
-alias feh_img="feh --scale-down --auto-zoom --draw-filename"
+alias feh_img="feh --scale-down --auto-zoom --draw-filename --action9 \";feh --bg-scale '%f'\""
 alias gdf="git difftool --dir-diff"
+alias acv="source .venv/bin/activate" # I mostly name my python virtual environments `.venv`
 alias redfilter='redshift -PO'
 alias resetredfilter='redshift -PO 6500'
+alias walp='feh --bg-scale'
+
+# Find files eating up diskspace ("ddu = debug du")
+# ddu /some/folder/*
+alias ddu="du -Pcshx"
+
+# Prepend line numbers before each line of piped input
+# Use it like:
+#       some-command-with-multiple-output-lines | linize
+alias linize="cat -n | sed 's/^[ 0-9]*[0-9]/\o033[34m&:\o033[0m/'"
 
 # ================ functions for common tasks ================
+
+function bgopen() { xdg-open "$@" & disown; }
 
 function set_active_wall() {
     local active_wall_target=~/Pictures/wallpapers/ACTIVE_WALLPAPER
@@ -108,6 +124,8 @@ EOF
     echo; convert -size ${2:-100x100} "xc:$1" png:- | icat --align=left 
 }
 
+function colitf() { python -c "print(tuple(r/255.0 for r in [$1]))"; }
+
 # Do some math: mth "56 + 80"
 function mth() { echo $(( $1 )) }
 
@@ -123,10 +141,15 @@ function gen_rand_key() {
     tr -dc 'A-Za-z0-9!#$%&()*+,-./:;<=>?@[\]_{|}' </dev/urandom | head -c ${1:-64}; echo
 }
 
-# Print each argument given on a new line (I need it sometimes for debugging)
+# Print each argument given on a new line (It is needed sometimes for debugging)
 function print_sep_lines() {
     for arg in "$@"
     do
         echo $arg;
     done
 }
+
+
+function fl()  { sudo chvt "${1:-6}"; }
+function flx() { sudo chvt "${1:-6}"; logout }
+
