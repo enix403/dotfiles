@@ -30,6 +30,12 @@ noremap <C-S-D> "lyy"lp
 
 inoremap jj <Esc>
 
+inoremap <C-Left> <C-o>b<C-o>i
+inoremap <C-Right> <C-o>e<C-o>a
+
+noremap <C-Left> b
+noremap <C-Right> e
+
 let &t_EI = "\<Esc>[1 q"
 let &t_SI = "\<Esc>[5 q"
 let &t_SR = "\<Esc>[1 q"
@@ -40,4 +46,9 @@ set ttimeout
 set ttimeoutlen=1
 set listchars=tab:>-,trail:~,extends:>,precedes:<,space:.
 set ttyfast
+
+
+" Allow saving of files as sudo when vim was not started with root privileges
+cmap w!! w !sudo tee > /dev/null %
+
 

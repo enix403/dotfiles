@@ -27,6 +27,8 @@ alias sudo='sudo '
 alias py='python'
 alias opd='zathura'
 alias stc='macchanger'
+alias pe='pipenv'
+
 
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
@@ -48,7 +50,7 @@ alias diskusage="df -h | grep -vE \"^(tmpfs|run|dev)\" | (sed -u 1q; sort)"
 alias bat='bat --theme="gruvbox-dark"'
 alias rh='ranger ~ && clear'
 alias rr='ranger . && clear'
-alias feh_img="feh --scale-down --auto-zoom --draw-filename --action9 \";feh --bg-scale '%f'\""
+alias feh="feh --scale-down --auto-zoom --draw-filename --action9 \";feh --bg-scale '%f'\""
 alias gdf="git difftool --dir-diff"
 alias acv="source .venv/bin/activate" # I mostly name my python virtual environments `.venv`
 alias redfilter='redshift -PO'
