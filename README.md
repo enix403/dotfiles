@@ -1,4 +1,3 @@
 # Dotfiles
 
-My personal dotfiles
-
+My marvelous dotfiles.
