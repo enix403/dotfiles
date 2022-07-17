@@ -22,3 +22,4 @@ _config_path=$HOME/.config
 mkdir -p $_config_path
 
 # TODO: do the rest of stuff
+
