@@ -1,3 +1,3 @@
 # Dotfiles
 
-My marvelous dotfiles
+My marvelous dotfiles :)
