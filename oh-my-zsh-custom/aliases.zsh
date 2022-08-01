@@ -13,6 +13,7 @@ alias grep='grep --color=auto'
 alias ls="LC_COLLATE=C ls --color=auto -lh --group-directories-first"
 alias la="LC_COLLATE=C ls --color=auto -Alh --group-directories-first"
 alias lsblk="lsblk --fs"
+alias glow="glow -p"
 
 # putting a whitespace after the second 'xargs' notifies the shell to also try and match an alias for
 # the next token, thus allowing us to use shell aliases within the xargs command
@@ -29,6 +30,8 @@ alias opd='zathura'
 alias stc='macchanger'
 alias pe='pipenv'
 
+
+alias cloc='cloc --vcs=git'
 
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
