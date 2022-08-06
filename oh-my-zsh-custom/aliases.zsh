@@ -71,6 +71,12 @@ alias linize="cat -n | sed 's/^[ 0-9]*[0-9]/\o033[34m&:\o033[0m/'"
 
 # ================ functions for common tasks ================
 
+function userignore() {
+    local git_root;
+    git_root=$(git rev-parse --show-toplevel) || return $?;
+    vim "$git_root/.git/info/exclude"
+}
+
 function bgopen() { xdg-open "$@" & disown; }
 
 function set_active_wall() {
