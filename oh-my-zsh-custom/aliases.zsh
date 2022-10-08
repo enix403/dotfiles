@@ -59,6 +59,7 @@ alias acv="source .venv/bin/activate" # I mostly name my python virtual environm
 alias redfilter='redshift -PO'
 alias resetredfilter='redshift -PO 6500'
 alias walp='feh --bg-scale'
+alias etsh="rm -rf ~/.local/share/Trash/*"
 
 # Find files eating up diskspace ("ddu = debug du")
 # ddu /some/folder/*
@@ -68,6 +69,8 @@ alias ddu="du -Pcshx"
 # Use it like:
 #       some-command-with-multiple-output-lines | linize
 alias linize="cat -n | sed 's/^[ 0-9]*[0-9]/\o033[34m&:\o033[0m/'"
+
+alias kff="killall -9 firefox"
 
 # ================ functions for common tasks ================
 
