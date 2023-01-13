@@ -43,6 +43,9 @@ kde)
 i3)
 	exec i3
 	;;
+xm)
+	exec xmonad
+	;;
 *)
 	exec i3
     ;;

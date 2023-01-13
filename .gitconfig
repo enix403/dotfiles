@@ -1,8 +1,6 @@
 [user]
 	email = fog.code000@gmail.com
 	name = enix403
-[credential]
-	helper = store
 [alias]
 	br = branch
 	st = status
@@ -19,3 +17,10 @@
     prompt = false
 [difftool "meld"]
     cmd = meld "$LOCAL" "$REMOTE"
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+[credential]
+	helper = store

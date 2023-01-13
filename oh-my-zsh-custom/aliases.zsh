@@ -30,6 +30,7 @@ alias opd='zathura'
 alias stc='macchanger'
 alias pe='pipenv'
 
+alias vb="od -A d -t x1"
 
 alias cloc='cloc --vcs=git'
 
