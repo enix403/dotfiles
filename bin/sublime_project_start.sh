@@ -1,6 +1,13 @@
 #!/usr/bin/env sh
 
-project_file=$(find . -maxdepth 1 -type f -iname "*.sublime-project" | head -1)
+search_path="."
+
+if [[ "$1" != "" ]]
+then
+    search_path="$1"
+fi
+
+project_file=$(find "$search_path" -maxdepth 2 -type f -iname "*.sublime-project" | head -1)
 if [[ $project_file != "" ]]
 then
    echo "Using project file: $project_file"

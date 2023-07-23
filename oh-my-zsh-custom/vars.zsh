@@ -10,6 +10,8 @@ export DOCKER_BUILDKIT=1
 export GRADLE_USER_HOME="$HOME/.KV-gradle"
 
 
+export QT_QPA_PLATFORMTHEME=qt5ct
+
 # To Change cursor
 #   echo -e "\e[6 q"
 #

@@ -145,7 +145,7 @@ function colitf() { python -c "print(tuple(r/255.0 for r in [$1]))"; }
 function mth() { echo $(( $1 )) }
 
 # Make executable files
-function mkf_exe() { 
+function mke() { 
     all_args=( "$@" ) 
     touch "${all_args[@]}"
     chmod +x "${all_args[@]}" 

@@ -4,15 +4,19 @@ export PATH="$PATH:$HOME/.local/bin"
 export PATH="$PATH:$HOME/.cargo/bin"
 export PATH="$PATH:$HOME/.emacs.d/bin"
 
-export PATH="$PATH:$HOME/Applications/Sdk/flutter/bin"
+export GOBIN="$HOME/go/bin"
+export PATH="$PATH:$GOBIN"
 
-# export PIPX_BIN_DIR="$HOME/Applications/PipXBin"
-# export PATH="$PATH:$PIPX_BIN_DIR"
+export PATH="$PATH:$HOME/.local/share/JetBrains/Toolbox/scripts"
 
-export ANDROID_HOME="$HOME/Android/Sdk"
-# export ANDROID_NDK_HOME=${ANDROID_HOME}/ndk-bundle
+# export PATH="$PATH:$HOME/Applications/Sdk/flutter/bin"
 
-export PATH=${ANDROID_HOME}/emulator:${PATH}
-export PATH=${ANDROID_HOME}/tools:${PATH}
-export PATH=${ANDROID_HOME}/platform-tools:${PATH}
+# export ANDROID_HOME="$HOME/Android/Sdk"
+## export ANDROID_NDK_HOME=${ANDROID_HOME}/ndk-bundle
+# export JAVA_HOME="/usr/lib/jvm/java-11-openjdk"
+export JAVA_HOME="/usr/lib/jvm/java-17-openjdk"
+
+# export PATH=${ANDROID_HOME}/emulator:${PATH}
+# export PATH=${ANDROID_HOME}/tools:${PATH}
+# export PATH=${ANDROID_HOME}/platform-tools:${PATH}
 
