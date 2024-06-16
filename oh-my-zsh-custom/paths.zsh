@@ -5,6 +5,9 @@ export PATH="$PATH:$HOME/.local/bin"
 export PATH="$PATH:$HOME/.cargo/bin"
 export PATH="$PATH:$HOME/.emacs.d/bin"
 
+export PNPM_HOME="$HOME/.KV-pnpm"
+export PATH="$PATH:$PNPM_HOME"
+
 # Golang
 export GOBIN="$HOME/go/bin"
 export PATH="$PATH:$GOBIN"

@@ -9,8 +9,10 @@ export DOCKER_BUILDKIT=1
 # modifications to get ~/.KV-gradle
 export GRADLE_USER_HOME="$HOME/.KV-gradle"
 
-
 export QT_QPA_PLATFORMTHEME=qt5ct
+
+# Temporary hack until https://github.com/nodejs/node/issues/48444 is fixed
+export UV_USE_IO_URING=0
 
 # To Change cursor
 #   echo -e "\e[6 q"
