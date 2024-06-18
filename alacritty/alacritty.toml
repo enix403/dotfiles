@@ -1,0 +1,14 @@
+live_config_reload = true
+
+[shell]
+program = "/usr/bin/zsh"
+
+[font]
+size = 8.0
+
+[font.normal]
+family = "Fira Code"
+
+[window]
+decorations = "None"
+opacity = 0.92
