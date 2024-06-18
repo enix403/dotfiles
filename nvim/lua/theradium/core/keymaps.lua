@@ -8,10 +8,10 @@ vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
 local telescope = require('telescope.builtin')
 
 vim.keymap.set('n', '<C-p>', function()
-  local status, _ = pcall(telescope.git_files)
-  if not status then
-    telescope.find_files()
-  end
+  -- local status, _ = pcall(telescope.git_files)
+  -- if not status then
+  telescope.find_files()
+  -- end
 end)
 
 

@@ -7,15 +7,9 @@ return require('packer').startup(function(use)
 
   use {
       'nvim-telescope/telescope.nvim', tag = '0.1.6',
-      -- or                            , branch = '0.1.x',
       requires = { {'nvim-lua/plenary.nvim'} }
   }
 
-
-  use({
-      'rose-pine/neovim',
-      as = 'rose-pine'
-  })
 
   use('nvim-treesitter/nvim-treesitter', { run = ':TSUpdate' })
   use('nvim-treesitter/playground')
@@ -34,5 +28,19 @@ return require('packer').startup(function(use)
     'nvim-lualine/lualine.nvim',
     requires = { 'nvim-tree/nvim-web-devicons', opt = true }
   }
+
+  use("hrsh7th/nvim-cmp")
+  use("hrsh7th/cmp-buffer")
+  use("hrsh7th/cmp-path")
+
+  use({
+    "L3MON4D3/LuaSnip",
+    -- follow latest release.
+    tag = "v2.*", -- Replace <CurrentMajor> by the latest released major (first number of latest release)
+    -- install jsregexp (optional!:).
+    run = "make install_jsregexp"
+  })
+  use("saadparwaiz1/cmp_luasnip")
+  use("rafamadriz/friendly-snippets")
 
 end)
