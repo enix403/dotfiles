@@ -7,7 +7,7 @@ vim.opt.completeopt = "menu,menuone,noselect"
 cmp.setup({
   snippet = {
     expand = function(args)
-      luasnip.lsp_expand(args.body)
+      snip.lsp_expand(args.body)
     end
   },
   mapping = cmp.mapping.preset.insert({
@@ -21,8 +21,9 @@ cmp.setup({
   }),
 
   sources = cmp.config.sources({
-    { name = "luasnip" }, 
-    { name = "buffer" }, 
-    { name = "path" }, 
+    { name = "nvim_lsp" },
+    { name = "luasnip" },
+    { name = "buffer" },
+    { name = "path" },
   })
 })

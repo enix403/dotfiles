@@ -11,7 +11,7 @@ vim.opt.autoindent = true
 vim.opt.smartindent = true
 
 -- wrap
-vim.opt.wrap = false
+vim.opt.wrap = true
 
 -- search settings
 vim.opt.ignorecase = true
