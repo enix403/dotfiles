@@ -1,31 +1,39 @@
+local opt = vim.opt
+
 -- line numbers
-vim.opt.number = true
-vim.opt.relativenumber = true
+opt.number = true
+opt.relativenumber = true
 
 -- indentation
-vim.opt.tabstop = 2
-vim.opt.softtabstop = 2
-vim.opt.shiftwidth = 2
-vim.opt.expandtab = true
-vim.opt.autoindent = true
-vim.opt.smartindent = true
+opt.tabstop = 2
+opt.softtabstop = 2
+opt.shiftwidth = 2
+opt.expandtab = true
+opt.autoindent = true
+opt.smartindent = true
 
 -- wrap
-vim.opt.wrap = true
+opt.wrap = true
+
+-- copy/paste
+opt.clipboard = { "unnamedplus" }
 
 -- search settings
-vim.opt.ignorecase = true
-vim.opt.smartcase = true
-vim.opt.hlsearch = false
-vim.opt.incsearch = true
+opt.ignorecase = true
+opt.smartcase = true
+opt.hlsearch = false
+opt.incsearch = true
 
 -- gui
-vim.opt.cursorline = false
-vim.opt.termguicolors = true
-vim.opt.guicursor = "n-v-o-r:block-blinkwait800,i:ver10"
-vim.opt.signcolumn = "yes"
+opt.cursorline = false
+opt.termguicolors = true
+opt.guicursor = "n-v-o-r:block-blinkwait800,i:ver10"
+opt.signcolumn = "yes"
+
+opt.splitright = true
+opt.splitbelow = true
 
 -- remove comment continuation
-vim.opt.formatoptions:remove('c')
-vim.opt.formatoptions:remove('r')
-vim.opt.formatoptions:remove('o')
+opt.formatoptions:remove('c')
+opt.formatoptions:remove('r')
+opt.formatoptions:remove('o')

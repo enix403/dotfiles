@@ -1,0 +1,85 @@
+COMMAND COUNT MOTION
+
+===================================
+
+COMMANDS
+
+d -> delete
+dd -> delete line
+D -> delete to end of line
+
+y -> yank
+yy -> yank line
+Y -> yank to end of line
+
+c -> change
+cc -> change line
+C -> change to end of line
+
+x -> delete char
+p -> paste
+
+I -> goto first character of line and goto insert mode
+I -> goto last character of line and goto insert mode
+O -> insert and new line on top
+o -> insert and new line on below
+
+u -> undo
+
+gu -> make lowercase
+gU -> make uppercase
+
+====================================
+
+MOTIONS:
+
+h -> left
+j -> down
+k -> up
+l -> right
+
+w -> word
+b -> backwards word
+
+f<char> -> to char forward (inclusive)
+F<char> -> to char backward (inclusive)
+
+t<char> -> to char forward (exclusive)
+T<char> -> to char backward (exclusive)
+
+0 -> start of line (first column)
+_ -> first character of line
+$ -> last character of line
+
+<C-u> -> half page up
+<C-d> -> half page down
+
+gg -> first line of file
+G -> last line of file
+
+================================================================
+
+ITEMS:
+
+use different prompt on alacritty
+ligatures (use another instance of kitty)
+
+===========================================
+
+workflow:
+  copy/cut/paste
+  undo / redo
+  autoclosing brackets
+  tree toggle
+  (understand) LSP
+  lsp keymaps
+  splits
+  tabs
+  comment keymaps
+  move line up/down
+
+
+experience:
+  better popup
+  colorscheme
+  icons
