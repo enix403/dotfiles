@@ -70,18 +70,22 @@ workflow:
   copy/cut/paste
   undo / redo
   move line up/down
-  autoclosing brackets
+
   tree toggle
-  (understand) LSP
-  lsp keymaps
-  splits
+  (understand) LSP / keymaps
+  autoclosing brackets
   tabs
   comment keymaps
-  git integration
   autoindent
-
+  move page up/down
+  wrap / wrap cursor movements
 
 experience:
   better popup
   colorscheme
   icons
+  statusline
+  (embedded?) terminal
+  git integration
+  splits
+
