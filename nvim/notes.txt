@@ -79,6 +79,8 @@ workflow:
   autoindent
   move page up/down
   wrap / wrap cursor movements
+  formatting
+  disable comment continuation
 
 experience:
   better popup
@@ -88,4 +90,7 @@ experience:
   (embedded?) terminal
   git integration
   splits
-
+  packer floating
+  dashboard
+  diagnostics panel
+  learn about highlights

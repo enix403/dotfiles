@@ -3,54 +3,51 @@ vim.cmd [[packadd packer.nvim]]
 
 return require('packer').startup(function(use)
   -- Packer can manage itself
-  use 'wbthomason/packer.nvim'
+  use('wbthomason/packer.nvim')
 
-  use {
-      'nvim-telescope/telescope.nvim', tag = '0.1.6',
-      requires = { {'nvim-lua/plenary.nvim'} }
-  }
+  -- common dependencies
+  use('nvim-lua/plenary.nvim')
 
-
+  -- treesitter
   use('nvim-treesitter/nvim-treesitter', { run = ':TSUpdate' })
   use('nvim-treesitter/playground')
+  use("nvim-treesitter/nvim-treesitter-context")
 
-  use('arcticicestudio/nord-vim')
+  -- telescope
+  use('nvim-telescope/telescope.nvim', { tag = '0.1.6' })
+
+  -- transparent
   use("xiyaowong/transparent.nvim")
 
-  use {
-    'nvim-tree/nvim-tree.lua',
-    requires = {
-      'nvim-tree/nvim-web-devicons'
-    },
-  }
+  -- themes
+  use('arcticicestudio/nord-vim')
 
-  use {
-    'nvim-lualine/lualine.nvim',
-    requires = { 'nvim-tree/nvim-web-devicons', opt = true }
-  }
+  -- status line
+  use('nvim-lualine/lualine.nvim')
 
-  -- Basic Auto completion and snippets
-  use("hrsh7th/nvim-cmp")
-  use("hrsh7th/cmp-buffer")
-  use("hrsh7th/cmp-path")
-
-  use({
-    "L3MON4D3/LuaSnip",
-    -- follow latest release.
-    tag = "v2.*", -- Replace <CurrentMajor> by the latest released major (first number of latest release)
-    -- install jsregexp (optional!:).
-    run = "make install_jsregexp"
+  use('nvim-tree/nvim-tree.lua', {
+    requires = { 'nvim-tree/nvim-web-devicons' }
   })
-  use("saadparwaiz1/cmp_luasnip")
-  use("rafamadriz/friendly-snippets")
 
-  -- LSP
-  use("williamboman/mason.nvim")
-  use("williamboman/mason-lspconfig.nvim")
-  use("neovim/nvim-lspconfig")
-
-  use("hrsh7th/cmp-nvim-lsp")
-  use({ "glepnir/lspsaga.nvim", branch = "main" })
-  use("jose-elias-alvarez/typescript.nvim")
-  use("onsails/lspkind.nvim")
+--
+--  use("hrsh7th/nvim-cmp")
+--  use("hrsh7th/cmp-buffer")
+--  use("hrsh7th/cmp-path")
+--
+--  use({
+--    "L3MON4D3/LuaSnip",
+--    tag = "v2.*",
+--    run = "make install_jsregexp"
+--  })
+--  use("saadparwaiz1/cmp_luasnip")
+--  use("rafamadriz/friendly-snippets")
+--
+--  use("williamboman/mason.nvim")
+--  use("williamboman/mason-lspconfig.nvim")
+--  use("neovim/nvim-lspconfig")
+--
+--  use("hrsh7th/cmp-nvim-lsp")
+--  use({ "glepnir/lspsaga.nvim", branch = "main" })
+--  use("jose-elias-alvarez/typescript.nvim")
+--  use("onsails/lspkind.nvim")
 end)

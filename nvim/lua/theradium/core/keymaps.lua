@@ -60,4 +60,10 @@ vim.keymap.set(moden, '<C-p>', function()
   -- end
 end)
 
+-- nvim-tree
+local nvimTree = require('nvim-tree.api')
+
+map("n", "<leader>pt", function()
+  nvimTree.tree.toggle()
+end, opts)
 
