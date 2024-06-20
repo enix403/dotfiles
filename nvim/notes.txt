@@ -70,17 +70,19 @@ workflow:
   copy/cut/paste
   undo / redo
   move line up/down
-
   tree toggle
+
   (understand) LSP / keymaps
-  autoclosing brackets
   tabs
   comment keymaps
+  autoclosing brackets
   autoindent
   move page up/down
   wrap / wrap cursor movements
   formatting
   disable comment continuation
+  splits / move between windows
+  
 
 experience:
   better popup
@@ -89,8 +91,8 @@ experience:
   statusline
   (embedded?) terminal
   git integration
-  splits
   packer floating
   dashboard
   diagnostics panel
   learn about highlights
+  nvim tree keymaps

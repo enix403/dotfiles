@@ -63,7 +63,16 @@ end)
 -- nvim-tree
 local nvimTree = require('nvim-tree.api')
 
-map("n", "<leader>pt", function()
+map("n", "<leader>tt", function()
   nvimTree.tree.toggle()
 end, opts)
+
+map("n", "<leader>ti", function()
+  nvimTree.tree.open({ find_file = true })
+end, opts)
+
+map("n", "<leader>to", function()
+  nvimTree.tree.open()
+end, opts)
+
 
