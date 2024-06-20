@@ -32,8 +32,8 @@ map(modei, "jj", "<Esc>", opts)
 map(moden, "<C-j>", "<cmd>move +1<CR>", opts)
 map(moden, "<C-k>", "<cmd>move -2<CR>", opts)
 
-map(modex, "<C-j>", "<cmd>move '>+1<CR>gv", opts)
-map(modex, "<C-k>", "<cmd>move '<-2<CR>gv", opts)
+map(modex, "<C-j>", ":move '>+1<CR>gv", opts)
+map(modex, "<C-k>", ":move '<-2<CR>gv", opts)
 
 -- ================= PLUGINS ===============
 
