@@ -35,6 +35,9 @@ map(moden, "<C-k>", "<cmd>move -2<CR>", opts)
 map(modex, "<C-j>", ":move '>+1<CR>gv", opts)
 map(modex, "<C-k>", ":move '<-2<CR>gv", opts)
 
+map(modex, ">", ">gv", opts)
+map(modex, "<", "<gv", opts)
+
 map(moden, "o", "o<Esc>", opts)
 map(moden, "O", "O<Esc>", opts)
 
@@ -70,9 +73,4 @@ end, opts)
 map("n", "<leader>ti", function()
   nvimTree.tree.open({ find_file = true })
 end, opts)
-
-map("n", "<leader>to", function()
-  nvimTree.tree.open()
-end, opts)
-
 
