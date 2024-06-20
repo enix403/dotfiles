@@ -35,8 +35,21 @@ map(moden, "<C-k>", "<cmd>move -2<CR>", opts)
 map(modex, "<C-j>", ":move '>+1<CR>gv", opts)
 map(modex, "<C-k>", ":move '<-2<CR>gv", opts)
 
--- ================= PLUGINS ===============
+map(moden, "o", "o<Esc>", opts)
+map(moden, "O", "O<Esc>", opts)
 
+map(moden, "<CR>", "o<Esc>", opts)
+map(moden, "<BS>", function()
+  local current_line = vim.api.nvim_get_current_line()
+  local is_whitespace = current_line:match("^%s*$") ~= nil
+  if is_whitespace then
+    vim.cmd("normal dd")
+  else
+    vim.cmd("normal! 0")
+  end
+end, opts)
+
+-- ================= PLUGINS ===============
 -- telescope
 local telescope = require('telescope.builtin')
 

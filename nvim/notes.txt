@@ -69,6 +69,7 @@ ligatures (use another instance of kitty)
 workflow:
   copy/cut/paste
   undo / redo
+  move line up/down
   autoclosing brackets
   tree toggle
   (understand) LSP
@@ -76,8 +77,8 @@ workflow:
   splits
   tabs
   comment keymaps
-  move line up/down
   git integration
+  autoindent
 
 
 experience:
