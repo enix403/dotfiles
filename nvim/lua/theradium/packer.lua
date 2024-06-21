@@ -11,7 +11,7 @@ return require('packer').startup(function(use)
   -- treesitter
   use('nvim-treesitter/nvim-treesitter', { run = ':TSUpdate' })
   use('nvim-treesitter/playground')
-  use("nvim-treesitter/nvim-treesitter-context")
+  -- use("nvim-treesitter/nvim-treesitter-context")
 
   -- telescope
   use('nvim-telescope/telescope.nvim', { tag = '0.1.6' })
@@ -28,6 +28,10 @@ return require('packer').startup(function(use)
   use('nvim-tree/nvim-tree.lua', {
     requires = { 'nvim-tree/nvim-web-devicons' }
   })
+
+  use("williamboman/mason.nvim")
+  use("neovim/nvim-lspconfig")
+  use("williamboman/mason-lspconfig.nvim")
 
 --
 --  use("hrsh7th/nvim-cmp")
