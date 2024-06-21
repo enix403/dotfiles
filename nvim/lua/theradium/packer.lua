@@ -28,7 +28,9 @@ return require('packer').startup(function(use)
   use('nvim-tree/nvim-tree.lua', {
     requires = { 'nvim-tree/nvim-web-devicons' }
   })
+  use("onsails/lspkind.nvim")
 
+  -- tools/lsp/formatting
   use("williamboman/mason.nvim")
   use("neovim/nvim-lspconfig")
   use("williamboman/mason-lspconfig.nvim")
@@ -36,19 +38,19 @@ return require('packer').startup(function(use)
   use("hrsh7th/nvim-cmp")
   use("hrsh7th/cmp-nvim-lsp")
 
- --use("hrsh7th/cmp-buffer")
- -- use("hrsh7th/cmp-path")
---
---  use({
---    "L3MON4D3/LuaSnip",
---    tag = "v2.*",
---    run = "make install_jsregexp"
---  })
---  use("saadparwaiz1/cmp_luasnip")
---  use("rafamadriz/friendly-snippets")
---
---  use("hrsh7th/cmp-nvim-lsp")
---  use({ "glepnir/lspsaga.nvim", branch = "main" })
---  use("jose-elias-alvarez/typescript.nvim")
---  use("onsails/lspkind.nvim")
+  -- use("hrsh7th/cmp-buffer")
+  -- use("hrsh7th/cmp-path")
+  --
+  --  use({
+  --    "L3MON4D3/LuaSnip",
+  --    tag = "v2.*",
+  --    run = "make install_jsregexp"
+  --  })
+  --  use("saadparwaiz1/cmp_luasnip")
+  --  use("rafamadriz/friendly-snippets")
+  --
+  --  use("hrsh7th/cmp-nvim-lsp")
+  --  use({ "glepnir/lspsaga.nvim", branch = "main" })
+  --  use("jose-elias-alvarez/typescript.nvim")
+  --  use("onsails/lspkind.nvim")
 end)
