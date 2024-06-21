@@ -1,10 +1,32 @@
 local cmp = require("cmp")
 local lspkind = require("lspkind")
 
+local function map_if_visible(func)
+  return function (fallback)
+    if cmp.visible() then
+      func()
+    else
+      fallback()
+    end
+  end
+end
+
 cmp.setup({
   sources = cmp.config.sources({
     { name = "nvim_lsp" }
   }),
+
+  mapping = {
+    ['<C-Space>'] = cmp.mapping.complete(),
+    ['<Up>'] = map_if_visible(cmp.select_prev_item),
+    ['<Down>'] = map_if_visible(cmp.select_next_item),
+    -- ['<Tab>'] = map_if_visible(cmp.select_next_item),
+    -- ['<S-Tab>'] = map_if_visible(cmp.select_prev_item),
+    ['<Esc>'] = map_if_visible(cmp.abort),
+    ['<CR>'] = map_if_visible(function() cmp.confirm({ select = true }) end),
+    ['<Tab>'] = map_if_visible(function() cmp.confirm({ select = true }) end)
+  },
+
 
   formatting = {
     format = lspkind.cmp_format({
@@ -17,6 +39,7 @@ cmp.setup({
     })
   }
 })
+
 
 -- local cmp = require("cmp")
 -- local snip = require("luasnip")
