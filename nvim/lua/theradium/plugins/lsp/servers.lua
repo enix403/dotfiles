@@ -2,7 +2,32 @@ local lspconfig = require("lspconfig")
 
 -- NOTE: We must pass a table (even if empty) to lspconfig.SERVERNAME.setup(...)
 
-lspconfig.lua_ls.setup({})
+lspconfig['lua_ls'].setup({
+  on_init = function(client)
+    local path = client.workspace_folders[1].name
+    if vim.loop.fs_stat(path..'/.luarc.json') or vim.loop.fs_stat(path..'/.luarc.jsonc') then
+      return
+    end
+
+    local settings = client.config.settings or {}
+    client.config.settings = settings
+
+    settings.Lua = vim.tbl_deep_extend('force', settings.Lua or {}, {
+      runtime = {
+        -- Tell the language server which version of Lua you're using
+        -- (most likely LuaJIT in the case of Neovim)
+        version = 'LuaJIT'
+      },
+      -- Make the server aware of Neovim runtime files
+      workspace = {
+        checkThirdParty = false,
+        library = {
+          vim.env.VIMRUNTIME
+        }
+      }
+    })
+  end,
+})
 
 
 -- local lspconfig = require("lspconfig")
