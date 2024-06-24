@@ -16,23 +16,18 @@ cmp.setup({
     { name = "nvim_lsp" }
   }),
 
-  mapping = {
-    ['<C-Space>'] = cmp.mapping.complete(),
-    ['<Up>'] = map_if_visible(cmp.select_prev_item),
-    ['<Down>'] = map_if_visible(cmp.select_next_item),
-    -- ['<Tab>'] = map_if_visible(cmp.select_next_item),
-    -- ['<S-Tab>'] = map_if_visible(cmp.select_prev_item),
-    ['<Esc>'] = map_if_visible(cmp.abort),
-    ['<CR>'] = function(fallback)
-      if cmp.visible() and cmp.get_selected_entry() then
-        cmp.confirm({ select = false, behavior = cmp.ConfirmBehavior.Replace })
-      else
-        fallback()
-      end
-    end,
-    ['<Tab>'] = map_if_visible(function() cmp.confirm({ select = true }) end)
+  completion = {
+    completeopt = 'menu,noinsert'
   },
 
+  mapping = {
+    ['<C-Space>'] = cmp.mapping.complete(),
+    ['<Esc>'] = cmp.mapping.abort(),
+    ['<Up>'] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Select }),
+    ['<Down>'] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Select }),
+    ['<CR>'] = cmp.mapping.confirm({ select = false, behavior = cmp.ConfirmBehavior.Replace }),
+    ['<Tab>'] = cmp.mapping.confirm({ select = false, behavior = cmp.ConfirmBehavior.Replace }),
+  },
 
   formatting = {
     format = lspkind.cmp_format({
