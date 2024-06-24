@@ -13,6 +13,7 @@ require("theradium.plugins.nvim-tree")
 require("theradium.plugins.mason")
 require("theradium.plugins.lsp.servers")
 require("theradium.plugins.nvim-cmp")
-
+require("theradium.plugins.comment")
+require("theradium.plugins.dressing")
 -- require("theradium.plugins.lsp.mason")
 -- require("theradium.plugins.lsp.servers")

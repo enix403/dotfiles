@@ -11,4 +11,5 @@ family = "MartianMono Nerd Font"
 
 [window]
 decorations = "None"
-opacity = 0.92
+opacity = 0.97
+

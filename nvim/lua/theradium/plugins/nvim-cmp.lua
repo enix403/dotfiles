@@ -23,7 +23,13 @@ cmp.setup({
     -- ['<Tab>'] = map_if_visible(cmp.select_next_item),
     -- ['<S-Tab>'] = map_if_visible(cmp.select_prev_item),
     ['<Esc>'] = map_if_visible(cmp.abort),
-    ['<CR>'] = map_if_visible(function() cmp.confirm({ select = true }) end),
+    ['<CR>'] = function(fallback)
+      if cmp.visible() and cmp.get_selected_entry() then
+        cmp.confirm({ select = false, behavior = cmp.ConfirmBehavior.Replace })
+      else
+        fallback()
+      end
+    end,
     ['<Tab>'] = map_if_visible(function() cmp.confirm({ select = true }) end)
   },
 

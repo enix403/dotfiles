@@ -71,10 +71,11 @@ workflow:
   undo / redo
   move line up/down
   tree toggle
+  comment keymaps
+  completion
 
   ===> (understand) LSP / keymaps
   tabs
-  comment keymaps
   autoclosing brackets
   autoindent
   move page up/down
@@ -98,3 +99,5 @@ experience:
   nvim tree keymaps
   notify
   indent guides
+  focus tree if already open
+  deep open tree

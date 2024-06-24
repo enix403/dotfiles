@@ -30,6 +30,8 @@ return require('packer').startup(function(use)
   })
   use("onsails/lspkind.nvim")
 
+  use("stevearc/dressing.nvim")
+
   -- tools/lsp/formatting
   use("williamboman/mason.nvim")
   use("neovim/nvim-lspconfig")
@@ -37,6 +39,9 @@ return require('packer').startup(function(use)
 
   use("hrsh7th/nvim-cmp")
   use("hrsh7th/cmp-nvim-lsp")
+
+  -- comments
+  use("numToStr/Comment.nvim")
 
   -- use("hrsh7th/cmp-buffer")
   -- use("hrsh7th/cmp-path")
