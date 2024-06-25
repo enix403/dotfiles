@@ -9,6 +9,7 @@ workflow:
   tree toggle
   comment keymaps
   completion
+  disable comment continuation
   ===> (understand) LSP / keymaps
   autoclosing brackets
   tabs
@@ -19,7 +20,6 @@ workflow:
   formatting
   wrap / wrap cursor movements
   move page up/down
-  disable comment continuation
   autoindent
 
 experience:

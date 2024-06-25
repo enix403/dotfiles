@@ -34,6 +34,18 @@ opt.splitright = true
 opt.splitbelow = true
 
 -- remove comment continuation
-opt.formatoptions:remove('c')
-opt.formatoptions:remove('r')
-opt.formatoptions:remove('o')
+-- opt.formatoptions:remove('c')
+-- opt.formatoptions:remove('r')
+-- opt.formatoptions:remove('o')
+
+vim.api.nvim_create_autocmd({ "FileType" }, {
+  group = vim.api.nvim_create_augroup("FormatOptions", { clear = true }),
+  pattern = { "*" },
+  callback = function()
+    vim.opt_local.fo:remove("c")
+    vim.opt_local.fo:remove("o")
+    vim.opt_local.fo:remove("r")
+  end,
+})
+
+
