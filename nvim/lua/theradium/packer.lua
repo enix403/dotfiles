@@ -43,6 +43,9 @@ return require('packer').startup(function(use)
   -- comments
   use("numToStr/Comment.nvim")
 
+  -- auto closing
+  use("m4xshen/autoclose.nvim")
+
   -- use("hrsh7th/cmp-buffer")
   -- use("hrsh7th/cmp-path")
   --

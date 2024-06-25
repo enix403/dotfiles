@@ -2,6 +2,49 @@ COMMAND COUNT MOTION
 
 ===================================
 
+workflow:
+  copy/cut/paste
+  undo / redo
+  move line up/down
+  tree toggle
+  comment keymaps
+  completion
+  ===> (understand) LSP / keymaps
+
+  autoclosing brackets
+  tabs
+  lsp code actions
+  splits / move between windows
+  find and replace (local and global)
+  formatting
+  wrap / wrap cursor movements
+  move page up/down
+  disable comment continuation
+  autoindent
+
+experience:
+  better popup
+  colorscheme
+  icons
+  statusline
+  (embedded?) terminal
+  git integration
+  packer floating
+  dashboard
+  diagnostics panel
+  learn about highlights
+  nvim tree keymaps
+  notify
+  indent guides
+  focus tree if already open
+  deep open tree
+  borders around windows
+  that popup window about shortcuts information
+  find and replace (local and global)
+
+
+===================================
+
 COMMANDS
 
 d -> delete
@@ -66,38 +109,4 @@ ligatures (use another instance of kitty)
 
 ===========================================
 
-workflow:
-  copy/cut/paste
-  undo / redo
-  move line up/down
-  tree toggle
-  comment keymaps
-  completion
 
-  ===> (understand) LSP / keymaps
-  tabs
-  autoclosing brackets
-  autoindent
-  move page up/down
-  wrap / wrap cursor movements
-  formatting
-  disable comment continuation
-  splits / move between windows
-  
-
-experience:
-  better popup
-  colorscheme
-  icons
-  statusline
-  (embedded?) terminal
-  git integration
-  packer floating
-  dashboard
-  diagnostics panel
-  learn about highlights
-  nvim tree keymaps
-  notify
-  indent guides
-  focus tree if already open
-  deep open tree

@@ -16,7 +16,7 @@ export PATH="$PATH:$GOBIN"
 export PATH="$PATH:$HOME/.local/share/JetBrains/Toolbox/scripts"
 
 # JAVA
-export JAVA_HOME="/usr/lib/jvm/java-17-openjdk"
+export JAVA_HOME="/usr/lib/jvm/java-22-openjdk"
 
 # Flutter
 export PATH="$PATH:$HOME/Applications/flutter/bin"
