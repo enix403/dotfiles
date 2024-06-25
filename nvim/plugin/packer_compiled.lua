@@ -84,6 +84,11 @@ _G.packer_plugins = {
     path = "/home/radium/.local/share/nvim/site/pack/packer/start/autoclose.nvim",
     url = "https://github.com/m4xshen/autoclose.nvim"
   },
+  ["barbar.nvim"] = {
+    loaded = true,
+    path = "/home/radium/.local/share/nvim/site/pack/packer/start/barbar.nvim",
+    url = "https://github.com/romgrk/barbar.nvim"
+  },
   ["cmp-nvim-lsp"] = {
     loaded = true,
     path = "/home/radium/.local/share/nvim/site/pack/packer/start/cmp-nvim-lsp",
@@ -138,6 +143,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/radium/.local/share/nvim/site/pack/packer/start/nvim-treesitter",
     url = "https://github.com/nvim-treesitter/nvim-treesitter"
+  },
+  ["nvim-web-devicons"] = {
+    loaded = true,
+    path = "/home/radium/.local/share/nvim/site/pack/packer/start/nvim-web-devicons",
+    url = "https://github.com/nvim-tree/nvim-web-devicons"
   },
   ["packer.nvim"] = {
     loaded = true,

@@ -16,6 +16,7 @@ require("theradium.plugins.nvim-cmp")
 require("theradium.plugins.comment")
 require("theradium.plugins.dressing")
 require("theradium.plugins.autoclose")
+require("theradium.plugins.barbar")
 
 -- require("theradium.plugins.lsp.mason")
 -- require("theradium.plugins.lsp.servers")

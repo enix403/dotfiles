@@ -74,3 +74,7 @@ map("n", "<leader>ti", function()
   nvimTree.tree.open({ find_file = true })
 end, opts)
 
+-- barbar (tabline)
+map("n", "<M-C-Left>", "<cmd>BufferPrevious<CR>", opts)
+map("n", "<M-C-Right>", "<cmd>BufferNext<CR>", opts)
+

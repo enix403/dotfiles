@@ -7,6 +7,7 @@ return require('packer').startup(function(use)
 
   -- common dependencies
   use('nvim-lua/plenary.nvim')
+  use('nvim-tree/nvim-web-devicons')
 
   -- treesitter
   use('nvim-treesitter/nvim-treesitter', { run = ':TSUpdate' })
@@ -25,9 +26,7 @@ return require('packer').startup(function(use)
   -- status line
   use('nvim-lualine/lualine.nvim')
 
-  use('nvim-tree/nvim-tree.lua', {
-    requires = { 'nvim-tree/nvim-web-devicons' }
-  })
+  use('nvim-tree/nvim-tree.lua')
   use("onsails/lspkind.nvim")
 
   use("stevearc/dressing.nvim")
@@ -45,6 +44,9 @@ return require('packer').startup(function(use)
 
   -- auto closing
   use("m4xshen/autoclose.nvim")
+
+  -- top tab line
+  use("romgrk/barbar.nvim")
 
   -- use("hrsh7th/cmp-buffer")
   -- use("hrsh7th/cmp-path")

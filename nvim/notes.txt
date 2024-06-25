@@ -10,9 +10,9 @@ workflow:
   comment keymaps
   completion
   ===> (understand) LSP / keymaps
-
   autoclosing brackets
   tabs
+
   lsp code actions
   splits / move between windows
   find and replace (local and global)
