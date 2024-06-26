@@ -43,6 +43,8 @@ experience:
   find and replace (local and global)
 
 
+look into premad nvim distros
+
 ===================================
 
 COMMANDS

@@ -58,6 +58,12 @@ lspconfig["pyright"].setup({
   on_attach = on_attach
 })
 
+
+lspconfig["java_language_server"].setup({
+  capabilities = capabilities,
+  on_attach = on_attach
+})
+
 -- local lspconfig = require("lspconfig")
 -- local cmp_nvim_lsp = require("cmp_nvim_lsp")
 -- local typescript = require("typescript")
