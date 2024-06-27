@@ -17,11 +17,9 @@ workflow:
   document symbols
   splits / move between windows
   resize window with mouse
-
-  find and replace (local and global)
-  formaiting
-  wrap / wrap cursor movements
   move page up/down
+
+  formatting
   code runner
 
 experience:
@@ -48,6 +46,9 @@ experience:
 
 
 look into premad nvim distros
+find and replace (local and global)
+wrap / wrap cursor movements
+wrap / wrap cursor movements
 
 ===================================
 

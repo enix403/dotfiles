@@ -11,16 +11,14 @@ local modenxi = { "n", "x", "i" }
 vim.g.mapleader = " "
 map("n", "<leader>pv", vim.cmd.Ex)
 
--- map(modenx, "d", '"_d', opts)
--- map(modenx, "D", '"_D', opts)
-
 map(modenx, "x", '"_x', opts)
 map(modenx, "X", '"_X', opts)
 
 map(modenx, "c", '"_c', opts)
 map(modenx, "C", '"_C', opts)
 
--- case conversion
+map(modenx, "<C-[>", "<C-u>zz0", opts)
+map(modenx, "<C-]>", "<C-d>zz0", opts)
 
 map(modenx, "gl", "gu", opts)
 map(modenx, "gu", "gU", opts)
@@ -32,8 +30,8 @@ map(modei, "jj", "<Esc>", opts)
 map(moden, "<C-j>", "<cmd>move +1<CR>", opts)
 map(moden, "<C-k>", "<cmd>move -2<CR>", opts)
 
-map(modex, "<C-j>", ":move '>+1<CR>gv", opts)
-map(modex, "<C-k>", ":move '<-2<CR>gv", opts)
+map(modex, "<C-j>", ":move '>+1<CR>gv=gv", opts)
+map(modex, "<C-k>", ":move '<-2<CR>gv=gv", opts)
 
 map(modex, ">", ">gv", opts)
 map(modex, "<", "<gv", opts)
