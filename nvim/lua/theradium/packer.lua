@@ -48,6 +48,10 @@ return require('packer').startup(function(use)
   -- top tab line
   use("romgrk/barbar.nvim")
 
+  use("akinsho/toggleterm.nvim", {
+    tag = '*',
+  })
+
   -- use("hrsh7th/cmp-buffer")
   -- use("hrsh7th/cmp-path")
   --
