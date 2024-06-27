@@ -15,10 +15,11 @@ workflow:
   tabs
   lsp code actions
   document symbols
-
   splits / move between windows
+  resize window with mouse
+
   find and replace (local and global)
-  formatting
+  formaiting
   wrap / wrap cursor movements
   move page up/down
   code runner

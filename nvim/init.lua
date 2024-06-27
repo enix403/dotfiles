@@ -1,3 +1,5 @@
+telescope_builtin = require("telescope.builtin")
+
 require("theradium.packer")
 
 require("theradium.core.options")
