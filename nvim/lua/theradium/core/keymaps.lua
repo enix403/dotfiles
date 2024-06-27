@@ -63,6 +63,10 @@ vim.keymap.set(moden, '<C-p>', function()
   -- end
 end)
 
+-- - Symbol Search
+map("n", "<leader>ds", telescope.lsp_document_symbols, opts)
+map("n", "<leader>ws", telescope.lsp_dynamic_workspace_symbols, opts)
+
 -- nvim-tree
 local nvimTree = require('nvim-tree.api')
 
@@ -77,4 +81,4 @@ end, opts)
 -- barbar (tabline)
 map("n", "<M-C-Left>", "<cmd>BufferPrevious<CR>", opts)
 map("n", "<M-C-Right>", "<cmd>BufferNext<CR>", opts)
-
+map("n", "<C-w>", "<cmd>BufferClose<CR>", opts)

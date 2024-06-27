@@ -18,9 +18,17 @@ local function on_attach(client, bufnr)
     vim.keymap.set(mode, keys, cmd, { desc = desc, remap = remap, buffer = bufnr })
   end
 
-  keymap("n", "<leader>gd", vim.lsp.buf.definition, "Goto Definition")
+  local telescope = require('telescope.builtin')
+
+  keymap("n", "gd", vim.lsp.buf.definition, "Goto Definition")
   keymap("n", "<M-S-Right>", vim.lsp.buf.definition, "Goto Definition")
-  keymap("n", "<leader>gh", vim.lsp.buf.hover, "Hover Symbol")
+
+  keymap("n", "gh", vim.lsp.buf.hover, "Hover Symbol")
+  keymap("n", "gt", telescope.lsp_type_definitions)
+
+  keymap("n", "<leader>rn", vim.lsp.buf.rename, "Rename Symbol")
+  keymap("n", "<leader>ca", vim.lsp.buf.code_action, "Code Actions")
+
 
 end
 
@@ -59,9 +67,16 @@ lspconfig["pyright"].setup({
 })
 
 
-lspconfig["java_language_server"].setup({
-  capabilities = capabilities,
-  on_attach = on_attach
+lspconfig['jdtls'].setup({
+  on_attach = on_attach,
+  cmd = {
+    "/home/radium/Applications/eclipse.jdt.ls/org.eclipse.jdt.ls.product/target/repository/bin/jdtls",
+
+    "-configuration",
+    "/home/radium/.cache/jdtls/config",
+    "-data",
+    "/home/radium/.cache/jdtls/workspace"
+  }
 })
 
 -- local lspconfig = require("lspconfig")

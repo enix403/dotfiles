@@ -13,17 +13,19 @@ workflow:
   ===> (understand) LSP / keymaps
   autoclosing brackets
   tabs
-
   lsp code actions
+  document symbols
+
   splits / move between windows
   find and replace (local and global)
   formatting
   wrap / wrap cursor movements
   move page up/down
-  autoindent
+  code runner
 
 experience:
   better popup
+  inlay hints
   colorscheme
   icons
   statusline
@@ -41,6 +43,7 @@ experience:
   borders around windows
   that popup window about shortcuts information
   find and replace (local and global)
+  Highlight todo, notes, etc in comments
 
 
 look into premad nvim distros
