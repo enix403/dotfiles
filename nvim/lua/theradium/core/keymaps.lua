@@ -5,8 +5,14 @@ local moden = "n"
 local modei = "i"
 local modex = "x"
 local modenx = { "n", "x" }
-local modeni = { "n", "i" }
+local modexi = { "x", "i" }
 local modenxi = { "n", "x", "i" }
+
+-- disable bad habits
+map(modenxi, "<C-Left>", "<Nop>", opts)
+map(modenxi, "<C-Right>", "<Nop>", opts)
+map(modexi, "<S-Left>", "<Nop>", opts)
+map(modexi, "<S-Right>", "<Nop>", opts)
 
 vim.g.mapleader = " "
 map("n", "<leader>pv", vim.cmd.Ex)
@@ -36,6 +42,9 @@ map(modex, "<C-k>", ":move '<-2<CR>gv=gv", opts)
 map(modex, ">", ">gv", opts)
 map(modex, "<", "<gv", opts)
 
+map(moden, ">", ">>", opts)
+map(moden, "<", "<<", opts)
+
 -- add an "actual" indent (with spaces/tabs) instead of just
 -- putting a cursor there (and thus unindenting the line when the
 -- moves away)
@@ -50,7 +59,7 @@ map(moden, "<BS>", function()
   local current_line = vim.api.nvim_get_current_line()
   local is_whitespace = current_line:match("^%s*$") ~= nil
   if is_whitespace then
-    return '"_ddk0'
+    return '"_ddk$' -- delete the line, move upwards and goto end
   else
     return ""
   end
