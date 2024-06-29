@@ -18,6 +18,10 @@ local function on_attach(client, bufnr)
     vim.keymap.set(mode, keys, cmd, { desc = desc, remap = remap, buffer = bufnr })
   end
 
+  vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
+    border = "rounded",
+  })
+
   local telescope = require('telescope.builtin')
 
   keymap("n", "gd", vim.lsp.buf.definition, "Goto Definition")
@@ -66,6 +70,10 @@ lspconfig["pyright"].setup({
   on_attach = on_attach
 })
 
+lspconfig["tsserver"].setup({
+  capabilities = capabilities,
+  on_attach = on_attach
+})
 
 lspconfig['jdtls'].setup({
   on_attach = on_attach,

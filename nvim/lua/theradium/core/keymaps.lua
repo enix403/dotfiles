@@ -36,29 +36,35 @@ map(modex, "<C-k>", ":move '<-2<CR>gv=gv", opts)
 map(modex, ">", ">gv", opts)
 map(modex, "<", "<gv", opts)
 
-map(moden, "o", "o<Esc>", opts)
-map(moden, "O", "O<Esc>", opts)
+-- add an "actual" indent (with spaces/tabs) instead of just
+-- putting a cursor there (and thus unindenting the line when the
+-- moves away)
+map(modei, "<CR>", "<CR> <BS>", opts)
+map(moden, "o", "o <BS><Esc>", opts)
+map(moden, "O", "O <BS><Esc>", opts)
+map(moden, "<CR>", "o <BS><Esc>", opts)
+
+map(moden, "<Esc>", "<Nop>", opts)
+
+map(moden, "<BS>", function()
+  local current_line = vim.api.nvim_get_current_line()
+  local is_whitespace = current_line:match("^%s*$") ~= nil
+  if is_whitespace then
+    return '"_ddk0'
+  else
+    return ""
+  end
+end, { remap = false, silent = true, expr = true })
 
 -- Move focus to the left window
-vim.keymap.set('n', '<S-Left>', '<C-w><C-h>')
+map(moden, '<S-Left>', '<C-w><C-h>')
 -- Move focus to the right window
-vim.keymap.set('n', '<S-Right>', '<C-w><C-l>')
+map(moden, '<S-Right>', '<C-w><C-l>')
 -- Move focus to the lower window
-vim.keymap.set('n', '<S-Down>', '<C-w><C-j>')
+map(moden, '<S-Down>', '<C-w><C-j>')
 -- Move focus to the lower window
-vim.keymap.set('n', '<S-Up>', '<C-w><C-k>')
-
-
+map(moden, '<S-Up>', '<C-w><C-k>')
 -- map(moden, "<CR>", "o<Esc>", opts)
--- map(moden, "<BS>", function()
---   local current_line = vim.api.nvim_get_current_line()
---   local is_whitespace = current_line:match("^%s*$") ~= nil
---   if is_whitespace then
---     vim.cmd("normal dd")
---   else
---     vim.cmd("normal! 0")
---   end
--- end, opts)
 
 -- ================= PLUGINS ===============
 -- telescope
@@ -90,7 +96,7 @@ end, opts)
 -- barbar (tabline)
 map("n", "<M-C-Left>", "<cmd>BufferPrevious<CR>", opts)
 map("n", "<M-C-Right>", "<cmd>BufferNext<CR>", opts)
-map("n", "<C-w>", "<cmd>BufferClose<CR>", opts)
+map("n", "<C-w>", "<cmd>BufferClose<CR>", { remap = false, silent = true, nowait = true })
 
 -- =================================
 
