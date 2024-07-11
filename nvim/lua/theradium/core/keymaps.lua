@@ -23,15 +23,15 @@ map(modenx, "X", '"_X', opts)
 map(modenx, "c", '"_c', opts)
 map(modenx, "C", '"_C', opts)
 
-map(modenx, "<C-[>", "<C-u>zz0", opts)
-map(modenx, "<C-]>", "<C-d>zz0", opts)
+map(modenx, "{", "<C-u>zz0", opts)
+map(modenx, "}", "<C-d>zz0", opts)
 
 map(modenx, "gl", "gu", opts)
 map(modenx, "gu", "gU", opts)
 map(moden, "<C-d>", '"ayy"ap', opts)
 
-map(modenx, "<C-c>", "<Esc>", opts)
-map(modei, "jj", "<Esc>", opts)
+map(modenxi, "<C-c>", "<Esc>", opts)
+-- map(modei, "jj", "<Esc>", opts)
 
 map(moden, "<C-j>", "<cmd>move +1<CR>", opts)
 map(moden, "<C-k>", "<cmd>move -2<CR>", opts)
@@ -42,8 +42,21 @@ map(modex, "<C-k>", ":move '<-2<CR>gv=gv", opts)
 map(modex, ">", ">gv", opts)
 map(modex, "<", "<gv", opts)
 
-map(moden, ">", ">>", opts)
 map(moden, "<", "<<", opts)
+map(moden, ">", ">>", opts)
+
+map(modex, 'p', function()
+  -- Get the current active register...
+  local register = vim.v.register
+  -- and its contents
+  local contents = vim.fn.getreg(register)
+  -- do a regular paste
+  vim.cmd("normal! p")
+  -- and restore the contents of the active register
+  vim.fn.setreg(register, contents)
+end, opts)
+
+-- map(moden, "<C-/>", ">>", opts)
 
 -- add an "actual" indent (with spaces/tabs) instead of just
 -- putting a cursor there (and thus unindenting the line when the
@@ -51,6 +64,8 @@ map(moden, "<", "<<", opts)
 map(modei, "<CR>", "<CR> <BS>", opts)
 map(moden, "o", "o <BS><Esc>", opts)
 map(moden, "O", "O <BS><Esc>", opts)
+
+map(moden, "<C-CR>", "o <BS><Esc>", opts)
 map(moden, "<CR>", "o <BS><Esc>", opts)
 
 map(moden, "<Esc>", "<Nop>", opts)
@@ -82,7 +97,10 @@ local telescope = require('telescope.builtin')
 vim.keymap.set(moden, '<C-p>', function()
   -- local status, _ = pcall(telescope.git_files)
   -- if not status then
-  telescope.find_files()
+  telescope.find_files({
+    hidden = false, -- TODO: change but don't include .git, node_modules, etc
+    no_ignore = false
+  })
   -- end
 end)
 
