@@ -21,6 +21,4 @@ require("theradium.plugins.autoclose")
 require("theradium.plugins.barbar")
 require("theradium.plugins.toggleterm")
 
--- require("theradium.plugins.lsp.mason")
--- require("theradium.plugins.lsp.servers")
 -- require("theradium.plugins.treesitter-context")

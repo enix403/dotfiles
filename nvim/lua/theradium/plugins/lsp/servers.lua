@@ -1,11 +1,11 @@
 local lspconfig = require("lspconfig")
 local cmp_nvim_lsp = require("cmp_nvim_lsp")
 
--- NOTE: We must pass a table (even if empty) to lspconfig.SERVERNAME.setup(...)o
+-- NOTE: We must pass a table (even if empty) to lspconfig.SERVERNAME.setup(...)
 
-local capabilities = cmp_nvim_lsp.default_capabilities() 
+local capabilities = cmp_nvim_lsp.default_capabilities()
 
-local function on_attach(client, bufnr)
+local function on_attach(_client, bufnr)
 
   local keymap = function(mode, keys, cmd, desc, remap)
     if remap == nil then
