@@ -23,6 +23,8 @@ map(modenx, "X", '"_X', opts)
 map(modenx, "c", '"_c', opts)
 map(modenx, "C", '"_C', opts)
 
+map(modei, "<C-BS>", "<Esc>vbc", opts)
+
 map(modenx, "{", "<C-u>zz0", opts)
 map(modenx, "}", "<C-d>zz0", opts)
 

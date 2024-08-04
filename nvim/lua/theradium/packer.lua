@@ -22,6 +22,7 @@ return require('packer').startup(function(use)
 
   -- themes
   use('arcticicestudio/nord-vim')
+  use("rebelot/kanagawa.nvim")
 
   -- status line
   use('nvim-lualine/lualine.nvim')
@@ -38,6 +39,11 @@ return require('packer').startup(function(use)
 
   use("hrsh7th/nvim-cmp")
   use("hrsh7th/cmp-nvim-lsp")
+  
+  use {
+    "pmizio/typescript-tools.nvim",
+    requires = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
+  }
 
   -- comments
   use("numToStr/Comment.nvim")
