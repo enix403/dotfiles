@@ -8,7 +8,7 @@ workflow:
   code runner
   do not insert closing pair when near a word
   those underline diagnostics
-  make telescope and NvimTree work with ignored files
+  install ripgrep of fzf
   
 experience:
   code folding

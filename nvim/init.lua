@@ -7,6 +7,7 @@ require("theradium.core.keymaps")
 require("theradium.core.colorscheme")
 require("theradium.core.commands")
 
+require("theradium.plugins.telescope")
 require("theradium.plugins.transparent")
 require("theradium.plugins.treesitter")
 require("theradium.plugins.lualine")

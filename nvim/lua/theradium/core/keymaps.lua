@@ -99,8 +99,10 @@ vim.keymap.set(moden, '<C-p>', function()
   -- local status, _ = pcall(telescope.git_files)
   -- if not status then
   telescope.find_files({
-    hidden = false, -- TODO: change but don't include .git, node_modules, etc
-    no_ignore = false
+    -- hidden = false, -- TODO: change but don't include .git, node_modules, etc
+    -- no_ignore = false
+    hidden = true,
+    no_ignore = true
   })
   -- end
 end)
@@ -113,7 +115,7 @@ map("n", "<leader>ss", telescope.live_grep, opts)
 -- nvim-tree
 local nvimTree = require('nvim-tree.api')
 
-map("n", "<leader>to", nvimTree.tree.focus, opts)
+map("n", "<leader>to", nvimTree.tree.open, opts)
 map("n", "<leader>tt", nvimTree.tree.toggle, opts)
 map("n", "<leader>ti", function() nvimTree.tree.open({ find_file = true }) end, opts)
 
