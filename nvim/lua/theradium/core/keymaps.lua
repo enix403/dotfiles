@@ -95,16 +95,16 @@ map(moden, '<S-Up>', '<C-w><C-k>')
 -- telescope
 local telescope = require('telescope.builtin')
 
-vim.keymap.set(moden, '<C-p>', function()
-  -- local status, _ = pcall(telescope.git_files)
-  -- if not status then
+--[[ vim.keymap.set(moden, '<C-p>', function()
   telescope.find_files({
-    -- hidden = false, -- TODO: change but don't include .git, node_modules, etc
-    -- no_ignore = false
     hidden = true,
     no_ignore = true
   })
-  -- end
+end) ]]
+
+map(moden, "<C-p>", function ()
+  local fzf = require('fzf-lua')
+  fzf.files()
 end)
 
 -- - Symbol Search

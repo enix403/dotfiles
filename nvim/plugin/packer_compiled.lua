@@ -99,6 +99,11 @@ _G.packer_plugins = {
     path = "/home/radium/.local/share/nvim/site/pack/packer/start/dressing.nvim",
     url = "https://github.com/stevearc/dressing.nvim"
   },
+  ["fzf-lua"] = {
+    loaded = true,
+    path = "/home/radium/.local/share/nvim/site/pack/packer/start/fzf-lua",
+    url = "https://github.com/ibhagwan/fzf-lua"
+  },
   ["indent-blankline.nvim"] = {
     loaded = true,
     path = "/home/radium/.local/share/nvim/site/pack/packer/start/indent-blankline.nvim",

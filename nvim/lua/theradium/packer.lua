@@ -16,6 +16,7 @@ return require('packer').startup(function(use)
 
   -- telescope
   use('nvim-telescope/telescope.nvim', { tag = '0.1.6' })
+  use("ibhagwan/fzf-lua")
 
   -- transparent
   use("xiyaowong/transparent.nvim")
