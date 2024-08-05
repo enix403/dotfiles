@@ -3,37 +3,19 @@ COMMAND COUNT MOTION
 ===================================
 
 workflow:
-  copy/cut/paste
-  undo / redo
-  move line up/down
-  tree toggle
-  comment keymaps
-  completion
-  disable comment continuation
-  ===> (understand) LSP / keymaps
-  autoclosing brackets
-  tabs
   lsp code actions
-  document symbols
-  splits / move between windows
-  resize window with mouse
-  move page up/down
-
   formatting
   code runner
   do not insert closing pair when near a word
   those underline diagnostics
-
+  make telescope and NvimTree work with ignored files
+  
 experience:
-  better popup
+  code folding
   inlay hints
-  colorscheme
-  icons
-  statusline
-  (embedded?) terminal
   git integration
   packer floating
-  dashboard
+  dashboard / startup screen
   diagnostics panel
   learn about highlights
   nvim tree keymaps
@@ -45,6 +27,9 @@ experience:
   that popup window about shortcuts information
   find and replace (local and global)
   Highlight todo, notes, etc in comments
+  colorscheme
+  icons
+  statusline
 
 
 look into premad nvim distros

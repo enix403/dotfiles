@@ -9,13 +9,19 @@ local modexi = { "x", "i" }
 local modenxi = { "n", "x", "i" }
 
 -- disable bad habits
-map(modenxi, "<C-Left>", "<Nop>", opts)
-map(modenxi, "<C-Right>", "<Nop>", opts)
-map(modexi, "<S-Left>", "<Nop>", opts)
-map(modexi, "<S-Right>", "<Nop>", opts)
+-- map(modenxi, "<C-Left>", "<Nop>", opts)
+-- map(modenxi, "<C-Right>", "<Nop>", opts)
+-- map(modexi, "<S-Left>", "<Nop>", opts)
+-- map(modexi, "<S-Right>", "<Nop>", opts)
+
+-- nevermind I give up
+map(modenx, "<C-Left>", "b", opts)
+map(modenx, "<C-Right>", "w", opts)
+
+map(modei, "<C-Left>", "<Esc>bi", opts)
+map(modei, "<C-Right>", "<Esc>lwi", opts)
 
 vim.g.mapleader = " "
-map("n", "<leader>pv", vim.cmd.Ex)
 
 map(modenx, "x", '"_x', opts)
 map(modenx, "X", '"_X', opts)
@@ -33,7 +39,6 @@ map(modenx, "gu", "gU", opts)
 map(moden, "<C-d>", '"ayy"ap', opts)
 
 map(modenxi, "<C-c>", "<Esc>", opts)
--- map(modei, "jj", "<Esc>", opts)
 
 map(moden, "<C-j>", "<cmd>move +1<CR>", opts)
 map(moden, "<C-k>", "<cmd>move -2<CR>", opts)
@@ -58,8 +63,6 @@ map(modex, 'p', function()
   vim.fn.setreg(register, contents)
 end, opts)
 
--- map(moden, "<C-/>", ">>", opts)
-
 -- add an "actual" indent (with spaces/tabs) instead of just
 -- putting a cursor there (and thus unindenting the line when the
 -- moves away)
@@ -82,15 +85,11 @@ map(moden, "<BS>", function()
   end
 end, { remap = false, silent = true, expr = true })
 
--- Move focus to the left window
+-- Move focus between windows
 map(moden, '<S-Left>', '<C-w><C-h>')
--- Move focus to the right window
 map(moden, '<S-Right>', '<C-w><C-l>')
--- Move focus to the lower window
 map(moden, '<S-Down>', '<C-w><C-j>')
--- Move focus to the lower window
 map(moden, '<S-Up>', '<C-w><C-k>')
--- map(moden, "<CR>", "o<Esc>", opts)
 
 -- ================= PLUGINS ===============
 -- telescope
@@ -114,13 +113,9 @@ map("n", "<leader>ss", telescope.live_grep, opts)
 -- nvim-tree
 local nvimTree = require('nvim-tree.api')
 
-map("n", "<leader>tt", function()
-  nvimTree.tree.toggle()
-end, opts)
-
-map("n", "<leader>ti", function()
-  nvimTree.tree.open({ find_file = true })
-end, opts)
+map("n", "<leader>to", nvimTree.tree.focus, opts)
+map("n", "<leader>tt", nvimTree.tree.toggle, opts)
+map("n", "<leader>ti", function() nvimTree.tree.open({ find_file = true }) end, opts)
 
 -- barbar (tabline)
 map("n", "<M-C-Left>", "<cmd>BufferPrevious<CR>", opts)
