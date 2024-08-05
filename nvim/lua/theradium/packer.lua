@@ -26,6 +26,9 @@ return require('packer').startup(function(use)
 
   -- status line
   use('nvim-lualine/lualine.nvim')
+  
+  -- indent guides
+  use("lukas-reineke/indent-blankline.nvim")
 
   use('nvim-tree/nvim-tree.lua')
   use("onsails/lspkind.nvim")
@@ -39,7 +42,7 @@ return require('packer').startup(function(use)
 
   use("hrsh7th/nvim-cmp")
   use("hrsh7th/cmp-nvim-lsp")
-  
+
   use {
     "pmizio/typescript-tools.nvim",
     requires = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },

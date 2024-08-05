@@ -11,6 +11,7 @@ require("theradium.plugins.telescope")
 require("theradium.plugins.transparent")
 require("theradium.plugins.treesitter")
 require("theradium.plugins.lualine")
+require("theradium.plugins.indentline")
 require("theradium.plugins.nvim-tree")
 
 require("theradium.plugins.mason")
