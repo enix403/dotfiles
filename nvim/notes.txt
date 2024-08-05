@@ -21,6 +21,8 @@ workflow:
 
   formatting
   code runner
+  do not insert closing pair when near a word
+  those underline diagnostics
 
 experience:
   better popup

@@ -47,6 +47,7 @@ return require('packer').startup(function(use)
 
   -- comments
   use("numToStr/Comment.nvim")
+  use("JoosepAlviste/nvim-ts-context-commentstring")
 
   -- auto closing
   use("m4xshen/autoclose.nvim")
