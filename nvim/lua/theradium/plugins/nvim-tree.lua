@@ -17,6 +17,21 @@ nvimTree.setup({
     side = "left",
     number = true,
     relativenumber = true,
+  },
+  renderer = {
+    indent_width = 3,
+    indent_markers = {
+      enable = true,
+    },
+    icons = {
+      git_placement = "signcolumn"
+    }
+  },
+  filters = {
+    enable = true,
+    git_ignored = false,
+    dotfiles = false,
+    custom = {}
   }
 })
 
