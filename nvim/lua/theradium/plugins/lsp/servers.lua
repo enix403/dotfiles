@@ -76,10 +76,24 @@ require("typescript-tools").setup({
   settings = {
     expose_as_code_action = { 'all' },
     jsx_close_tag = {
-      enable = true,
+      enable = false,
       filetypes = { "javascriptreact", "typescriptreact" },
     }
   }
+})
+
+-- https://www.reddit.com/r/neovim/comments/1598ewp/comment/jtduy0x
+lspconfig["svelte"].setup({
+  capabilities = capabilities,
+  on_attach = function(client, bufnr)
+    on_attach(client, bufnr)
+    vim.api.nvim_create_autocmd("BufWritePost", {
+      pattern = { "*.js", "*.ts" },
+      callback = function(ctx)
+        client.notify("$/onDidChangeTsOrJsFile", { uri = ctx.file })
+      end,
+    })
+  end
 })
 
 lspconfig['jdtls'].setup({

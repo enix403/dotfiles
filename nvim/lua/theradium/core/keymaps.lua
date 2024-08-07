@@ -8,6 +8,8 @@ local modenx = { "n", "x" }
 local modexi = { "x", "i" }
 local modenxi = { "n", "x", "i" }
 
+vim.g.mapleader = " "
+
 -- disable bad habits
 -- map(modenxi, "<C-Left>", "<Nop>", opts)
 -- map(modenxi, "<C-Right>", "<Nop>", opts)
@@ -21,7 +23,14 @@ map(modenx, "<C-Right>", "w", opts)
 map(modei, "<C-Left>", "<Esc>bi", opts)
 map(modei, "<C-Right>", "<Esc>lwi", opts)
 
-vim.g.mapleader = " "
+-- diable C-* keys arounc C-c
+map(modei, "<C-s>", "", opts)
+map(modei, "<C-x>", "", opts)
+map(modei, "<C-v>", "", opts)
+map(modei, "<C-g>", "", opts)
+
+-- select all
+map(modenxi, "<C-a>", "<Esc>gg0vG$", opts)
 
 map(modenx, "x", '"_x', opts)
 map(modenx, "X", '"_X', opts)
@@ -105,6 +114,7 @@ end) ]]
 local fd_opts = table.concat({
   "--color=never",
   "--type f",
+  "--ignore-case",
   "--follow",
   "--hidden",
   "--no-ignore-vcs",
@@ -133,8 +143,8 @@ map("n", "<leader>tt", nvimTree.tree.toggle, opts)
 map("n", "<leader>ti", function() nvimTree.tree.open({ find_file = true }) end, opts)
 
 -- barbar (tabline)
-map("n", "<M-C-Left>", "<cmd>BufferPrevious<CR>", opts)
-map("n", "<M-C-Right>", "<cmd>BufferNext<CR>", opts)
+map(modenxi, "<M-C-Left>", "<cmd>BufferPrevious<CR>", opts)
+map(modenxi, "<M-C-Right>", "<cmd>BufferNext<CR>", opts)
 map("n", "<C-w>", "<cmd>BufferClose<CR>", { remap = false, silent = true, nowait = true })
 
 -- =================================

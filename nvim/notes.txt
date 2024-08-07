@@ -9,6 +9,10 @@ workflow:
   do not insert closing pair when near a word
   those underline diagnostics
   
+integrations:
+  svelte
+  tailwind
+  
 experience:
   code folding
   inlay hints

@@ -4,7 +4,7 @@ live_config_reload = true
 program = "/usr/bin/zsh"
 
 [font]
-size = 8.0
+size = 9.0
 
 [font.normal]
 # family = "MartianMono Nerd Font"
