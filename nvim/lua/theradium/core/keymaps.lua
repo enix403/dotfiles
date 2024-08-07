@@ -102,9 +102,22 @@ local telescope = require('telescope.builtin')
   })
 end) ]]
 
+local fd_opts = table.concat({
+  "--color=never",
+  "--type f",
+  "--follow",
+  "--hidden",
+  "--no-ignore-vcs",
+  "--exclude .git",
+  "--exclude node_modules",
+  "--exclude .venv",
+}, " ")
+
 map(moden, "<C-p>", function ()
   local fzf = require('fzf-lua')
-  fzf.files()
+  fzf.files({
+    fd_opts = fd_opts
+  })
 end)
 
 -- - Symbol Search
