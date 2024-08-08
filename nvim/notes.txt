@@ -3,14 +3,12 @@ COMMAND COUNT MOTION
 ===================================
 
 workflow:
-  lsp code actions
   formatting
   code runner
   do not insert closing pair when near a word
   those underline diagnostics
   
 integrations:
-  svelte
   tailwind
   
 experience:
@@ -22,15 +20,16 @@ experience:
   learn about highlights
   notify
   borders around windows
-  that popup window about shortcuts information
+  that popup window about shortcuts information (which-key)
   find and replace (local and global)
   Highlight todo, notes, etc in comments
   colorscheme
   icons
   statusline
+  remove whitespace-only lines on save
 
 
-look into premad nvim distros
+look into premade nvim distros
 find and replace (local and global)
 wrap / wrap cursor movements
 wrap / wrap cursor movements

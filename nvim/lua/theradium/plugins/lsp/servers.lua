@@ -31,7 +31,9 @@ local function on_attach(_client, bufnr)
   keymap("n", "gt", telescope.lsp_type_definitions)
 
   keymap("n", "<leader>rn", vim.lsp.buf.rename, "Rename Symbol")
+  
   keymap("n", "<leader>ca", vim.lsp.buf.code_action, "Code Actions")
+  keymap("n", "<C-.>", vim.lsp.buf.code_action, "Code Actions")
 
 
 end
@@ -74,7 +76,7 @@ require("typescript-tools").setup({
   capabilities = capabilities,
   on_attach = on_attach,
   settings = {
-    expose_as_code_action = { 'all' },
+    expose_as_code_action = "all",
     jsx_close_tag = {
       enable = false,
       filetypes = { "javascriptreact", "typescriptreact" },

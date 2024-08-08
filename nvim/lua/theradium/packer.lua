@@ -22,7 +22,6 @@ return require('packer').startup(function(use)
   use("xiyaowong/transparent.nvim")
 
   -- themes
-  use('arcticicestudio/nord-vim')
   use("rebelot/kanagawa.nvim")
 
   -- status line
@@ -43,6 +42,7 @@ return require('packer').startup(function(use)
 
   use("hrsh7th/nvim-cmp")
   use("hrsh7th/cmp-nvim-lsp")
+  use("hrsh7th/cmp-buffer")
 
   use {
     "pmizio/typescript-tools.nvim",
@@ -59,12 +59,14 @@ return require('packer').startup(function(use)
   -- top tab line
   use("romgrk/barbar.nvim")
 
+  -- terminal
   use("akinsho/toggleterm.nvim", {
     tag = '*',
   })
 
-  -- use("hrsh7th/cmp-buffer")
-  -- use("hrsh7th/cmp-path")
+  -- scrollbar
+  use("dstein64/nvim-scrollview")
+
   --
   --  use({
   --    "L3MON4D3/LuaSnip",
@@ -74,8 +76,5 @@ return require('packer').startup(function(use)
   --  use("saadparwaiz1/cmp_luasnip")
   --  use("rafamadriz/friendly-snippets")
   --
-  --  use("hrsh7th/cmp-nvim-lsp")
   --  use({ "glepnir/lspsaga.nvim", branch = "main" })
-  --  use("jose-elias-alvarez/typescript.nvim")
-  --  use("onsails/lspkind.nvim")
 end)
