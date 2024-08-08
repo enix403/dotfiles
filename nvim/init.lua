@@ -23,4 +23,6 @@ require("theradium.plugins.autoclose")
 require("theradium.plugins.barbar")
 require("theradium.plugins.toggleterm")
 
+require("theradium.plugins.other")
+
 -- require("theradium.plugins.treesitter-context")

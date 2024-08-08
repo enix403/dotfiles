@@ -12,6 +12,8 @@ return require('packer').startup(function(use)
   -- treesitter
   use('nvim-treesitter/nvim-treesitter', { run = ':TSUpdate' })
   use('nvim-treesitter/playground')
+  use("Wansmer/treesj")
+  
   -- use("nvim-treesitter/nvim-treesitter-context")
 
   -- telescope

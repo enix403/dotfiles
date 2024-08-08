@@ -139,11 +139,6 @@ _G.packer_plugins = {
     path = "/home/radium/.local/share/nvim/site/pack/packer/start/mason.nvim",
     url = "https://github.com/williamboman/mason.nvim"
   },
-  ["nord-vim"] = {
-    loaded = true,
-    path = "/home/radium/.local/share/nvim/site/pack/packer/start/nord-vim",
-    url = "https://github.com/arcticicestudio/nord-vim"
-  },
   ["nvim-cmp"] = {
     loaded = true,
     path = "/home/radium/.local/share/nvim/site/pack/packer/start/nvim-cmp",
@@ -208,6 +203,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/radium/.local/share/nvim/site/pack/packer/start/transparent.nvim",
     url = "https://github.com/xiyaowong/transparent.nvim"
+  },
+  treesj = {
+    loaded = true,
+    path = "/home/radium/.local/share/nvim/site/pack/packer/start/treesj",
+    url = "https://github.com/Wansmer/treesj"
   },
   ["typescript-tools.nvim"] = {
     loaded = true,
