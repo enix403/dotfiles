@@ -123,9 +123,10 @@ local fd_opts = table.concat({
   "--hidden",
   "--no-ignore-vcs",
   "--exclude .git",
-  "--exclude node_modules",
   "--exclude .venv",
+  "--exclude node_modules",
   "--exclude dist",
+  "--exclude build",
 }, " ")
 
 map(moden, "<C-p>", function ()
