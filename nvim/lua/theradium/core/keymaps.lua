@@ -132,7 +132,9 @@ local fd_opts = table.concat({
 map(moden, "<C-p>", function ()
   local fzf = require('fzf-lua')
   fzf.files({
-    fd_opts = fd_opts
+    fd_opts = fd_opts,
+    fzf_opts = { ['--tiebreak'] = "end" },
+    previewer = false,
   })
 end)
 
