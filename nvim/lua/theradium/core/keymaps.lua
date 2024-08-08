@@ -28,6 +28,10 @@ map(modei, "<C-s>", "", opts)
 map(modei, "<C-x>", "", opts)
 map(modei, "<C-v>", "", opts)
 map(modei, "<C-g>", "", opts)
+map(modei, "<C-d>", "", opts)
+map(modei, "<C-b>", "", opts)
+map(modei, "<C-h>", "", opts)
+map(modei, "<C-z>", "", opts)
 
 -- select all
 map(modenxi, "<C-a>", "<Esc>gg0vG$", opts)
@@ -121,6 +125,7 @@ local fd_opts = table.concat({
   "--exclude .git",
   "--exclude node_modules",
   "--exclude .venv",
+  "--exclude dist",
 }, " ")
 
 map(moden, "<C-p>", function ()
