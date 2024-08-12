@@ -25,6 +25,8 @@ return require('packer').startup(function(use)
 
   -- themes
   use("rebelot/kanagawa.nvim")
+  
+  use("nvimdev/dashboard-nvim")
 
   -- status line
   use('nvim-lualine/lualine.nvim')

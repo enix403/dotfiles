@@ -99,6 +99,11 @@ _G.packer_plugins = {
     path = "/home/radium/.local/share/nvim/site/pack/packer/start/cmp-nvim-lsp",
     url = "https://github.com/hrsh7th/cmp-nvim-lsp"
   },
+  ["dashboard-nvim"] = {
+    loaded = true,
+    path = "/home/radium/.local/share/nvim/site/pack/packer/start/dashboard-nvim",
+    url = "https://github.com/nvimdev/dashboard-nvim"
+  },
   ["dressing.nvim"] = {
     loaded = true,
     path = "/home/radium/.local/share/nvim/site/pack/packer/start/dressing.nvim",
