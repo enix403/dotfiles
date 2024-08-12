@@ -18,7 +18,6 @@ experience:
   git integration
   dashboard / startup screen
   diagnostics panel
-  learn about highlights
   notify
   borders around windows
   find and replace (local and global)

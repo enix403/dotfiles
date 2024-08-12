@@ -12,6 +12,16 @@ opt.expandtab = true
 opt.autoindent = true
 opt.smartindent = true
 
+vim.api.nvim_create_autocmd({ "FileType" }, {
+  group = vim.api.nvim_create_augroup("PythonFileType", { clear = true }),
+  pattern = { "python" },
+  callback = function()
+    vim.opt_local.tabstop = 4
+    vim.opt_local.softtabstop = 4
+    vim.opt_local.shiftwidth = 4
+  end,
+})
+
 -- wrap
 opt.wrap = true
 

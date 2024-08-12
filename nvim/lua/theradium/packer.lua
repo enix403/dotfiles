@@ -14,8 +14,6 @@ return require('packer').startup(function(use)
   use('nvim-treesitter/playground')
   use("Wansmer/treesj")
   
-  -- use("nvim-treesitter/nvim-treesitter-context")
-
   -- telescope
   use('nvim-telescope/telescope.nvim', { tag = '0.1.6' })
   use("ibhagwan/fzf-lua")

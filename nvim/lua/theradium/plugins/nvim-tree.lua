@@ -31,7 +31,15 @@ nvimTree.setup({
     enable = true,
     git_ignored = false,
     dotfiles = false,
-    custom = {}
+    custom = {
+      '^.git$',
+      'node_modules',
+      '^.venv$',
+      '__pycache__',
+      '^.DS_Store$',
+      -- 'dist',
+      -- 'build',
+    },
   }
 })
 
