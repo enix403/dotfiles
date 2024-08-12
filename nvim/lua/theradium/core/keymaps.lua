@@ -127,6 +127,11 @@ local fd_opts = table.concat({
   "--exclude node_modules",
   "--exclude dist",
   "--exclude build",
+  "--exclude *.pyc",
+  "--exclude *.min.js",
+  "--exclude *.min.css",
+  "--exclude *.exe",
+  "--exclude *.out",
 }, " ")
 
 map(moden, "<C-p>", function ()

@@ -144,6 +144,11 @@ _G.packer_plugins = {
     path = "/home/radium/.local/share/nvim/site/pack/packer/start/nvim-cmp",
     url = "https://github.com/hrsh7th/nvim-cmp"
   },
+  ["nvim-config-local"] = {
+    loaded = true,
+    path = "/home/radium/.local/share/nvim/site/pack/packer/start/nvim-config-local",
+    url = "https://github.com/klen/nvim-config-local"
+  },
   ["nvim-lspconfig"] = {
     loaded = true,
     path = "/home/radium/.local/share/nvim/site/pack/packer/start/nvim-lspconfig",

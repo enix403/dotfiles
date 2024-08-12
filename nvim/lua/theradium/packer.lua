@@ -63,6 +63,9 @@ return require('packer').startup(function(use)
   use("akinsho/toggleterm.nvim", {
     tag = '*',
   })
+  
+  -- per project config
+  use("klen/nvim-config-local")
 
   -- scrollbar
   use("dstein64/nvim-scrollview")

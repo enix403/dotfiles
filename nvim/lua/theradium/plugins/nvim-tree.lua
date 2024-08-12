@@ -17,8 +17,12 @@ nvimTree.setup({
     side = "left",
     number = true,
     relativenumber = true,
+    adaptive_size = true
   },
   renderer = {
+    root_folder_label = function(path)
+      return string.upper(vim.fn.fnamemodify(path, ":t"))  -- Convert the basename to uppercase
+    end,
     indent_width = 3,
     indent_markers = {
       enable = true,
@@ -33,9 +37,9 @@ nvimTree.setup({
     dotfiles = false,
     custom = {
       '^.git$',
-      'node_modules',
+      '^node_modules$',
       '^.venv$',
-      '__pycache__',
+      '^__pycache__$',
       '^.DS_Store$',
       -- 'dist',
       -- 'build',
