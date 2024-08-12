@@ -12,3 +12,5 @@ require('config-local').setup({
   silent = false,             -- Disable plugin messages (Config loaded/ignored)
   lookup_parents = true,     -- Lookup config files in parent directories
 })
+
+require("nvim-surround").setup({})

@@ -159,6 +159,11 @@ _G.packer_plugins = {
     path = "/home/radium/.local/share/nvim/site/pack/packer/start/nvim-scrollview",
     url = "https://github.com/dstein64/nvim-scrollview"
   },
+  ["nvim-surround"] = {
+    loaded = true,
+    path = "/home/radium/.local/share/nvim/site/pack/packer/start/nvim-surround",
+    url = "https://github.com/kylechui/nvim-surround"
+  },
   ["nvim-tree.lua"] = {
     loaded = true,
     path = "/home/radium/.local/share/nvim/site/pack/packer/start/nvim-tree.lua",

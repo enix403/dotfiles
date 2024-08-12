@@ -12,7 +12,9 @@ return require('packer').startup(function(use)
   -- treesitter
   use('nvim-treesitter/nvim-treesitter', { run = ':TSUpdate' })
   use('nvim-treesitter/playground')
+  
   use("Wansmer/treesj")
+  use({ "kylechui/nvim-surround", tag = "*" })
   
   -- telescope
   use('nvim-telescope/telescope.nvim', { tag = '0.1.6' })
