@@ -15,7 +15,17 @@ require('config-local').setup({
 
 require("nvim-surround").setup({})
 
+require('nvim-ts-autotag').setup({
+  opts = {
+    -- Defaults
+    enable_close = true, -- Auto close tags
+    enable_rename = true, -- Auto rename pairs of tags
+    enable_close_on_slash = false -- Auto close on trailing </
+  }
+})
 
 require('dashboard').setup ({
   theme = 'hyper', --  theme is doom and hyper default is hyper
 })
+
+

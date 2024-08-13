@@ -48,10 +48,10 @@ return require('packer').startup(function(use)
   use("hrsh7th/cmp-nvim-lsp")
   use("hrsh7th/cmp-buffer")
 
-  use {
+  use({
     "pmizio/typescript-tools.nvim",
     requires = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
-  }
+  })
 
   -- comments
   use("numToStr/Comment.nvim")
@@ -59,6 +59,7 @@ return require('packer').startup(function(use)
 
   -- auto closing
   use("m4xshen/autoclose.nvim")
+  use("windwp/nvim-ts-autotag")
 
   -- top tab line
   use("romgrk/barbar.nvim")

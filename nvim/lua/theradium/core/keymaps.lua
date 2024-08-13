@@ -124,6 +124,7 @@ local fd_opts = table.concat({
   "--no-ignore-vcs",
   "--exclude .git",
   "--exclude .venv",
+  "--exclude .next",
   "--exclude node_modules",
   "--exclude dist",
   "--exclude build",
