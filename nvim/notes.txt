@@ -16,7 +16,6 @@ experience:
   code folding
   inlay hints
   git integration
-  dashboard / startup screen
   diagnostics panel
   notify
   borders around windows
