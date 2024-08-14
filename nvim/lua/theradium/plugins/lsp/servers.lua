@@ -67,10 +67,27 @@ lspconfig['lua_ls'].setup({
   end,
 })
 
-lspconfig["pyright"].setup({
+-- lspconfig["pyright"].setup({
+--   capabilities = capabilities,
+--   on_attach = on_attach
+-- })
+
+
+lspconfig["pylsp"].setup({
   capabilities = capabilities,
-  on_attach = on_attach
+  on_attach = on_attach,
+
+  settings = {
+    pylsp = {
+      plugins = {
+        pycodestyle = {
+          ignore = { 'E501', 'E302', 'E305', 'W293', 'W391' },
+        }
+      }
+    }
+  }
 })
+
 
 require("typescript-tools").setup({
   capabilities = capabilities,

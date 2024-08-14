@@ -48,8 +48,8 @@ alias rscopy="rsync -av --progress"
 alias mnt='sudo mount -o umask=0022,gid="$GID",uid="$UID"' # mount with user previliges
 alias kitty_ssh="kitty +kitten ssh"
 alias icat="kitty +kitten icat"
-alias fix_indent="prettier --tab-width 4 --write"
 alias dots='cd "$DOTFILES_PATH"'
+alias nconf='nvim "$DOTFILES_PATH"/nvim'
 alias diskusage="df -h | grep -vE \"^(tmpfs|run|dev)\" | (sed -u 1q; sort)"
 alias bat='bat --theme="gruvbox-dark"'
 alias rh='ranger ~ && clear'
@@ -61,7 +61,7 @@ alias acv="source .venv/bin/activate && mee" # I mostly name my python virtual e
 alias redfilter='redshift -PO'
 alias resetredfilter='redshift -PO 6500'
 alias walp='feh --bg-scale'
-alias etsh="rm -rf ~/.local/share/Trash/*"
+
 
 # Find files eating up diskspace ("ddu = debug du")
 # ddu /some/folder/*
