@@ -53,6 +53,8 @@ return require('packer').startup(function(use)
     requires = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
   })
 
+  use('mfussenegger/nvim-jdtls')
+
   -- comments
   use("numToStr/Comment.nvim")
   use("JoosepAlviste/nvim-ts-context-commentstring")

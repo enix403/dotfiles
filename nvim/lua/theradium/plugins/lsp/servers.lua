@@ -129,12 +129,51 @@ lspconfig["svelte"].setup({
 
 lspconfig['jdtls'].setup({
   on_attach = mapkeys,
+  capabilities = capabilities,
   cmd = {
     "/home/radium/Applications/eclipse.jdt.ls/org.eclipse.jdt.ls.product/target/repository/bin/jdtls",
+
+    -- "-jar /home/radium/Applications/apache-tomcat-10.1.28/lib/servlet-api.jar",
+    -- "-jar /home/radium/Applications/apache-tomcat-10.1.28/lib/jsp-api.jar",
+    -- "-cp /home/radium/Applications/apache-tomcat-10.1.28/lib/servlet-api.jar:/home/radium/Applications/apache-tomcat-10.1.28/lib/jsp-api.jar",
+    "-cp .:/home/radium/Applications/apache-tomcat-10.1.28/lib/*",
 
     "-configuration",
     "/home/radium/.cache/jdtls/config",
     "-data",
-    "/home/radium/.cache/jdtls/workspace"
+    "/home/radium/.cache/jdtls/workspace",
   }
 })
+
+--[[ local jdtls = require('jdtls')
+-- Java Language Server configuration
+local function setup_jdtls()
+  -- Get the jdtls plugin path
+
+  -- Define your workspace directory
+  local workspace_dir = vim.fn.fnamemodify(vim.fn.getcwd(), ':p:h:t')
+
+  -- Set up the language server configuration
+  local config = {
+    cmd = { 'java-lsp.sh', workspace_dir },
+    root_dir = jdtls.setup.find_root({ '.git', 'mvnw', 'gradlew' }),
+    -- Add any other custom config options here
+    settings = {
+      java = {
+        -- Additional settings
+      },
+    },
+    init_options = {
+      bundles = {}
+    },
+  }
+
+  -- Start or attach to the LSP client
+  jdtls.start_or_attach(config)
+end
+
+-- Autocommand for setting up jdtls for Java files
+vim.api.nvim_create_autocmd('FileType', {
+  pattern = 'java',
+  callback = setup_jdtls
+}) ]]
