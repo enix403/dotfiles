@@ -5,7 +5,7 @@ local cmp_nvim_lsp = require("cmp_nvim_lsp")
 
 local capabilities = cmp_nvim_lsp.default_capabilities()
 
-local function on_attach(_client, bufnr)
+local function mapkeys(_client, bufnr)
 
   local keymap = function(mode, keys, cmd, desc, remap)
     if remap == nil then
@@ -40,12 +40,12 @@ end
 
 lspconfig['lua_ls'].setup({
   capabilities = capabilities,
-  on_attach = on_attach,
+  on_attach = mapkeys,
   on_init = function(client)
-    local path = client.workspace_folders[1].name
+    --[[ local path = client.workspace_folders[1].name
     if vim.loop.fs_stat(path..'/.luarc.json') or vim.loop.fs_stat(path..'/.luarc.jsonc') then
       return
-    end
+    end ]]
 
     local settings = client.config.settings or {}
     client.config.settings = settings
@@ -67,31 +67,43 @@ lspconfig['lua_ls'].setup({
   end,
 })
 
--- lspconfig["pyright"].setup({
---   capabilities = capabilities,
---   on_attach = on_attach
--- })
-
-
-lspconfig["pylsp"].setup({
+lspconfig["pyright"].setup({
   capabilities = capabilities,
-  on_attach = on_attach,
-
-  settings = {
-    pylsp = {
-      plugins = {
-        pycodestyle = {
-          ignore = { 'E501', 'E302', 'E305', 'W293', 'W391' },
-        }
-      }
-    }
-  }
+  on_attach = mapkeys
 })
+
+
+-- lspconfig["pylsp"].setup({
+--   capabilities = capabilities,
+--   on_attach = mapkeys,
+--
+--   settings = {
+--     pylsp = {
+--       plugins = {
+--         pyflakes = {
+--           enabled = true,
+--           ignore = {"undefined-variable"}  -- Ignore undefined variable warnings
+--         },
+--         pycodestyle = {
+--           ignore = {
+--             'E501',
+--             'E302',
+--             'E305',
+--             'W293',
+--             'W391',
+--             'W401',
+--             'E303',
+--           },
+--         }
+--       }
+--     }
+--   }
+-- })
 
 
 require("typescript-tools").setup({
   capabilities = capabilities,
-  on_attach = on_attach,
+  on_attach = mapkeys,
   settings = {
     expose_as_code_action = "all",
     jsx_close_tag = {
@@ -105,7 +117,7 @@ require("typescript-tools").setup({
 lspconfig["svelte"].setup({
   capabilities = capabilities,
   on_attach = function(client, bufnr)
-    on_attach(client, bufnr)
+    mapkeys(client, bufnr)
     vim.api.nvim_create_autocmd("BufWritePost", {
       pattern = { "*.js", "*.ts" },
       callback = function(ctx)
@@ -116,7 +128,7 @@ lspconfig["svelte"].setup({
 })
 
 lspconfig['jdtls'].setup({
-  on_attach = on_attach,
+  on_attach = mapkeys,
   cmd = {
     "/home/radium/Applications/eclipse.jdt.ls/org.eclipse.jdt.ls.product/target/repository/bin/jdtls",
 

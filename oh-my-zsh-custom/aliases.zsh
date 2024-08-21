@@ -49,7 +49,7 @@ alias mnt='sudo mount -o umask=0022,gid="$GID",uid="$UID"' # mount with user pre
 alias kitty_ssh="kitty +kitten ssh"
 alias icat="kitty +kitten icat"
 alias dots='cd "$DOTFILES_PATH"'
-alias nconf='nvim "$DOTFILES_PATH"/nvim'
+alias nconf='(cd "$DOTFILES_PATH"/nvim && nvim)'
 alias diskusage="df -h | grep -vE \"^(tmpfs|run|dev)\" | (sed -u 1q; sort)"
 alias bat='bat --theme="gruvbox-dark"'
 alias rh='ranger ~ && clear'
