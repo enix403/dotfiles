@@ -11,10 +11,11 @@ opt.shiftwidth = 2
 opt.expandtab = true
 opt.autoindent = true
 opt.smartindent = true
+opt.linebreak = true
 
 vim.api.nvim_create_autocmd({ "FileType" }, {
   group = vim.api.nvim_create_augroup("PythonFileType", { clear = true }),
-  pattern = { "python" },
+  pattern = { "python", "java", "c++", "c", "rust" },
   callback = function()
     vim.opt_local.tabstop = 4
     vim.opt_local.softtabstop = 4

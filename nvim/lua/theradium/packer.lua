@@ -25,6 +25,7 @@ return require('packer').startup(function(use)
 
   -- themes
   use("rebelot/kanagawa.nvim")
+  use("EdenEast/nightfox.nvim")
   
   use("nvimdev/dashboard-nvim")
 

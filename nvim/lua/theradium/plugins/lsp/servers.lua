@@ -127,6 +127,11 @@ lspconfig["svelte"].setup({
   end
 })
 
+lspconfig["rust_analyzer"].setup({
+  capabilities = capabilities,
+  on_attach = mapkeys
+})
+
 lspconfig['jdtls'].setup({
   on_attach = mapkeys,
   capabilities = capabilities,
