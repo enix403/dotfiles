@@ -6,7 +6,7 @@ require("mason").setup({
 -- Setup Language Servers
 require("mason-lspconfig").setup({
   ensure_installed = {
-    "tsserver",
+    "ts_ls",
     "svelte",
     "cssls",
     "tailwindcss",
