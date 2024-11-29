@@ -1,9 +1,7 @@
 # Random
-export PATH="$HOME/.ghcup/bin:$PATH"
 export PATH="$PATH:$HOME/.yarn/bin"
 export PATH="$PATH:$HOME/.local/bin"
 export PATH="$PATH:$HOME/.cargo/bin"
-export PATH="$PATH:$HOME/.emacs.d/bin"
 
 # PNPM
 export PNPM_HOME="$HOME/.KV-pnpm"
@@ -15,9 +13,6 @@ export PATH="$PATH:$GOBIN"
 
 # Jetbtrains Toolbox
 export PATH="$PATH:$HOME/.local/share/JetBrains/Toolbox/scripts"
-
-# JAVA
-export JAVA_HOME="/usr/lib/jvm/java-22-openjdk"
 
 # Flutter
 export PATH="$PATH:$HOME/Applications/flutter/bin"

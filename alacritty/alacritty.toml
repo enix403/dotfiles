@@ -1,14 +1,21 @@
+# live_config_reload = true
+
+[general]
 live_config_reload = true
 
-[shell]
+[terminal.shell]
 program = "/usr/bin/zsh"
 
 [font]
-size = 8.5
+size = 11.5
 
 [font.normal]
 # family = "MartianMono Nerd Font"
-family = "Fira Code"
+# family = "Fira Code"
+# family = "Rec Mono Casual"
+family = "Rec Mono Semicasual"
+# family = "Rec Mono Duotone"
+# family = "Rec Mono Linear"
 
 [window]
 decorations = "None"
