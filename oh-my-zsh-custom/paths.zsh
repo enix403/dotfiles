@@ -24,3 +24,7 @@ export PATH="$PATH:$ANDROID_HOME/emulator"
 export PATH="$PATH:$ANDROID_HOME/tools"
 export PATH="$PATH:$ANDROID_HOME/platform-tools"
 
+# Custome
+export PATH="$PATH:$HOME/ser/follows/redate-git/bin"
+
+
