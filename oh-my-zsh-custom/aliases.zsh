@@ -74,6 +74,13 @@ alias linize="cat -n | sed 's/^[ 0-9]*[0-9]/\o033[34m&:\o033[0m/'"
 
 alias kff="killall -9 firefox"
 
+alias docker="sudo podman"
+alias dstart="sudo podman container start"
+alias dstop="sudo podman container stop"
+alias drm="sudo podman container rm"
+alias dmi="sudo podman image ls"
+alias dps="sudo podman ps -a"
+
 # ================ functions for common tasks ================
 
 function userignore() {
