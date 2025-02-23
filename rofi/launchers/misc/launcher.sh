@@ -11,4 +11,4 @@
 theme="kde_simplemenu"
 
 dir="$HOME/.config/rofi/launchers/misc"
-rofi -no-lazy-grab -modi "drun,run,window" -show drun -theme $dir/"$theme"
+rofi -no-lazy-grab -modi "drun,run,window" -show drun -theme $dir/"$theme" -font "Fira Code 18"
