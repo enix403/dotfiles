@@ -43,6 +43,11 @@ kde)
 i3)
 	exec i3
 	;;
+cin)
+	export XDG_CURRENT_DESKTOP=Cinnamon
+	export DESKTOP_SESSION=cinnamon
+	exec cinnamon-session
+	;;
 xm)
 	exec xmonad
 	;;

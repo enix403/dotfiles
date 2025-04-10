@@ -101,8 +101,8 @@ truncation_length = 20
 truncate_to_repo = false
 format = "[$path]($style)( -- [$read_only]($read_only_style))"
 style = "bold yellow"
-home_symbol = " "
-read_only=" "
+home_symbol = " "
+read_only=" "
 read_only_style="bold red"
 
 [username]
@@ -128,11 +128,11 @@ format = "on [$symbol git:$branch]($style)"
 [status]
 style = "fg:purple"
 
-symbol = ""
-success_symbol = ""
-not_executable_symbol = ""
-not_found_symbol = ""
-sigint_symbol = ""
+symbol = " "
+success_symbol = " "
+not_executable_symbol = " "
+not_found_symbol = " "
+sigint_symbol = " "
 signal_symbol = ""
 recognize_signal_code = true
 
