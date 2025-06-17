@@ -74,20 +74,8 @@ alias linize="cat -n | sed 's/^[ 0-9]*[0-9]/\o033[34m&:\o033[0m/'"
 
 alias kff="killall -9 firefox"
 
-alias docker="sudo podman"
-alias dstart="sudo podman container start"
-alias dstop="sudo podman container stop"
-alias drm="sudo podman container rm"
-alias dmi="sudo podman image ls"
-alias dps="sudo podman ps -a"
-
 # use like: strip_pdf_fonts input.pdf
 alias strip_pdf_fonts="gs -sDEVICE=pdfwrite -dNOPAUSE -dBATCH -dNoOutputFonts -o output-stripped.pdf"
-
-alias knock="/home/radium/Applications/knock/.venv/bin/python /home/radium/Applications/knock/build/lib/knock/knockpy.py"
-alias sherlock="/home/radium/Applications/sherlock/.venv/bin/python /home/radium/Applications/sherlock/sherlock_project/sherlock.py"
-alias theHarvester="/home/radium/Applications/theHarvester/.venv/bin/python /home/radium/Applications/theHarvester/theHarvester.py"
-alias wafw00f="/home/radium/Applications/sherlock/.venv/bin/wafw00f"
 
 # ================ functions for common tasks ================
 

@@ -1,15 +1,10 @@
 # Random
 export PATH="$PATH:$HOME/.yarn/bin"
-export PATH="$PATH:$HOME/.local/bin"
 export PATH="$PATH:$HOME/.cargo/bin"
 
 # PNPM
 export PNPM_HOME="$HOME/.KV-pnpm"
 export PATH="$PATH:$PNPM_HOME"
-
-# Golang
-export GOBIN="$HOME/go/bin"
-export PATH="$PATH:$GOBIN"
 
 # Jetbtrains Toolbox
 export PATH="$PATH:$HOME/.local/share/JetBrains/Toolbox/scripts"
@@ -23,8 +18,5 @@ export ANDROID_HOME="$HOME/Android/Sdk"
 export PATH="$PATH:$ANDROID_HOME/emulator"
 export PATH="$PATH:$ANDROID_HOME/tools"
 export PATH="$PATH:$ANDROID_HOME/platform-tools"
-
-# Custome
-export PATH="$PATH:$HOME/ser/follows/redate-git/bin"
-
+export PATH="$PATH:$ANDROID_HOME/build-tools/36.0.0"
 
