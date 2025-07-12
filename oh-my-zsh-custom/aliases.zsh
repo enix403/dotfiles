@@ -25,7 +25,7 @@ alias xargs='xargs '
 
 alias sudo='sudo '
 
-alias py='python'
+alias py='python3.9'
 alias opd='zathura'
 alias stc='macchanger'
 alias pe='pipenv'
@@ -79,7 +79,7 @@ alias strip_pdf_fonts="gs -sDEVICE=pdfwrite -dNOPAUSE -dBATCH -dNoOutputFonts -o
 
 # ================ functions for common tasks ================
 
-function showp() { echo $(pwd)/"$@" } 
+function showp() { echo $(pwd)/"$@" }
 
 function userignore() {
     local git_root;
@@ -113,7 +113,7 @@ function ranger {
         --cmd="map Q chain shell echo %d > "$tempfile"; quitall;"
         --cmd="map q chain shell echo %d > "$tempfile"; quit;"
     )
-    
+
     ${ranger_cmd[@]} "$@"
     if [[ -f "$tempfile" ]] && [[ "$(cat -- "$tempfile")" != "$(echo -n `pwd`)" ]]; then
         cd -- "$(cat "$tempfile")" || return
@@ -121,7 +121,7 @@ function ranger {
     command rm -f -- "$tempfile" 2>/dev/null
 }
 
-function viewcolor() { 
+function viewcolor() {
     if [[ $1 == '' ]];
     then
         cat << EOF
@@ -142,7 +142,7 @@ Note: ImageMagick and icat are required
 EOF
     return 2;
     fi
-    echo; convert -size ${2:-100x100} "xc:$1" png:- | icat --align=left 
+    echo; convert -size ${2:-100x100} "xc:$1" png:- | icat --align=left
 }
 
 function colitf() { python -c "print(tuple(r/255.0 for r in [$1]))"; }
@@ -151,11 +151,11 @@ function colitf() { python -c "print(tuple(r/255.0 for r in [$1]))"; }
 function mth() { echo $(( $1 )) }
 
 # Make executable files
-function mke() { 
-    all_args=( "$@" ) 
+function mke() {
+    all_args=( "$@" )
     touch "${all_args[@]}"
-    chmod +x "${all_args[@]}" 
-} 
+    chmod +x "${all_args[@]}"
+}
 
 # Returns a random ASCII key of the specified length: gen_rand_key 60
 function gen_rand_key() {
