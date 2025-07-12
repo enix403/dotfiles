@@ -1,7 +1,7 @@
 
 format = """
 [╭─](blue)[\\[](bold blue) $username[@](blue)$hostname [\\] --](bold blue) [\\(](bold blue)$status[\\) --](bold blue) [\\[](bold blue) $battery[\\]](bold blue)
-[├─](blue)[\\[](bold blue) $directory [\\]](bold blue)( [-- \\[](bold blue) $git_branch [\\]](bold blue))( [-- \\[](bold blue) $python [\\]](bold blue))
+[├─](blue)[\\[](bold blue) $directory [\\]](bold blue)( [-- \\[](bold blue) $git_branch [\\]](bold blue))( [-- \\(](bold blue) $python [\\)](bold blue))
 [╰──](blue)[\\[](bold blue) [\\$](purple) [\\]](bold blue) 
 """
 
@@ -71,8 +71,6 @@ time.disabled = true
 shell.disabled = true
 character.disabled = true
 
-
-
 [battery]
 full_symbol        = "π "
 charging_symbol    = "π "
@@ -123,7 +121,7 @@ symbol = ""
 style="bold red"
 truncation_length = 50
 truncation_symbol = ""
-format = "on [$symbol git:$branch]($style)"
+format = "[$symbol $branch]($style)"
 
 [status]
 style = "fg:purple"
@@ -141,8 +139,8 @@ map_symbol = true
 disabled = false
 
 [python]
-symbol = " "
-format = '[${symbol}( $version)( \($virtualenv\))]($style)'
+symbol = "⬢ "
+format = '[$symbol$virtualenv]($style)'
 style='green'
 
 detect_extensions = []
