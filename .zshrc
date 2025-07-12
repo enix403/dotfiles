@@ -1,6 +1,6 @@
 # export QT_QPA_PLATFORMTHEME=qt5ct
 
-export PATH=$HOME/bin:/usr/local/bin:$PATH
+export PATH=$HOME/bin:/usr/local/bin/override:$PATH
 export ZSH="$HOME/.oh-my-zsh"
 
 # function set_win_title(){
@@ -9,26 +9,6 @@ export ZSH="$HOME/.oh-my-zsh"
 
 # precmd_functions+=(set_win_title)
 
-# Uncomment the following line to use case-sensitive completion.
-# CASE_SENSITIVE="true"
-
-# Uncomment the following line to use hyphen-insensitive completion.
-# Case-sensitive completion must be off. _ and - will be interchangeable.
-# HYPHEN_INSENSITIVE="true"
-
-# Uncomment the following line to disable bi-weekly auto-update checks.
-# DISABLE_AUTO_UPDATE="true"
-
-# Uncomment the following line to automatically update without prompting.
-# DISABLE_UPDATE_PROMPT="true"
-
-# Uncomment the following line to change how often to auto-update (in days).
-# export UPDATE_ZSH_DAYS=13
-
-# Uncomment the following line if pasting URLs and other text is messed up.
-# DISABLE_MAGIC_FUNCTIONS="true"
-
-# Uncomment the following line to disable auto-setting terminal title.
 DISABLE_AUTO_TITLE="true"
 
 DISABLE_UNTRACKED_FILES_DIRTY="true"
@@ -45,9 +25,9 @@ eval "$(starship init zsh)"
 setopt no_auto_remove_slash
 
 # remove path duplicates
-typeset -U PATH 
+typeset -U PATH
 
-source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 # Disable underline for paths autocompletions while typing
 (( ${+ZSH_HIGHLIGHT_STYLES} )) || typeset -A ZSH_HIGHLIGHT_STYLES

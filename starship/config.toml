@@ -74,11 +74,11 @@ character.disabled = true
 
 
 [battery]
-full_symbol        = "  "
-charging_symbol    = "  "
-discharging_symbol = "  "
-unknown_symbol     = "  "
-empty_symbol       = "  "
+full_symbol        = "π "
+charging_symbol    = "π "
+discharging_symbol = "π "
+unknown_symbol     = "π "
+empty_symbol       = "π "
 
 [[battery.display]]
 threshold = 30
