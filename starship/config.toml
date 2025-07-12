@@ -117,13 +117,12 @@ show_always = true
 ssh_only = false
 format =  "[$hostname](cyan)"
 disabled = false
-
+aliases = { "Qateef-Ahmad-SWE" = "edu" }
 
 [git_branch]
 symbol = ""
 style="bold red"
-truncation_length = 50
-truncation_symbol = ""
+truncation_length = 10
 format = "[$symbol $branch]($style)"
 
 [status]

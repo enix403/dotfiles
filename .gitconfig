@@ -10,7 +10,7 @@
 [pager]
 	branch = false
 [init]
-	defaultBranch = master
+	defaultBranch = main
 [diff]
 	tool = meld
 [difftool]
