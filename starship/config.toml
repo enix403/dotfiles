@@ -95,13 +95,16 @@ threshold = 100
 style = "bold green"
 
 [directory]
-truncation_length = 20
+truncation_length = 4
 truncate_to_repo = false
 format = "[$path]($style)( -- [$read_only]($read_only_style))"
 style = "bold yellow"
 home_symbol = " "
 read_only=" "
 read_only_style="bold red"
+
+[directory.substitutions]
+'code/educative' = '𐐀'
 
 [username]
 style_user = "bold green"
