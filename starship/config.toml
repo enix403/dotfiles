@@ -95,7 +95,7 @@ threshold = 100
 style = "bold green"
 
 [directory]
-truncation_length = 4
+truncation_length = 20
 truncate_to_repo = false
 format = "[$path]($style)( -- [$read_only]($read_only_style))"
 style = "bold yellow"
@@ -122,7 +122,7 @@ aliases = { "Qateef-Ahmad-SWE" = "edu" }
 [git_branch]
 symbol = ""
 style="bold red"
-truncation_length = 10
+truncation_length = 20
 format = "[$symbol $branch]($style)"
 
 [status]

@@ -13,7 +13,7 @@ export PATH="$PATH:$HOME/.local/share/JetBrains/Toolbox/scripts"
 export PATH="$PATH:$HOME/Applications/flutter/bin"
 
 # Android
-export ANDROID_HOME="$HOME/Android/Sdk"
+export ANDROID_HOME="$HOME/Library/Android/sdk"
 # export ANDROID_NDK_HOME=${ANDROID_HOME}/ndk-bundle
 export PATH="$PATH:$ANDROID_HOME/emulator"
 export PATH="$PATH:$ANDROID_HOME/tools"

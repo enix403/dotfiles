@@ -39,10 +39,13 @@ alias cloc='cloc --vcs=git'
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
 
 alias gitlog="git log --oneline --color=always"
+alias glog="git log --oneline --color=always"
 alias sclone="git clone --depth 1 --single-branch"    # Shallow clone a git repo
 
 export DOTFILES_PATH=~/dotfiles
 
+alias v="nvim"
+alias g="git"
 alias kr="killall -9 ranger" # Ranger likes to freeze a lot, and I Ctrl+Z my way out of it and use this alias to clean it up
 alias rscopy="rsync -av --progress"
 alias mnt='sudo mount -o umask=0022,gid="$GID",uid="$UID"' # mount with user previliges
