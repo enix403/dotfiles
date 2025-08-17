@@ -1,0 +1,23 @@
+subl shortcuts
+enix403 vs qateef ahmad on github
+
+--
+
+close apps on last window
+back everything up
+sublime and terminal are way too similar.
+    change of of them (terminal)
+
+----
+
+net.kovidgoyal.kitty
+com.sublimetext.4
+com.todesktop.230313mzl4w4u92
+com.microsoft.VSCode
+
+----
+
+learn the following:
+    redis
+
+-------
