@@ -1,26 +1,46 @@
 [user]
-	email = fog.code000@gmail.com
 	name = enix403
+	email = fog.code000@gmail.com
 [alias]
 	br = branch
 	st = status
 	co = checkout
 	cm = commit
 	sw = switch
+  ss = stash
+  df = diff
+  lg = log --decorate --oneline --graph --color --date=short
 [pager]
 	branch = false
+	stash = false
 [init]
 	defaultBranch = main
 [diff]
-	tool = meld
-[difftool]
-    prompt = false
-[difftool "meld"]
-    cmd = meld "$LOCAL" "$REMOTE"
-[filter "lfs"]
-	clean = git-lfs clean -- %f
-	smudge = git-lfs smudge -- %f
-	process = git-lfs filter-process
-	required = true
-[credential]
-	helper = store
+  colorMoved = default
+
+# ================
+# Config for Delta
+# ================
+
+[core]
+  pager = delta
+
+[interactive]
+  diffFilter = delta --color-only
+
+[merge]
+  conflictstyle = zdiff3
+
+[include]
+  path = ~/dotfiles/delta/themes.gitconfig
+
+[delta]
+  features = mantis-shrimp # set theme
+  
+  # use n and N to move between diff sections
+  navigate = true 
+  line-numbers = true
+  side-by-side = true
+  
+  hyperlinks = true
+  hyperlinks-file-link-format = "cursor://file/{path}:{line}"
