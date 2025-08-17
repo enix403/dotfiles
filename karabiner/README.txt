@@ -1,1 +1,0 @@
-The json file (not the folder) should be placed at ~/.config/karabiner/karabiner.json. Only update this json file in the existing ~/.config/karabiner folder and keep the other items their as they are 
