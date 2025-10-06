@@ -44,3 +44,6 @@
   
   hyperlinks = true
   hyperlinks-file-link-format = "cursor://file/{path}:{line}"
+[credential]
+	helper = oauth
+	helper = cache --timeout 2592000

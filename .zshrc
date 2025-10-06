@@ -1,6 +1,7 @@
 # export QT_QPA_PLATFORMTHEME=qt5ct
 
 export PATH=$HOME/bin:/usr/local/bin/override:$PATH
+export PATH=/opt/homebrew/opt/ruby/bin:$PATH
 export ZSH="$HOME/.oh-my-zsh"
 
 # function set_win_title(){
@@ -41,4 +42,3 @@ ZSH_HIGHLIGHT_STYLES[autodirectory]=fg=yellow
 ZSH_HIGHLIGHT_STYLES[path]=fg=cyan
 ZSH_HIGHLIGHT_STYLES[unknown-token]=fg=red
 ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern)
-

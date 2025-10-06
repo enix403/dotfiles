@@ -30,6 +30,10 @@ alias opd='zathura'
 alias stc='macchanger'
 alias pe='pipenv'
 
+alias b="bundle"
+alias be="bundle exec"
+alias ghk="git checkout HEAD -- hooks/pre-commit"
+
 alias vb="od -A d -t x1"
 
 alias cloc='cloc --vcs=git'
@@ -46,6 +50,11 @@ export DOTFILES_PATH=~/dotfiles
 
 alias v="nvim"
 alias g="git"
+alias k="kubectl"
+alias kg="kubectl get"
+alias kd="kubectl describe"
+alias kl="kubectl logs"
+alias bz="bazel"
 alias kr="killall -9 ranger" # Ranger likes to freeze a lot, and I Ctrl+Z my way out of it and use this alias to clean it up
 alias rscopy="rsync -av --progress"
 alias mnt='sudo mount -o umask=0022,gid="$GID",uid="$UID"' # mount with user previliges
@@ -54,7 +63,7 @@ alias icat="kitty +kitten icat"
 alias dots='cd "$DOTFILES_PATH"'
 alias nconf='(cd "$DOTFILES_PATH"/nvim && nvim)'
 alias diskusage="df -h | grep -vE \"^(tmpfs|run|dev)\" | (sed -u 1q; sort)"
-alias bat='bat --theme="gruvbox-dark"'
+alias bat='bat --theme=gruvbox-dark --style=header'
 alias rh='ranger ~ && clear'
 alias rr='ranger . && clear'
 alias feh="feh --scale-down --auto-zoom --draw-filename --action9 \";feh --bg-scale '%f'\""
@@ -83,6 +92,29 @@ alias strip_pdf_fonts="gs -sDEVICE=pdfwrite -dNOPAUSE -dBATCH -dNoOutputFonts -o
 # ================ functions for common tasks ================
 
 function showp() { echo $(pwd)/"$@" }
+
+alias kxx="kubectl config get-contexts"
+function kx() {
+  # "kx" lists all available kubernetes contexts
+  if [ $# -eq 0 ]; then
+    kubectl config current-context
+  elif [ $# -eq 1 ]; then
+    # "kx <context> sets the given context as current"
+    kubectl config use-context "$1"
+  else
+    echo "Usage: kx [context-name]" >&2
+    return 1
+  fi
+}
+
+# native zsh completion
+_kx() {
+  local -a contexts
+  contexts=($(kubectl config get-contexts -o name 2>/dev/null))
+  _describe 'context' contexts
+}
+
+compdef _kx kx
 
 function userignore() {
     local git_root;
@@ -166,7 +198,7 @@ function gen_rand_key() {
 }
 
 # Print each argument given on a new line (It is needed sometimes for debugging)
-function print_sep_lines() {
+function echol() {
     for arg in "$@"
     do
         echo $arg;
