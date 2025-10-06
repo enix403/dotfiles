@@ -6,6 +6,8 @@ bin/pixiv_wall_dn.sh
 bin/trashos.sh
 bin/az
 
+.vscode/
+
 karabiner/*
 karabiner/**
 !karabiner/karabiner.json
