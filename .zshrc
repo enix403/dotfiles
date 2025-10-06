@@ -1,22 +1,15 @@
-# export QT_QPA_PLATFORMTHEME=qt5ct
-
-export PATH=$HOME/bin:/usr/local/bin/override:$PATH
+# Note: These are prepened to the current path, so the last one take priority
+export PATH=$HOME/bin:$PATH
 export PATH=/opt/homebrew/opt/ruby/bin:$PATH
+export PATH=/usr/local/bin/override:$PATH
+
 export ZSH="$HOME/.oh-my-zsh"
-
-# function set_win_title(){
-#    echo -ne "\033]0; $USER: $(basename "$PWD") \007"
-#}
-
-# precmd_functions+=(set_win_title)
+ZSH_CUSTOM="$HOME/.config/oh-my-zsh-custom"
 
 DISABLE_AUTO_TITLE="true"
-
 DISABLE_UNTRACKED_FILES_DIRTY="true"
-
 plugins=(colored-man-pages) # zsh-syntax-highlighting must come at end
 
-ZSH_CUSTOM="$HOME/.config/oh-my-zsh-custom"
 source $ZSH/oh-my-zsh.sh
 
 export STARSHIP_CONFIG="$HOME/.config/starship/config.toml"
