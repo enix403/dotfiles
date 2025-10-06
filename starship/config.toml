@@ -112,12 +112,13 @@ style_root = "bold red"
 format = "[$user]($style)"
 disabled = false
 show_always = true
+aliases = { "qateef.ahmad" = "q" }
 
 [hostname]
 ssh_only = false
 format =  "[$hostname](cyan)"
 disabled = false
-aliases = { "Qateef-Ahmad-SWE" = "edu" }
+aliases = { "MT-H0Y07DWWNY-Qateef-Ahmad" = "motive" }
 
 [git_branch]
 symbol = ""
