@@ -10,6 +10,7 @@ alias mv="mv -i"                          # confirm before overwriting something
 alias df='df -h'                          # human-readable sizes
 alias free='free -h'                      # human-readable sizes
 alias grep='grep --color=auto'
+unalias l
 alias ls="LC_COLLATE=C ls --color=auto -lh --group-directories-first"
 alias la="LC_COLLATE=C ls --color=auto -Alh --group-directories-first"
 alias lsblk="lsblk --fs"
