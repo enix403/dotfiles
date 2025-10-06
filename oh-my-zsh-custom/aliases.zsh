@@ -21,13 +21,13 @@ alias mv="mv -i"
 
 # ======= Common Linux Tools =========
 
+alias sudo='sudo '
+alias xargs='xargs '
 alias ip="ip -c"
 alias uz="unzip"
 alias df='df -h'
 alias free='free -h'
 alias grep='grep --color=auto'
-alias xargs='xargs '
-alias sudo='sudo '
 alias diskusage="df -h | grep -vE \"^(tmpfs|run|dev)\" | (sed -u 1q; sort)"
 alias ddu="du -Pcshx"
 alias rscopy="rsync -av --progress"
@@ -46,8 +46,8 @@ function echol() {
 # ======= Shortcuts =========
 
 alias mee="source .me.env 1>/dev/null 2>&1 || :"
-# I mostly name my python virtual environments ".venv"
 alias acv="source .venv/bin/activate && mee"
+
 alias kff="killall -9 firefox"
 alias kr="killall -9 ranger"
 
@@ -70,9 +70,7 @@ alias be="bundle exec"
 # ======= Git =========
 
 alias g="git"
-alias sclone="git clone --depth 1 --single-branch"    # Shallow clone a git repo
-alias glog="git log --oneline --color=always"
-alias ghk="git checkout HEAD -- hooks/pre-commit"
+alias sclone="git clone --depth 1 --single-branch"
 function userignore() {
     local git_root;
     git_root=$(git rev-parse --show-toplevel) || return $?;
