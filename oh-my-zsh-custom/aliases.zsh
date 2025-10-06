@@ -1,7 +1,8 @@
 export DOTFILES_PATH=~/dotfiles
 alias dot='cd "$DOTFILES_PATH"'
 
-# ======= Basic Shell Commands =========
+# ======= Absolute Necessaties =========
+# Things I cannot live without
 
 unalias l
 alias ls="LC_COLLATE=C ls --color=auto -lh --group-directories-first"
@@ -20,6 +21,7 @@ alias cp="cp -i"
 alias mv="mv -i"
 
 # ======= Common Linux Tools =========
+# Tools that I regularly use, tweaked to my liking
 
 alias sudo='sudo '
 alias xargs='xargs '
@@ -35,15 +37,9 @@ alias mnt='sudo mount -o umask=0022,gid="$GID",uid="$UID"' # mount with user pre
 alias bat='bat --theme=gruvbox-dark --style=header'
 alias feh="feh --scale-down --auto-zoom --draw-filename --action9 \";feh --bg-scale '%f'\""
 
-# Print each argument given on a new line (It is needed sometimes for debugging)
-function echol() {
-    for arg in "$@"
-    do
-        echo $arg;
-    done
-}
 
-# ======= Shortcuts =========
+# ======= Custom Shortcuts =========
+# My custom workflows/shortcuts
 
 alias mee="source .me.env 1>/dev/null 2>&1 || :"
 alias acv="source .venv/bin/activate && mee"
@@ -62,12 +58,20 @@ function gen_rand_key() {
     tr -dc 'A-Za-z0-9!#$%&()*+,-./:;<=>?@[\]_{|}' </dev/urandom | head -c ${1:-64}; echo
 }
 
-# ======= Bundle =========
+# Print each argument given on a new line (It is needed sometimes for debugging)
+function echol() {
+    for arg in "$@"
+    do
+        echo $arg;
+    done
+}
 
-alias b="bundle"
-alias be="bundle exec"
+# ===========================
+# ---------- Tools ----------
+# ===========================
+# Dedicated aliases for each tool
 
-# ======= Git =========
+# ========== Git ==========
 
 alias g="git"
 alias sclone="git clone --depth 1 --single-branch"
@@ -77,15 +81,11 @@ function userignore() {
     vim "$git_root/.git/info/exclude"
 }
 
-# ======= Cloc =========
-
-alias cloc='cloc --vcs=git'
-
-# ======= Vim =========
+# ========== Vim ==========
 
 alias v="nvim"
 
-# ======= Kubernetes =========
+# ========== Kubernetes ==========
 
 alias k="kubectl"
 alias kg="kubectl get"
@@ -111,13 +111,20 @@ _kx() {
 compdef _kx kx
 alias kxx="kubectl config get-contexts"
 
-# ======= Bazel =========
-
-alias bz="bazel"
-
-# ======= Ranger =========
+# ========== Ranger ==========
 
 alias rh='ranger ~ && clear'
 alias rr='ranger . && clear'
 
+# ========== Cloc ==========
 
+alias cloc='cloc --vcs=git'
+
+# ========== Bundle ==========
+
+alias b="bundle"
+alias be="bundle exec"
+
+# ========== Bazel ==========
+
+alias bz="bazel"
