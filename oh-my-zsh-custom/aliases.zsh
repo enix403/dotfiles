@@ -71,6 +71,15 @@ function echol() {
 # ===========================
 # Dedicated aliases for each tool
 
+# ========== Ranger ==========
+
+alias rh='ranger ~ && clear'
+alias rr='ranger . && clear'
+
+# ========== Cloc ==========
+
+alias cloc='cloc --vcs=git'
+
 # ========== Git ==========
 
 alias g="git"
@@ -110,15 +119,6 @@ _kx() {
 }
 compdef _kx kx
 alias kxx="kubectl config get-contexts"
-
-# ========== Ranger ==========
-
-alias rh='ranger ~ && clear'
-alias rr='ranger . && clear'
-
-# ========== Cloc ==========
-
-alias cloc='cloc --vcs=git'
 
 # ========== Bundle ==========
 
