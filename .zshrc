@@ -8,7 +8,7 @@ ZSH_CUSTOM="$HOME/.config/oh-my-zsh-custom"
 
 DISABLE_AUTO_TITLE="true"
 DISABLE_UNTRACKED_FILES_DIRTY="true"
-plugins=(colored-man-pages) # zsh-syntax-highlighting must come at end
+plugins=(fzf-tab colored-man-pages) # zsh-syntax-highlighting must come at end
 
 source $ZSH/oh-my-zsh.sh
 
