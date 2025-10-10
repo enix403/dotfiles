@@ -37,6 +37,8 @@ alias mnt='sudo mount -o umask=0022,gid="$GID",uid="$UID"' # mount with user pre
 alias bat='bat --theme=gruvbox-dark --style=header'
 alias feh="feh --scale-down --auto-zoom --draw-filename --action9 \";feh --bg-scale '%f'\""
 
+# Non essentials, but cool
+alias tree="erd --human --icons --sort=name --dir-order=last --layout=inverted --suppress-size"
 
 # ======= Custom Shortcuts =========
 # My custom workflows/shortcuts
