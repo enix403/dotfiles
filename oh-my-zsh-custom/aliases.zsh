@@ -109,9 +109,6 @@ alias v="nvim"
 # ========== Kubernetes ==========
 
 alias k="kubectl"
-alias kg="kubectl get"
-alias kd="kubectl describe"
-alias kl="kubectl logs"
 function kx() {
     if [ $# -eq 0 ]; then
         # "kx" lists all available kubernetes contexts

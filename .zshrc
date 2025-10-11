@@ -34,4 +34,5 @@ ZSH_HIGHLIGHT_STYLES[precommand]=fg=green
 ZSH_HIGHLIGHT_STYLES[autodirectory]=fg=yellow
 ZSH_HIGHLIGHT_STYLES[path]=fg=cyan
 ZSH_HIGHLIGHT_STYLES[unknown-token]=fg=red
+ZSH_HIGHLIGHT_STYLES[comment]='fg=blue,bg=black'
 ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern)
