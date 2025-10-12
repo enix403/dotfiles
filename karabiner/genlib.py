@@ -1,4 +1,3 @@
-import json
 from dataclasses import dataclass
 
 @dataclass
@@ -120,6 +119,8 @@ def build_devices_conditions(devices: list[KeyboardDevice]):
         ]
     }
 
+complex_modifications_rules = []
+
 def parse(
     devices: list[KeyboardDevice] = [],
     desc: str = "",
@@ -154,4 +155,18 @@ def parse(
         "manipulators": manipulators
     }
 
-    print(json.dumps(res))
+    complex_modifications_rules.append(res)
+
+def build_karabiner_config(profile_meta: dict):
+    profile = {
+        **profile_meta,
+        "complex_modifications": {
+            "rules": complex_modifications_rules
+        }
+    }
+
+    karabiner_json = {
+        "profiles": [profile]
+    }
+
+    return karabiner_json
