@@ -1,5 +1,6 @@
 export DOTFILES_PATH=~/dotfiles
 alias dot='cd "$DOTFILES_PATH"'
+alias dots='cd "$DOTFILES_PATH"'
 
 # ======= Absolute Necessaties =========
 # Things I cannot live without

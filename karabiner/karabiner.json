@@ -5466,6 +5466,1803 @@
             ]
           },
           {
+            "description": "[BL] Global: <fn> + <opt> to <cmd> + <opt> (because macos cmd = app's ctrl)",
+            "manipulators": [
+              {
+                "type": "basic",
+                "from": {
+                  "modifiers": {
+                    "mandatory": [
+                      "fn",
+                      "option"
+                    ],
+                    "optional": [
+                      "any"
+                    ]
+                  },
+                  "key_code": "left_arrow"
+                },
+                "to": {
+                  "modifiers": [
+                    "command",
+                    "option"
+                  ],
+                  "key_code": "left_arrow"
+                },
+                "conditions": [
+                  {
+                    "type": "device_if",
+                    "identifiers": [
+                      {
+                        "is_built_in_keyboard": true
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "basic",
+                "from": {
+                  "modifiers": {
+                    "mandatory": [
+                      "fn",
+                      "option"
+                    ],
+                    "optional": [
+                      "any"
+                    ]
+                  },
+                  "key_code": "up_arrow"
+                },
+                "to": {
+                  "modifiers": [
+                    "command",
+                    "option"
+                  ],
+                  "key_code": "up_arrow"
+                },
+                "conditions": [
+                  {
+                    "type": "device_if",
+                    "identifiers": [
+                      {
+                        "is_built_in_keyboard": true
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "basic",
+                "from": {
+                  "modifiers": {
+                    "mandatory": [
+                      "fn",
+                      "option"
+                    ],
+                    "optional": [
+                      "any"
+                    ]
+                  },
+                  "key_code": "right_arrow"
+                },
+                "to": {
+                  "modifiers": [
+                    "command",
+                    "option"
+                  ],
+                  "key_code": "right_arrow"
+                },
+                "conditions": [
+                  {
+                    "type": "device_if",
+                    "identifiers": [
+                      {
+                        "is_built_in_keyboard": true
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "basic",
+                "from": {
+                  "modifiers": {
+                    "mandatory": [
+                      "fn",
+                      "option"
+                    ],
+                    "optional": [
+                      "any"
+                    ]
+                  },
+                  "key_code": "down_arrow"
+                },
+                "to": {
+                  "modifiers": [
+                    "command",
+                    "option"
+                  ],
+                  "key_code": "down_arrow"
+                },
+                "conditions": [
+                  {
+                    "type": "device_if",
+                    "identifiers": [
+                      {
+                        "is_built_in_keyboard": true
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "basic",
+                "from": {
+                  "modifiers": {
+                    "mandatory": [
+                      "fn",
+                      "option"
+                    ],
+                    "optional": [
+                      "any"
+                    ]
+                  },
+                  "key_code": "delete_or_backspace"
+                },
+                "to": {
+                  "modifiers": [
+                    "command",
+                    "option"
+                  ],
+                  "key_code": "delete_or_backspace"
+                },
+                "conditions": [
+                  {
+                    "type": "device_if",
+                    "identifiers": [
+                      {
+                        "is_built_in_keyboard": true
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "basic",
+                "from": {
+                  "modifiers": {
+                    "mandatory": [
+                      "fn",
+                      "option"
+                    ],
+                    "optional": [
+                      "any"
+                    ]
+                  },
+                  "key_code": "spacebar"
+                },
+                "to": {
+                  "modifiers": [
+                    "command",
+                    "option"
+                  ],
+                  "key_code": "spacebar"
+                },
+                "conditions": [
+                  {
+                    "type": "device_if",
+                    "identifiers": [
+                      {
+                        "is_built_in_keyboard": true
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "basic",
+                "from": {
+                  "modifiers": {
+                    "mandatory": [
+                      "fn",
+                      "option"
+                    ],
+                    "optional": [
+                      "any"
+                    ]
+                  },
+                  "key_code": "return_or_enter"
+                },
+                "to": {
+                  "modifiers": [
+                    "command",
+                    "option"
+                  ],
+                  "key_code": "return_or_enter"
+                },
+                "conditions": [
+                  {
+                    "type": "device_if",
+                    "identifiers": [
+                      {
+                        "is_built_in_keyboard": true
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "basic",
+                "from": {
+                  "modifiers": {
+                    "mandatory": [
+                      "fn",
+                      "option"
+                    ],
+                    "optional": [
+                      "any"
+                    ]
+                  },
+                  "key_code": "tab"
+                },
+                "to": {
+                  "modifiers": [
+                    "command",
+                    "option"
+                  ],
+                  "key_code": "tab"
+                },
+                "conditions": [
+                  {
+                    "type": "device_if",
+                    "identifiers": [
+                      {
+                        "is_built_in_keyboard": true
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "basic",
+                "from": {
+                  "modifiers": {
+                    "mandatory": [
+                      "fn",
+                      "option"
+                    ],
+                    "optional": [
+                      "any"
+                    ]
+                  },
+                  "key_code": "escape"
+                },
+                "to": {
+                  "modifiers": [
+                    "command",
+                    "option"
+                  ],
+                  "key_code": "escape"
+                },
+                "conditions": [
+                  {
+                    "type": "device_if",
+                    "identifiers": [
+                      {
+                        "is_built_in_keyboard": true
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "basic",
+                "from": {
+                  "modifiers": {
+                    "mandatory": [
+                      "fn",
+                      "option"
+                    ],
+                    "optional": [
+                      "any"
+                    ]
+                  },
+                  "key_code": "a"
+                },
+                "to": {
+                  "modifiers": [
+                    "command",
+                    "option"
+                  ],
+                  "key_code": "a"
+                },
+                "conditions": [
+                  {
+                    "type": "device_if",
+                    "identifiers": [
+                      {
+                        "is_built_in_keyboard": true
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "basic",
+                "from": {
+                  "modifiers": {
+                    "mandatory": [
+                      "fn",
+                      "option"
+                    ],
+                    "optional": [
+                      "any"
+                    ]
+                  },
+                  "key_code": "b"
+                },
+                "to": {
+                  "modifiers": [
+                    "command",
+                    "option"
+                  ],
+                  "key_code": "b"
+                },
+                "conditions": [
+                  {
+                    "type": "device_if",
+                    "identifiers": [
+                      {
+                        "is_built_in_keyboard": true
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "basic",
+                "from": {
+                  "modifiers": {
+                    "mandatory": [
+                      "fn",
+                      "option"
+                    ],
+                    "optional": [
+                      "any"
+                    ]
+                  },
+                  "key_code": "c"
+                },
+                "to": {
+                  "modifiers": [
+                    "command",
+                    "option"
+                  ],
+                  "key_code": "c"
+                },
+                "conditions": [
+                  {
+                    "type": "device_if",
+                    "identifiers": [
+                      {
+                        "is_built_in_keyboard": true
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "basic",
+                "from": {
+                  "modifiers": {
+                    "mandatory": [
+                      "fn",
+                      "option"
+                    ],
+                    "optional": [
+                      "any"
+                    ]
+                  },
+                  "key_code": "d"
+                },
+                "to": {
+                  "modifiers": [
+                    "command",
+                    "option"
+                  ],
+                  "key_code": "d"
+                },
+                "conditions": [
+                  {
+                    "type": "device_if",
+                    "identifiers": [
+                      {
+                        "is_built_in_keyboard": true
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "basic",
+                "from": {
+                  "modifiers": {
+                    "mandatory": [
+                      "fn",
+                      "option"
+                    ],
+                    "optional": [
+                      "any"
+                    ]
+                  },
+                  "key_code": "e"
+                },
+                "to": {
+                  "modifiers": [
+                    "command",
+                    "option"
+                  ],
+                  "key_code": "e"
+                },
+                "conditions": [
+                  {
+                    "type": "device_if",
+                    "identifiers": [
+                      {
+                        "is_built_in_keyboard": true
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "basic",
+                "from": {
+                  "modifiers": {
+                    "mandatory": [
+                      "fn",
+                      "option"
+                    ],
+                    "optional": [
+                      "any"
+                    ]
+                  },
+                  "key_code": "f"
+                },
+                "to": {
+                  "modifiers": [
+                    "command",
+                    "option"
+                  ],
+                  "key_code": "f"
+                },
+                "conditions": [
+                  {
+                    "type": "device_if",
+                    "identifiers": [
+                      {
+                        "is_built_in_keyboard": true
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "basic",
+                "from": {
+                  "modifiers": {
+                    "mandatory": [
+                      "fn",
+                      "option"
+                    ],
+                    "optional": [
+                      "any"
+                    ]
+                  },
+                  "key_code": "g"
+                },
+                "to": {
+                  "modifiers": [
+                    "command",
+                    "option"
+                  ],
+                  "key_code": "g"
+                },
+                "conditions": [
+                  {
+                    "type": "device_if",
+                    "identifiers": [
+                      {
+                        "is_built_in_keyboard": true
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "basic",
+                "from": {
+                  "modifiers": {
+                    "mandatory": [
+                      "fn",
+                      "option"
+                    ],
+                    "optional": [
+                      "any"
+                    ]
+                  },
+                  "key_code": "h"
+                },
+                "to": {
+                  "modifiers": [
+                    "command",
+                    "option"
+                  ],
+                  "key_code": "h"
+                },
+                "conditions": [
+                  {
+                    "type": "device_if",
+                    "identifiers": [
+                      {
+                        "is_built_in_keyboard": true
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "basic",
+                "from": {
+                  "modifiers": {
+                    "mandatory": [
+                      "fn",
+                      "option"
+                    ],
+                    "optional": [
+                      "any"
+                    ]
+                  },
+                  "key_code": "i"
+                },
+                "to": {
+                  "modifiers": [
+                    "command",
+                    "option"
+                  ],
+                  "key_code": "i"
+                },
+                "conditions": [
+                  {
+                    "type": "device_if",
+                    "identifiers": [
+                      {
+                        "is_built_in_keyboard": true
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "basic",
+                "from": {
+                  "modifiers": {
+                    "mandatory": [
+                      "fn",
+                      "option"
+                    ],
+                    "optional": [
+                      "any"
+                    ]
+                  },
+                  "key_code": "j"
+                },
+                "to": {
+                  "modifiers": [
+                    "command",
+                    "option"
+                  ],
+                  "key_code": "j"
+                },
+                "conditions": [
+                  {
+                    "type": "device_if",
+                    "identifiers": [
+                      {
+                        "is_built_in_keyboard": true
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "basic",
+                "from": {
+                  "modifiers": {
+                    "mandatory": [
+                      "fn",
+                      "option"
+                    ],
+                    "optional": [
+                      "any"
+                    ]
+                  },
+                  "key_code": "k"
+                },
+                "to": {
+                  "modifiers": [
+                    "command",
+                    "option"
+                  ],
+                  "key_code": "k"
+                },
+                "conditions": [
+                  {
+                    "type": "device_if",
+                    "identifiers": [
+                      {
+                        "is_built_in_keyboard": true
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "basic",
+                "from": {
+                  "modifiers": {
+                    "mandatory": [
+                      "fn",
+                      "option"
+                    ],
+                    "optional": [
+                      "any"
+                    ]
+                  },
+                  "key_code": "l"
+                },
+                "to": {
+                  "modifiers": [
+                    "command",
+                    "option"
+                  ],
+                  "key_code": "l"
+                },
+                "conditions": [
+                  {
+                    "type": "device_if",
+                    "identifiers": [
+                      {
+                        "is_built_in_keyboard": true
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "basic",
+                "from": {
+                  "modifiers": {
+                    "mandatory": [
+                      "fn",
+                      "option"
+                    ],
+                    "optional": [
+                      "any"
+                    ]
+                  },
+                  "key_code": "m"
+                },
+                "to": {
+                  "modifiers": [
+                    "command",
+                    "option"
+                  ],
+                  "key_code": "m"
+                },
+                "conditions": [
+                  {
+                    "type": "device_if",
+                    "identifiers": [
+                      {
+                        "is_built_in_keyboard": true
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "basic",
+                "from": {
+                  "modifiers": {
+                    "mandatory": [
+                      "fn",
+                      "option"
+                    ],
+                    "optional": [
+                      "any"
+                    ]
+                  },
+                  "key_code": "n"
+                },
+                "to": {
+                  "modifiers": [
+                    "command",
+                    "option"
+                  ],
+                  "key_code": "n"
+                },
+                "conditions": [
+                  {
+                    "type": "device_if",
+                    "identifiers": [
+                      {
+                        "is_built_in_keyboard": true
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "basic",
+                "from": {
+                  "modifiers": {
+                    "mandatory": [
+                      "fn",
+                      "option"
+                    ],
+                    "optional": [
+                      "any"
+                    ]
+                  },
+                  "key_code": "o"
+                },
+                "to": {
+                  "modifiers": [
+                    "command",
+                    "option"
+                  ],
+                  "key_code": "o"
+                },
+                "conditions": [
+                  {
+                    "type": "device_if",
+                    "identifiers": [
+                      {
+                        "is_built_in_keyboard": true
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "basic",
+                "from": {
+                  "modifiers": {
+                    "mandatory": [
+                      "fn",
+                      "option"
+                    ],
+                    "optional": [
+                      "any"
+                    ]
+                  },
+                  "key_code": "p"
+                },
+                "to": {
+                  "modifiers": [
+                    "command",
+                    "option"
+                  ],
+                  "key_code": "p"
+                },
+                "conditions": [
+                  {
+                    "type": "device_if",
+                    "identifiers": [
+                      {
+                        "is_built_in_keyboard": true
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "basic",
+                "from": {
+                  "modifiers": {
+                    "mandatory": [
+                      "fn",
+                      "option"
+                    ],
+                    "optional": [
+                      "any"
+                    ]
+                  },
+                  "key_code": "q"
+                },
+                "to": {
+                  "modifiers": [
+                    "command",
+                    "option"
+                  ],
+                  "key_code": "q"
+                },
+                "conditions": [
+                  {
+                    "type": "device_if",
+                    "identifiers": [
+                      {
+                        "is_built_in_keyboard": true
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "basic",
+                "from": {
+                  "modifiers": {
+                    "mandatory": [
+                      "fn",
+                      "option"
+                    ],
+                    "optional": [
+                      "any"
+                    ]
+                  },
+                  "key_code": "r"
+                },
+                "to": {
+                  "modifiers": [
+                    "command",
+                    "option"
+                  ],
+                  "key_code": "r"
+                },
+                "conditions": [
+                  {
+                    "type": "device_if",
+                    "identifiers": [
+                      {
+                        "is_built_in_keyboard": true
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "basic",
+                "from": {
+                  "modifiers": {
+                    "mandatory": [
+                      "fn",
+                      "option"
+                    ],
+                    "optional": [
+                      "any"
+                    ]
+                  },
+                  "key_code": "s"
+                },
+                "to": {
+                  "modifiers": [
+                    "command",
+                    "option"
+                  ],
+                  "key_code": "s"
+                },
+                "conditions": [
+                  {
+                    "type": "device_if",
+                    "identifiers": [
+                      {
+                        "is_built_in_keyboard": true
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "basic",
+                "from": {
+                  "modifiers": {
+                    "mandatory": [
+                      "fn",
+                      "option"
+                    ],
+                    "optional": [
+                      "any"
+                    ]
+                  },
+                  "key_code": "t"
+                },
+                "to": {
+                  "modifiers": [
+                    "command",
+                    "option"
+                  ],
+                  "key_code": "t"
+                },
+                "conditions": [
+                  {
+                    "type": "device_if",
+                    "identifiers": [
+                      {
+                        "is_built_in_keyboard": true
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "basic",
+                "from": {
+                  "modifiers": {
+                    "mandatory": [
+                      "fn",
+                      "option"
+                    ],
+                    "optional": [
+                      "any"
+                    ]
+                  },
+                  "key_code": "u"
+                },
+                "to": {
+                  "modifiers": [
+                    "command",
+                    "option"
+                  ],
+                  "key_code": "u"
+                },
+                "conditions": [
+                  {
+                    "type": "device_if",
+                    "identifiers": [
+                      {
+                        "is_built_in_keyboard": true
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "basic",
+                "from": {
+                  "modifiers": {
+                    "mandatory": [
+                      "fn",
+                      "option"
+                    ],
+                    "optional": [
+                      "any"
+                    ]
+                  },
+                  "key_code": "v"
+                },
+                "to": {
+                  "modifiers": [
+                    "command",
+                    "option"
+                  ],
+                  "key_code": "v"
+                },
+                "conditions": [
+                  {
+                    "type": "device_if",
+                    "identifiers": [
+                      {
+                        "is_built_in_keyboard": true
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "basic",
+                "from": {
+                  "modifiers": {
+                    "mandatory": [
+                      "fn",
+                      "option"
+                    ],
+                    "optional": [
+                      "any"
+                    ]
+                  },
+                  "key_code": "w"
+                },
+                "to": {
+                  "modifiers": [
+                    "command",
+                    "option"
+                  ],
+                  "key_code": "w"
+                },
+                "conditions": [
+                  {
+                    "type": "device_if",
+                    "identifiers": [
+                      {
+                        "is_built_in_keyboard": true
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "basic",
+                "from": {
+                  "modifiers": {
+                    "mandatory": [
+                      "fn",
+                      "option"
+                    ],
+                    "optional": [
+                      "any"
+                    ]
+                  },
+                  "key_code": "x"
+                },
+                "to": {
+                  "modifiers": [
+                    "command",
+                    "option"
+                  ],
+                  "key_code": "x"
+                },
+                "conditions": [
+                  {
+                    "type": "device_if",
+                    "identifiers": [
+                      {
+                        "is_built_in_keyboard": true
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "basic",
+                "from": {
+                  "modifiers": {
+                    "mandatory": [
+                      "fn",
+                      "option"
+                    ],
+                    "optional": [
+                      "any"
+                    ]
+                  },
+                  "key_code": "y"
+                },
+                "to": {
+                  "modifiers": [
+                    "command",
+                    "option"
+                  ],
+                  "key_code": "y"
+                },
+                "conditions": [
+                  {
+                    "type": "device_if",
+                    "identifiers": [
+                      {
+                        "is_built_in_keyboard": true
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "basic",
+                "from": {
+                  "modifiers": {
+                    "mandatory": [
+                      "fn",
+                      "option"
+                    ],
+                    "optional": [
+                      "any"
+                    ]
+                  },
+                  "key_code": "z"
+                },
+                "to": {
+                  "modifiers": [
+                    "command",
+                    "option"
+                  ],
+                  "key_code": "z"
+                },
+                "conditions": [
+                  {
+                    "type": "device_if",
+                    "identifiers": [
+                      {
+                        "is_built_in_keyboard": true
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "basic",
+                "from": {
+                  "modifiers": {
+                    "mandatory": [
+                      "fn",
+                      "option"
+                    ],
+                    "optional": [
+                      "any"
+                    ]
+                  },
+                  "key_code": "0"
+                },
+                "to": {
+                  "modifiers": [
+                    "command",
+                    "option"
+                  ],
+                  "key_code": "0"
+                },
+                "conditions": [
+                  {
+                    "type": "device_if",
+                    "identifiers": [
+                      {
+                        "is_built_in_keyboard": true
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "basic",
+                "from": {
+                  "modifiers": {
+                    "mandatory": [
+                      "fn",
+                      "option"
+                    ],
+                    "optional": [
+                      "any"
+                    ]
+                  },
+                  "key_code": "1"
+                },
+                "to": {
+                  "modifiers": [
+                    "command",
+                    "option"
+                  ],
+                  "key_code": "1"
+                },
+                "conditions": [
+                  {
+                    "type": "device_if",
+                    "identifiers": [
+                      {
+                        "is_built_in_keyboard": true
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "basic",
+                "from": {
+                  "modifiers": {
+                    "mandatory": [
+                      "fn",
+                      "option"
+                    ],
+                    "optional": [
+                      "any"
+                    ]
+                  },
+                  "key_code": "2"
+                },
+                "to": {
+                  "modifiers": [
+                    "command",
+                    "option"
+                  ],
+                  "key_code": "2"
+                },
+                "conditions": [
+                  {
+                    "type": "device_if",
+                    "identifiers": [
+                      {
+                        "is_built_in_keyboard": true
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "basic",
+                "from": {
+                  "modifiers": {
+                    "mandatory": [
+                      "fn",
+                      "option"
+                    ],
+                    "optional": [
+                      "any"
+                    ]
+                  },
+                  "key_code": "3"
+                },
+                "to": {
+                  "modifiers": [
+                    "command",
+                    "option"
+                  ],
+                  "key_code": "3"
+                },
+                "conditions": [
+                  {
+                    "type": "device_if",
+                    "identifiers": [
+                      {
+                        "is_built_in_keyboard": true
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "basic",
+                "from": {
+                  "modifiers": {
+                    "mandatory": [
+                      "fn",
+                      "option"
+                    ],
+                    "optional": [
+                      "any"
+                    ]
+                  },
+                  "key_code": "4"
+                },
+                "to": {
+                  "modifiers": [
+                    "command",
+                    "option"
+                  ],
+                  "key_code": "4"
+                },
+                "conditions": [
+                  {
+                    "type": "device_if",
+                    "identifiers": [
+                      {
+                        "is_built_in_keyboard": true
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "basic",
+                "from": {
+                  "modifiers": {
+                    "mandatory": [
+                      "fn",
+                      "option"
+                    ],
+                    "optional": [
+                      "any"
+                    ]
+                  },
+                  "key_code": "5"
+                },
+                "to": {
+                  "modifiers": [
+                    "command",
+                    "option"
+                  ],
+                  "key_code": "5"
+                },
+                "conditions": [
+                  {
+                    "type": "device_if",
+                    "identifiers": [
+                      {
+                        "is_built_in_keyboard": true
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "basic",
+                "from": {
+                  "modifiers": {
+                    "mandatory": [
+                      "fn",
+                      "option"
+                    ],
+                    "optional": [
+                      "any"
+                    ]
+                  },
+                  "key_code": "6"
+                },
+                "to": {
+                  "modifiers": [
+                    "command",
+                    "option"
+                  ],
+                  "key_code": "6"
+                },
+                "conditions": [
+                  {
+                    "type": "device_if",
+                    "identifiers": [
+                      {
+                        "is_built_in_keyboard": true
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "basic",
+                "from": {
+                  "modifiers": {
+                    "mandatory": [
+                      "fn",
+                      "option"
+                    ],
+                    "optional": [
+                      "any"
+                    ]
+                  },
+                  "key_code": "7"
+                },
+                "to": {
+                  "modifiers": [
+                    "command",
+                    "option"
+                  ],
+                  "key_code": "7"
+                },
+                "conditions": [
+                  {
+                    "type": "device_if",
+                    "identifiers": [
+                      {
+                        "is_built_in_keyboard": true
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "basic",
+                "from": {
+                  "modifiers": {
+                    "mandatory": [
+                      "fn",
+                      "option"
+                    ],
+                    "optional": [
+                      "any"
+                    ]
+                  },
+                  "key_code": "8"
+                },
+                "to": {
+                  "modifiers": [
+                    "command",
+                    "option"
+                  ],
+                  "key_code": "8"
+                },
+                "conditions": [
+                  {
+                    "type": "device_if",
+                    "identifiers": [
+                      {
+                        "is_built_in_keyboard": true
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "basic",
+                "from": {
+                  "modifiers": {
+                    "mandatory": [
+                      "fn",
+                      "option"
+                    ],
+                    "optional": [
+                      "any"
+                    ]
+                  },
+                  "key_code": "9"
+                },
+                "to": {
+                  "modifiers": [
+                    "command",
+                    "option"
+                  ],
+                  "key_code": "9"
+                },
+                "conditions": [
+                  {
+                    "type": "device_if",
+                    "identifiers": [
+                      {
+                        "is_built_in_keyboard": true
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "basic",
+                "from": {
+                  "modifiers": {
+                    "mandatory": [
+                      "fn",
+                      "option"
+                    ],
+                    "optional": [
+                      "any"
+                    ]
+                  },
+                  "key_code": "grave_accent_and_tilde"
+                },
+                "to": {
+                  "modifiers": [
+                    "command",
+                    "option"
+                  ],
+                  "key_code": "grave_accent_and_tilde"
+                },
+                "conditions": [
+                  {
+                    "type": "device_if",
+                    "identifiers": [
+                      {
+                        "is_built_in_keyboard": true
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "basic",
+                "from": {
+                  "modifiers": {
+                    "mandatory": [
+                      "fn",
+                      "option"
+                    ],
+                    "optional": [
+                      "any"
+                    ]
+                  },
+                  "key_code": "hyphen"
+                },
+                "to": {
+                  "modifiers": [
+                    "command",
+                    "option"
+                  ],
+                  "key_code": "hyphen"
+                },
+                "conditions": [
+                  {
+                    "type": "device_if",
+                    "identifiers": [
+                      {
+                        "is_built_in_keyboard": true
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "basic",
+                "from": {
+                  "modifiers": {
+                    "mandatory": [
+                      "fn",
+                      "option"
+                    ],
+                    "optional": [
+                      "any"
+                    ]
+                  },
+                  "key_code": "equal_sign"
+                },
+                "to": {
+                  "modifiers": [
+                    "command",
+                    "option"
+                  ],
+                  "key_code": "equal_sign"
+                },
+                "conditions": [
+                  {
+                    "type": "device_if",
+                    "identifiers": [
+                      {
+                        "is_built_in_keyboard": true
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "basic",
+                "from": {
+                  "modifiers": {
+                    "mandatory": [
+                      "fn",
+                      "option"
+                    ],
+                    "optional": [
+                      "any"
+                    ]
+                  },
+                  "key_code": "open_bracket"
+                },
+                "to": {
+                  "modifiers": [
+                    "command",
+                    "option"
+                  ],
+                  "key_code": "open_bracket"
+                },
+                "conditions": [
+                  {
+                    "type": "device_if",
+                    "identifiers": [
+                      {
+                        "is_built_in_keyboard": true
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "basic",
+                "from": {
+                  "modifiers": {
+                    "mandatory": [
+                      "fn",
+                      "option"
+                    ],
+                    "optional": [
+                      "any"
+                    ]
+                  },
+                  "key_code": "close_bracket"
+                },
+                "to": {
+                  "modifiers": [
+                    "command",
+                    "option"
+                  ],
+                  "key_code": "close_bracket"
+                },
+                "conditions": [
+                  {
+                    "type": "device_if",
+                    "identifiers": [
+                      {
+                        "is_built_in_keyboard": true
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "basic",
+                "from": {
+                  "modifiers": {
+                    "mandatory": [
+                      "fn",
+                      "option"
+                    ],
+                    "optional": [
+                      "any"
+                    ]
+                  },
+                  "key_code": "backslash"
+                },
+                "to": {
+                  "modifiers": [
+                    "command",
+                    "option"
+                  ],
+                  "key_code": "backslash"
+                },
+                "conditions": [
+                  {
+                    "type": "device_if",
+                    "identifiers": [
+                      {
+                        "is_built_in_keyboard": true
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "basic",
+                "from": {
+                  "modifiers": {
+                    "mandatory": [
+                      "fn",
+                      "option"
+                    ],
+                    "optional": [
+                      "any"
+                    ]
+                  },
+                  "key_code": "semicolon"
+                },
+                "to": {
+                  "modifiers": [
+                    "command",
+                    "option"
+                  ],
+                  "key_code": "semicolon"
+                },
+                "conditions": [
+                  {
+                    "type": "device_if",
+                    "identifiers": [
+                      {
+                        "is_built_in_keyboard": true
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "basic",
+                "from": {
+                  "modifiers": {
+                    "mandatory": [
+                      "fn",
+                      "option"
+                    ],
+                    "optional": [
+                      "any"
+                    ]
+                  },
+                  "key_code": "quote"
+                },
+                "to": {
+                  "modifiers": [
+                    "command",
+                    "option"
+                  ],
+                  "key_code": "quote"
+                },
+                "conditions": [
+                  {
+                    "type": "device_if",
+                    "identifiers": [
+                      {
+                        "is_built_in_keyboard": true
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "basic",
+                "from": {
+                  "modifiers": {
+                    "mandatory": [
+                      "fn",
+                      "option"
+                    ],
+                    "optional": [
+                      "any"
+                    ]
+                  },
+                  "key_code": "comma"
+                },
+                "to": {
+                  "modifiers": [
+                    "command",
+                    "option"
+                  ],
+                  "key_code": "comma"
+                },
+                "conditions": [
+                  {
+                    "type": "device_if",
+                    "identifiers": [
+                      {
+                        "is_built_in_keyboard": true
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "basic",
+                "from": {
+                  "modifiers": {
+                    "mandatory": [
+                      "fn",
+                      "option"
+                    ],
+                    "optional": [
+                      "any"
+                    ]
+                  },
+                  "key_code": "period"
+                },
+                "to": {
+                  "modifiers": [
+                    "command",
+                    "option"
+                  ],
+                  "key_code": "period"
+                },
+                "conditions": [
+                  {
+                    "type": "device_if",
+                    "identifiers": [
+                      {
+                        "is_built_in_keyboard": true
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "basic",
+                "from": {
+                  "modifiers": {
+                    "mandatory": [
+                      "fn",
+                      "option"
+                    ],
+                    "optional": [
+                      "any"
+                    ]
+                  },
+                  "key_code": "slash"
+                },
+                "to": {
+                  "modifiers": [
+                    "command",
+                    "option"
+                  ],
+                  "key_code": "slash"
+                },
+                "conditions": [
+                  {
+                    "type": "device_if",
+                    "identifiers": [
+                      {
+                        "is_built_in_keyboard": true
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
             "description": "[GX] Chrome: Force Keymaps",
             "manipulators": [
               {
