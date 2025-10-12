@@ -37,6 +37,16 @@ alias rscopy="rsync -av --progress"
 alias mnt='sudo mount -o umask=0022,gid="$GID",uid="$UID"' # mount with user previliges
 alias bat='bat --theme=gruvbox-dark --style=header'
 alias feh="feh --scale-down --auto-zoom --draw-filename --action9 \";feh --bg-scale '%f'\""
+py() {
+  if command -v python >/dev/null 2>&1; then
+    python "$@"
+  elif command -v python3 >/dev/null 2>&1; then
+    python3 "$@"
+  else
+    echo "❌ Neither 'python' nor 'python3' is available in PATH." >&2
+    return 1
+  fi
+}
 
 # Non essentials, but cool
 alias tree="erd --human --icons --sort=name --dir-order=last --layout=inverted --suppress-size"
