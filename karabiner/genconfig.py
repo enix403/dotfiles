@@ -15,7 +15,7 @@ galaxy65 = KeyboardDevice.external(
     name="GX",
     idens=[
         (10473, 12645), # Wired mode
-        (10473, 8192),  # Bluetooth 1 mode
+        (10473, 8192),  # Bluetooth mode
     ]
 )
 
