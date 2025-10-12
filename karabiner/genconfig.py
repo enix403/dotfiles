@@ -35,6 +35,15 @@ finder = ["com.apple.finder"]
 
 # ========== Built in keyboard ==========
 
+
+mappings(
+    devices=[builtin],
+    desc="Chrome: Force Keymaps",
+    maps=[
+        "fn+shift+i == cmd+opt+i",
+    ]
+)
+
 mappings(
     devices=[builtin],
     apps=terminals,
@@ -107,6 +116,16 @@ mappings(
     maps=[
         "fn+shift+c == cmd+c",
         "fn+shift+v == cmd+v",
+    ]
+)
+
+mappings(
+    devices=[builtin],
+    desc="(Deprecate) Global: Cursor Movement By Word",
+    maps=[
+        "fn+delete == opt+delete",
+        "fn+left_arrow == opt+left_arrow",
+        "fn+right_arrow == opt+right_arrow",
     ]
 )
 
@@ -241,6 +260,14 @@ mappings(
 
 mappings(
     devices=[galaxy65],
+    desc="Chrome: Force Keymaps",
+    maps=[
+        "cmd+shift+i == cmd+opt+i",
+    ]
+)
+
+mappings(
+    devices=[galaxy65],
     apps=terminals,
     desc="Terminal: <fn> to <ctrl>",
     maps=[
@@ -305,6 +332,16 @@ mappings(
     maps=[
         "cmd+shift+c == cmd+c",
         "cmd+shift+v == cmd+v",
+    ]
+)
+
+mappings(
+    devices=[galaxy65],
+    desc="(Deprecate) Global: Cursor Movement By Word",
+    maps=[
+        "cmd+delete == opt+delete",
+        "cmd+left_arrow == opt+left_arrow",
+        "cmd+right_arrow == opt+right_arrow",
     ]
 )
 

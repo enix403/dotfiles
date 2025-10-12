@@ -29,6 +29,43 @@
       "complex_modifications": {
         "rules": [
           {
+            "description": "[BL] Chrome: Force Keymaps",
+            "manipulators": [
+              {
+                "type": "basic",
+                "from": {
+                  "modifiers": {
+                    "mandatory": [
+                      "fn",
+                      "shift"
+                    ],
+                    "optional": [
+                      "any"
+                    ]
+                  },
+                  "key_code": "i"
+                },
+                "to": {
+                  "modifiers": [
+                    "command",
+                    "option"
+                  ],
+                  "key_code": "i"
+                },
+                "conditions": [
+                  {
+                    "type": "device_if",
+                    "identifiers": [
+                      {
+                        "is_built_in_keyboard": true
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
             "description": "[BL] Terminal: <fn> to <ctrl>",
             "manipulators": [
               {
@@ -1989,6 +2026,101 @@
                       "^com\\.apple\\.Terminal$"
                     ]
                   },
+                  {
+                    "type": "device_if",
+                    "identifiers": [
+                      {
+                        "is_built_in_keyboard": true
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "description": "[BL] (Deprecate) Global: Cursor Movement By Word",
+            "manipulators": [
+              {
+                "type": "basic",
+                "from": {
+                  "modifiers": {
+                    "mandatory": [
+                      "fn"
+                    ],
+                    "optional": [
+                      "any"
+                    ]
+                  },
+                  "key_code": "delete_or_backspace"
+                },
+                "to": {
+                  "modifiers": [
+                    "option"
+                  ],
+                  "key_code": "delete_or_backspace"
+                },
+                "conditions": [
+                  {
+                    "type": "device_if",
+                    "identifiers": [
+                      {
+                        "is_built_in_keyboard": true
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "basic",
+                "from": {
+                  "modifiers": {
+                    "mandatory": [
+                      "fn"
+                    ],
+                    "optional": [
+                      "any"
+                    ]
+                  },
+                  "key_code": "left_arrow"
+                },
+                "to": {
+                  "modifiers": [
+                    "option"
+                  ],
+                  "key_code": "left_arrow"
+                },
+                "conditions": [
+                  {
+                    "type": "device_if",
+                    "identifiers": [
+                      {
+                        "is_built_in_keyboard": true
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "basic",
+                "from": {
+                  "modifiers": {
+                    "mandatory": [
+                      "fn"
+                    ],
+                    "optional": [
+                      "any"
+                    ]
+                  },
+                  "key_code": "right_arrow"
+                },
+                "to": {
+                  "modifiers": [
+                    "option"
+                  ],
+                  "key_code": "right_arrow"
+                },
+                "conditions": [
                   {
                     "type": "device_if",
                     "identifiers": [
@@ -5334,6 +5466,48 @@
             ]
           },
           {
+            "description": "[GX] Chrome: Force Keymaps",
+            "manipulators": [
+              {
+                "type": "basic",
+                "from": {
+                  "modifiers": {
+                    "mandatory": [
+                      "command",
+                      "shift"
+                    ],
+                    "optional": [
+                      "any"
+                    ]
+                  },
+                  "key_code": "i"
+                },
+                "to": {
+                  "modifiers": [
+                    "command",
+                    "option"
+                  ],
+                  "key_code": "i"
+                },
+                "conditions": [
+                  {
+                    "type": "device_if",
+                    "identifiers": [
+                      {
+                        "vendor_id": 10473,
+                        "product_id": 12645
+                      },
+                      {
+                        "vendor_id": 10473,
+                        "product_id": 8192
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
             "description": "[GX] Terminal: <fn> to <ctrl>",
             "manipulators": [
               {
@@ -7554,6 +7728,116 @@
                       "^com\\.apple\\.Terminal$"
                     ]
                   },
+                  {
+                    "type": "device_if",
+                    "identifiers": [
+                      {
+                        "vendor_id": 10473,
+                        "product_id": 12645
+                      },
+                      {
+                        "vendor_id": 10473,
+                        "product_id": 8192
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "description": "[GX] (Deprecate) Global: Cursor Movement By Word",
+            "manipulators": [
+              {
+                "type": "basic",
+                "from": {
+                  "modifiers": {
+                    "mandatory": [
+                      "command"
+                    ],
+                    "optional": [
+                      "any"
+                    ]
+                  },
+                  "key_code": "delete_or_backspace"
+                },
+                "to": {
+                  "modifiers": [
+                    "option"
+                  ],
+                  "key_code": "delete_or_backspace"
+                },
+                "conditions": [
+                  {
+                    "type": "device_if",
+                    "identifiers": [
+                      {
+                        "vendor_id": 10473,
+                        "product_id": 12645
+                      },
+                      {
+                        "vendor_id": 10473,
+                        "product_id": 8192
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "basic",
+                "from": {
+                  "modifiers": {
+                    "mandatory": [
+                      "command"
+                    ],
+                    "optional": [
+                      "any"
+                    ]
+                  },
+                  "key_code": "left_arrow"
+                },
+                "to": {
+                  "modifiers": [
+                    "option"
+                  ],
+                  "key_code": "left_arrow"
+                },
+                "conditions": [
+                  {
+                    "type": "device_if",
+                    "identifiers": [
+                      {
+                        "vendor_id": 10473,
+                        "product_id": 12645
+                      },
+                      {
+                        "vendor_id": 10473,
+                        "product_id": 8192
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "basic",
+                "from": {
+                  "modifiers": {
+                    "mandatory": [
+                      "command"
+                    ],
+                    "optional": [
+                      "any"
+                    ]
+                  },
+                  "key_code": "right_arrow"
+                },
+                "to": {
+                  "modifiers": [
+                    "option"
+                  ],
+                  "key_code": "right_arrow"
+                },
+                "conditions": [
                   {
                     "type": "device_if",
                     "identifiers": [
