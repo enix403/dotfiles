@@ -2,13 +2,15 @@ from dataclasses import dataclass
 
 @dataclass
 class KeyboardDevice:
+    name: str
     is_built_in: bool
     vendor_id: int
     product_id: int
 
     @classmethod
-    def built_in(cls):
+    def built_in(cls, name):
         return cls(
+            name=name,
             is_built_in=True,
             vendor_id=-1,
             product_id=-1,
@@ -16,8 +18,9 @@ class KeyboardDevice:
 
 
     @classmethod
-    def external(cls, vendor_id, product_id):
+    def external(cls, name, vendor_id, product_id):
         return cls(
+            name=name,
             is_built_in=False,
             vendor_id=vendor_id,
             product_id=product_id,
@@ -121,13 +124,24 @@ def build_devices_conditions(devices: list[KeyboardDevice]):
 
 complex_modifications_rules = []
 
-def parse(
+def mappings(
     devices: list[KeyboardDevice] = [],
     desc: str = "",
     apps: list[str] = [],
     maps: list[str] = []
 ):
     manipulators = []
+
+    conds = []
+    if apps:
+        conds.append(build_apps_conditions(apps))
+
+    if devices:
+        conds.append(build_devices_conditions(devices))
+
+        label = ','.join([d.name for d in devices])
+        prefix = f"[{label}] "
+        desc = prefix + desc
 
     for rule in maps:
         from_, to_ = parse_rule(rule)
@@ -136,14 +150,6 @@ def parse(
             "from": from_,
             "to": to_,
         }
-
-        conds = []
-
-        if apps:
-            conds.append(build_apps_conditions(apps))
-
-        if devices:
-            conds.append(build_devices_conditions(devices))
 
         if conds:
             manipulator["conditions"] = conds

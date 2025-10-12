@@ -4,19 +4,40 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
 import json
 from pathlib import Path
-from genlib import parse, KeyboardDevice, build_karabiner_config
+from genlib import mappings, KeyboardDevice, build_karabiner_config
 
-builtin = KeyboardDevice.built_in()
+# =====================================
+# ============= Keyboards =============
+# =====================================
+
+builtin = KeyboardDevice.built_in(name="BL")
 galaxy65 = KeyboardDevice.external(
+    name="GX",
     vendor_id=10473,
     product_id=12645
 )
 
-parse(
+# ====================================
+# =========== Applications ===========
+# ====================================
+
+chrome = ["com.google.Chrome"]
+terminals = ["net.kovidgoyal.kitty", "com.apple.Terminal"]
+finder = ["com.apple.finder"]
+
+# ====================================
+# ============= Keymaps ==============
+# ====================================
+
+mappings(
     devices=[galaxy65],
-    desc="Terminal: <fn> to <ctrl>",
-    apps=["com.google.Chrome"],
+    desc="Global: <fn> to <cmd> (because macos cmd = app's ctrl)",
     maps=[
+        "fn+space == ctrl+space",
+        "fn+enter == ctrl+enter",
+        "fn+tab == ctrl+tab",
+        "fn+escape == ctrl+escape",
+
         "fn+a == ctrl+a",
         "fn+b == ctrl+b",
         "fn+c == ctrl+c",
@@ -69,13 +90,12 @@ parse(
         "fn+, == ctrl+,",
         "fn+. == ctrl+.",
         "fn+/ == ctrl+/",
-
-        "fn+space == ctrl+space",
-        "fn+enter == ctrl+enter",
-        "fn+tab == ctrl+tab",
-        "fn+escape == ctrl+escape",
     ]
 )
+
+# ====================================
+# ============= Generate =============
+# ====================================
 
 output_path = Path(__file__).parent / "karabiner2.json"
 with output_path.open("w") as f:
@@ -98,6 +118,6 @@ with output_path.open("w") as f:
         }
     })
 
-    json.dump(config, f)
+    json.dump(config, f, indent=2)
 
 print(f"Output written to: {output_path}")
