@@ -1,10 +1,47 @@
 import json
+from dataclasses import dataclass
 
+@dataclass
 class KeyboardDevice:
-    pass
+    is_built_in: bool
+    vendor_id: int
+    product_id: int
 
-builtin = KeyboardDevice()
-galaxy65 = KeyboardDevice()
+    @classmethod
+    def built_in(cls):
+        return cls(
+            is_built_in=True,
+            vendor_id=-1,
+            product_id=-1,
+        )
+
+
+    @classmethod
+    def external(cls, vendor_id, product_id):
+        return cls(
+            is_built_in=False,
+            vendor_id=vendor_id,
+            product_id=product_id,
+        )
+
+    def build_condition(self):
+        if self.is_built_in:
+            return {
+                "is_built_in_keyboard": True
+            }
+
+        else:
+            return {
+                "product_id": self.product_id,
+                "vendor_id": self.vendor_id
+            }
+
+
+builtin = KeyboardDevice.built_in()
+galaxy65 = KeyboardDevice.external(
+    vendor_id=10473,
+    product_id=12645
+)
 
 local_to_karabiner_map = {
     "cmd": "command",
@@ -71,6 +108,24 @@ def parse_rule(rule: str):
 
     return from_, to_
 
+def build_apps_conditions(app_bundles: list[str]):
+    return {
+        "type": "frontmost_application_if",
+        "bundle_identifiers": [
+            "^" + b.replace(".", "\\.") + "$"
+            for b in app_bundles
+        ]
+    }
+
+def build_devices_conditions(devices: list[KeyboardDevice]):
+    return {
+        "type": "device_if",
+        "identifiers": [
+            device.build_condition()
+            for device in devices
+        ]
+    }
+
 def parse(
     devices: list[KeyboardDevice] = [],
     desc: str = "",
@@ -87,6 +142,17 @@ def parse(
             "to": to_,
         }
 
+        conds = []
+
+        if apps:
+            conds.append(build_apps_conditions(apps))
+
+        if devices:
+            conds.append(build_devices_conditions(devices))
+
+        if conds:
+            manipulator["conditions"] = conds
+
         manipulators.append(manipulator)
 
     res = {
@@ -98,7 +164,7 @@ def parse(
 
 
 parse(
-    devices=[builtin],
+    devices=[galaxy65],
     desc="Terminal: <fn> to <ctrl>",
     apps=["com.google.Chrome"],
     maps=[
