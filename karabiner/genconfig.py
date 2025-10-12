@@ -29,6 +29,8 @@ finder = ["com.apple.finder"]
 # ============= Keymaps ==============
 # ====================================
 
+# ========== Built in keyboard ==========
+
 mappings(
     devices=[builtin],
     desc="Terminal: <fn> to <ctrl>",
@@ -229,6 +231,74 @@ mappings(
     ]
 )
 
+# ========== Galaxy 65 keyboard ==========
+
+mappings(
+    devices=[galaxy65],
+    desc="Terminal: <fn> to <ctrl>",
+    maps=[
+        "cmd+space == ctrl+space",
+        "cmd+enter == ctrl+enter",
+        "cmd+tab == ctrl+tab",
+        "cmd+escape == ctrl+escape",
+        "cmd+a == ctrl+a",
+        "cmd+b == ctrl+b",
+        "cmd+c == ctrl+c",
+        "cmd+d == ctrl+d",
+        "cmd+e == ctrl+e",
+        "cmd+f == ctrl+f",
+        "cmd+g == ctrl+g",
+        "cmd+h == ctrl+h",
+        "cmd+i == ctrl+i",
+        "cmd+j == ctrl+j",
+        "cmd+k == ctrl+k",
+        "cmd+l == ctrl+l",
+        "cmd+m == ctrl+m",
+        "cmd+n == ctrl+n",
+        "cmd+o == ctrl+o",
+        "cmd+p == ctrl+p",
+        "cmd+q == ctrl+q",
+        "cmd+r == ctrl+r",
+        "cmd+s == ctrl+s",
+        "cmd+t == ctrl+t",
+        "cmd+u == ctrl+u",
+        "cmd+v == ctrl+v",
+        "cmd+w == ctrl+w",
+        "cmd+x == ctrl+x",
+        "cmd+y == ctrl+y",
+        "cmd+z == ctrl+z",
+        "cmd+0 == ctrl+0",
+        "cmd+1 == ctrl+1",
+        "cmd+2 == ctrl+2",
+        "cmd+3 == ctrl+3",
+        "cmd+4 == ctrl+4",
+        "cmd+5 == ctrl+5",
+        "cmd+6 == ctrl+6",
+        "cmd+7 == ctrl+7",
+        "cmd+8 == ctrl+8",
+        "cmd+9 == ctrl+9",
+        "cmd+` == ctrl+`",
+        "cmd+- == ctrl+-",
+        "cmd+= == ctrl+=",
+        "cmd+[ == ctrl+[",
+        "cmd+] == ctrl+]",
+        "cmd+\\ == ctrl+\\",
+        "cmd+; == ctrl+;",
+        "cmd+' == ctrl+'",
+        "cmd+, == ctrl+,",
+        "cmd+. == ctrl+.",
+        "cmd+/ == ctrl+/",
+    ]
+)
+
+mappings(
+    devices=[galaxy65],
+    desc="Terminal: Special Copy and Paste actions",
+    maps=[
+        "cmd+shift+c == cmd+c",
+        "cmd+shift+v == cmd+v",
+    ]
+)
 
 # ====================================
 # ============= Generate =============
