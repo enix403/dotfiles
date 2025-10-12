@@ -4,39 +4,44 @@ from dataclasses import dataclass
 class KeyboardDevice:
     name: str
     is_built_in: bool
-    vendor_id: int
-    product_id: int
+    # vendor_id: int
+    # product_id: int
+    # list of (vendor_id, product_id)
+    idens: list[tuple[int, int]]
 
     @classmethod
     def built_in(cls, name):
         return cls(
             name=name,
             is_built_in=True,
-            vendor_id=-1,
-            product_id=-1,
+            # vendor_id=-1,
+            # product_id=-1,
+            idens=[]
         )
 
 
     @classmethod
-    def external(cls, name, vendor_id, product_id):
+    def external(cls, name, idens):
         return cls(
             name=name,
             is_built_in=False,
-            vendor_id=vendor_id,
-            product_id=product_id,
+            # vendor_id=vendor_id,
+            # product_id=product_id,
+            idens=idens
         )
 
-    def build_condition(self):
+    def build_conditions(self):
         if self.is_built_in:
-            return {
-                "is_built_in_keyboard": True
-            }
+            return [{ "is_built_in_keyboard": True }]
 
         else:
-            return {
-                "product_id": self.product_id,
-                "vendor_id": self.vendor_id
-            }
+            return [
+                {
+                    "vendor_id": vendor_id,
+                    "product_id": product_id,
+                }
+                for (vendor_id, product_id) in self.idens
+            ]
 
 
 local_to_karabiner_map = {
@@ -117,8 +122,9 @@ def build_devices_conditions(devices: list[KeyboardDevice]):
     return {
         "type": "device_if",
         "identifiers": [
-            device.build_condition()
+            ident_condition
             for device in devices
+            for ident_condition in device.build_conditions()
         ]
     }
 

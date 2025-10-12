@@ -13,9 +13,13 @@ from genlib import mappings, KeyboardDevice, build_karabiner_config
 builtin = KeyboardDevice.built_in(name="BL")
 galaxy65 = KeyboardDevice.external(
     name="GX",
-    vendor_id=10473,
-    product_id=12645
+    idens=[
+        (10473, 12645), # Wired mode
+        (10473, 8192),  # Bluetooth 1 mode
+    ]
 )
+
+all_devices = [builtin, galaxy65]
 
 # ====================================
 # =========== Applications ===========
@@ -315,14 +319,16 @@ with output_path.open("w") as f:
         "selected": True,
         "devices": [
             {
+                "ignore": False,
                 "identifiers": {
                     "is_keyboard": True,
                     "is_pointing_device": True,
-                    "product_id": galaxy65.product_id,
-                    "vendor_id": galaxy65.vendor_id
-                },
-                "ignore": False
+                    "vendor_id": vendor_id,
+                    "product_id": product_id,
+                }
             }
+            for device in all_devices
+            for (vendor_id, product_id) in device.idens
         ],
         "virtual_hid_keyboard": {
             "keyboard_type_v2": "ansi"
