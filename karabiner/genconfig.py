@@ -30,7 +30,80 @@ finder = ["com.apple.finder"]
 # ====================================
 
 mappings(
-    devices=[galaxy65],
+    devices=[builtin],
+    desc="Terminal: <fn> to <ctrl>",
+    maps=[
+        "fn+space == ctrl+space",
+        "fn+enter == ctrl+enter",
+        "fn+tab == ctrl+tab",
+        "fn+escape == ctrl+escape",
+
+        "fn+a == ctrl+a",
+        "fn+b == ctrl+b",
+        "fn+c == ctrl+c",
+        "fn+d == ctrl+d",
+        "fn+e == ctrl+e",
+        "fn+f == ctrl+f",
+        "fn+g == ctrl+g",
+        "fn+h == ctrl+h",
+        "fn+i == ctrl+i",
+        "fn+j == ctrl+j",
+        "fn+k == ctrl+k",
+        "fn+l == ctrl+l",
+        "fn+m == ctrl+m",
+        "fn+n == ctrl+n",
+        "fn+o == ctrl+o",
+        "fn+p == ctrl+p",
+        "fn+q == ctrl+q",
+        "fn+r == ctrl+r",
+        "fn+s == ctrl+s",
+        "fn+t == ctrl+t",
+        "fn+u == ctrl+u",
+        "fn+v == ctrl+v",
+        "fn+w == ctrl+w",
+        "fn+x == ctrl+x",
+        "fn+y == ctrl+y",
+        "fn+z == ctrl+z",
+
+        "fn+0 == ctrl+0",
+        "fn+1 == ctrl+1",
+        "fn+2 == ctrl+2",
+        "fn+3 == ctrl+3",
+        "fn+4 == ctrl+4",
+        "fn+5 == ctrl+5",
+        "fn+6 == ctrl+6",
+        "fn+7 == ctrl+7",
+        "fn+8 == ctrl+8",
+        "fn+9 == ctrl+9",
+
+        "fn+` == ctrl+`",
+        "fn+- == ctrl+-",
+        "fn+= == ctrl+=",
+
+        "fn+[ == ctrl+[",
+        "fn+] == ctrl+]",
+        "fn+\\ == ctrl+\\",
+
+        "fn+; == ctrl+;",
+        "fn+' == ctrl+'",
+
+        "fn+, == ctrl+,",
+        "fn+. == ctrl+.",
+        "fn+/ == ctrl+/",
+    ]
+)
+
+mappings(
+    devices=[builtin],
+    desc="Terminal: Special Copy and Paste actions",
+    maps=[
+        "fn+shift+c == cmd+c",
+        "fn+shift+v == cmd+v",
+    ]
+)
+
+mappings(
+    devices=[builtin],
     desc="Global: <fn> to <cmd> (because macos cmd = app's ctrl)",
     maps=[
         "fn+space == ctrl+space",
@@ -92,6 +165,70 @@ mappings(
         "fn+/ == ctrl+/",
     ]
 )
+
+mappings(
+    devices=[builtin],
+    desc="Global: <fn> + <shift> to <cmd> + <shift> (because macos cmd = app's ctrl)",
+    maps=[
+        "fn+shift+left_arrow == cmd+shift+left_arrow",
+        "fn+shift+up_arrow == cmd+shift+up_arrow",
+        "fn+shift+right_arrow == cmd+shift+right_arrow",
+        "fn+shift+down_arrow == cmd+shift+down_arrow",
+        "fn+shift+delete == cmd+shift+delete",
+        "fn+shift+space == cmd+shift+space",
+        "fn+shift+enter == cmd+shift+enter",
+        "fn+shift+tab == cmd+shift+tab",
+        "fn+shift+escape == cmd+shift+escape",
+        "fn+shift+a == cmd+shift+a",
+        "fn+shift+b == cmd+shift+b",
+        "fn+shift+c == cmd+shift+c",
+        "fn+shift+d == cmd+shift+d",
+        "fn+shift+e == cmd+shift+e",
+        "fn+shift+f == cmd+shift+f",
+        "fn+shift+g == cmd+shift+g",
+        "fn+shift+h == cmd+shift+h",
+        "fn+shift+i == cmd+shift+i",
+        "fn+shift+j == cmd+shift+j",
+        "fn+shift+k == cmd+shift+k",
+        "fn+shift+l == cmd+shift+l",
+        "fn+shift+m == cmd+shift+m",
+        "fn+shift+n == cmd+shift+n",
+        "fn+shift+o == cmd+shift+o",
+        "fn+shift+p == cmd+shift+p",
+        "fn+shift+q == cmd+shift+q",
+        "fn+shift+r == cmd+shift+r",
+        "fn+shift+s == cmd+shift+s",
+        "fn+shift+t == cmd+shift+t",
+        "fn+shift+u == cmd+shift+u",
+        "fn+shift+v == cmd+shift+v",
+        "fn+shift+w == cmd+shift+w",
+        "fn+shift+x == cmd+shift+x",
+        "fn+shift+y == cmd+shift+y",
+        "fn+shift+z == cmd+shift+z",
+        "fn+shift+0 == cmd+shift+0",
+        "fn+shift+1 == cmd+shift+1",
+        "fn+shift+2 == cmd+shift+2",
+        "fn+shift+3 == cmd+shift+3",
+        "fn+shift+4 == cmd+shift+4",
+        "fn+shift+5 == cmd+shift+5",
+        "fn+shift+6 == cmd+shift+6",
+        "fn+shift+7 == cmd+shift+7",
+        "fn+shift+8 == cmd+shift+8",
+        "fn+shift+9 == cmd+shift+9",
+        "fn+shift+` == cmd+shift+`",
+        "fn+shift+- == cmd+shift+-",
+        "fn+shift+= == cmd+shift+=",
+        "fn+shift+[ == cmd+shift+[",
+        "fn+shift+] == cmd+shift+]",
+        "fn+shift+\\ == cmd+shift+\\",
+        "fn+shift+; == cmd+shift+;",
+        "fn+shift+' == cmd+shift+'",
+        "fn+shift+, == cmd+shift+,",
+        "fn+shift+. == cmd+shift+.",
+        "fn+shift+/ == cmd+shift+/",
+    ]
+)
+
 
 # ====================================
 # ============= Generate =============

@@ -66,10 +66,10 @@ local_to_karabiner_map = {
     "escape": "escape",
 
     "delete": "delete_or_backspace",
-    "down": "down_arrow",
-    "up": "up_arrow",
-    "left": "left_arrow",
-    "right": "right_arrow",
+    "down_arrow": "down_arrow",
+    "up_arrow": "up_arrow",
+    "left_arrow": "left_arrow",
+    "right_arrow": "right_arrow",
 }
 
 def norm(key: str) -> str:
