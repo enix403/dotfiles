@@ -25,9 +25,9 @@ all_devices = [builtin, galaxy65]
 # =========== Applications ===========
 # ====================================
 
-chrome = ["com.google.Chrome"]
+chrome = "com.google.Chrome"
 terminals = ["net.kovidgoyal.kitty", "com.apple.Terminal"]
-finder = ["com.apple.finder"]
+# finder = "com.apple.finder"
 
 # ====================================
 # ============= Keymaps ==============
@@ -38,6 +38,7 @@ finder = ["com.apple.finder"]
 
 mappings(
     devices=[builtin],
+    apps=[chrome],
     desc="Chrome: Force Keymaps",
     maps=[
         "fn+shift+i == cmd+opt+i",
@@ -323,6 +324,7 @@ mappings(
 
 mappings(
     devices=[galaxy65],
+    apps=[chrome],
     desc="Chrome: Force Keymaps",
     maps=[
         "cmd+shift+i == cmd+opt+i",

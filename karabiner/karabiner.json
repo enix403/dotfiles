@@ -54,6 +54,12 @@
                 },
                 "conditions": [
                   {
+                    "type": "frontmost_application_if",
+                    "bundle_identifiers": [
+                      "^com\\.google\\.Chrome$"
+                    ]
+                  },
+                  {
                     "type": "device_if",
                     "identifiers": [
                       {
@@ -7287,6 +7293,12 @@
                   "key_code": "i"
                 },
                 "conditions": [
+                  {
+                    "type": "frontmost_application_if",
+                    "bundle_identifiers": [
+                      "^com\\.google\\.Chrome$"
+                    ]
+                  },
                   {
                     "type": "device_if",
                     "identifiers": [

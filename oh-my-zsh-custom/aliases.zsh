@@ -37,6 +37,8 @@ alias rscopy="rsync -av --progress"
 alias mnt='sudo mount -o umask=0022,gid="$GID",uid="$UID"' # mount with user previliges
 alias bat='bat --theme=gruvbox-dark --style=header'
 alias feh="feh --scale-down --auto-zoom --draw-filename --action9 \";feh --bg-scale '%f'\""
+alias fdf="fd -t f"
+alias fdd="fd -t d"
 py() {
   if command -v python >/dev/null 2>&1; then
     python "$@"
