@@ -9,6 +9,7 @@
 	sw = switch
   ss = stash
   df = diff
+  mr = merge
   lg = log --decorate --oneline --graph --color --date=short
 [pager]
 	branch = false
