@@ -1,3 +1,4 @@
+from typing import Any
 from dataclasses import dataclass
 
 @dataclass
@@ -77,37 +78,39 @@ local_to_karabiner_map = {
     "right_arrow": "right_arrow",
 }
 
-def norm(key: str) -> str:
-    return local_to_karabiner_map.get(key, key)
+@dataclass
+class KeyCombination:
+    mods: list[str]
+    key: str
 
-def break_into_modifiers_and_key(strokes: str):
-    keys = [norm(s.strip()) for s in strokes.split("+")]
+    @staticmethod
+    def _norm(key: str) -> str:
+        return local_to_karabiner_map.get(key, key)
 
-    mods = keys[:-1]
-    key = keys[-1]
+    @classmethod
+    def parse(cls, s: str):
+        keys = [cls._norm(k.strip()) for k in s.split("+")]
 
-    return mods, key
+        mods = keys[:-1]
+        key = keys[-1]
 
-def parse_rule(rule: str):
-    left, right = rule.split("==")
-    left, right = left.strip(), right.strip()
+        return cls(mods, key)
 
-    left_mods, left_key = break_into_modifiers_and_key(left)
-    right_mods, right_key = break_into_modifiers_and_key(right)
+    def create_from_definition(self):
+        return {
+            "modifiers": {
+                "mandatory": self.mods,
+                "optional": ["any"]
+            },
+            "key_code": self.key
+        }
 
-    from_ = {
-        "modifiers": {
-            "mandatory": left_mods,
-            "optional": ["any"]
-        },
-        "key_code": left_key
-    }
-    to_ = {
-        "modifiers": right_mods,
-        "key_code": right_key
-    }
+    def create_to_definition(self):
+        return {
+            "modifiers": self.mods,
+            "key_code": self.key
+        }
 
-    return from_, to_
 
 def build_apps_conditions(app_bundles: list[str]):
     return {
@@ -130,11 +133,11 @@ def build_devices_conditions(devices: list[KeyboardDevice]):
 
 complex_modifications_rules = []
 
-def mappings(
+def _register_flows(
     devices: list[KeyboardDevice] = [],
     desc: str = "",
     apps: list[str] = [],
-    maps: list[str] = []
+    flows: list[tuple[Any, Any]] = []
 ):
     manipulators = []
 
@@ -149,8 +152,7 @@ def mappings(
         prefix = f"[{label}] "
         desc = prefix + desc
 
-    for rule in maps:
-        from_, to_ = parse_rule(rule)
+    for from_, to_ in flows:
         manipulator = {
             "type": "basic",
             "from": from_,
@@ -168,6 +170,28 @@ def mappings(
     }
 
     complex_modifications_rules.append(res)
+
+def mappings(
+    devices: list[KeyboardDevice] = [],
+    desc: str = "",
+    apps: list[str] = [],
+    maps: list[str] = []
+):
+    def parse_map(rule: str):
+        left, right = [KeyCombination.parse(x.strip()) for x in rule.split("==")]
+
+        from_ = left.create_from_definition()
+        to_ = right.create_to_definition()
+
+        return from_, to_
+
+    _register_flows(
+        devices,
+        desc,
+        apps,
+        flows=[parse_map(rule) for rule in maps],
+    )
+
 
 def build_karabiner_config(profile_meta: dict):
     profile = {
