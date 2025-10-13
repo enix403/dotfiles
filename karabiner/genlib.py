@@ -100,7 +100,7 @@ class KeyCombination:
         return {
             "modifiers": {
                 "mandatory": self.mods,
-                "optional": ["any"]
+                # "optional": ["any"]
             },
             "key_code": self.key
         }
