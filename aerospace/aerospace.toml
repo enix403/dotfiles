@@ -110,9 +110,9 @@ automatically-unhide-macos-hidden-apps = true
     # end tell'
     # '''
 
-    alt-enter = '''exec-and-forget
-    /Applications/kitty.app/Contents/MacOS/kitty --single-instance --directory=/Users/qateef.ahmad
-    '''
+    # alt-enter = '''exec-and-forget
+    # /Applications/kitty.app/Contents/MacOS/kitty --single-instance --directory=/Users/qateef.ahmad
+    # '''
 
     # See: https://nikitabobko.github.io/AeroSpace/commands#layout
     alt-comma = 'layout tiles horizontal vertical'

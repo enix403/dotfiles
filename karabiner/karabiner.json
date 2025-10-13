@@ -29,6 +29,28 @@
       "complex_modifications": {
         "rules": [
           {
+            "description": "Common Shell Mapping",
+            "manipulators": [
+              {
+                "type": "basic",
+                "from": {
+                  "modifiers": {
+                    "mandatory": [
+                      "option"
+                    ],
+                    "optional": [
+                      "any"
+                    ]
+                  },
+                  "key_code": "return_or_enter"
+                },
+                "to": {
+                  "shell_command": "/Applications/kitty.app/Contents/MacOS/kitty --single-instance --directory=/Users/qateef.ahmad"
+                }
+              }
+            ]
+          },
+          {
             "description": "[BL] Chrome: Force Keymaps",
             "manipulators": [
               {

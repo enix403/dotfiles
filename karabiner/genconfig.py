@@ -4,7 +4,12 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
 import json
 from pathlib import Path
-from genlib import mappings, KeyboardDevice, build_karabiner_config
+from genlib import (
+    mappings,
+    shell_mappings,
+    KeyboardDevice,
+    build_karabiner_config
+)
 
 # =====================================
 # ============= Keyboards =============
@@ -33,8 +38,16 @@ terminals = ["net.kovidgoyal.kitty", "com.apple.Terminal"]
 # ============= Keymaps ==============
 # ====================================
 
-# ========== Built in keyboard ==========
+# ========== Common ==========
 
+shell_mappings(
+    desc="Common Shell Mapping",
+    maps=[
+        ("opt+enter", "/Applications/kitty.app/Contents/MacOS/kitty --single-instance --directory=/Users/qateef.ahmad")
+    ]
+)
+
+# ========== Built in keyboard ==========
 
 mappings(
     devices=[builtin],

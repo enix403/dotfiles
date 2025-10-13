@@ -171,6 +171,31 @@ def _register_flows(
 
     complex_modifications_rules.append(res)
 
+def shell_mappings(
+    devices: list[KeyboardDevice] = [],
+    desc: str = "",
+    apps: list[str] = [],
+    maps: list[tuple[str, str]] = []
+):
+    def parse_map(rule: tuple[str, str]):
+        trigger = KeyCombination.parse(rule[0])
+        cmd = rule[1]
+
+        from_ = trigger.create_from_definition()
+        to_ = {
+            "shell_command": cmd,
+        }
+
+        return from_, to_
+
+    _register_flows(
+        devices,
+        desc,
+        apps,
+        flows=[parse_map(rule) for rule in maps],
+    )
+
+
 def mappings(
     devices: list[KeyboardDevice] = [],
     desc: str = "",
