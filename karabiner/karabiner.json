@@ -1998,6 +1998,64 @@
                     ]
                   }
                 ]
+              },
+              {
+                "type": "basic",
+                "from": {
+                  "modifiers": {
+                    "mandatory": [
+                      "fn",
+                      "shift"
+                    ]
+                  },
+                  "key_code": "left_arrow"
+                },
+                "to": {
+                  "modifiers": [
+                    "option",
+                    "shift"
+                  ],
+                  "key_code": "left_arrow"
+                },
+                "conditions": [
+                  {
+                    "type": "device_if",
+                    "identifiers": [
+                      {
+                        "is_built_in_keyboard": true
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "basic",
+                "from": {
+                  "modifiers": {
+                    "mandatory": [
+                      "fn",
+                      "shift"
+                    ]
+                  },
+                  "key_code": "right_arrow"
+                },
+                "to": {
+                  "modifiers": [
+                    "option",
+                    "shift"
+                  ],
+                  "key_code": "right_arrow"
+                },
+                "conditions": [
+                  {
+                    "type": "device_if",
+                    "identifiers": [
+                      {
+                        "is_built_in_keyboard": true
+                      }
+                    ]
+                  }
+                ]
               }
             ]
           },
@@ -3386,151 +3444,6 @@
           {
             "description": "[BL] Global: <fn> + <shift> to <cmd> + <shift> (because macos cmd = app's ctrl)",
             "manipulators": [
-              {
-                "type": "basic",
-                "from": {
-                  "modifiers": {
-                    "mandatory": [
-                      "fn",
-                      "shift"
-                    ]
-                  },
-                  "key_code": "left_arrow"
-                },
-                "to": {
-                  "modifiers": [
-                    "command",
-                    "shift"
-                  ],
-                  "key_code": "left_arrow"
-                },
-                "conditions": [
-                  {
-                    "type": "device_if",
-                    "identifiers": [
-                      {
-                        "is_built_in_keyboard": true
-                      }
-                    ]
-                  }
-                ]
-              },
-              {
-                "type": "basic",
-                "from": {
-                  "modifiers": {
-                    "mandatory": [
-                      "fn",
-                      "shift"
-                    ]
-                  },
-                  "key_code": "up_arrow"
-                },
-                "to": {
-                  "modifiers": [
-                    "command",
-                    "shift"
-                  ],
-                  "key_code": "up_arrow"
-                },
-                "conditions": [
-                  {
-                    "type": "device_if",
-                    "identifiers": [
-                      {
-                        "is_built_in_keyboard": true
-                      }
-                    ]
-                  }
-                ]
-              },
-              {
-                "type": "basic",
-                "from": {
-                  "modifiers": {
-                    "mandatory": [
-                      "fn",
-                      "shift"
-                    ]
-                  },
-                  "key_code": "right_arrow"
-                },
-                "to": {
-                  "modifiers": [
-                    "command",
-                    "shift"
-                  ],
-                  "key_code": "right_arrow"
-                },
-                "conditions": [
-                  {
-                    "type": "device_if",
-                    "identifiers": [
-                      {
-                        "is_built_in_keyboard": true
-                      }
-                    ]
-                  }
-                ]
-              },
-              {
-                "type": "basic",
-                "from": {
-                  "modifiers": {
-                    "mandatory": [
-                      "fn",
-                      "shift"
-                    ]
-                  },
-                  "key_code": "down_arrow"
-                },
-                "to": {
-                  "modifiers": [
-                    "command",
-                    "shift"
-                  ],
-                  "key_code": "down_arrow"
-                },
-                "conditions": [
-                  {
-                    "type": "device_if",
-                    "identifiers": [
-                      {
-                        "is_built_in_keyboard": true
-                      }
-                    ]
-                  }
-                ]
-              },
-              {
-                "type": "basic",
-                "from": {
-                  "modifiers": {
-                    "mandatory": [
-                      "fn",
-                      "shift"
-                    ]
-                  },
-                  "key_code": "delete_or_backspace"
-                },
-                "to": {
-                  "modifiers": [
-                    "command",
-                    "shift"
-                  ],
-                  "key_code": "delete_or_backspace"
-                },
-                "conditions": [
-                  {
-                    "type": "device_if",
-                    "identifiers": [
-                      {
-                        "is_built_in_keyboard": true
-                      }
-                    ]
-                  }
-                ]
-              },
               {
                 "type": "basic",
                 "from": {
@@ -8845,6 +8758,74 @@
                 "to": {
                   "modifiers": [
                     "option"
+                  ],
+                  "key_code": "right_arrow"
+                },
+                "conditions": [
+                  {
+                    "type": "device_if",
+                    "identifiers": [
+                      {
+                        "vendor_id": 10473,
+                        "product_id": 12645
+                      },
+                      {
+                        "vendor_id": 10473,
+                        "product_id": 8192
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "basic",
+                "from": {
+                  "modifiers": {
+                    "mandatory": [
+                      "command",
+                      "shift"
+                    ]
+                  },
+                  "key_code": "left_arrow"
+                },
+                "to": {
+                  "modifiers": [
+                    "option",
+                    "shift"
+                  ],
+                  "key_code": "left_arrow"
+                },
+                "conditions": [
+                  {
+                    "type": "device_if",
+                    "identifiers": [
+                      {
+                        "vendor_id": 10473,
+                        "product_id": 12645
+                      },
+                      {
+                        "vendor_id": 10473,
+                        "product_id": 8192
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "basic",
+                "from": {
+                  "modifiers": {
+                    "mandatory": [
+                      "command",
+                      "shift"
+                    ]
+                  },
+                  "key_code": "right_arrow"
+                },
+                "to": {
+                  "modifiers": [
+                    "option",
+                    "shift"
                   ],
                   "key_code": "right_arrow"
                 },

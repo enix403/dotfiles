@@ -141,6 +141,8 @@ mappings(
         "fn+delete == opt+delete",
         "fn+left_arrow == opt+left_arrow",
         "fn+right_arrow == opt+right_arrow",
+        "fn+shift+left_arrow == opt+shift+left_arrow",
+        "fn+shift+right_arrow == opt+shift+right_arrow",
     ]
 )
 
@@ -212,15 +214,11 @@ mappings(
     devices=[builtin],
     desc="Global: <fn> + <shift> to <cmd> + <shift> (because macos cmd = app's ctrl)",
     maps=[
-        "fn+shift+left_arrow == cmd+shift+left_arrow",
-        "fn+shift+up_arrow == cmd+shift+up_arrow",
-        "fn+shift+right_arrow == cmd+shift+right_arrow",
-        "fn+shift+down_arrow == cmd+shift+down_arrow",
-        "fn+shift+delete == cmd+shift+delete",
         "fn+shift+space == cmd+shift+space",
         "fn+shift+enter == cmd+shift+enter",
         "fn+shift+tab == cmd+shift+tab",
         "fn+shift+escape == cmd+shift+escape",
+
         "fn+shift+a == cmd+shift+a",
         "fn+shift+b == cmd+shift+b",
         "fn+shift+c == cmd+shift+c",
@@ -421,6 +419,8 @@ mappings(
         "cmd+delete == opt+delete",
         "cmd+left_arrow == opt+left_arrow",
         "cmd+right_arrow == opt+right_arrow",
+        "cmd+shift+left_arrow == opt+shift+left_arrow",
+        "cmd+shift+right_arrow == opt+shift+right_arrow",
     ]
 )
 
