@@ -42,7 +42,7 @@
                   "key_code": "return_or_enter"
                 },
                 "to": {
-                  "shell_command": "/Applications/kitty.app/Contents/MacOS/kitty --single-instance --directory=/Users/qateef.ahmad"
+                  "shell_command": "sh -c '/Applications/kitty.app/Contents/MacOS/kitty --single-instance --directory=/Users/qateef.ahmad --detach'"
                 }
               },
               {

@@ -43,7 +43,7 @@ terminals = ["net.kovidgoyal.kitty", "com.apple.Terminal"]
 shell_mappings(
     desc="Common Shell Mapping",
     maps=[
-        ("opt+enter", "/Applications/kitty.app/Contents/MacOS/kitty --single-instance --directory=/Users/qateef.ahmad"),
+        ("opt+enter", "sh -c '/Applications/kitty.app/Contents/MacOS/kitty --single-instance --directory=/Users/qateef.ahmad --detach'"),
         ("opt+p", "open -a Launchpad"),
     ]
 )
