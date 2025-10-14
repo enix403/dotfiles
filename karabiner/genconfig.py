@@ -218,6 +218,11 @@ mappings(
         "fn+shift+enter == cmd+shift+enter",
         "fn+shift+tab == cmd+shift+tab",
         "fn+shift+escape == cmd+shift+escape",
+        
+        # Afraid to bind the horizontal arrows due to vscode's goto definition keybind
+        # TODO: look into it
+        "fn+shift+up_arrow == cmd+shift+up_arrow",
+        "fn+shift+down_arrow == cmd+shift+down_arrow",
 
         "fn+shift+a == cmd+shift+a",
         "fn+shift+b == cmd+shift+b",

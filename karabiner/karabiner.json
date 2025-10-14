@@ -3569,6 +3569,64 @@
                       "shift"
                     ]
                   },
+                  "key_code": "up_arrow"
+                },
+                "to": {
+                  "modifiers": [
+                    "command",
+                    "shift"
+                  ],
+                  "key_code": "up_arrow"
+                },
+                "conditions": [
+                  {
+                    "type": "device_if",
+                    "identifiers": [
+                      {
+                        "is_built_in_keyboard": true
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "basic",
+                "from": {
+                  "modifiers": {
+                    "mandatory": [
+                      "fn",
+                      "shift"
+                    ]
+                  },
+                  "key_code": "down_arrow"
+                },
+                "to": {
+                  "modifiers": [
+                    "command",
+                    "shift"
+                  ],
+                  "key_code": "down_arrow"
+                },
+                "conditions": [
+                  {
+                    "type": "device_if",
+                    "identifiers": [
+                      {
+                        "is_built_in_keyboard": true
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "basic",
+                "from": {
+                  "modifiers": {
+                    "mandatory": [
+                      "fn",
+                      "shift"
+                    ]
+                  },
                   "key_code": "a"
                 },
                 "to": {
