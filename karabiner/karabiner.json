@@ -1916,6 +1916,1775 @@
             ]
           },
           {
+            "description": "[BL] Terminal: <fn> + <shift> to <ctrl> + <shift>",
+            "manipulators": [
+              {
+                "type": "basic",
+                "from": {
+                  "modifiers": {
+                    "mandatory": [
+                      "fn",
+                      "shift"
+                    ]
+                  },
+                  "key_code": "spacebar"
+                },
+                "to": {
+                  "modifiers": [
+                    "control",
+                    "shift"
+                  ],
+                  "key_code": "spacebar"
+                },
+                "conditions": [
+                  {
+                    "type": "frontmost_application_if",
+                    "bundle_identifiers": [
+                      "^net\\.kovidgoyal\\.kitty$",
+                      "^com\\.apple\\.Terminal$"
+                    ]
+                  },
+                  {
+                    "type": "device_if",
+                    "identifiers": [
+                      {
+                        "is_built_in_keyboard": true
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "basic",
+                "from": {
+                  "modifiers": {
+                    "mandatory": [
+                      "fn",
+                      "shift"
+                    ]
+                  },
+                  "key_code": "return_or_enter"
+                },
+                "to": {
+                  "modifiers": [
+                    "control",
+                    "shift"
+                  ],
+                  "key_code": "return_or_enter"
+                },
+                "conditions": [
+                  {
+                    "type": "frontmost_application_if",
+                    "bundle_identifiers": [
+                      "^net\\.kovidgoyal\\.kitty$",
+                      "^com\\.apple\\.Terminal$"
+                    ]
+                  },
+                  {
+                    "type": "device_if",
+                    "identifiers": [
+                      {
+                        "is_built_in_keyboard": true
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "basic",
+                "from": {
+                  "modifiers": {
+                    "mandatory": [
+                      "fn",
+                      "shift"
+                    ]
+                  },
+                  "key_code": "tab"
+                },
+                "to": {
+                  "modifiers": [
+                    "control",
+                    "shift"
+                  ],
+                  "key_code": "tab"
+                },
+                "conditions": [
+                  {
+                    "type": "frontmost_application_if",
+                    "bundle_identifiers": [
+                      "^net\\.kovidgoyal\\.kitty$",
+                      "^com\\.apple\\.Terminal$"
+                    ]
+                  },
+                  {
+                    "type": "device_if",
+                    "identifiers": [
+                      {
+                        "is_built_in_keyboard": true
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "basic",
+                "from": {
+                  "modifiers": {
+                    "mandatory": [
+                      "fn",
+                      "shift"
+                    ]
+                  },
+                  "key_code": "escape"
+                },
+                "to": {
+                  "modifiers": [
+                    "control",
+                    "shift"
+                  ],
+                  "key_code": "escape"
+                },
+                "conditions": [
+                  {
+                    "type": "frontmost_application_if",
+                    "bundle_identifiers": [
+                      "^net\\.kovidgoyal\\.kitty$",
+                      "^com\\.apple\\.Terminal$"
+                    ]
+                  },
+                  {
+                    "type": "device_if",
+                    "identifiers": [
+                      {
+                        "is_built_in_keyboard": true
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "basic",
+                "from": {
+                  "modifiers": {
+                    "mandatory": [
+                      "fn",
+                      "shift"
+                    ]
+                  },
+                  "key_code": "a"
+                },
+                "to": {
+                  "modifiers": [
+                    "control",
+                    "shift"
+                  ],
+                  "key_code": "a"
+                },
+                "conditions": [
+                  {
+                    "type": "frontmost_application_if",
+                    "bundle_identifiers": [
+                      "^net\\.kovidgoyal\\.kitty$",
+                      "^com\\.apple\\.Terminal$"
+                    ]
+                  },
+                  {
+                    "type": "device_if",
+                    "identifiers": [
+                      {
+                        "is_built_in_keyboard": true
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "basic",
+                "from": {
+                  "modifiers": {
+                    "mandatory": [
+                      "fn",
+                      "shift"
+                    ]
+                  },
+                  "key_code": "b"
+                },
+                "to": {
+                  "modifiers": [
+                    "control",
+                    "shift"
+                  ],
+                  "key_code": "b"
+                },
+                "conditions": [
+                  {
+                    "type": "frontmost_application_if",
+                    "bundle_identifiers": [
+                      "^net\\.kovidgoyal\\.kitty$",
+                      "^com\\.apple\\.Terminal$"
+                    ]
+                  },
+                  {
+                    "type": "device_if",
+                    "identifiers": [
+                      {
+                        "is_built_in_keyboard": true
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "basic",
+                "from": {
+                  "modifiers": {
+                    "mandatory": [
+                      "fn",
+                      "shift"
+                    ]
+                  },
+                  "key_code": "d"
+                },
+                "to": {
+                  "modifiers": [
+                    "control",
+                    "shift"
+                  ],
+                  "key_code": "d"
+                },
+                "conditions": [
+                  {
+                    "type": "frontmost_application_if",
+                    "bundle_identifiers": [
+                      "^net\\.kovidgoyal\\.kitty$",
+                      "^com\\.apple\\.Terminal$"
+                    ]
+                  },
+                  {
+                    "type": "device_if",
+                    "identifiers": [
+                      {
+                        "is_built_in_keyboard": true
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "basic",
+                "from": {
+                  "modifiers": {
+                    "mandatory": [
+                      "fn",
+                      "shift"
+                    ]
+                  },
+                  "key_code": "e"
+                },
+                "to": {
+                  "modifiers": [
+                    "control",
+                    "shift"
+                  ],
+                  "key_code": "e"
+                },
+                "conditions": [
+                  {
+                    "type": "frontmost_application_if",
+                    "bundle_identifiers": [
+                      "^net\\.kovidgoyal\\.kitty$",
+                      "^com\\.apple\\.Terminal$"
+                    ]
+                  },
+                  {
+                    "type": "device_if",
+                    "identifiers": [
+                      {
+                        "is_built_in_keyboard": true
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "basic",
+                "from": {
+                  "modifiers": {
+                    "mandatory": [
+                      "fn",
+                      "shift"
+                    ]
+                  },
+                  "key_code": "f"
+                },
+                "to": {
+                  "modifiers": [
+                    "control",
+                    "shift"
+                  ],
+                  "key_code": "f"
+                },
+                "conditions": [
+                  {
+                    "type": "frontmost_application_if",
+                    "bundle_identifiers": [
+                      "^net\\.kovidgoyal\\.kitty$",
+                      "^com\\.apple\\.Terminal$"
+                    ]
+                  },
+                  {
+                    "type": "device_if",
+                    "identifiers": [
+                      {
+                        "is_built_in_keyboard": true
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "basic",
+                "from": {
+                  "modifiers": {
+                    "mandatory": [
+                      "fn",
+                      "shift"
+                    ]
+                  },
+                  "key_code": "g"
+                },
+                "to": {
+                  "modifiers": [
+                    "control",
+                    "shift"
+                  ],
+                  "key_code": "g"
+                },
+                "conditions": [
+                  {
+                    "type": "frontmost_application_if",
+                    "bundle_identifiers": [
+                      "^net\\.kovidgoyal\\.kitty$",
+                      "^com\\.apple\\.Terminal$"
+                    ]
+                  },
+                  {
+                    "type": "device_if",
+                    "identifiers": [
+                      {
+                        "is_built_in_keyboard": true
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "basic",
+                "from": {
+                  "modifiers": {
+                    "mandatory": [
+                      "fn",
+                      "shift"
+                    ]
+                  },
+                  "key_code": "h"
+                },
+                "to": {
+                  "modifiers": [
+                    "control",
+                    "shift"
+                  ],
+                  "key_code": "h"
+                },
+                "conditions": [
+                  {
+                    "type": "frontmost_application_if",
+                    "bundle_identifiers": [
+                      "^net\\.kovidgoyal\\.kitty$",
+                      "^com\\.apple\\.Terminal$"
+                    ]
+                  },
+                  {
+                    "type": "device_if",
+                    "identifiers": [
+                      {
+                        "is_built_in_keyboard": true
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "basic",
+                "from": {
+                  "modifiers": {
+                    "mandatory": [
+                      "fn",
+                      "shift"
+                    ]
+                  },
+                  "key_code": "i"
+                },
+                "to": {
+                  "modifiers": [
+                    "control",
+                    "shift"
+                  ],
+                  "key_code": "i"
+                },
+                "conditions": [
+                  {
+                    "type": "frontmost_application_if",
+                    "bundle_identifiers": [
+                      "^net\\.kovidgoyal\\.kitty$",
+                      "^com\\.apple\\.Terminal$"
+                    ]
+                  },
+                  {
+                    "type": "device_if",
+                    "identifiers": [
+                      {
+                        "is_built_in_keyboard": true
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "basic",
+                "from": {
+                  "modifiers": {
+                    "mandatory": [
+                      "fn",
+                      "shift"
+                    ]
+                  },
+                  "key_code": "j"
+                },
+                "to": {
+                  "modifiers": [
+                    "control",
+                    "shift"
+                  ],
+                  "key_code": "j"
+                },
+                "conditions": [
+                  {
+                    "type": "frontmost_application_if",
+                    "bundle_identifiers": [
+                      "^net\\.kovidgoyal\\.kitty$",
+                      "^com\\.apple\\.Terminal$"
+                    ]
+                  },
+                  {
+                    "type": "device_if",
+                    "identifiers": [
+                      {
+                        "is_built_in_keyboard": true
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "basic",
+                "from": {
+                  "modifiers": {
+                    "mandatory": [
+                      "fn",
+                      "shift"
+                    ]
+                  },
+                  "key_code": "k"
+                },
+                "to": {
+                  "modifiers": [
+                    "control",
+                    "shift"
+                  ],
+                  "key_code": "k"
+                },
+                "conditions": [
+                  {
+                    "type": "frontmost_application_if",
+                    "bundle_identifiers": [
+                      "^net\\.kovidgoyal\\.kitty$",
+                      "^com\\.apple\\.Terminal$"
+                    ]
+                  },
+                  {
+                    "type": "device_if",
+                    "identifiers": [
+                      {
+                        "is_built_in_keyboard": true
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "basic",
+                "from": {
+                  "modifiers": {
+                    "mandatory": [
+                      "fn",
+                      "shift"
+                    ]
+                  },
+                  "key_code": "l"
+                },
+                "to": {
+                  "modifiers": [
+                    "control",
+                    "shift"
+                  ],
+                  "key_code": "l"
+                },
+                "conditions": [
+                  {
+                    "type": "frontmost_application_if",
+                    "bundle_identifiers": [
+                      "^net\\.kovidgoyal\\.kitty$",
+                      "^com\\.apple\\.Terminal$"
+                    ]
+                  },
+                  {
+                    "type": "device_if",
+                    "identifiers": [
+                      {
+                        "is_built_in_keyboard": true
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "basic",
+                "from": {
+                  "modifiers": {
+                    "mandatory": [
+                      "fn",
+                      "shift"
+                    ]
+                  },
+                  "key_code": "m"
+                },
+                "to": {
+                  "modifiers": [
+                    "control",
+                    "shift"
+                  ],
+                  "key_code": "m"
+                },
+                "conditions": [
+                  {
+                    "type": "frontmost_application_if",
+                    "bundle_identifiers": [
+                      "^net\\.kovidgoyal\\.kitty$",
+                      "^com\\.apple\\.Terminal$"
+                    ]
+                  },
+                  {
+                    "type": "device_if",
+                    "identifiers": [
+                      {
+                        "is_built_in_keyboard": true
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "basic",
+                "from": {
+                  "modifiers": {
+                    "mandatory": [
+                      "fn",
+                      "shift"
+                    ]
+                  },
+                  "key_code": "n"
+                },
+                "to": {
+                  "modifiers": [
+                    "control",
+                    "shift"
+                  ],
+                  "key_code": "n"
+                },
+                "conditions": [
+                  {
+                    "type": "frontmost_application_if",
+                    "bundle_identifiers": [
+                      "^net\\.kovidgoyal\\.kitty$",
+                      "^com\\.apple\\.Terminal$"
+                    ]
+                  },
+                  {
+                    "type": "device_if",
+                    "identifiers": [
+                      {
+                        "is_built_in_keyboard": true
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "basic",
+                "from": {
+                  "modifiers": {
+                    "mandatory": [
+                      "fn",
+                      "shift"
+                    ]
+                  },
+                  "key_code": "o"
+                },
+                "to": {
+                  "modifiers": [
+                    "control",
+                    "shift"
+                  ],
+                  "key_code": "o"
+                },
+                "conditions": [
+                  {
+                    "type": "frontmost_application_if",
+                    "bundle_identifiers": [
+                      "^net\\.kovidgoyal\\.kitty$",
+                      "^com\\.apple\\.Terminal$"
+                    ]
+                  },
+                  {
+                    "type": "device_if",
+                    "identifiers": [
+                      {
+                        "is_built_in_keyboard": true
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "basic",
+                "from": {
+                  "modifiers": {
+                    "mandatory": [
+                      "fn",
+                      "shift"
+                    ]
+                  },
+                  "key_code": "p"
+                },
+                "to": {
+                  "modifiers": [
+                    "control",
+                    "shift"
+                  ],
+                  "key_code": "p"
+                },
+                "conditions": [
+                  {
+                    "type": "frontmost_application_if",
+                    "bundle_identifiers": [
+                      "^net\\.kovidgoyal\\.kitty$",
+                      "^com\\.apple\\.Terminal$"
+                    ]
+                  },
+                  {
+                    "type": "device_if",
+                    "identifiers": [
+                      {
+                        "is_built_in_keyboard": true
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "basic",
+                "from": {
+                  "modifiers": {
+                    "mandatory": [
+                      "fn",
+                      "shift"
+                    ]
+                  },
+                  "key_code": "q"
+                },
+                "to": {
+                  "modifiers": [
+                    "control",
+                    "shift"
+                  ],
+                  "key_code": "q"
+                },
+                "conditions": [
+                  {
+                    "type": "frontmost_application_if",
+                    "bundle_identifiers": [
+                      "^net\\.kovidgoyal\\.kitty$",
+                      "^com\\.apple\\.Terminal$"
+                    ]
+                  },
+                  {
+                    "type": "device_if",
+                    "identifiers": [
+                      {
+                        "is_built_in_keyboard": true
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "basic",
+                "from": {
+                  "modifiers": {
+                    "mandatory": [
+                      "fn",
+                      "shift"
+                    ]
+                  },
+                  "key_code": "r"
+                },
+                "to": {
+                  "modifiers": [
+                    "control",
+                    "shift"
+                  ],
+                  "key_code": "r"
+                },
+                "conditions": [
+                  {
+                    "type": "frontmost_application_if",
+                    "bundle_identifiers": [
+                      "^net\\.kovidgoyal\\.kitty$",
+                      "^com\\.apple\\.Terminal$"
+                    ]
+                  },
+                  {
+                    "type": "device_if",
+                    "identifiers": [
+                      {
+                        "is_built_in_keyboard": true
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "basic",
+                "from": {
+                  "modifiers": {
+                    "mandatory": [
+                      "fn",
+                      "shift"
+                    ]
+                  },
+                  "key_code": "s"
+                },
+                "to": {
+                  "modifiers": [
+                    "control",
+                    "shift"
+                  ],
+                  "key_code": "s"
+                },
+                "conditions": [
+                  {
+                    "type": "frontmost_application_if",
+                    "bundle_identifiers": [
+                      "^net\\.kovidgoyal\\.kitty$",
+                      "^com\\.apple\\.Terminal$"
+                    ]
+                  },
+                  {
+                    "type": "device_if",
+                    "identifiers": [
+                      {
+                        "is_built_in_keyboard": true
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "basic",
+                "from": {
+                  "modifiers": {
+                    "mandatory": [
+                      "fn",
+                      "shift"
+                    ]
+                  },
+                  "key_code": "t"
+                },
+                "to": {
+                  "modifiers": [
+                    "control",
+                    "shift"
+                  ],
+                  "key_code": "t"
+                },
+                "conditions": [
+                  {
+                    "type": "frontmost_application_if",
+                    "bundle_identifiers": [
+                      "^net\\.kovidgoyal\\.kitty$",
+                      "^com\\.apple\\.Terminal$"
+                    ]
+                  },
+                  {
+                    "type": "device_if",
+                    "identifiers": [
+                      {
+                        "is_built_in_keyboard": true
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "basic",
+                "from": {
+                  "modifiers": {
+                    "mandatory": [
+                      "fn",
+                      "shift"
+                    ]
+                  },
+                  "key_code": "u"
+                },
+                "to": {
+                  "modifiers": [
+                    "control",
+                    "shift"
+                  ],
+                  "key_code": "u"
+                },
+                "conditions": [
+                  {
+                    "type": "frontmost_application_if",
+                    "bundle_identifiers": [
+                      "^net\\.kovidgoyal\\.kitty$",
+                      "^com\\.apple\\.Terminal$"
+                    ]
+                  },
+                  {
+                    "type": "device_if",
+                    "identifiers": [
+                      {
+                        "is_built_in_keyboard": true
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "basic",
+                "from": {
+                  "modifiers": {
+                    "mandatory": [
+                      "fn",
+                      "shift"
+                    ]
+                  },
+                  "key_code": "w"
+                },
+                "to": {
+                  "modifiers": [
+                    "control",
+                    "shift"
+                  ],
+                  "key_code": "w"
+                },
+                "conditions": [
+                  {
+                    "type": "frontmost_application_if",
+                    "bundle_identifiers": [
+                      "^net\\.kovidgoyal\\.kitty$",
+                      "^com\\.apple\\.Terminal$"
+                    ]
+                  },
+                  {
+                    "type": "device_if",
+                    "identifiers": [
+                      {
+                        "is_built_in_keyboard": true
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "basic",
+                "from": {
+                  "modifiers": {
+                    "mandatory": [
+                      "fn",
+                      "shift"
+                    ]
+                  },
+                  "key_code": "x"
+                },
+                "to": {
+                  "modifiers": [
+                    "control",
+                    "shift"
+                  ],
+                  "key_code": "x"
+                },
+                "conditions": [
+                  {
+                    "type": "frontmost_application_if",
+                    "bundle_identifiers": [
+                      "^net\\.kovidgoyal\\.kitty$",
+                      "^com\\.apple\\.Terminal$"
+                    ]
+                  },
+                  {
+                    "type": "device_if",
+                    "identifiers": [
+                      {
+                        "is_built_in_keyboard": true
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "basic",
+                "from": {
+                  "modifiers": {
+                    "mandatory": [
+                      "fn",
+                      "shift"
+                    ]
+                  },
+                  "key_code": "y"
+                },
+                "to": {
+                  "modifiers": [
+                    "control",
+                    "shift"
+                  ],
+                  "key_code": "y"
+                },
+                "conditions": [
+                  {
+                    "type": "frontmost_application_if",
+                    "bundle_identifiers": [
+                      "^net\\.kovidgoyal\\.kitty$",
+                      "^com\\.apple\\.Terminal$"
+                    ]
+                  },
+                  {
+                    "type": "device_if",
+                    "identifiers": [
+                      {
+                        "is_built_in_keyboard": true
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "basic",
+                "from": {
+                  "modifiers": {
+                    "mandatory": [
+                      "fn",
+                      "shift"
+                    ]
+                  },
+                  "key_code": "z"
+                },
+                "to": {
+                  "modifiers": [
+                    "control",
+                    "shift"
+                  ],
+                  "key_code": "z"
+                },
+                "conditions": [
+                  {
+                    "type": "frontmost_application_if",
+                    "bundle_identifiers": [
+                      "^net\\.kovidgoyal\\.kitty$",
+                      "^com\\.apple\\.Terminal$"
+                    ]
+                  },
+                  {
+                    "type": "device_if",
+                    "identifiers": [
+                      {
+                        "is_built_in_keyboard": true
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "basic",
+                "from": {
+                  "modifiers": {
+                    "mandatory": [
+                      "fn",
+                      "shift"
+                    ]
+                  },
+                  "key_code": "0"
+                },
+                "to": {
+                  "modifiers": [
+                    "control",
+                    "shift"
+                  ],
+                  "key_code": "0"
+                },
+                "conditions": [
+                  {
+                    "type": "frontmost_application_if",
+                    "bundle_identifiers": [
+                      "^net\\.kovidgoyal\\.kitty$",
+                      "^com\\.apple\\.Terminal$"
+                    ]
+                  },
+                  {
+                    "type": "device_if",
+                    "identifiers": [
+                      {
+                        "is_built_in_keyboard": true
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "basic",
+                "from": {
+                  "modifiers": {
+                    "mandatory": [
+                      "fn",
+                      "shift"
+                    ]
+                  },
+                  "key_code": "1"
+                },
+                "to": {
+                  "modifiers": [
+                    "control",
+                    "shift"
+                  ],
+                  "key_code": "1"
+                },
+                "conditions": [
+                  {
+                    "type": "frontmost_application_if",
+                    "bundle_identifiers": [
+                      "^net\\.kovidgoyal\\.kitty$",
+                      "^com\\.apple\\.Terminal$"
+                    ]
+                  },
+                  {
+                    "type": "device_if",
+                    "identifiers": [
+                      {
+                        "is_built_in_keyboard": true
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "basic",
+                "from": {
+                  "modifiers": {
+                    "mandatory": [
+                      "fn",
+                      "shift"
+                    ]
+                  },
+                  "key_code": "2"
+                },
+                "to": {
+                  "modifiers": [
+                    "control",
+                    "shift"
+                  ],
+                  "key_code": "2"
+                },
+                "conditions": [
+                  {
+                    "type": "frontmost_application_if",
+                    "bundle_identifiers": [
+                      "^net\\.kovidgoyal\\.kitty$",
+                      "^com\\.apple\\.Terminal$"
+                    ]
+                  },
+                  {
+                    "type": "device_if",
+                    "identifiers": [
+                      {
+                        "is_built_in_keyboard": true
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "basic",
+                "from": {
+                  "modifiers": {
+                    "mandatory": [
+                      "fn",
+                      "shift"
+                    ]
+                  },
+                  "key_code": "3"
+                },
+                "to": {
+                  "modifiers": [
+                    "control",
+                    "shift"
+                  ],
+                  "key_code": "3"
+                },
+                "conditions": [
+                  {
+                    "type": "frontmost_application_if",
+                    "bundle_identifiers": [
+                      "^net\\.kovidgoyal\\.kitty$",
+                      "^com\\.apple\\.Terminal$"
+                    ]
+                  },
+                  {
+                    "type": "device_if",
+                    "identifiers": [
+                      {
+                        "is_built_in_keyboard": true
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "basic",
+                "from": {
+                  "modifiers": {
+                    "mandatory": [
+                      "fn",
+                      "shift"
+                    ]
+                  },
+                  "key_code": "4"
+                },
+                "to": {
+                  "modifiers": [
+                    "control",
+                    "shift"
+                  ],
+                  "key_code": "4"
+                },
+                "conditions": [
+                  {
+                    "type": "frontmost_application_if",
+                    "bundle_identifiers": [
+                      "^net\\.kovidgoyal\\.kitty$",
+                      "^com\\.apple\\.Terminal$"
+                    ]
+                  },
+                  {
+                    "type": "device_if",
+                    "identifiers": [
+                      {
+                        "is_built_in_keyboard": true
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "basic",
+                "from": {
+                  "modifiers": {
+                    "mandatory": [
+                      "fn",
+                      "shift"
+                    ]
+                  },
+                  "key_code": "5"
+                },
+                "to": {
+                  "modifiers": [
+                    "control",
+                    "shift"
+                  ],
+                  "key_code": "5"
+                },
+                "conditions": [
+                  {
+                    "type": "frontmost_application_if",
+                    "bundle_identifiers": [
+                      "^net\\.kovidgoyal\\.kitty$",
+                      "^com\\.apple\\.Terminal$"
+                    ]
+                  },
+                  {
+                    "type": "device_if",
+                    "identifiers": [
+                      {
+                        "is_built_in_keyboard": true
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "basic",
+                "from": {
+                  "modifiers": {
+                    "mandatory": [
+                      "fn",
+                      "shift"
+                    ]
+                  },
+                  "key_code": "6"
+                },
+                "to": {
+                  "modifiers": [
+                    "control",
+                    "shift"
+                  ],
+                  "key_code": "6"
+                },
+                "conditions": [
+                  {
+                    "type": "frontmost_application_if",
+                    "bundle_identifiers": [
+                      "^net\\.kovidgoyal\\.kitty$",
+                      "^com\\.apple\\.Terminal$"
+                    ]
+                  },
+                  {
+                    "type": "device_if",
+                    "identifiers": [
+                      {
+                        "is_built_in_keyboard": true
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "basic",
+                "from": {
+                  "modifiers": {
+                    "mandatory": [
+                      "fn",
+                      "shift"
+                    ]
+                  },
+                  "key_code": "7"
+                },
+                "to": {
+                  "modifiers": [
+                    "control",
+                    "shift"
+                  ],
+                  "key_code": "7"
+                },
+                "conditions": [
+                  {
+                    "type": "frontmost_application_if",
+                    "bundle_identifiers": [
+                      "^net\\.kovidgoyal\\.kitty$",
+                      "^com\\.apple\\.Terminal$"
+                    ]
+                  },
+                  {
+                    "type": "device_if",
+                    "identifiers": [
+                      {
+                        "is_built_in_keyboard": true
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "basic",
+                "from": {
+                  "modifiers": {
+                    "mandatory": [
+                      "fn",
+                      "shift"
+                    ]
+                  },
+                  "key_code": "8"
+                },
+                "to": {
+                  "modifiers": [
+                    "control",
+                    "shift"
+                  ],
+                  "key_code": "8"
+                },
+                "conditions": [
+                  {
+                    "type": "frontmost_application_if",
+                    "bundle_identifiers": [
+                      "^net\\.kovidgoyal\\.kitty$",
+                      "^com\\.apple\\.Terminal$"
+                    ]
+                  },
+                  {
+                    "type": "device_if",
+                    "identifiers": [
+                      {
+                        "is_built_in_keyboard": true
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "basic",
+                "from": {
+                  "modifiers": {
+                    "mandatory": [
+                      "fn",
+                      "shift"
+                    ]
+                  },
+                  "key_code": "9"
+                },
+                "to": {
+                  "modifiers": [
+                    "control",
+                    "shift"
+                  ],
+                  "key_code": "9"
+                },
+                "conditions": [
+                  {
+                    "type": "frontmost_application_if",
+                    "bundle_identifiers": [
+                      "^net\\.kovidgoyal\\.kitty$",
+                      "^com\\.apple\\.Terminal$"
+                    ]
+                  },
+                  {
+                    "type": "device_if",
+                    "identifiers": [
+                      {
+                        "is_built_in_keyboard": true
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "basic",
+                "from": {
+                  "modifiers": {
+                    "mandatory": [
+                      "fn",
+                      "shift"
+                    ]
+                  },
+                  "key_code": "grave_accent_and_tilde"
+                },
+                "to": {
+                  "modifiers": [
+                    "control",
+                    "shift"
+                  ],
+                  "key_code": "grave_accent_and_tilde"
+                },
+                "conditions": [
+                  {
+                    "type": "frontmost_application_if",
+                    "bundle_identifiers": [
+                      "^net\\.kovidgoyal\\.kitty$",
+                      "^com\\.apple\\.Terminal$"
+                    ]
+                  },
+                  {
+                    "type": "device_if",
+                    "identifiers": [
+                      {
+                        "is_built_in_keyboard": true
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "basic",
+                "from": {
+                  "modifiers": {
+                    "mandatory": [
+                      "fn",
+                      "shift"
+                    ]
+                  },
+                  "key_code": "hyphen"
+                },
+                "to": {
+                  "modifiers": [
+                    "control",
+                    "shift"
+                  ],
+                  "key_code": "hyphen"
+                },
+                "conditions": [
+                  {
+                    "type": "frontmost_application_if",
+                    "bundle_identifiers": [
+                      "^net\\.kovidgoyal\\.kitty$",
+                      "^com\\.apple\\.Terminal$"
+                    ]
+                  },
+                  {
+                    "type": "device_if",
+                    "identifiers": [
+                      {
+                        "is_built_in_keyboard": true
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "basic",
+                "from": {
+                  "modifiers": {
+                    "mandatory": [
+                      "fn",
+                      "shift"
+                    ]
+                  },
+                  "key_code": "equal_sign"
+                },
+                "to": {
+                  "modifiers": [
+                    "control",
+                    "shift"
+                  ],
+                  "key_code": "equal_sign"
+                },
+                "conditions": [
+                  {
+                    "type": "frontmost_application_if",
+                    "bundle_identifiers": [
+                      "^net\\.kovidgoyal\\.kitty$",
+                      "^com\\.apple\\.Terminal$"
+                    ]
+                  },
+                  {
+                    "type": "device_if",
+                    "identifiers": [
+                      {
+                        "is_built_in_keyboard": true
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "basic",
+                "from": {
+                  "modifiers": {
+                    "mandatory": [
+                      "fn",
+                      "shift"
+                    ]
+                  },
+                  "key_code": "open_bracket"
+                },
+                "to": {
+                  "modifiers": [
+                    "control",
+                    "shift"
+                  ],
+                  "key_code": "open_bracket"
+                },
+                "conditions": [
+                  {
+                    "type": "frontmost_application_if",
+                    "bundle_identifiers": [
+                      "^net\\.kovidgoyal\\.kitty$",
+                      "^com\\.apple\\.Terminal$"
+                    ]
+                  },
+                  {
+                    "type": "device_if",
+                    "identifiers": [
+                      {
+                        "is_built_in_keyboard": true
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "basic",
+                "from": {
+                  "modifiers": {
+                    "mandatory": [
+                      "fn",
+                      "shift"
+                    ]
+                  },
+                  "key_code": "close_bracket"
+                },
+                "to": {
+                  "modifiers": [
+                    "control",
+                    "shift"
+                  ],
+                  "key_code": "close_bracket"
+                },
+                "conditions": [
+                  {
+                    "type": "frontmost_application_if",
+                    "bundle_identifiers": [
+                      "^net\\.kovidgoyal\\.kitty$",
+                      "^com\\.apple\\.Terminal$"
+                    ]
+                  },
+                  {
+                    "type": "device_if",
+                    "identifiers": [
+                      {
+                        "is_built_in_keyboard": true
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "basic",
+                "from": {
+                  "modifiers": {
+                    "mandatory": [
+                      "fn",
+                      "shift"
+                    ]
+                  },
+                  "key_code": "backslash"
+                },
+                "to": {
+                  "modifiers": [
+                    "control",
+                    "shift"
+                  ],
+                  "key_code": "backslash"
+                },
+                "conditions": [
+                  {
+                    "type": "frontmost_application_if",
+                    "bundle_identifiers": [
+                      "^net\\.kovidgoyal\\.kitty$",
+                      "^com\\.apple\\.Terminal$"
+                    ]
+                  },
+                  {
+                    "type": "device_if",
+                    "identifiers": [
+                      {
+                        "is_built_in_keyboard": true
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "basic",
+                "from": {
+                  "modifiers": {
+                    "mandatory": [
+                      "fn",
+                      "shift"
+                    ]
+                  },
+                  "key_code": "semicolon"
+                },
+                "to": {
+                  "modifiers": [
+                    "control",
+                    "shift"
+                  ],
+                  "key_code": "semicolon"
+                },
+                "conditions": [
+                  {
+                    "type": "frontmost_application_if",
+                    "bundle_identifiers": [
+                      "^net\\.kovidgoyal\\.kitty$",
+                      "^com\\.apple\\.Terminal$"
+                    ]
+                  },
+                  {
+                    "type": "device_if",
+                    "identifiers": [
+                      {
+                        "is_built_in_keyboard": true
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "basic",
+                "from": {
+                  "modifiers": {
+                    "mandatory": [
+                      "fn",
+                      "shift"
+                    ]
+                  },
+                  "key_code": "quote"
+                },
+                "to": {
+                  "modifiers": [
+                    "control",
+                    "shift"
+                  ],
+                  "key_code": "quote"
+                },
+                "conditions": [
+                  {
+                    "type": "frontmost_application_if",
+                    "bundle_identifiers": [
+                      "^net\\.kovidgoyal\\.kitty$",
+                      "^com\\.apple\\.Terminal$"
+                    ]
+                  },
+                  {
+                    "type": "device_if",
+                    "identifiers": [
+                      {
+                        "is_built_in_keyboard": true
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "basic",
+                "from": {
+                  "modifiers": {
+                    "mandatory": [
+                      "fn",
+                      "shift"
+                    ]
+                  },
+                  "key_code": "comma"
+                },
+                "to": {
+                  "modifiers": [
+                    "control",
+                    "shift"
+                  ],
+                  "key_code": "comma"
+                },
+                "conditions": [
+                  {
+                    "type": "frontmost_application_if",
+                    "bundle_identifiers": [
+                      "^net\\.kovidgoyal\\.kitty$",
+                      "^com\\.apple\\.Terminal$"
+                    ]
+                  },
+                  {
+                    "type": "device_if",
+                    "identifiers": [
+                      {
+                        "is_built_in_keyboard": true
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "basic",
+                "from": {
+                  "modifiers": {
+                    "mandatory": [
+                      "fn",
+                      "shift"
+                    ]
+                  },
+                  "key_code": "period"
+                },
+                "to": {
+                  "modifiers": [
+                    "control",
+                    "shift"
+                  ],
+                  "key_code": "period"
+                },
+                "conditions": [
+                  {
+                    "type": "frontmost_application_if",
+                    "bundle_identifiers": [
+                      "^net\\.kovidgoyal\\.kitty$",
+                      "^com\\.apple\\.Terminal$"
+                    ]
+                  },
+                  {
+                    "type": "device_if",
+                    "identifiers": [
+                      {
+                        "is_built_in_keyboard": true
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "basic",
+                "from": {
+                  "modifiers": {
+                    "mandatory": [
+                      "fn",
+                      "shift"
+                    ]
+                  },
+                  "key_code": "slash"
+                },
+                "to": {
+                  "modifiers": [
+                    "control",
+                    "shift"
+                  ],
+                  "key_code": "slash"
+                },
+                "conditions": [
+                  {
+                    "type": "frontmost_application_if",
+                    "bundle_identifiers": [
+                      "^net\\.kovidgoyal\\.kitty$",
+                      "^com\\.apple\\.Terminal$"
+                    ]
+                  },
+                  {
+                    "type": "device_if",
+                    "identifiers": [
+                      {
+                        "is_built_in_keyboard": true
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
             "description": "[BL] (Deprecate) Global: Cursor Movement By Word",
             "manipulators": [
               {
@@ -8710,6 +10479,2020 @@
                     "command"
                   ],
                   "key_code": "v"
+                },
+                "conditions": [
+                  {
+                    "type": "frontmost_application_if",
+                    "bundle_identifiers": [
+                      "^net\\.kovidgoyal\\.kitty$",
+                      "^com\\.apple\\.Terminal$"
+                    ]
+                  },
+                  {
+                    "type": "device_if",
+                    "identifiers": [
+                      {
+                        "vendor_id": 10473,
+                        "product_id": 12645
+                      },
+                      {
+                        "vendor_id": 10473,
+                        "product_id": 8192
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "description": "[GX] Terminal: <cmd> + <shift> to <ctrl> + <shift>",
+            "manipulators": [
+              {
+                "type": "basic",
+                "from": {
+                  "modifiers": {
+                    "mandatory": [
+                      "command",
+                      "shift"
+                    ]
+                  },
+                  "key_code": "spacebar"
+                },
+                "to": {
+                  "modifiers": [
+                    "control",
+                    "shift"
+                  ],
+                  "key_code": "spacebar"
+                },
+                "conditions": [
+                  {
+                    "type": "frontmost_application_if",
+                    "bundle_identifiers": [
+                      "^net\\.kovidgoyal\\.kitty$",
+                      "^com\\.apple\\.Terminal$"
+                    ]
+                  },
+                  {
+                    "type": "device_if",
+                    "identifiers": [
+                      {
+                        "vendor_id": 10473,
+                        "product_id": 12645
+                      },
+                      {
+                        "vendor_id": 10473,
+                        "product_id": 8192
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "basic",
+                "from": {
+                  "modifiers": {
+                    "mandatory": [
+                      "command",
+                      "shift"
+                    ]
+                  },
+                  "key_code": "return_or_enter"
+                },
+                "to": {
+                  "modifiers": [
+                    "control",
+                    "shift"
+                  ],
+                  "key_code": "return_or_enter"
+                },
+                "conditions": [
+                  {
+                    "type": "frontmost_application_if",
+                    "bundle_identifiers": [
+                      "^net\\.kovidgoyal\\.kitty$",
+                      "^com\\.apple\\.Terminal$"
+                    ]
+                  },
+                  {
+                    "type": "device_if",
+                    "identifiers": [
+                      {
+                        "vendor_id": 10473,
+                        "product_id": 12645
+                      },
+                      {
+                        "vendor_id": 10473,
+                        "product_id": 8192
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "basic",
+                "from": {
+                  "modifiers": {
+                    "mandatory": [
+                      "command",
+                      "shift"
+                    ]
+                  },
+                  "key_code": "tab"
+                },
+                "to": {
+                  "modifiers": [
+                    "control",
+                    "shift"
+                  ],
+                  "key_code": "tab"
+                },
+                "conditions": [
+                  {
+                    "type": "frontmost_application_if",
+                    "bundle_identifiers": [
+                      "^net\\.kovidgoyal\\.kitty$",
+                      "^com\\.apple\\.Terminal$"
+                    ]
+                  },
+                  {
+                    "type": "device_if",
+                    "identifiers": [
+                      {
+                        "vendor_id": 10473,
+                        "product_id": 12645
+                      },
+                      {
+                        "vendor_id": 10473,
+                        "product_id": 8192
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "basic",
+                "from": {
+                  "modifiers": {
+                    "mandatory": [
+                      "command",
+                      "shift"
+                    ]
+                  },
+                  "key_code": "escape"
+                },
+                "to": {
+                  "modifiers": [
+                    "control",
+                    "shift"
+                  ],
+                  "key_code": "escape"
+                },
+                "conditions": [
+                  {
+                    "type": "frontmost_application_if",
+                    "bundle_identifiers": [
+                      "^net\\.kovidgoyal\\.kitty$",
+                      "^com\\.apple\\.Terminal$"
+                    ]
+                  },
+                  {
+                    "type": "device_if",
+                    "identifiers": [
+                      {
+                        "vendor_id": 10473,
+                        "product_id": 12645
+                      },
+                      {
+                        "vendor_id": 10473,
+                        "product_id": 8192
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "basic",
+                "from": {
+                  "modifiers": {
+                    "mandatory": [
+                      "command",
+                      "shift"
+                    ]
+                  },
+                  "key_code": "a"
+                },
+                "to": {
+                  "modifiers": [
+                    "control",
+                    "shift"
+                  ],
+                  "key_code": "a"
+                },
+                "conditions": [
+                  {
+                    "type": "frontmost_application_if",
+                    "bundle_identifiers": [
+                      "^net\\.kovidgoyal\\.kitty$",
+                      "^com\\.apple\\.Terminal$"
+                    ]
+                  },
+                  {
+                    "type": "device_if",
+                    "identifiers": [
+                      {
+                        "vendor_id": 10473,
+                        "product_id": 12645
+                      },
+                      {
+                        "vendor_id": 10473,
+                        "product_id": 8192
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "basic",
+                "from": {
+                  "modifiers": {
+                    "mandatory": [
+                      "command",
+                      "shift"
+                    ]
+                  },
+                  "key_code": "b"
+                },
+                "to": {
+                  "modifiers": [
+                    "control",
+                    "shift"
+                  ],
+                  "key_code": "b"
+                },
+                "conditions": [
+                  {
+                    "type": "frontmost_application_if",
+                    "bundle_identifiers": [
+                      "^net\\.kovidgoyal\\.kitty$",
+                      "^com\\.apple\\.Terminal$"
+                    ]
+                  },
+                  {
+                    "type": "device_if",
+                    "identifiers": [
+                      {
+                        "vendor_id": 10473,
+                        "product_id": 12645
+                      },
+                      {
+                        "vendor_id": 10473,
+                        "product_id": 8192
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "basic",
+                "from": {
+                  "modifiers": {
+                    "mandatory": [
+                      "command",
+                      "shift"
+                    ]
+                  },
+                  "key_code": "d"
+                },
+                "to": {
+                  "modifiers": [
+                    "control",
+                    "shift"
+                  ],
+                  "key_code": "d"
+                },
+                "conditions": [
+                  {
+                    "type": "frontmost_application_if",
+                    "bundle_identifiers": [
+                      "^net\\.kovidgoyal\\.kitty$",
+                      "^com\\.apple\\.Terminal$"
+                    ]
+                  },
+                  {
+                    "type": "device_if",
+                    "identifiers": [
+                      {
+                        "vendor_id": 10473,
+                        "product_id": 12645
+                      },
+                      {
+                        "vendor_id": 10473,
+                        "product_id": 8192
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "basic",
+                "from": {
+                  "modifiers": {
+                    "mandatory": [
+                      "command",
+                      "shift"
+                    ]
+                  },
+                  "key_code": "e"
+                },
+                "to": {
+                  "modifiers": [
+                    "control",
+                    "shift"
+                  ],
+                  "key_code": "e"
+                },
+                "conditions": [
+                  {
+                    "type": "frontmost_application_if",
+                    "bundle_identifiers": [
+                      "^net\\.kovidgoyal\\.kitty$",
+                      "^com\\.apple\\.Terminal$"
+                    ]
+                  },
+                  {
+                    "type": "device_if",
+                    "identifiers": [
+                      {
+                        "vendor_id": 10473,
+                        "product_id": 12645
+                      },
+                      {
+                        "vendor_id": 10473,
+                        "product_id": 8192
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "basic",
+                "from": {
+                  "modifiers": {
+                    "mandatory": [
+                      "command",
+                      "shift"
+                    ]
+                  },
+                  "key_code": "f"
+                },
+                "to": {
+                  "modifiers": [
+                    "control",
+                    "shift"
+                  ],
+                  "key_code": "f"
+                },
+                "conditions": [
+                  {
+                    "type": "frontmost_application_if",
+                    "bundle_identifiers": [
+                      "^net\\.kovidgoyal\\.kitty$",
+                      "^com\\.apple\\.Terminal$"
+                    ]
+                  },
+                  {
+                    "type": "device_if",
+                    "identifiers": [
+                      {
+                        "vendor_id": 10473,
+                        "product_id": 12645
+                      },
+                      {
+                        "vendor_id": 10473,
+                        "product_id": 8192
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "basic",
+                "from": {
+                  "modifiers": {
+                    "mandatory": [
+                      "command",
+                      "shift"
+                    ]
+                  },
+                  "key_code": "g"
+                },
+                "to": {
+                  "modifiers": [
+                    "control",
+                    "shift"
+                  ],
+                  "key_code": "g"
+                },
+                "conditions": [
+                  {
+                    "type": "frontmost_application_if",
+                    "bundle_identifiers": [
+                      "^net\\.kovidgoyal\\.kitty$",
+                      "^com\\.apple\\.Terminal$"
+                    ]
+                  },
+                  {
+                    "type": "device_if",
+                    "identifiers": [
+                      {
+                        "vendor_id": 10473,
+                        "product_id": 12645
+                      },
+                      {
+                        "vendor_id": 10473,
+                        "product_id": 8192
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "basic",
+                "from": {
+                  "modifiers": {
+                    "mandatory": [
+                      "command",
+                      "shift"
+                    ]
+                  },
+                  "key_code": "h"
+                },
+                "to": {
+                  "modifiers": [
+                    "control",
+                    "shift"
+                  ],
+                  "key_code": "h"
+                },
+                "conditions": [
+                  {
+                    "type": "frontmost_application_if",
+                    "bundle_identifiers": [
+                      "^net\\.kovidgoyal\\.kitty$",
+                      "^com\\.apple\\.Terminal$"
+                    ]
+                  },
+                  {
+                    "type": "device_if",
+                    "identifiers": [
+                      {
+                        "vendor_id": 10473,
+                        "product_id": 12645
+                      },
+                      {
+                        "vendor_id": 10473,
+                        "product_id": 8192
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "basic",
+                "from": {
+                  "modifiers": {
+                    "mandatory": [
+                      "command",
+                      "shift"
+                    ]
+                  },
+                  "key_code": "i"
+                },
+                "to": {
+                  "modifiers": [
+                    "control",
+                    "shift"
+                  ],
+                  "key_code": "i"
+                },
+                "conditions": [
+                  {
+                    "type": "frontmost_application_if",
+                    "bundle_identifiers": [
+                      "^net\\.kovidgoyal\\.kitty$",
+                      "^com\\.apple\\.Terminal$"
+                    ]
+                  },
+                  {
+                    "type": "device_if",
+                    "identifiers": [
+                      {
+                        "vendor_id": 10473,
+                        "product_id": 12645
+                      },
+                      {
+                        "vendor_id": 10473,
+                        "product_id": 8192
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "basic",
+                "from": {
+                  "modifiers": {
+                    "mandatory": [
+                      "command",
+                      "shift"
+                    ]
+                  },
+                  "key_code": "j"
+                },
+                "to": {
+                  "modifiers": [
+                    "control",
+                    "shift"
+                  ],
+                  "key_code": "j"
+                },
+                "conditions": [
+                  {
+                    "type": "frontmost_application_if",
+                    "bundle_identifiers": [
+                      "^net\\.kovidgoyal\\.kitty$",
+                      "^com\\.apple\\.Terminal$"
+                    ]
+                  },
+                  {
+                    "type": "device_if",
+                    "identifiers": [
+                      {
+                        "vendor_id": 10473,
+                        "product_id": 12645
+                      },
+                      {
+                        "vendor_id": 10473,
+                        "product_id": 8192
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "basic",
+                "from": {
+                  "modifiers": {
+                    "mandatory": [
+                      "command",
+                      "shift"
+                    ]
+                  },
+                  "key_code": "k"
+                },
+                "to": {
+                  "modifiers": [
+                    "control",
+                    "shift"
+                  ],
+                  "key_code": "k"
+                },
+                "conditions": [
+                  {
+                    "type": "frontmost_application_if",
+                    "bundle_identifiers": [
+                      "^net\\.kovidgoyal\\.kitty$",
+                      "^com\\.apple\\.Terminal$"
+                    ]
+                  },
+                  {
+                    "type": "device_if",
+                    "identifiers": [
+                      {
+                        "vendor_id": 10473,
+                        "product_id": 12645
+                      },
+                      {
+                        "vendor_id": 10473,
+                        "product_id": 8192
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "basic",
+                "from": {
+                  "modifiers": {
+                    "mandatory": [
+                      "command",
+                      "shift"
+                    ]
+                  },
+                  "key_code": "l"
+                },
+                "to": {
+                  "modifiers": [
+                    "control",
+                    "shift"
+                  ],
+                  "key_code": "l"
+                },
+                "conditions": [
+                  {
+                    "type": "frontmost_application_if",
+                    "bundle_identifiers": [
+                      "^net\\.kovidgoyal\\.kitty$",
+                      "^com\\.apple\\.Terminal$"
+                    ]
+                  },
+                  {
+                    "type": "device_if",
+                    "identifiers": [
+                      {
+                        "vendor_id": 10473,
+                        "product_id": 12645
+                      },
+                      {
+                        "vendor_id": 10473,
+                        "product_id": 8192
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "basic",
+                "from": {
+                  "modifiers": {
+                    "mandatory": [
+                      "command",
+                      "shift"
+                    ]
+                  },
+                  "key_code": "m"
+                },
+                "to": {
+                  "modifiers": [
+                    "control",
+                    "shift"
+                  ],
+                  "key_code": "m"
+                },
+                "conditions": [
+                  {
+                    "type": "frontmost_application_if",
+                    "bundle_identifiers": [
+                      "^net\\.kovidgoyal\\.kitty$",
+                      "^com\\.apple\\.Terminal$"
+                    ]
+                  },
+                  {
+                    "type": "device_if",
+                    "identifiers": [
+                      {
+                        "vendor_id": 10473,
+                        "product_id": 12645
+                      },
+                      {
+                        "vendor_id": 10473,
+                        "product_id": 8192
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "basic",
+                "from": {
+                  "modifiers": {
+                    "mandatory": [
+                      "command",
+                      "shift"
+                    ]
+                  },
+                  "key_code": "n"
+                },
+                "to": {
+                  "modifiers": [
+                    "control",
+                    "shift"
+                  ],
+                  "key_code": "n"
+                },
+                "conditions": [
+                  {
+                    "type": "frontmost_application_if",
+                    "bundle_identifiers": [
+                      "^net\\.kovidgoyal\\.kitty$",
+                      "^com\\.apple\\.Terminal$"
+                    ]
+                  },
+                  {
+                    "type": "device_if",
+                    "identifiers": [
+                      {
+                        "vendor_id": 10473,
+                        "product_id": 12645
+                      },
+                      {
+                        "vendor_id": 10473,
+                        "product_id": 8192
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "basic",
+                "from": {
+                  "modifiers": {
+                    "mandatory": [
+                      "command",
+                      "shift"
+                    ]
+                  },
+                  "key_code": "o"
+                },
+                "to": {
+                  "modifiers": [
+                    "control",
+                    "shift"
+                  ],
+                  "key_code": "o"
+                },
+                "conditions": [
+                  {
+                    "type": "frontmost_application_if",
+                    "bundle_identifiers": [
+                      "^net\\.kovidgoyal\\.kitty$",
+                      "^com\\.apple\\.Terminal$"
+                    ]
+                  },
+                  {
+                    "type": "device_if",
+                    "identifiers": [
+                      {
+                        "vendor_id": 10473,
+                        "product_id": 12645
+                      },
+                      {
+                        "vendor_id": 10473,
+                        "product_id": 8192
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "basic",
+                "from": {
+                  "modifiers": {
+                    "mandatory": [
+                      "command",
+                      "shift"
+                    ]
+                  },
+                  "key_code": "p"
+                },
+                "to": {
+                  "modifiers": [
+                    "control",
+                    "shift"
+                  ],
+                  "key_code": "p"
+                },
+                "conditions": [
+                  {
+                    "type": "frontmost_application_if",
+                    "bundle_identifiers": [
+                      "^net\\.kovidgoyal\\.kitty$",
+                      "^com\\.apple\\.Terminal$"
+                    ]
+                  },
+                  {
+                    "type": "device_if",
+                    "identifiers": [
+                      {
+                        "vendor_id": 10473,
+                        "product_id": 12645
+                      },
+                      {
+                        "vendor_id": 10473,
+                        "product_id": 8192
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "basic",
+                "from": {
+                  "modifiers": {
+                    "mandatory": [
+                      "command",
+                      "shift"
+                    ]
+                  },
+                  "key_code": "q"
+                },
+                "to": {
+                  "modifiers": [
+                    "control",
+                    "shift"
+                  ],
+                  "key_code": "q"
+                },
+                "conditions": [
+                  {
+                    "type": "frontmost_application_if",
+                    "bundle_identifiers": [
+                      "^net\\.kovidgoyal\\.kitty$",
+                      "^com\\.apple\\.Terminal$"
+                    ]
+                  },
+                  {
+                    "type": "device_if",
+                    "identifiers": [
+                      {
+                        "vendor_id": 10473,
+                        "product_id": 12645
+                      },
+                      {
+                        "vendor_id": 10473,
+                        "product_id": 8192
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "basic",
+                "from": {
+                  "modifiers": {
+                    "mandatory": [
+                      "command",
+                      "shift"
+                    ]
+                  },
+                  "key_code": "r"
+                },
+                "to": {
+                  "modifiers": [
+                    "control",
+                    "shift"
+                  ],
+                  "key_code": "r"
+                },
+                "conditions": [
+                  {
+                    "type": "frontmost_application_if",
+                    "bundle_identifiers": [
+                      "^net\\.kovidgoyal\\.kitty$",
+                      "^com\\.apple\\.Terminal$"
+                    ]
+                  },
+                  {
+                    "type": "device_if",
+                    "identifiers": [
+                      {
+                        "vendor_id": 10473,
+                        "product_id": 12645
+                      },
+                      {
+                        "vendor_id": 10473,
+                        "product_id": 8192
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "basic",
+                "from": {
+                  "modifiers": {
+                    "mandatory": [
+                      "command",
+                      "shift"
+                    ]
+                  },
+                  "key_code": "s"
+                },
+                "to": {
+                  "modifiers": [
+                    "control",
+                    "shift"
+                  ],
+                  "key_code": "s"
+                },
+                "conditions": [
+                  {
+                    "type": "frontmost_application_if",
+                    "bundle_identifiers": [
+                      "^net\\.kovidgoyal\\.kitty$",
+                      "^com\\.apple\\.Terminal$"
+                    ]
+                  },
+                  {
+                    "type": "device_if",
+                    "identifiers": [
+                      {
+                        "vendor_id": 10473,
+                        "product_id": 12645
+                      },
+                      {
+                        "vendor_id": 10473,
+                        "product_id": 8192
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "basic",
+                "from": {
+                  "modifiers": {
+                    "mandatory": [
+                      "command",
+                      "shift"
+                    ]
+                  },
+                  "key_code": "t"
+                },
+                "to": {
+                  "modifiers": [
+                    "control",
+                    "shift"
+                  ],
+                  "key_code": "t"
+                },
+                "conditions": [
+                  {
+                    "type": "frontmost_application_if",
+                    "bundle_identifiers": [
+                      "^net\\.kovidgoyal\\.kitty$",
+                      "^com\\.apple\\.Terminal$"
+                    ]
+                  },
+                  {
+                    "type": "device_if",
+                    "identifiers": [
+                      {
+                        "vendor_id": 10473,
+                        "product_id": 12645
+                      },
+                      {
+                        "vendor_id": 10473,
+                        "product_id": 8192
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "basic",
+                "from": {
+                  "modifiers": {
+                    "mandatory": [
+                      "command",
+                      "shift"
+                    ]
+                  },
+                  "key_code": "u"
+                },
+                "to": {
+                  "modifiers": [
+                    "control",
+                    "shift"
+                  ],
+                  "key_code": "u"
+                },
+                "conditions": [
+                  {
+                    "type": "frontmost_application_if",
+                    "bundle_identifiers": [
+                      "^net\\.kovidgoyal\\.kitty$",
+                      "^com\\.apple\\.Terminal$"
+                    ]
+                  },
+                  {
+                    "type": "device_if",
+                    "identifiers": [
+                      {
+                        "vendor_id": 10473,
+                        "product_id": 12645
+                      },
+                      {
+                        "vendor_id": 10473,
+                        "product_id": 8192
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "basic",
+                "from": {
+                  "modifiers": {
+                    "mandatory": [
+                      "command",
+                      "shift"
+                    ]
+                  },
+                  "key_code": "w"
+                },
+                "to": {
+                  "modifiers": [
+                    "control",
+                    "shift"
+                  ],
+                  "key_code": "w"
+                },
+                "conditions": [
+                  {
+                    "type": "frontmost_application_if",
+                    "bundle_identifiers": [
+                      "^net\\.kovidgoyal\\.kitty$",
+                      "^com\\.apple\\.Terminal$"
+                    ]
+                  },
+                  {
+                    "type": "device_if",
+                    "identifiers": [
+                      {
+                        "vendor_id": 10473,
+                        "product_id": 12645
+                      },
+                      {
+                        "vendor_id": 10473,
+                        "product_id": 8192
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "basic",
+                "from": {
+                  "modifiers": {
+                    "mandatory": [
+                      "command",
+                      "shift"
+                    ]
+                  },
+                  "key_code": "x"
+                },
+                "to": {
+                  "modifiers": [
+                    "control",
+                    "shift"
+                  ],
+                  "key_code": "x"
+                },
+                "conditions": [
+                  {
+                    "type": "frontmost_application_if",
+                    "bundle_identifiers": [
+                      "^net\\.kovidgoyal\\.kitty$",
+                      "^com\\.apple\\.Terminal$"
+                    ]
+                  },
+                  {
+                    "type": "device_if",
+                    "identifiers": [
+                      {
+                        "vendor_id": 10473,
+                        "product_id": 12645
+                      },
+                      {
+                        "vendor_id": 10473,
+                        "product_id": 8192
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "basic",
+                "from": {
+                  "modifiers": {
+                    "mandatory": [
+                      "command",
+                      "shift"
+                    ]
+                  },
+                  "key_code": "y"
+                },
+                "to": {
+                  "modifiers": [
+                    "control",
+                    "shift"
+                  ],
+                  "key_code": "y"
+                },
+                "conditions": [
+                  {
+                    "type": "frontmost_application_if",
+                    "bundle_identifiers": [
+                      "^net\\.kovidgoyal\\.kitty$",
+                      "^com\\.apple\\.Terminal$"
+                    ]
+                  },
+                  {
+                    "type": "device_if",
+                    "identifiers": [
+                      {
+                        "vendor_id": 10473,
+                        "product_id": 12645
+                      },
+                      {
+                        "vendor_id": 10473,
+                        "product_id": 8192
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "basic",
+                "from": {
+                  "modifiers": {
+                    "mandatory": [
+                      "command",
+                      "shift"
+                    ]
+                  },
+                  "key_code": "z"
+                },
+                "to": {
+                  "modifiers": [
+                    "control",
+                    "shift"
+                  ],
+                  "key_code": "z"
+                },
+                "conditions": [
+                  {
+                    "type": "frontmost_application_if",
+                    "bundle_identifiers": [
+                      "^net\\.kovidgoyal\\.kitty$",
+                      "^com\\.apple\\.Terminal$"
+                    ]
+                  },
+                  {
+                    "type": "device_if",
+                    "identifiers": [
+                      {
+                        "vendor_id": 10473,
+                        "product_id": 12645
+                      },
+                      {
+                        "vendor_id": 10473,
+                        "product_id": 8192
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "basic",
+                "from": {
+                  "modifiers": {
+                    "mandatory": [
+                      "command",
+                      "shift"
+                    ]
+                  },
+                  "key_code": "0"
+                },
+                "to": {
+                  "modifiers": [
+                    "control",
+                    "shift"
+                  ],
+                  "key_code": "0"
+                },
+                "conditions": [
+                  {
+                    "type": "frontmost_application_if",
+                    "bundle_identifiers": [
+                      "^net\\.kovidgoyal\\.kitty$",
+                      "^com\\.apple\\.Terminal$"
+                    ]
+                  },
+                  {
+                    "type": "device_if",
+                    "identifiers": [
+                      {
+                        "vendor_id": 10473,
+                        "product_id": 12645
+                      },
+                      {
+                        "vendor_id": 10473,
+                        "product_id": 8192
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "basic",
+                "from": {
+                  "modifiers": {
+                    "mandatory": [
+                      "command",
+                      "shift"
+                    ]
+                  },
+                  "key_code": "1"
+                },
+                "to": {
+                  "modifiers": [
+                    "control",
+                    "shift"
+                  ],
+                  "key_code": "1"
+                },
+                "conditions": [
+                  {
+                    "type": "frontmost_application_if",
+                    "bundle_identifiers": [
+                      "^net\\.kovidgoyal\\.kitty$",
+                      "^com\\.apple\\.Terminal$"
+                    ]
+                  },
+                  {
+                    "type": "device_if",
+                    "identifiers": [
+                      {
+                        "vendor_id": 10473,
+                        "product_id": 12645
+                      },
+                      {
+                        "vendor_id": 10473,
+                        "product_id": 8192
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "basic",
+                "from": {
+                  "modifiers": {
+                    "mandatory": [
+                      "command",
+                      "shift"
+                    ]
+                  },
+                  "key_code": "2"
+                },
+                "to": {
+                  "modifiers": [
+                    "control",
+                    "shift"
+                  ],
+                  "key_code": "2"
+                },
+                "conditions": [
+                  {
+                    "type": "frontmost_application_if",
+                    "bundle_identifiers": [
+                      "^net\\.kovidgoyal\\.kitty$",
+                      "^com\\.apple\\.Terminal$"
+                    ]
+                  },
+                  {
+                    "type": "device_if",
+                    "identifiers": [
+                      {
+                        "vendor_id": 10473,
+                        "product_id": 12645
+                      },
+                      {
+                        "vendor_id": 10473,
+                        "product_id": 8192
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "basic",
+                "from": {
+                  "modifiers": {
+                    "mandatory": [
+                      "command",
+                      "shift"
+                    ]
+                  },
+                  "key_code": "3"
+                },
+                "to": {
+                  "modifiers": [
+                    "control",
+                    "shift"
+                  ],
+                  "key_code": "3"
+                },
+                "conditions": [
+                  {
+                    "type": "frontmost_application_if",
+                    "bundle_identifiers": [
+                      "^net\\.kovidgoyal\\.kitty$",
+                      "^com\\.apple\\.Terminal$"
+                    ]
+                  },
+                  {
+                    "type": "device_if",
+                    "identifiers": [
+                      {
+                        "vendor_id": 10473,
+                        "product_id": 12645
+                      },
+                      {
+                        "vendor_id": 10473,
+                        "product_id": 8192
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "basic",
+                "from": {
+                  "modifiers": {
+                    "mandatory": [
+                      "command",
+                      "shift"
+                    ]
+                  },
+                  "key_code": "4"
+                },
+                "to": {
+                  "modifiers": [
+                    "control",
+                    "shift"
+                  ],
+                  "key_code": "4"
+                },
+                "conditions": [
+                  {
+                    "type": "frontmost_application_if",
+                    "bundle_identifiers": [
+                      "^net\\.kovidgoyal\\.kitty$",
+                      "^com\\.apple\\.Terminal$"
+                    ]
+                  },
+                  {
+                    "type": "device_if",
+                    "identifiers": [
+                      {
+                        "vendor_id": 10473,
+                        "product_id": 12645
+                      },
+                      {
+                        "vendor_id": 10473,
+                        "product_id": 8192
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "basic",
+                "from": {
+                  "modifiers": {
+                    "mandatory": [
+                      "command",
+                      "shift"
+                    ]
+                  },
+                  "key_code": "5"
+                },
+                "to": {
+                  "modifiers": [
+                    "control",
+                    "shift"
+                  ],
+                  "key_code": "5"
+                },
+                "conditions": [
+                  {
+                    "type": "frontmost_application_if",
+                    "bundle_identifiers": [
+                      "^net\\.kovidgoyal\\.kitty$",
+                      "^com\\.apple\\.Terminal$"
+                    ]
+                  },
+                  {
+                    "type": "device_if",
+                    "identifiers": [
+                      {
+                        "vendor_id": 10473,
+                        "product_id": 12645
+                      },
+                      {
+                        "vendor_id": 10473,
+                        "product_id": 8192
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "basic",
+                "from": {
+                  "modifiers": {
+                    "mandatory": [
+                      "command",
+                      "shift"
+                    ]
+                  },
+                  "key_code": "6"
+                },
+                "to": {
+                  "modifiers": [
+                    "control",
+                    "shift"
+                  ],
+                  "key_code": "6"
+                },
+                "conditions": [
+                  {
+                    "type": "frontmost_application_if",
+                    "bundle_identifiers": [
+                      "^net\\.kovidgoyal\\.kitty$",
+                      "^com\\.apple\\.Terminal$"
+                    ]
+                  },
+                  {
+                    "type": "device_if",
+                    "identifiers": [
+                      {
+                        "vendor_id": 10473,
+                        "product_id": 12645
+                      },
+                      {
+                        "vendor_id": 10473,
+                        "product_id": 8192
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "basic",
+                "from": {
+                  "modifiers": {
+                    "mandatory": [
+                      "command",
+                      "shift"
+                    ]
+                  },
+                  "key_code": "7"
+                },
+                "to": {
+                  "modifiers": [
+                    "control",
+                    "shift"
+                  ],
+                  "key_code": "7"
+                },
+                "conditions": [
+                  {
+                    "type": "frontmost_application_if",
+                    "bundle_identifiers": [
+                      "^net\\.kovidgoyal\\.kitty$",
+                      "^com\\.apple\\.Terminal$"
+                    ]
+                  },
+                  {
+                    "type": "device_if",
+                    "identifiers": [
+                      {
+                        "vendor_id": 10473,
+                        "product_id": 12645
+                      },
+                      {
+                        "vendor_id": 10473,
+                        "product_id": 8192
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "basic",
+                "from": {
+                  "modifiers": {
+                    "mandatory": [
+                      "command",
+                      "shift"
+                    ]
+                  },
+                  "key_code": "8"
+                },
+                "to": {
+                  "modifiers": [
+                    "control",
+                    "shift"
+                  ],
+                  "key_code": "8"
+                },
+                "conditions": [
+                  {
+                    "type": "frontmost_application_if",
+                    "bundle_identifiers": [
+                      "^net\\.kovidgoyal\\.kitty$",
+                      "^com\\.apple\\.Terminal$"
+                    ]
+                  },
+                  {
+                    "type": "device_if",
+                    "identifiers": [
+                      {
+                        "vendor_id": 10473,
+                        "product_id": 12645
+                      },
+                      {
+                        "vendor_id": 10473,
+                        "product_id": 8192
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "basic",
+                "from": {
+                  "modifiers": {
+                    "mandatory": [
+                      "command",
+                      "shift"
+                    ]
+                  },
+                  "key_code": "9"
+                },
+                "to": {
+                  "modifiers": [
+                    "control",
+                    "shift"
+                  ],
+                  "key_code": "9"
+                },
+                "conditions": [
+                  {
+                    "type": "frontmost_application_if",
+                    "bundle_identifiers": [
+                      "^net\\.kovidgoyal\\.kitty$",
+                      "^com\\.apple\\.Terminal$"
+                    ]
+                  },
+                  {
+                    "type": "device_if",
+                    "identifiers": [
+                      {
+                        "vendor_id": 10473,
+                        "product_id": 12645
+                      },
+                      {
+                        "vendor_id": 10473,
+                        "product_id": 8192
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "basic",
+                "from": {
+                  "modifiers": {
+                    "mandatory": [
+                      "command",
+                      "shift"
+                    ]
+                  },
+                  "key_code": "grave_accent_and_tilde"
+                },
+                "to": {
+                  "modifiers": [
+                    "control",
+                    "shift"
+                  ],
+                  "key_code": "grave_accent_and_tilde"
+                },
+                "conditions": [
+                  {
+                    "type": "frontmost_application_if",
+                    "bundle_identifiers": [
+                      "^net\\.kovidgoyal\\.kitty$",
+                      "^com\\.apple\\.Terminal$"
+                    ]
+                  },
+                  {
+                    "type": "device_if",
+                    "identifiers": [
+                      {
+                        "vendor_id": 10473,
+                        "product_id": 12645
+                      },
+                      {
+                        "vendor_id": 10473,
+                        "product_id": 8192
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "basic",
+                "from": {
+                  "modifiers": {
+                    "mandatory": [
+                      "command",
+                      "shift"
+                    ]
+                  },
+                  "key_code": "hyphen"
+                },
+                "to": {
+                  "modifiers": [
+                    "control",
+                    "shift"
+                  ],
+                  "key_code": "hyphen"
+                },
+                "conditions": [
+                  {
+                    "type": "frontmost_application_if",
+                    "bundle_identifiers": [
+                      "^net\\.kovidgoyal\\.kitty$",
+                      "^com\\.apple\\.Terminal$"
+                    ]
+                  },
+                  {
+                    "type": "device_if",
+                    "identifiers": [
+                      {
+                        "vendor_id": 10473,
+                        "product_id": 12645
+                      },
+                      {
+                        "vendor_id": 10473,
+                        "product_id": 8192
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "basic",
+                "from": {
+                  "modifiers": {
+                    "mandatory": [
+                      "command",
+                      "shift"
+                    ]
+                  },
+                  "key_code": "equal_sign"
+                },
+                "to": {
+                  "modifiers": [
+                    "control",
+                    "shift"
+                  ],
+                  "key_code": "equal_sign"
+                },
+                "conditions": [
+                  {
+                    "type": "frontmost_application_if",
+                    "bundle_identifiers": [
+                      "^net\\.kovidgoyal\\.kitty$",
+                      "^com\\.apple\\.Terminal$"
+                    ]
+                  },
+                  {
+                    "type": "device_if",
+                    "identifiers": [
+                      {
+                        "vendor_id": 10473,
+                        "product_id": 12645
+                      },
+                      {
+                        "vendor_id": 10473,
+                        "product_id": 8192
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "basic",
+                "from": {
+                  "modifiers": {
+                    "mandatory": [
+                      "command",
+                      "shift"
+                    ]
+                  },
+                  "key_code": "open_bracket"
+                },
+                "to": {
+                  "modifiers": [
+                    "control",
+                    "shift"
+                  ],
+                  "key_code": "open_bracket"
+                },
+                "conditions": [
+                  {
+                    "type": "frontmost_application_if",
+                    "bundle_identifiers": [
+                      "^net\\.kovidgoyal\\.kitty$",
+                      "^com\\.apple\\.Terminal$"
+                    ]
+                  },
+                  {
+                    "type": "device_if",
+                    "identifiers": [
+                      {
+                        "vendor_id": 10473,
+                        "product_id": 12645
+                      },
+                      {
+                        "vendor_id": 10473,
+                        "product_id": 8192
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "basic",
+                "from": {
+                  "modifiers": {
+                    "mandatory": [
+                      "command",
+                      "shift"
+                    ]
+                  },
+                  "key_code": "close_bracket"
+                },
+                "to": {
+                  "modifiers": [
+                    "control",
+                    "shift"
+                  ],
+                  "key_code": "close_bracket"
+                },
+                "conditions": [
+                  {
+                    "type": "frontmost_application_if",
+                    "bundle_identifiers": [
+                      "^net\\.kovidgoyal\\.kitty$",
+                      "^com\\.apple\\.Terminal$"
+                    ]
+                  },
+                  {
+                    "type": "device_if",
+                    "identifiers": [
+                      {
+                        "vendor_id": 10473,
+                        "product_id": 12645
+                      },
+                      {
+                        "vendor_id": 10473,
+                        "product_id": 8192
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "basic",
+                "from": {
+                  "modifiers": {
+                    "mandatory": [
+                      "command",
+                      "shift"
+                    ]
+                  },
+                  "key_code": "backslash"
+                },
+                "to": {
+                  "modifiers": [
+                    "control",
+                    "shift"
+                  ],
+                  "key_code": "backslash"
+                },
+                "conditions": [
+                  {
+                    "type": "frontmost_application_if",
+                    "bundle_identifiers": [
+                      "^net\\.kovidgoyal\\.kitty$",
+                      "^com\\.apple\\.Terminal$"
+                    ]
+                  },
+                  {
+                    "type": "device_if",
+                    "identifiers": [
+                      {
+                        "vendor_id": 10473,
+                        "product_id": 12645
+                      },
+                      {
+                        "vendor_id": 10473,
+                        "product_id": 8192
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "basic",
+                "from": {
+                  "modifiers": {
+                    "mandatory": [
+                      "command",
+                      "shift"
+                    ]
+                  },
+                  "key_code": "semicolon"
+                },
+                "to": {
+                  "modifiers": [
+                    "control",
+                    "shift"
+                  ],
+                  "key_code": "semicolon"
+                },
+                "conditions": [
+                  {
+                    "type": "frontmost_application_if",
+                    "bundle_identifiers": [
+                      "^net\\.kovidgoyal\\.kitty$",
+                      "^com\\.apple\\.Terminal$"
+                    ]
+                  },
+                  {
+                    "type": "device_if",
+                    "identifiers": [
+                      {
+                        "vendor_id": 10473,
+                        "product_id": 12645
+                      },
+                      {
+                        "vendor_id": 10473,
+                        "product_id": 8192
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "basic",
+                "from": {
+                  "modifiers": {
+                    "mandatory": [
+                      "command",
+                      "shift"
+                    ]
+                  },
+                  "key_code": "quote"
+                },
+                "to": {
+                  "modifiers": [
+                    "control",
+                    "shift"
+                  ],
+                  "key_code": "quote"
+                },
+                "conditions": [
+                  {
+                    "type": "frontmost_application_if",
+                    "bundle_identifiers": [
+                      "^net\\.kovidgoyal\\.kitty$",
+                      "^com\\.apple\\.Terminal$"
+                    ]
+                  },
+                  {
+                    "type": "device_if",
+                    "identifiers": [
+                      {
+                        "vendor_id": 10473,
+                        "product_id": 12645
+                      },
+                      {
+                        "vendor_id": 10473,
+                        "product_id": 8192
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "basic",
+                "from": {
+                  "modifiers": {
+                    "mandatory": [
+                      "command",
+                      "shift"
+                    ]
+                  },
+                  "key_code": "comma"
+                },
+                "to": {
+                  "modifiers": [
+                    "control",
+                    "shift"
+                  ],
+                  "key_code": "comma"
+                },
+                "conditions": [
+                  {
+                    "type": "frontmost_application_if",
+                    "bundle_identifiers": [
+                      "^net\\.kovidgoyal\\.kitty$",
+                      "^com\\.apple\\.Terminal$"
+                    ]
+                  },
+                  {
+                    "type": "device_if",
+                    "identifiers": [
+                      {
+                        "vendor_id": 10473,
+                        "product_id": 12645
+                      },
+                      {
+                        "vendor_id": 10473,
+                        "product_id": 8192
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "basic",
+                "from": {
+                  "modifiers": {
+                    "mandatory": [
+                      "command",
+                      "shift"
+                    ]
+                  },
+                  "key_code": "period"
+                },
+                "to": {
+                  "modifiers": [
+                    "control",
+                    "shift"
+                  ],
+                  "key_code": "period"
+                },
+                "conditions": [
+                  {
+                    "type": "frontmost_application_if",
+                    "bundle_identifiers": [
+                      "^net\\.kovidgoyal\\.kitty$",
+                      "^com\\.apple\\.Terminal$"
+                    ]
+                  },
+                  {
+                    "type": "device_if",
+                    "identifiers": [
+                      {
+                        "vendor_id": 10473,
+                        "product_id": 12645
+                      },
+                      {
+                        "vendor_id": 10473,
+                        "product_id": 8192
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "basic",
+                "from": {
+                  "modifiers": {
+                    "mandatory": [
+                      "command",
+                      "shift"
+                    ]
+                  },
+                  "key_code": "slash"
+                },
+                "to": {
+                  "modifiers": [
+                    "control",
+                    "shift"
+                  ],
+                  "key_code": "slash"
                 },
                 "conditions": [
                   {

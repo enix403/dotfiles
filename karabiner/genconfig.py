@@ -136,6 +136,72 @@ mappings(
 
 mappings(
     devices=[builtin],
+    apps=terminals,
+    desc="Terminal: <fn> + <shift> to <ctrl> + <shift>",
+    maps=[
+        "fn+shift+space == ctrl+shift+space",
+        "fn+shift+enter == ctrl+shift+enter",
+        "fn+shift+tab == ctrl+shift+tab",
+        "fn+shift+escape == ctrl+shift+escape",
+
+        "fn+shift+a == ctrl+shift+a",
+        "fn+shift+b == ctrl+shift+b",
+        # "fn+shift+c == ctrl+shift+c", # special
+        "fn+shift+d == ctrl+shift+d",
+        "fn+shift+e == ctrl+shift+e",
+        "fn+shift+f == ctrl+shift+f",
+        "fn+shift+g == ctrl+shift+g",
+        "fn+shift+h == ctrl+shift+h",
+        "fn+shift+i == ctrl+shift+i",
+        "fn+shift+j == ctrl+shift+j",
+        "fn+shift+k == ctrl+shift+k",
+        "fn+shift+l == ctrl+shift+l",
+        "fn+shift+m == ctrl+shift+m",
+        "fn+shift+n == ctrl+shift+n",
+        "fn+shift+o == ctrl+shift+o",
+        "fn+shift+p == ctrl+shift+p",
+        "fn+shift+q == ctrl+shift+q",
+        "fn+shift+r == ctrl+shift+r",
+        "fn+shift+s == ctrl+shift+s",
+        "fn+shift+t == ctrl+shift+t",
+        "fn+shift+u == ctrl+shift+u",
+        # "fn+shift+v == ctrl+shift+v", # special
+        "fn+shift+w == ctrl+shift+w",
+        "fn+shift+x == ctrl+shift+x",
+        "fn+shift+y == ctrl+shift+y",
+        "fn+shift+z == ctrl+shift+z",
+
+        "fn+shift+0 == ctrl+shift+0",
+        "fn+shift+1 == ctrl+shift+1",
+        "fn+shift+2 == ctrl+shift+2",
+        "fn+shift+3 == ctrl+shift+3",
+        "fn+shift+4 == ctrl+shift+4",
+        "fn+shift+5 == ctrl+shift+5",
+        "fn+shift+6 == ctrl+shift+6",
+        "fn+shift+7 == ctrl+shift+7",
+        "fn+shift+8 == ctrl+shift+8",
+        "fn+shift+9 == ctrl+shift+9",
+
+        "fn+shift+` == ctrl+shift+`",
+        "fn+shift+- == ctrl+shift+-",
+        "fn+shift+= == ctrl+shift+=",
+
+        "fn+shift+[ == ctrl+shift+[",
+        "fn+shift+] == ctrl+shift+]",
+        "fn+shift+\\ == ctrl+shift+\\",
+
+        "fn+shift+; == ctrl+shift+;",
+        "fn+shift+' == ctrl+shift+'",
+
+        "fn+shift+, == ctrl+shift+,",
+        "fn+shift+. == ctrl+shift+.",
+        "fn+shift+/ == ctrl+shift+/",
+    ]
+)
+
+
+mappings(
+    devices=[builtin],
     desc="(Deprecate) Global: Cursor Movement By Word",
     maps=[
         "fn+delete == opt+delete",
@@ -218,7 +284,7 @@ mappings(
         "fn+shift+enter == cmd+shift+enter",
         "fn+shift+tab == cmd+shift+tab",
         "fn+shift+escape == cmd+shift+escape",
-        
+
         # Afraid to bind the horizontal arrows due to vscode's goto definition keybind
         # TODO: look into it
         "fn+shift+up_arrow == cmd+shift+up_arrow",
@@ -414,6 +480,71 @@ mappings(
     maps=[
         "cmd+shift+c == cmd+c",
         "cmd+shift+v == cmd+v",
+    ]
+)
+
+mappings(
+    devices=[galaxy65],
+    apps=terminals,
+    desc="Terminal: <cmd> + <shift> to <ctrl> + <shift>",
+    maps=[
+        "cmd+shift+space == ctrl+shift+space",
+        "cmd+shift+enter == ctrl+shift+enter",
+        "cmd+shift+tab == ctrl+shift+tab",
+        "cmd+shift+escape == ctrl+shift+escape",
+
+        "cmd+shift+a == ctrl+shift+a",
+        "cmd+shift+b == ctrl+shift+b",
+        # "cmd+shift+c == ctrl+shift+c", # special
+        "cmd+shift+d == ctrl+shift+d",
+        "cmd+shift+e == ctrl+shift+e",
+        "cmd+shift+f == ctrl+shift+f",
+        "cmd+shift+g == ctrl+shift+g",
+        "cmd+shift+h == ctrl+shift+h",
+        "cmd+shift+i == ctrl+shift+i",
+        "cmd+shift+j == ctrl+shift+j",
+        "cmd+shift+k == ctrl+shift+k",
+        "cmd+shift+l == ctrl+shift+l",
+        "cmd+shift+m == ctrl+shift+m",
+        "cmd+shift+n == ctrl+shift+n",
+        "cmd+shift+o == ctrl+shift+o",
+        "cmd+shift+p == ctrl+shift+p",
+        "cmd+shift+q == ctrl+shift+q",
+        "cmd+shift+r == ctrl+shift+r",
+        "cmd+shift+s == ctrl+shift+s",
+        "cmd+shift+t == ctrl+shift+t",
+        "cmd+shift+u == ctrl+shift+u",
+        # "cmd+shift+v == ctrl+shift+v", # special
+        "cmd+shift+w == ctrl+shift+w",
+        "cmd+shift+x == ctrl+shift+x",
+        "cmd+shift+y == ctrl+shift+y",
+        "cmd+shift+z == ctrl+shift+z",
+
+        "cmd+shift+0 == ctrl+shift+0",
+        "cmd+shift+1 == ctrl+shift+1",
+        "cmd+shift+2 == ctrl+shift+2",
+        "cmd+shift+3 == ctrl+shift+3",
+        "cmd+shift+4 == ctrl+shift+4",
+        "cmd+shift+5 == ctrl+shift+5",
+        "cmd+shift+6 == ctrl+shift+6",
+        "cmd+shift+7 == ctrl+shift+7",
+        "cmd+shift+8 == ctrl+shift+8",
+        "cmd+shift+9 == ctrl+shift+9",
+
+        "cmd+shift+` == ctrl+shift+`",
+        "cmd+shift+- == ctrl+shift+-",
+        "cmd+shift+= == ctrl+shift+=",
+
+        "cmd+shift+[ == ctrl+shift+[",
+        "cmd+shift+] == ctrl+shift+]",
+        "cmd+shift+\\ == ctrl+shift+\\",
+
+        "cmd+shift+; == ctrl+shift+;",
+        "cmd+shift+' == ctrl+shift+'",
+
+        "cmd+shift+, == ctrl+shift+,",
+        "cmd+shift+. == ctrl+shift+.",
+        "cmd+shift+/ == ctrl+shift+/",
     ]
 )
 
