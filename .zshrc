@@ -7,6 +7,10 @@ export ZSH="$HOME/.oh-my-zsh"
 ZSH_CUSTOM="$HOME/.config/oh-my-zsh-custom"
 
 DISABLE_AUTO_TITLE="true"
+
+# brew install olets/tap/zsh-window-title
+source /opt/homebrew/share/zsh-window-title/zsh-window-title.zsh
+
 DISABLE_UNTRACKED_FILES_DIRTY="true"
 plugins=(fzf-tab colored-man-pages) # zsh-syntax-highlighting must come at end
 
