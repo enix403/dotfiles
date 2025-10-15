@@ -12,7 +12,9 @@ DISABLE_AUTO_TITLE="true"
 source /opt/homebrew/share/zsh-window-title/zsh-window-title.zsh
 
 DISABLE_UNTRACKED_FILES_DIRTY="true"
-plugins=(fzf-tab colored-man-pages) # zsh-syntax-highlighting must come at end
+# git clone https://github.com/zdharma-continuum/fast-syntax-highlighting.git \
+#   ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins/fast-syntax-highlighting
+plugins=(fast-syntax-highlighting fzf-tab colored-man-pages) # zsh-syntax-highlighting must come at end
 
 source $ZSH/oh-my-zsh.sh
 
@@ -25,18 +27,18 @@ setopt no_auto_remove_slash
 # remove path duplicates
 typeset -U PATH
 
-source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+# source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
-# Disable underline for paths autocompletions while typing
-(( ${+ZSH_HIGHLIGHT_STYLES} )) || typeset -A ZSH_HIGHLIGHT_STYLES
+# # Disable underline for paths autocompletions while typing
+# (( ${+ZSH_HIGHLIGHT_STYLES} )) || typeset -A ZSH_HIGHLIGHT_STYLES
 
-ZSH_HIGHLIGHT_STYLES[path]=none
-ZSH_HIGHLIGHT_STYLES[path_prefix]=none
+# ZSH_HIGHLIGHT_STYLES[path]=none
+# ZSH_HIGHLIGHT_STYLES[path_prefix]=none
 
-ZSH_HIGHLIGHT_STYLES[suffix-alias]=fg=green
-ZSH_HIGHLIGHT_STYLES[precommand]=fg=green
-ZSH_HIGHLIGHT_STYLES[autodirectory]=fg=yellow
-ZSH_HIGHLIGHT_STYLES[path]=fg=cyan
-ZSH_HIGHLIGHT_STYLES[unknown-token]=fg=red
-ZSH_HIGHLIGHT_STYLES[comment]='fg=blue,bg=black'
-ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern)
+# ZSH_HIGHLIGHT_STYLES[suffix-alias]=fg=green
+# ZSH_HIGHLIGHT_STYLES[precommand]=fg=green
+# ZSH_HIGHLIGHT_STYLES[autodirectory]=fg=yellow
+# ZSH_HIGHLIGHT_STYLES[path]=fg=cyan
+# ZSH_HIGHLIGHT_STYLES[unknown-token]=fg=red
+# ZSH_HIGHLIGHT_STYLES[comment]='fg=blue,bg=black'
+# ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern)
