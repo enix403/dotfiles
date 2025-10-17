@@ -1,11 +1,3 @@
-# Wait 10 milliseconds for starship to check files under the current directory.
-scan_timeout = 10
-
-# # Timeout for commands executed by starship (in milliseconds)
-command_timeout=1000
-
-# ------------
-
 # Add blank line at the start of the prompt
 add_newline = true
 
@@ -15,9 +7,14 @@ $directory $fill$cmd_duration
 $character
 """
 
+# Wait 10 milliseconds for starship to check files under the current directory.
+scan_timeout = 10
+
+# Timeout for commands executed by starship (in milliseconds)
+command_timeout=1000
+
 [fill]
 symbol = ' '
-
 
 [username]
 style_root = 'black bold'
@@ -64,8 +61,6 @@ before_repo_root_style="bold cyan"
 format = "[$path]($style)"
 
 
-# -----
-
 [git_branch]
 truncation_length = 15
 truncation_symbol = '…'
@@ -77,8 +72,6 @@ style = 'bold red'
 
 format = 'on [$symbol $branch]($style)'
 
-# TODO: only_attached
-
 [git_commit]
 # Only show when in a detached head
 only_detached = true
@@ -86,15 +79,14 @@ format = '[\(on commit $hash\)]($style) '
 style = 'bold green'
 commit_hash_length = 8
 
-[git_status]
 # I want it, but this module is too slow because
 # `git status` itself is too slow on large repos
+[git_status]
+# pass
 
 [kubernetes]
 disabled = false
 detect_files = ['k8s']
-
-## LOOK INTO IT
 
 [python]
 format = 'on [$symbol(${version} )(\($virtualenv\) )]($style)'
@@ -104,12 +96,8 @@ style = 'bold green'
 detect_extensions = ['py', 'ipynb']
 detect_files = ['.python-version', 'Pipfile', '__init__.py', 'pyproject.toml', 'requirements.txt', 'setup.py', 'tox.ini']
 
-# ------
-# Last command run
-
+# Status of last command run
 [status]
-# TODO: move this to right module
-
 # Disabled by default. Need to enable it
 disabled = false
 
@@ -135,16 +123,14 @@ recognize_signal_code = true
 # default ???
 map_symbol = true
 
+# Duration of last command run
 [cmd_duration]
 # ignore command that execute under this number of milliseconds
 min_time = 10000
 format = ' [⧗ $duration](bold yellow)'
 
-# ------
-# Prompt
+# Actual Prompt
 [character]
-success_symbol = '[❯](bold green)'
-error_symbol = '[❯](bold red)'
-
-## LOOK INTO IT
+# error_symbol = '[❯](bold red)'
+format = '[❯](bold green) '
 
