@@ -31,7 +31,7 @@ aliases = { "MT-H0Y07DWWNY-Qateef-Ahmad" = "motive" }
 # TODO: use ssh_symbol
 # ssh_symbol = '☁️'
 # ssh_symbol = '🌏'
-# format = '[$hostname](bold white) ([$ssh_symbol](bold white)) '
+# format = '$hostname $ssh_symbol '
 
 [directory]
 home_symbol = 'δ'
@@ -114,7 +114,7 @@ not_found_symbol = '§'
 # ⟦ ⟧
 # format = '[ « $symbol $common_meaning$signal_name$maybe_int » ]($style) '
 format = ' [ $symbol $common_meaning$signal_name$maybe_int $symbol ]($style)'
-style = 'bg:white fg:white fg:bold'
+style = 'bg:bright-red fg:black fg:bold'
 
 # Try to figure out signal from exit code, if possible
 recognize_signal_code = true
@@ -126,11 +126,10 @@ map_symbol = true
 # Duration of last command run
 [cmd_duration]
 # ignore command that execute under this number of milliseconds
-min_time = 10000
+min_time = 7000
 format = ' [⧗ $duration](bold yellow)'
 
 # Actual Prompt
 [character]
-# error_symbol = '[❯](bold white)'
 format = '[❯](bold blue) '
 
