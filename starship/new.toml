@@ -1,71 +1,3 @@
-
-
-# add_newline = true
-
-# # A minimal left prompt
-# # format = """$directory$git_branch${custom.git_status_dirty}$git_status$cmd_duration$status$character"""
-# format = """
-# $directory$git_branch$cmd_duration$status
-# $character
-# """
-
-# # no right prompt
-# right_format = ""
-
-# # Timeout for commands executed by starship (in milliseconds)
-# command_timeout=1000
-
-# [character]
-# success_symbol = "[❱](purple)"
-# error_symbol = "[❱](red)"
-# vicmd_symbol = "[❰](cyan)"
-
-# [python]
-# format = '[(\($virtualenv\) )]($style)'
-# style = 'white'
-
-# [directory]
-# style = "blue"
-# truncation_length = 1
-# truncation_symbol = ""
-# fish_style_pwd_dir_length = 1
-
-# # right prompt uses left space padding
-# [git_branch]
-# format = '[$branch]($style)'
-# style = 'bold green'
-
-# # [git_status]
-# # format = "[($ahead_behind$stashed)]($style) "
-# # style = "cyan"
-# # stashed = "≡"
-# # ahead = "⇡${count}"
-# # behind = "⇣${count}"
-# # diverged = "⇕⇡${ahead_count}⇣${behind_count}"
-
-# # [custom.git_status_dirty]
-# # when = 'test -n "$(git status --porcelain 2>/dev/null)"'
-# # symbol = "•"
-# # style = "white"
-# # format="[$symbol]($style)"
-# # shell = ["zsh", "--no-rcs", "--no-globalrcs"]
-
-# [cmd_duration]
-# format = '[$duration]($style) '
-
-# [line_break]
-# disabled = true
-
-# [status]
-# disabled = false
-# pipestatus = true
-# format = '[$symbol$int]($style)'
-# symbol = '✘'
-# pipestatus_format = '\[$pipestatus\]($style)'
-
-
-# ============================
-
 # Wait 10 milliseconds for starship to check files under the current directory.
 scan_timeout = 10
 
@@ -77,19 +9,15 @@ command_timeout=1000
 # Add blank line at the start of the prompt
 add_newline = true
 
-# # Use custom format
-# format = """
-# $directory
-# ($cmd_duration\n)\
-# $character
-# """
-
-# Use custom format
 format = """
-$username@$hostname $git_branch$git_commit
+$username@$hostname $git_branch$git_commit $python $fill$status
 $directory
 $character
 """
+
+[fill]
+symbol = ' '
+
 
 [username]
 style_root = 'black bold'
@@ -159,19 +87,8 @@ style = 'bold green'
 commit_hash_length = 8
 
 [git_status]
-conflicted = '🏳'
-ahead = '🏎💨'
-behind = '😰'
-diverged = '😵'
-up_to_date = '✓'
-untracked = '🤷'
-stashed = '📦'
-modified = '📝'
-staged = '[++\($count\)](green)'
-renamed = '👅'
-deleted = '🗑'
-
-## NOT IMP. HAVE A LOOK LATER
+# I want it, but this module is too slow because
+# `git status` itself is too slow on large repos
 
 [kubernetes]
 disabled = false
@@ -180,21 +97,43 @@ detect_files = ['k8s']
 ## LOOK INTO IT
 
 [python]
-symbol = '👾 '
-pyenv_version_name = true
-
-## LOOK INTO IT
+format = 'on [$symbol(${version} )(\($virtualenv\) )]($style)'
+version_format = 'v${raw}'
+symbol = '🐍 '
+style = 'bold green'
+detect_extensions = ['py', 'ipynb']
+detect_files = ['.python-version', 'Pipfile', '__init__.py', 'pyproject.toml', 'requirements.txt', 'setup.py', 'tox.ini']
 
 # ------
 # Last command run
 
 [status]
-style = 'bg:blue'
-symbol = '🔴 '
-success_symbol = '🟢 SUCCESS'
-format = '[\[$symbol$common_meaning$signal_name$maybe_int\]]($style) '
-map_symbol = true
+# TODO: move this to right module
+
+# Disabled by default. Need to enable it
 disabled = false
+
+symbol = 'Ӽ'
+sigint_symbol = 'Ӽ'
+signal_symbol = 'Ӽ'
+not_found_symbol = '§'
+# TODO: replace these once you find good symbols
+# sigint_symbol = ''
+# signal_symbol = 'Š'
+
+# « »
+# ⟪ ⟫
+# ⟦ ⟧
+# format = '[ « $symbol $common_meaning$signal_name$maybe_int » ]($style) '
+format = ' [ $symbol $common_meaning$signal_name$maybe_int $symbol ]($style)'
+style = 'bg:red fg:black fg:bold'
+
+# Try to figure out signal from exit code, if possible
+recognize_signal_code = true
+
+# Use the symbols defined above. Why is it not true by
+# default ???
+map_symbol = true
 
 ## LOOK INTO IT
 
