@@ -11,7 +11,7 @@ add_newline = true
 
 format = """
 $username@$hostname $git_branch$git_commit $python $fill$status
-$directory
+$directory $fill$cmd_duration
 $character
 """
 
@@ -135,13 +135,10 @@ recognize_signal_code = true
 # default ???
 map_symbol = true
 
-## LOOK INTO IT
-
 [cmd_duration]
-min_time = 500
-format = 'underwent [$duration](bold yellow)'
-
-## LOOK INTO IT
+# ignore command that execute under this number of milliseconds
+min_time = 10000
+format = ' [⧗ $duration](bold yellow)'
 
 # ------
 # Prompt
@@ -150,3 +147,4 @@ success_symbol = '[❯](bold green)'
 error_symbol = '[❯](bold red)'
 
 ## LOOK INTO IT
+
