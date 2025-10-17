@@ -59,6 +59,9 @@ style="bold cyan"
 # $truncation_symbol is always prepended if there is some truncation
 format = "[$path]($style)"
 
+[directory.substitutions]
+# TODO: this is very limited, and not according to my requirements
+# rewrite this in rust as a custom starship module
 
 [git_branch]
 truncation_length = 15
