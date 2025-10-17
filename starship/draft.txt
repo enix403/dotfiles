@@ -1,0 +1,74 @@
+
+# truncation_symbol = '…/'
+# truncation_symbol = '🕸 /'
+# truncation_symbol = '☁️ '
+# truncation_symbol = '🧩 '
+# truncation_symbol = '↩ '
+# truncation_symbol = '⛌ '
+# truncation_symbol = '☸/'
+# truncation_symbol = '⛬ '
+# truncation_symbol = '⎇ '
+# truncation_symbol = 'Ԑ'
+# truncation_symbol = 'Ӧ '
+# truncation_symbol = 'Ӽ '
+
+# read_only
+# read_only_style
+# before_repo_root_style
+# repo_root_style
+# repo_root_format
+
+# home_symbol
+# substitutions
+# fish_style_pwd_dir_length
+
+# path
+# before_root_path
+# repo_root
+# style
+# repo_root_style
+
+
+--------
+
+
+# style = 'bold cyan'
+# before_repo_root_style = 'bold yellow'
+# repo_root_style = 'bold red'
+# # format = '[$path]($style)'
+# format = '$before_root_path$repo_root$path'
+
+# truncation_length = 2
+# truncate_to_repo = true
+# truncation_symbol = '⛬ '
+# # home_symbol = 'λ'
+# # home_symbol = 'ξ'
+
+# # home_symbol = 'ζ'
+# home_symbol = 'δ'
+
+
+truncate_to_repo = true
+# before_repo_root_style='bold cyan'
+# repo_root_style='bold cyan'
+# repo_root_format='[$before_root_path]($before_repo_root_style)[$repo_root]($repo_root_style)[$path]($style) '
+# format = "$before_root_path;$repo_root;$path"
+
+
+------
+
+
+# When the repo root is NOT truncated, this is used
+# Variables are also different. Consider this path
+# /path/to/home/git_repo/src/lib
+#
+# Here:
+#
+# $before_root_path is always = $truncation_symbol (idk why, maybe a bug)
+# $repo_root = git_repo ("git_repo")
+# $path = path after git_repo ("/src/lib")
+#
+# $truncation_symbol is NOT applied
+# instead it will come from $before_root_path if it is
+# in this format
+# repo_root_format = ""
