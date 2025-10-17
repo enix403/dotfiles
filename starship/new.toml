@@ -24,7 +24,7 @@ aliases = { "qateef.ahmad" = "qateef" }
 
 [hostname]
 style = 'bold purple'
-format = '[ @ $hostname]($style)'
+format = '[ @$hostname]($style)'
 ssh_only = false
 aliases = { "MT-H0Y07DWWNY-Qateef-Ahmad" = "motive" }
 
@@ -132,5 +132,5 @@ format = ' [⧗ $duration](bold yellow)'
 # Actual Prompt
 [character]
 # error_symbol = '[❯](bold white)'
-format = '[❯](bold purple) '
+format = '[❯](bold blue) '
 
