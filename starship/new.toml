@@ -2,7 +2,7 @@
 add_newline = true
 
 format = """
-$username@$hostname $git_branch$git_commit $python $fill$status
+$username$hostname $git_branch$git_commit $python $fill$status
 $directory $fill$cmd_duration
 $character
 """
@@ -17,28 +17,27 @@ command_timeout=1000
 symbol = ' '
 
 [username]
-style_root = 'black bold'
-style_user = 'white bold'
+style_user = 'bright-yellow'
 format = '[$user]($style)'
 show_always = true
-aliases = { "qateef.ahmad" = "q" }
+aliases = { "qateef.ahmad" = "qateef" }
 
 [hostname]
 style = 'bold purple'
-format = '[$hostname]($style)'
+format = '[ @ $hostname]($style)'
 ssh_only = false
 aliases = { "MT-H0Y07DWWNY-Qateef-Ahmad" = "motive" }
 
 # TODO: use ssh_symbol
 # ssh_symbol = '☁️'
 # ssh_symbol = '🌏'
-# format = '[$hostname](bold red) ([$ssh_symbol](bold blue)) '
+# format = '[$hostname](bold white) ([$ssh_symbol](bold white)) '
 
 [directory]
 home_symbol = 'δ'
 # home_symbol = 'ζ'
 
-truncation_length = 2
+truncation_length = 3
 truncate_to_repo = false # Causes weird behavior when set to true
 truncation_symbol = '⛬ '
 
@@ -52,10 +51,10 @@ truncation_symbol = '⛬ '
 style="bold cyan"
 # style of git repo folder (if any). Falls back to `style` if
 # not defined
-repo_root_style="bold yellow"
+# repo_root_style="bold cyan"
 # style of path before the git repo folder (if any).
 # Falls back to `style` if not defined
-before_repo_root_style="bold cyan"
+# before_repo_root_style="bold cyan"
 
 # $truncation_symbol is always prepended if there is some truncation
 format = "[$path]($style)"
@@ -75,8 +74,8 @@ format = 'on [$symbol $branch]($style)'
 [git_commit]
 # Only show when in a detached head
 only_detached = true
-format = '[\(on commit $hash\)]($style) '
-style = 'bold green'
+format = 'on [ [*](bold yellow) [$hash]($style underline)]($style)'
+style = 'bold red'
 commit_hash_length = 8
 
 # I want it, but this module is too slow because
@@ -89,9 +88,10 @@ disabled = false
 detect_files = ['k8s']
 
 [python]
-format = 'on [$symbol(${version} )(\($virtualenv\) )]($style)'
+format = 'on [$symbol py:(${version} )(\($virtualenv\) )]($style)'
 version_format = 'v${raw}'
-symbol = '🐍 '
+# symbol = '🐍'
+symbol = 'λ'
 style = 'bold green'
 detect_extensions = ['py', 'ipynb']
 detect_files = ['.python-version', 'Pipfile', '__init__.py', 'pyproject.toml', 'requirements.txt', 'setup.py', 'tox.ini']
@@ -114,7 +114,7 @@ not_found_symbol = '§'
 # ⟦ ⟧
 # format = '[ « $symbol $common_meaning$signal_name$maybe_int » ]($style) '
 format = ' [ $symbol $common_meaning$signal_name$maybe_int $symbol ]($style)'
-style = 'bg:red fg:black fg:bold'
+style = 'bg:white fg:white fg:bold'
 
 # Try to figure out signal from exit code, if possible
 recognize_signal_code = true
@@ -131,6 +131,6 @@ format = ' [⧗ $duration](bold yellow)'
 
 # Actual Prompt
 [character]
-# error_symbol = '[❯](bold red)'
-format = '[❯](bold green) '
+# error_symbol = '[❯](bold white)'
+format = '[❯](bold purple) '
 

@@ -1,4 +1,6 @@
 
+symbol = 'λ'
+
 # truncation_symbol = '…/'
 # truncation_symbol = '🕸 /'
 # truncation_symbol = '☁️ '
@@ -72,3 +74,27 @@ truncate_to_repo = true
 # instead it will come from $before_root_path if it is
 # in this format
 # repo_root_format = ""
+
+-------
+
+red green yellow blue magenta cyan white
+
+q@motive on  macos on λ py v3.8.9 (data)                                                              Ӽ INT Ӽ
+δ/dotfiles                                                                                                ⧗ 11s
+❯
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
