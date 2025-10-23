@@ -22,5 +22,4 @@ return {
   } },
 
   --[[ Disable ]]
-  { "nvim-lualine/lualine.nvim", enabled = false },
 }
