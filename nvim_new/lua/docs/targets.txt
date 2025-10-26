@@ -1,7 +1,4 @@
 marks
-learn grug-far
-enter in strings
-split borders are barely visible
 vim-visual-multi:
     select all words instead of one by one
     ctrl up/down, not working
@@ -10,7 +7,8 @@ per project config: config-local
 different terminals for cmd + edit
 gopls
 copy path/basename of current file
-
+disable inlay hints by default
+tune down lsp diagnostics for e.g python
 
 AFTER MULTITERM:
 fix terminalS
