@@ -1,4 +1,4 @@
 return {
   "folke/snacks.nvim",
-  keys = {},
+  opts = {},
 }
