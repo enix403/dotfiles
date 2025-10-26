@@ -92,3 +92,11 @@ map("x", "p", function()
   -- and restore the contents of the active register
   vim.fn.setreg(register, contents)
 end)
+
+-- Move the selected lines up and down, but also, keep those lines
+-- selected
+--
+-- These work, but throw an error when the lines are already at the
+-- bounds of the file (at the start or the top). This needs to be fixed
+map("x", ",", ":m '<-2<CR>gv=gv", { desc = "Move selected lines up" })
+map("x", ".", ":m '>+1<CR>gv=gv", { desc = "Move selected lines down" })
