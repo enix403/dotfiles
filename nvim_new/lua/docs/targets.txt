@@ -1,5 +1,4 @@
 marks
-fast tab switching
 compact genconfig.py
 different terminals for cmd + editor
 tune down lsp diagnostics for e.g python
