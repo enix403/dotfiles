@@ -28,43 +28,18 @@ local in_treesitter_capture = function(capture)
 end
 
 return {
-  {
-    "catppuccin/nvim",
-    name = "catppuccin",
-    priority = 1000,
-  },
-  {
-    "xiyaowong/transparent.nvim",
-    lazy = false,
-  },
-  { "LazyVim/LazyVim", opts = { colorscheme = "catppuccin-mocha" } },
-
-  -- Move the floating cmdline back to bottom
-  {
-    "folke/noice.nvim",
-    opts = {
-      cmdline = {
-        view = "cmdline",
+  "saghen/blink.cmp",
+  opts = {
+    completion = {
+      ghost_text = {
+        enabled = false,
+      },
+      menu = {
+        auto_show = function()
+          return not in_treesitter_capture("comment")
+        end,
       },
     },
   },
-
-  {
-    "saghen/blink.cmp",
-    opts = {
-      completion = {
-        ghost_text = {
-          enabled = false,
-        },
-        menu = {
-          auto_show = function()
-            return not in_treesitter_capture("comment")
-          end,
-        },
-      },
-    },
-    -- opts_extend = { "sources.default" },
-  },
-
-  --[[ Disable ]]
+  -- opts_extend = { "sources.default" },
 }

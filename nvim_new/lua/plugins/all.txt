@@ -1,0 +1,60 @@
+
+
+=> blink.cmp
+for auto completions
+
+=> bufferline.nvim
+the top bar with tabs
+
+=> lualine.nvim
+bottom status bar
+
+=> nvim-treesitter
+grammar
+
+=> transparent.nvim
+make background transparent
+
+=> vim-kitty-navigator
+move seamlessly b/w kitty/vim splits
+
+=> vim-visual-multi
+multiple cursors
+
+=> which-key.nvim
+show keymaps with descriptions
+
+=> persistence.nvim
+save and restore session
+
+=> treesj
+split into multiple lines / join into one line various things in code
+
+=> mason.nvim
+install (and only install, not run) tools such as lsp servers in your system
+
+=> gitsigns.nvim
+NOT JUST signs in gutter, but also full blown git integeration for vim
+
+=> nvim-treesitter-textobjects
+syntax aware text object
+
+=> flash.nvim
+=> friendly-snippets
+=> mini.ai
+=> mini.pairs
+=> noice.nvim
+=> nui.nvim
+=> ts-comments.nvim
+
+----
+
+=> grug-far.nvim
+=> mini.icons
+=> nvim-lint
+=> nvim-ts-autotag
+=> plenary.nvim
+=> todo-comments.nvim
+
+=> gruvbox.nvim
+=> mini.indentscope
