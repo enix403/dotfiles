@@ -1,5 +1,4 @@
 marks
-compact genconfig.py
 different terminals for cmd + editor
 tune down lsp diagnostics for e.g python
 per project config: config-local
@@ -11,6 +10,7 @@ learn lsp diagnostics
 lsp symbols
 do not highlight word under cursor
     do it on a custom shortcut
+surround by e.g () on ( press when in visual mode
 
 AFTER MULTITERM:
 fix terminalS
