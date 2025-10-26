@@ -68,6 +68,9 @@ class KeySet:
     symbols = SubtractableList("`-=[]\\;',./")
     # special = SubtractableList(["tab", "escape", "delete", "enter", "space"])
     special = SubtractableList(["space", "enter", "delete", "tab", "escape"])
+
+    h_arrows = SubtractableList(["left_arrow", "right_arrow"])
+    v_arrows = SubtractableList(["up_arrow", "down_arrow"])
     arrows = SubtractableList(["left_arrow", "up_arrow", "right_arrow", "down_arrow"])
 
 
@@ -80,7 +83,8 @@ def recursive_flatmap(iterable):
             yield item
 
 
-def translate_prefix(from_prefix: str, to_prefix: str, keys: list):
+# translate prefix
+def tp(from_prefix: str, to_prefix: str, keys: list):
     from_prefix = from_prefix.strip()
     to_prefix = to_prefix.strip()
 
@@ -107,7 +111,7 @@ mappings(
     devices=[builtin],
     apps=terminals,
     desc="Terminal: <fn> to <ctrl>",
-    maps=translate_prefix("fn", "ctrl", [
+    maps=tp("fn", "ctrl", [
         KeySet.special - {"delete"},
         KeySet.letters,
         KeySet.digits,
@@ -119,75 +123,19 @@ mappings(
     devices=[builtin],
     apps=terminals,
     desc="Terminal: Special Copy and Paste actions",
-    maps=[
-        "fn+shift+c == cmd+c",
-        "fn+shift+v == cmd+v",
-    ]
+    maps=tp("fn+shift", "cmd", ['c', 'v'])
 )
 
 mappings(
     devices=[builtin],
     apps=terminals,
     desc="Terminal: <fn> + <shift> to <ctrl> + <shift>",
-    maps=[
-        "fn+shift+space == ctrl+shift+space",
-        "fn+shift+enter == ctrl+shift+enter",
-        "fn+shift+tab == ctrl+shift+tab",
-        "fn+shift+escape == ctrl+shift+escape",
-
-        "fn+shift+a == ctrl+shift+a",
-        "fn+shift+b == ctrl+shift+b",
-        # "fn+shift+c == ctrl+shift+c", # special
-        "fn+shift+d == ctrl+shift+d",
-        "fn+shift+e == ctrl+shift+e",
-        "fn+shift+f == ctrl+shift+f",
-        "fn+shift+g == ctrl+shift+g",
-        "fn+shift+h == ctrl+shift+h",
-        "fn+shift+i == ctrl+shift+i",
-        "fn+shift+j == ctrl+shift+j",
-        "fn+shift+k == ctrl+shift+k",
-        "fn+shift+l == ctrl+shift+l",
-        "fn+shift+m == ctrl+shift+m",
-        "fn+shift+n == ctrl+shift+n",
-        "fn+shift+o == ctrl+shift+o",
-        "fn+shift+p == ctrl+shift+p",
-        "fn+shift+q == ctrl+shift+q",
-        "fn+shift+r == ctrl+shift+r",
-        "fn+shift+s == ctrl+shift+s",
-        "fn+shift+t == ctrl+shift+t",
-        "fn+shift+u == ctrl+shift+u",
-        # "fn+shift+v == ctrl+shift+v", # special
-        "fn+shift+w == ctrl+shift+w",
-        "fn+shift+x == ctrl+shift+x",
-        "fn+shift+y == ctrl+shift+y",
-        "fn+shift+z == ctrl+shift+z",
-
-        "fn+shift+0 == ctrl+shift+0",
-        "fn+shift+1 == ctrl+shift+1",
-        "fn+shift+2 == ctrl+shift+2",
-        "fn+shift+3 == ctrl+shift+3",
-        "fn+shift+4 == ctrl+shift+4",
-        "fn+shift+5 == ctrl+shift+5",
-        "fn+shift+6 == ctrl+shift+6",
-        "fn+shift+7 == ctrl+shift+7",
-        "fn+shift+8 == ctrl+shift+8",
-        "fn+shift+9 == ctrl+shift+9",
-
-        "fn+shift+` == ctrl+shift+`",
-        "fn+shift+- == ctrl+shift+-",
-        "fn+shift+= == ctrl+shift+=",
-
-        "fn+shift+[ == ctrl+shift+[",
-        "fn+shift+] == ctrl+shift+]",
-        "fn+shift+\\ == ctrl+shift+\\",
-
-        "fn+shift+; == ctrl+shift+;",
-        "fn+shift+' == ctrl+shift+'",
-
-        "fn+shift+, == ctrl+shift+,",
-        "fn+shift+. == ctrl+shift+.",
-        "fn+shift+/ == ctrl+shift+/",
-    ]
+    maps=tp("fn+shift", "ctrl+shift", [
+        KeySet.special - {"delete"},
+        KeySet.letters - {'c', 'v'},
+        KeySet.digits,
+        KeySet.symbols,
+    ])
 )
 
 
@@ -195,11 +143,9 @@ mappings(
     devices=[builtin],
     desc="(Deprecate) Global: Cursor Movement By Word",
     maps=[
-        "fn+delete == opt+delete",
-        "fn+left_arrow == opt+left_arrow",
-        "fn+right_arrow == opt+right_arrow",
-        "fn+shift+left_arrow == opt+shift+left_arrow",
-        "fn+shift+right_arrow == opt+shift+right_arrow",
+        *tp("fn", "opt", ["delete"]),
+        *tp("fn", "opt", KeySet.h_arrows),
+        *tp("fn+shift", "opt+shift", KeySet.h_arrows),
     ]
 )
 
