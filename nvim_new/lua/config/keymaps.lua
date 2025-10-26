@@ -13,6 +13,12 @@
 -- Map("n", "<TAB>", ":bn<CR>")
 -- Map("n", "<S-TAB>", ":bp<CR>")
 
+-- NOTE: It appears it is no longer needed. Explore
+-- add an "actual" indent (with spaces/tabs) instead of just
+-- putting a cursor there (and thus unindenting the line when the
+-- moves away)
+-- map("i", "<CR>", "<CR> <BS>")
+
 local map = vim.keymap.set
 
 -- Navigate windows using Shift+hjkl
@@ -56,3 +62,21 @@ map("n", "O", "O <BS><Esc>")
 -- 0: move the cursor to the start of the line
 map({ "n", "x" }, "{", "<C-u>zz0")
 map({ "n", "x" }, "}", "<C-d>zz0")
+
+-- In visual mode if you select something and press p, it will paste
+-- whatever was in the register, overrwitting the selected text. This
+-- is okay, but the overritten text is now placed in that register.
+-- This basically limits you to be able to paste only once.
+--
+-- This keymap makes is so that the register is preserved when pasting
+-- over some selected text in visual mode
+map("x", "p", function()
+  -- Get the current active register...
+  local register = vim.v.register
+  -- and its contents
+  local contents = vim.fn.getreg(register)
+  -- do a regular paste
+  vim.cmd("normal! p")
+  -- and restore the contents of the active register
+  vim.fn.setreg(register, contents)
+end)
