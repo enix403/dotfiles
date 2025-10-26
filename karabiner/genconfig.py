@@ -73,28 +73,6 @@ mappings(
 # -----------------------------------------
 
 mappings(
-    desc="Terminal: <fn> to <ctrl>",
-    devices=[builtin],
-    apps=terminals,
-    maps=tp("fn", "ctrl", [
-        KeySet.special - {"delete"},
-        KeySet.printable,
-    ]),
-)
-
-mappings(
-    desc="Terminal: <cmd> to <ctrl>",
-    devices=[galaxy65],
-    apps=terminals,
-    maps=tp("cmd", "ctrl", [
-        KeySet.special - {"delete"},
-        KeySet.printable,
-    ]),
-)
-
-# -----------------------------------------
-
-mappings(
     desc="Terminal: Special Copy and Paste actions",
     devices=[builtin],
     apps=terminals,
@@ -133,6 +111,28 @@ mappings(
 # -----------------------------------------
 
 mappings(
+    desc="Terminal: <fn> to <ctrl>",
+    devices=[builtin],
+    apps=terminals,
+    maps=tp("fn", "ctrl", [
+        KeySet.special - {"delete"},
+        KeySet.printable,
+    ]),
+)
+
+mappings(
+    desc="Terminal: <cmd> to <ctrl>",
+    devices=[galaxy65],
+    apps=terminals,
+    maps=tp("cmd", "ctrl", [
+        KeySet.special - {"delete"},
+        KeySet.printable,
+    ]),
+)
+
+# -----------------------------------------
+
+mappings(
     desc="(Deprecate) Global: Cursor Movement By Word",
     devices=[builtin],
     maps=[
@@ -155,10 +155,11 @@ mappings(
 # -----------------------------------------
 
 mappings(
-    desc="Global: <fn> to <cmd> (because macos cmd = app's ctrl)",
+    desc="Global: <fn> + <opt> to <cmd> + <opt> (because macos cmd = app's ctrl)",
     devices=[builtin],
-    maps=tp("fn", "cmd", [
-        KeySet.special - {"delete"},
+    maps=tp("fn+opt", "cmd+opt", [
+        KeySet.arrows,
+        KeySet.special,
         KeySet.printable,
     ])
 )
@@ -180,11 +181,10 @@ mappings(
 # -----------------------------------------
 
 mappings(
-    desc="Global: <fn> + <opt> to <cmd> + <opt> (because macos cmd = app's ctrl)",
+    desc="Global: <fn> to <cmd> (because macos cmd = app's ctrl)",
     devices=[builtin],
-    maps=tp("fn+opt", "cmd+opt", [
-        KeySet.arrows,
-        KeySet.special,
+    maps=tp("fn", "cmd", [
+        KeySet.special - {"delete"},
         KeySet.printable,
     ])
 )
