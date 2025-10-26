@@ -4,6 +4,7 @@ different terminals for cmd + editor
 tune down lsp diagnostics for e.g python
 per project config: config-local
 gopls
+format file shortcut
 
 AFTER MULTITERM:
 fix terminalS
