@@ -4,6 +4,7 @@ tune down lsp diagnostics for e.g python
 per project config: config-local
 gopls
 my custom keymap overrides do not update which-key window
+calculator in code
 
 AFTER MULTITERM:
 fix terminalS
