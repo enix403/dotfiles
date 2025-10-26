@@ -10,6 +10,9 @@ bottom status bar
 => nvim-treesitter
 grammar
 
+=> nvim-treesitter-textobjects
+syntax aware text objects
+
 => transparent.nvim
 make background transparent
 
@@ -34,21 +37,23 @@ install (and only install, not run) tools such as lsp servers in your system
 => gitsigns.nvim
 NOT JUST signs in gutter, but also full blown git integeration for vim
 
-=> nvim-treesitter-textobjects
-syntax aware text object
-
 => flash.nvim
-Shows labels at the end of each search match, letting quickly jump to a specific location.
+Shows labels at the end of each search match. Allows to quickly jump to a specific location.
 
 => friendly-snippets
 cool snippets
 
 => noice.nvim
+Completely replaces *built-in* vim UI's like cmdline etc
+
 => nui.nvim
+UI Component library, dependency of other plugins
+
 => ts-comments.nvim
+Add (better) commenting support in vim
 
 => mini.ai
-Enhances the built in a and i text objects
+Enhances the built in A and I text objects
 
 => mini.pairs
 Auto inserts closing pair

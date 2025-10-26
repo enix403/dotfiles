@@ -42,3 +42,4 @@ marks
 terminal
 sessions
 enter in strings
+split borders are barely visible
