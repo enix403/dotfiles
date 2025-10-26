@@ -29,7 +29,24 @@ return {
           enabled = false,
         },
       },
+      -- https://github.com/Saghen/blink.cmp/discussions/564#discussioncomment-11905466
+      sources = {
+        default = function()
+          local node = vim.treesitter.get_node()
+          if
+            node and vim.tbl_contains({
+              "comment", "line_comment", "comment_content", "block_comment",
+              "string_start", "string_content", "string_end"
+            }, node:type())
+          then
+            return { }
+          else
+            return {  "lsp", "path", "snippets", "buffer"  }
+          end
+        end,
+      },
     },
+    opts_extend = { "sources.default" },
   },
 
   --[[ Disable ]]
