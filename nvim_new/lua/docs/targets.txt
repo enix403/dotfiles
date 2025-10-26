@@ -1,10 +1,12 @@
 marks
+fast tab switching
 different terminals for cmd + editor
 tune down lsp diagnostics for e.g python
 per project config: config-local
 gopls
 my custom keymap overrides do not update which-key window
 calculator in code
+do not dim unused code lsp
 
 AFTER MULTITERM:
 fix terminalS
