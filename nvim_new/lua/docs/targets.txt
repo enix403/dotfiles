@@ -1,16 +1,21 @@
 marks
-fix terminalS
 learn grug-far
 enter in strings
 split borders are barely visible
-vim-visual-multi: select all words instead of one by one
+vim-visual-multi:
+    select all words instead of one by one
+    ctrl up/down, not working
 search for commands (better)
 per project config: config-local
+different terminals for cmd + edit
 gopls
-look into toggleterm (so three terminals hehe)
+copy path/basename of current file
 
-DONE:
-sessions
+
+AFTER MULTITERM:
+fix terminalS
+look into toggleterm (so three terminals hehe)
+open terminal in dir of current file
 
 future
 port config to rust
