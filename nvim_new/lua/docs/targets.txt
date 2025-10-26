@@ -1,10 +1,9 @@
 marks
-delete does not modify register/diff register for cut
 different terminals for cmd + editor
 tune down lsp diagnostics for e.g python
 per project config: config-local
 gopls
-format file shortcut
+my custom keymap overrides do not update which-key window
 
 AFTER MULTITERM:
 fix terminalS
