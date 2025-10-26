@@ -1,5 +1,3 @@
-
-
 => blink.cmp
 for auto completions
 
@@ -40,8 +38,14 @@ NOT JUST signs in gutter, but also full blown git integeration for vim
 syntax aware text object
 
 => flash.nvim
+Shows labels at the end of each search match, letting quickly jump to a specific location.
+
 => friendly-snippets
+cool snippets
+
 => mini.ai
+Enhances the built in a and i text objects
+
 => mini.pairs
 => noice.nvim
 => nui.nvim
