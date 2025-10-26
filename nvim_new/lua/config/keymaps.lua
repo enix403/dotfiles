@@ -117,3 +117,116 @@ map("x", "<C-d>", ":'<,'>t'><CR>gv", { desc = "Duplicate selection down" })
 -- Not needed in neovim, since apparently pressing Esc twice really fast
 -- seems to get out of terminal mode
 -- map("t", "<Esc>", [[<C-\><C-n>]], { desc = "Exit terminal mode to normal mode" })
+
+
+-- Delete the previous "word" as defined by [0-9A-Za-z_]
+--
+-- *Behaviors*:
+--   Delete word, keep the single space
+--     "some text|" -> "some |"
+--
+--   Delete back to start of word
+--     "some tex|t" -> "some |t"
+--
+--   Delete the word plus that one space in
+--   case of single space after word
+--     "some text |" -> "some |"
+--
+--   Delete all spaces, but not the word, when more than
+--   one spaces are present after the word
+--     "some text   | -> "some text|"
+--
+--   Correctly handle single letter words
+--     "this is a|" -> "this is |"
+--
+-- Preserves registers (edits buffer directly). Stays in insert mode.
+
+local function is_word_char(ch)
+  return ch:match('^[0-9A-Za-z_]$') ~= nil
+end
+
+local function is_space_char(ch)
+  return ch == ' ' or ch == '\t'
+end
+
+local function char_at(s, ci)  -- ci: 0-based UTF-8 character index
+  local b0 = vim.str_byteindex(s, ci)
+  local b1 = vim.str_byteindex(s, ci + 1)
+  return s:sub(b0 + 1, b1)
+end
+
+local function ctrl_bs_delete_prev_word()
+  local win = 0
+  local pos = vim.api.nvim_win_get_cursor(win)  -- {row (1-based), col (0-based bytes)}
+  local row = pos[1] - 1
+  local col = pos[2]
+
+  if col == 0 then
+    return
+  end
+
+  local line = vim.api.nvim_get_current_line()
+  local left = line:sub(1, col)                -- bytes left of cursor
+  local left_chars = vim.str_utfindex(left)    -- char-count (UTF-8)
+
+  local ci = left_chars                        -- cursor char index (right edge)
+  local k = ci - 1                             -- index of char immediately left of cursor
+
+  -- Count contiguous spaces/tabs to the left
+  local ws_run = 0
+  while k >= 0 do
+    local ch = char_at(left, k)
+    if not is_space_char(ch) then break end
+    ws_run = ws_run + 1
+    k = k - 1
+  end
+
+  local start_char
+  if ws_run >= 2 then
+    -- Multiple spaces/tabs → delete them all
+    start_char = ci - ws_run
+
+  elseif ws_run == 1 then
+    -- Exactly one space/tab
+    if k >= 0 and is_word_char(char_at(left, k)) then
+      -- Delete that one space + preceding word
+      while k >= 0 and is_word_char(char_at(left, k)) do
+        k = k - 1
+      end
+      start_char = k + 1
+    else
+      -- Just delete the single space/tab
+      start_char = ci - 1
+    end
+
+  else
+    -- No whitespace immediately to the left
+    if k < 0 then
+      return
+    end
+    if is_word_char(char_at(left, k)) then
+      -- In or at end of a word → delete back to start of this word
+      while k >= 0 and is_word_char(char_at(left, k)) do
+        k = k - 1
+      end
+      start_char = k + 1
+    else
+      -- Non-word char → delete just that one char
+      start_char = ci - 1
+    end
+  end
+
+  -- Convert start_char (char index) to byte index within the full line
+  local start_byte = vim.str_byteindex(left, start_char) -- 0-based
+  local end_byte = col                                   -- cursor byte index
+
+  if start_byte < end_byte then
+    -- Replace deleted region with nothing
+    vim.api.nvim_buf_set_text(0, row, start_byte, row, end_byte, { '' })
+    -- Place cursor at the new position (start of the deleted region)
+    vim.api.nvim_win_set_cursor(win, { row + 1, start_byte })
+  end
+end
+
+-- Mapping (Insert mode)
+vim.keymap.set('i', '<A-BS>', ctrl_bs_delete_prev_word, { silent = true, desc = 'Alt-Backspace: delete previous word (custom)' })
