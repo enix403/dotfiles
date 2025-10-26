@@ -8427,7 +8427,7 @@
             ]
           },
           {
-            "description": "[GX] Terminal: <fn> to <ctrl>",
+            "description": "[GX] Terminal: <cmd> to <ctrl>",
             "manipulators": [
               {
                 "type": "basic",
