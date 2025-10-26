@@ -25,6 +25,12 @@ Add (better) commenting support in vim
 ## friendly-snippets
 cool snippets
 
+## mini.ai
+Enhances the built in A and I text objects
+
+## mini.pairs
+Auto inserts closing pair
+
 ## nvim-ts-autotag
 auto insert closing html-like tags
 
@@ -49,23 +55,6 @@ show lsp diagnostics in a window/list
 
 ## lazydev.nvim
 Hack to make lua lsp faster + auto sets it up for neovim api integeration
-
-
---------------------------------
-
-# Tools
-
-## grug-far.nvim
-Supercharged find and replace plugin
-
-## gitsigns.nvim
-NOT JUST signs in gutter, but also full blown git integeration for vim
-
-## vim-kitty-navigator
-move seamlessly b/w kitty/vim splits
-
-## persistence.nvim
-save and restore session
 
 --------------------------------
 
@@ -98,19 +87,24 @@ Shows labels at the end of each search match. Allows to quickly jump to a specif
 ## nui.nvim
 UI Component library, dependency of other plugins
 
---------------------------------
-
-# Mini
-
-## mini.ai
-Enhances the built in A and I text objects
-
-## mini.pairs
-Auto inserts closing pair
-
 ## mini.icons
 Icons
 
 ## mini.indentscope
 Indent line in code. Appears to disabled and instead snacks.nvim's indent line is used
 
+--------------------------------
+
+# Tools
+
+## grug-far.nvim
+Supercharged find and replace plugin
+
+## gitsigns.nvim
+NOT JUST signs in gutter, but also full blown git integeration for vim
+
+## vim-kitty-navigator
+move seamlessly b/w kitty/vim splits
+
+## persistence.nvim
+save and restore session
