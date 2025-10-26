@@ -150,7 +150,6 @@ mappings(
         *tp("cmd", "opt", KeySet.h_arrows),
         *tp("cmd+shift", "opt+shift", KeySet.h_arrows),
     ]
-
 )
 
 # -----------------------------------------
@@ -164,17 +163,21 @@ mappings(
     ])
 )
 
+# -----------------------------------------
+
 mappings(
     devices=[builtin],
     desc="Global: <fn> + <shift> to <cmd> + <shift> (because macos cmd = app's ctrl)",
     maps=tp("fn+shift", "cmd+shift", [
         KeySet.special - {"delete"},
-        # Cannot bind horizontal arrows due to vscode goto def binding
+        # Cannot bind horizontal arrows due cursor movement mappings
         # TODO: look into thid
         KeySet.v_arrows,
         KeySet.printable,
     ]),
 )
+
+# -----------------------------------------
 
 mappings(
     devices=[builtin],
