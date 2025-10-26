@@ -35,14 +35,14 @@
 
 local map = vim.keymap.set
 
--- Navigate windows using Shift+hjkl
--- TODO: Use https://github.com/knubie/vim-kitty-navigator to integrate
--- vim and kitty splits
-map("n", "<S-h>", "<C-w>h", { desc = "Move to left window" })
-map("n", "<S-j>", "<C-w>j", { desc = "Move to window below" })
--- FIXME: K (<S-k>) is used for LSP hover action
--- map("n", "<S-k>", "<C-w>k", { desc = "Move to window above" })
-map("n", "<S-l>", "<C-w>l", { desc = "Move to right window" })
+-- Using https://github.com/knubie/vim-kitty-navigator to integrate
+-- vim and kitty splits using the same shortcut key
+--
+-- Move to window using the <ctrl> hjkl keys
+map("n", "<C-h>", "<cmd>KittyNavigateLeft<CR>", { desc = "Go to Left Window" })
+map("n", "<C-j>", "<cmd>KittyNavigateDown<CR>", { desc = "Go to Lower Window" })
+map("n", "<C-k>", "<cmd>KittyNavigateUp<CR>", { desc = "Go to Upper Window" })
+map("n", "<C-l>", "<cmd>KittyNavigateRight<CR>", { desc = "Go to Right Window" })
 
 -- Resize window using Ctrl+Shift+hjkl
 map("n", "<C-S-h>", "<cmd>vertical resize -2<CR>", { desc = "Decrease window width" })

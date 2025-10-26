@@ -5,3 +5,4 @@
 vim.opt.wrap = true
 
 vim.g.snacks_animate = false
+vim.g.kitty_navigator_no_mappings = 0
