@@ -50,11 +50,16 @@ map("n", "<C-S-l>", "<cmd>vertical resize +2<CR>", { desc = "Increase window wid
 map("n", "<C-S-j>", "<cmd>resize +2<CR>", { desc = "Increase window height" })
 map("n", "<C-S-k>", "<cmd>resize -2<CR>", { desc = "Decrease window height" })
 
--- Make x and c operations not modify clipboards
+-- Make x/c/d operations not modify clipboard
 map({ "n", "x" }, "x", '"_x')
 map({ "n", "x" }, "X", '"_X')
 map({ "n", "x" }, "c", '"_c')
 map({ "n", "x" }, "C", '"_C')
+map({ "n", "x" }, "d", '"_d')
+map({ "n", "x" }, "D", '"_D')
+-- Sometimes, I do need to cut the text, so use <leader>d in those cases
+map({ "n", "x" }, "<leader>d", '"+d', { desc = "Cut to system clipboard" })
+map("n", "<leader>D", '"+d$', { desc = "Cut to system clipboard to end of line" })
 
 -- I dont want fancy combinations with > and <
 -- Just want to use them to indent/deindent
