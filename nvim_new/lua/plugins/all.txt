@@ -43,13 +43,15 @@ Shows labels at the end of each search match, letting quickly jump to a specific
 => friendly-snippets
 cool snippets
 
+=> noice.nvim
+=> nui.nvim
+=> ts-comments.nvim
+
 => mini.ai
 Enhances the built in a and i text objects
 
 => mini.pairs
-=> noice.nvim
-=> nui.nvim
-=> ts-comments.nvim
+Auto inserts closing pair
 
 ----
 
