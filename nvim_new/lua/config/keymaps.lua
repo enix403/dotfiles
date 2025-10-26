@@ -111,3 +111,9 @@ map("n", "<C-a>", "ggVG", { desc = "Select all text" })
 -- Duplicate line (or selection) down
 map("n", "<C-d>", '"ayy"ap', { desc = "Duplicate line down" })
 map("x", "<C-d>", ":'<,'>t'><CR>gv", { desc = "Duplicate selection down" })
+
+-- Exit terminal mode using Esc
+--
+-- Not needed in neovim, since apparently pressing Esc twice really fast
+-- seems to get out of terminal mode
+-- map("t", "<Esc>", [[<C-\><C-n>]], { desc = "Exit terminal mode to normal mode" })
