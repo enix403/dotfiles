@@ -34,6 +34,8 @@
 local map = vim.keymap.set
 
 -- Navigate windows using Shift+hjkl
+-- TODO: Use https://github.com/knubie/vim-kitty-navigator to integrate
+-- vim and kitty splits
 map("n", "<S-h>", "<C-w>h", { desc = "Move to left window" })
 map("n", "<S-j>", "<C-w>j", { desc = "Move to window below" })
 -- FIXME: K (<S-k>) is used for LSP hover action

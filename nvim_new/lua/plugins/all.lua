@@ -46,8 +46,8 @@ return {
       cmdline = {
         view = "cmdline",
       },
-    }
-},
+    },
+  },
 
   {
     "saghen/blink.cmp",
@@ -62,8 +62,15 @@ return {
           end,
         },
       },
+      keymap = {
+        ["<C-space>"] = {
+          function(cmp)
+            cmp.show({ providers = { "snippets", "lsp", "buffer" } })
+          end,
+        },
+      },
     },
-    opts_extend = { "sources.default" },
+    -- opts_extend = { "sources.default" },
   },
 
   --[[ Disable ]]
