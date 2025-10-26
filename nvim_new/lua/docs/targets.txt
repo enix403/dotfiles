@@ -2,11 +2,9 @@ marks
 vim-visual-multi:
     select all words instead of one by one
     ctrl up/down, not working
-search for commands (better)
 per project config: config-local
-different terminals for cmd + edit
+different terminals for cmd + editor
 gopls
-copy path/basename of current file
 disable inlay hints by default
 tune down lsp diagnostics for e.g python
 
