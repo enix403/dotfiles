@@ -235,3 +235,9 @@ vim.keymap.set("i", "<A-BS>", ctrl_bs_delete_prev_word, {
   silent = true,
   desc = "Ctrl-Backspace: delete previous word (undo-friendly)",
 })
+
+---------------
+
+-- Tab navigation using Tab and Shift+Tab
+map("n", "<Tab>", "<cmd>BufferLineCycleNext<CR>", { desc = "Next buffer/tab" })
+map("n", "<S-Tab>", "<cmd>BufferLineCyclePrev<CR>", { desc = "Previous buffer/tab" })
