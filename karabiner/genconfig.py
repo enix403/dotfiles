@@ -50,21 +50,47 @@ shell_mappings(
 
 # -------------
 
-def prefix_translate(from_prefix: str, to_prefix: str, keys: list[str]):
+class KeySet:
+    # list, but supports the difference operator a - b
+    class SubtractableList(list):
+        def __sub__(self, other):
+            # Support subtracting either another iterable or a single item
+            if isinstance(other, (list, tuple, set)):
+                to_remove = set(other)
+            else:
+                to_remove = {other}
+
+            # Preserve order and duplicates (if not removed)
+            return self.__class__(x for x in self if x not in to_remove)
+
+    letters = SubtractableList("abcdefghijklmnopqrstuvwxyz")
+    digits = SubtractableList("0123456789")
+    symbols = SubtractableList("`-=[]\\;',./")
+    # special = SubtractableList(["tab", "escape", "delete", "enter", "space"])
+    special = SubtractableList(["space", "enter", "delete", "tab", "escape"])
+    arrows = SubtractableList(["left_arrow", "up_arrow", "right_arrow", "down_arrow"])
+
+
+def recursive_flatmap(iterable):
+    for item in iterable:
+        if isinstance(item, (list, tuple)):
+            # Recursively yield items from the nested iterable
+            yield from recursive_flatmap(item)
+        else:
+            yield item
+
+
+def translate_prefix(from_prefix: str, to_prefix: str, keys: list):
     from_prefix = from_prefix.strip()
     to_prefix = to_prefix.strip()
-    keys = [k.strip() for k in keys]
+
+    keys_flat = [k.strip() for k in list(recursive_flatmap(keys))]
+
     return [
         f"{from_prefix}+{k} == {to_prefix}+{k}"
-        for k in keys
+        for k in keys_flat
     ]
 
-class KeySet:
-    letters = list("abcdefghijklmnopqrstuvwxyz")
-    digits = list("0123456789")
-    symbols = list("`-=[]\\;',./")
-    special = ["tab", "escape", "delete", "enter", "space"]
-    arrows = ["left_arrow", "up_arrow", "right_arrow", "down_arrow" ]
 
 # ========== Built in keyboard ==========
 
@@ -81,16 +107,12 @@ mappings(
     devices=[builtin],
     apps=terminals,
     desc="Terminal: <fn> to <ctrl>",
-    maps=[
-        "fn+space == ctrl+space",
-        "fn+enter == ctrl+enter",
-        "fn+tab == ctrl+tab",
-        "fn+escape == ctrl+escape",
-
-        *prefix_translate("fn", "ctrl", KeySet.letters),
-        *prefix_translate("fn", "ctrl", KeySet.digits),
-        *prefix_translate("fn", "ctrl", KeySet.symbols),
-    ]
+    maps=translate_prefix("fn", "ctrl", [
+        KeySet.special - {"delete"},
+        KeySet.letters,
+        KeySet.digits,
+        KeySet.symbols,
+    ]),
 )
 
 mappings(

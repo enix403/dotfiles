@@ -195,23 +195,12 @@ def shell_mappings(
         flows=[parse_map(rule) for rule in maps],
     )
 
-
-def recursive_flatmap(iterable):
-    for item in iterable:
-        if isinstance(item, (list, tuple)):
-            # Recursively yield items from the nested iterable
-            yield from recursive_flatmap(item)
-        else:
-            yield item
-
-
 def mappings(
     devices: list[KeyboardDevice] = [],
     desc: str = "",
     apps: list[str] = [],
-    maps: list = [] # arbitrarily nested list of strs
+    maps: list[str] = []
 ):
-    flat_maps: list[str] = list(recursive_flatmap(maps))
     def parse_map(rule: str):
         left, right = [KeyCombination.parse(x.strip()) for x in rule.split("==")]
 
@@ -224,7 +213,7 @@ def mappings(
         devices,
         desc,
         apps,
-        flows=[parse_map(rule) for rule in flat_maps],
+        flows=[parse_map(rule) for rule in maps],
     )
 
 
