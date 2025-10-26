@@ -36,11 +36,9 @@ chrome = "com.google.Chrome"
 terminals = ["net.kovidgoyal.kitty", "com.apple.Terminal"]
 # finder = "com.apple.finder"
 
-# ====================================
-# ============= Keymaps ==============
-# ====================================
-
-# ========== Common ==========
+# ===========================================
+# ============= Global Keymaps ==============
+# ===========================================
 
 global_shell_mappings(
     desc="Common Shell Mapping",
@@ -50,7 +48,9 @@ global_shell_mappings(
     ]
 )
 
-# ========== Built in keyboard ==========
+# ====================================
+# ============= Keymaps ==============
+# ====================================
 
 mappings(
     devices=[builtin],
@@ -62,16 +62,37 @@ mappings(
 )
 
 mappings(
+    devices=[galaxy65],
+    apps=[chrome],
+    desc="Chrome: Force Keymaps",
+    maps=[
+        "cmd+shift+i == cmd+opt+i",
+    ]
+)
+
+# -----------------------------------------
+
+mappings(
     devices=[builtin],
     apps=terminals,
     desc="Terminal: <fn> to <ctrl>",
     maps=tp("fn", "ctrl", [
         KeySet.special - {"delete"},
-        KeySet.letters,
-        KeySet.digits,
-        KeySet.symbols,
+        KeySet.printable,
     ]),
 )
+
+mappings(
+    devices=[galaxy65],
+    apps=terminals,
+    desc="Terminal: <cmd> to <ctrl>",
+    maps=tp("cmd", "ctrl", [
+        KeySet.special - {"delete"},
+        KeySet.printable,
+    ]),
+)
+
+# -----------------------------------------
 
 mappings(
     devices=[builtin],
@@ -81,17 +102,35 @@ mappings(
 )
 
 mappings(
+    devices=[galaxy65],
+    apps=terminals,
+    desc="Terminal: Special Copy and Paste actions",
+    maps=tp("cmd+shift", "cmd", ['c', 'v'])
+)
+
+# -----------------------------------------
+
+mappings(
     devices=[builtin],
     apps=terminals,
     desc="Terminal: <fn> + <shift> to <ctrl> + <shift>",
     maps=tp("fn+shift", "ctrl+shift", [
         KeySet.special - {"delete"},
-        KeySet.letters - {'c', 'v'},
-        KeySet.digits,
-        KeySet.symbols,
+        KeySet.printable - {'c', 'v'},
     ])
 )
 
+mappings(
+    devices=[galaxy65],
+    apps=terminals,
+    desc="Terminal: <cmd> + <shift> to <ctrl> + <shift>",
+    maps=tp("cmd+shift", "ctrl+shift", [
+        KeySet.special - {"delete"},
+        KeySet.printable - {'c', 'v'},
+    ])
+)
+
+# -----------------------------------------
 
 mappings(
     devices=[builtin],
@@ -104,83 +143,6 @@ mappings(
 )
 
 mappings(
-    devices=[builtin],
-    desc="Global: <fn> to <cmd> (because macos cmd = app's ctrl)",
-    maps=tp("fn", "cmd", [
-        KeySet.special - {"delete"},
-        KeySet.letters,
-        KeySet.digits,
-        KeySet.symbols,
-    ])
-)
-
-mappings(
-    devices=[builtin],
-    desc="Global: <fn> + <shift> to <cmd> + <shift> (because macos cmd = app's ctrl)",
-    maps=tp("fn+shift", "cmd+shift", [
-        KeySet.special - {"delete"},
-        KeySet.v_arrows,
-        KeySet.letters,
-        KeySet.digits,
-        KeySet.symbols,
-    ]),
-)
-
-mappings(
-    devices=[builtin],
-    desc="Global: <fn> + <opt> to <cmd> + <opt> (because macos cmd = app's ctrl)",
-    maps=tp("fn+opt", "cmd+opt", [
-        KeySet.arrows,
-        KeySet.special,
-        KeySet.letters,
-        KeySet.digits,
-        KeySet.symbols,
-    ])
-)
-
-# ========== Galaxy 65 keyboard ==========
-
-mappings(
-    devices=[galaxy65],
-    apps=[chrome],
-    desc="Chrome: Force Keymaps",
-    maps=[
-        "cmd+shift+i == cmd+opt+i",
-    ]
-)
-
-mappings(
-    devices=[galaxy65],
-    apps=terminals,
-    desc="Terminal: <cmd> to <ctrl>",
-    maps=tp("cmd", "ctrl", [
-        KeySet.special - {"delete"},
-        KeySet.letters,
-        KeySet.digits,
-        KeySet.symbols,
-    ]),
-)
-
-mappings(
-    devices=[galaxy65],
-    apps=terminals,
-    desc="Terminal: Special Copy and Paste actions",
-    maps=tp("cmd+shift", "cmd", ['c', 'v'])
-)
-
-mappings(
-    devices=[galaxy65],
-    apps=terminals,
-    desc="Terminal: <cmd> + <shift> to <ctrl> + <shift>",
-    maps=tp("cmd+shift", "ctrl+shift", [
-        KeySet.special - {"delete"},
-        KeySet.letters - {'c', 'v'},
-        KeySet.digits,
-        KeySet.symbols,
-    ])
-)
-
-mappings(
     devices=[galaxy65],
     desc="(Deprecate) Global: Cursor Movement By Word",
     maps=[
@@ -190,6 +152,40 @@ mappings(
     ]
 
 )
+
+# -----------------------------------------
+
+mappings(
+    devices=[builtin],
+    desc="Global: <fn> to <cmd> (because macos cmd = app's ctrl)",
+    maps=tp("fn", "cmd", [
+        KeySet.special - {"delete"},
+        KeySet.printable,
+    ])
+)
+
+mappings(
+    devices=[builtin],
+    desc="Global: <fn> + <shift> to <cmd> + <shift> (because macos cmd = app's ctrl)",
+    maps=tp("fn+shift", "cmd+shift", [
+        KeySet.special - {"delete"},
+        # Cannot bind horizontal arrows due to vscode goto def binding
+        # TODO: look into thid
+        KeySet.v_arrows,
+        KeySet.printable,
+    ]),
+)
+
+mappings(
+    devices=[builtin],
+    desc="Global: <fn> + <opt> to <cmd> + <opt> (because macos cmd = app's ctrl)",
+    maps=tp("fn+opt", "cmd+opt", [
+        KeySet.arrows,
+        KeySet.special,
+        KeySet.printable,
+    ])
+)
+
 
 # ====================================
 # ============= Generate =============
