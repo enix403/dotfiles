@@ -2,6 +2,8 @@
 -- Default keymaps that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/keymaps.lua
 -- Add any additional keymaps here
 
+-- TODO: categorize in two: Fixing existing shortcuts vs adding new
+
 -- TODO: These are captured by kitty for window resizing
 -- Do something about it
 -- map("n", "<S-Up>", ":resize -2<CR>")
@@ -102,3 +104,10 @@ end)
 -- bounds of the file (at the start or the top). This needs to be fixed
 map("x", ",", ":m '<-2<CR>gv=gv", { desc = "Move selected lines up" })
 map("x", ".", ":m '>+1<CR>gv=gv", { desc = "Move selected lines down" })
+
+-- Select all text in file using Ctrl+A
+map("n", "<C-a>", "ggVG", { desc = "Select all text" })
+
+-- Duplicate line (or selection) down
+map("n", "<C-d>", '"ayy"ap', { desc = "Duplicate line down" })
+map("x", "<C-d>", ":'<,'>t'><CR>gv", { desc = "Duplicate selection down" })
