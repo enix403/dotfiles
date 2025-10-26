@@ -1,17 +1,17 @@
 marks
-vim-visual-multi:
-    select all words instead of one by one
-    ctrl up/down, not working
-per project config: config-local
+delete does not modify register/diff register for cut
 different terminals for cmd + editor
-gopls
-disable inlay hints by default
 tune down lsp diagnostics for e.g python
+per project config: config-local
+gopls
 
 AFTER MULTITERM:
 fix terminalS
 look into toggleterm (so three terminals hehe)
 open terminal in dir of current file
+vim-visual-multi:
+    select all words instead of one by one
+    ctrl up/down, not working
 
 future
 port config to rust
