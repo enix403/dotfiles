@@ -1,6 +1,12 @@
 => blink.cmp
 for auto completions
 
+=> noice.nvim
+Completely replaces *built-in* vim UI's like cmdline etc
+
+=> snacks.nvim
+Cool new widgets like: pickers, explorers, indents, dashboard etc
+
 => bufferline.nvim
 the top bar with tabs
 
@@ -43,9 +49,6 @@ Shows labels at the end of each search match. Allows to quickly jump to a specif
 => friendly-snippets
 cool snippets
 
-=> noice.nvim
-Completely replaces *built-in* vim UI's like cmdline etc
-
 => nui.nvim
 UI Component library, dependency of other plugins
 
@@ -70,6 +73,9 @@ Supercharged find and replace plugin
 => nvim-lint
 integrates with linters
 
+=> conform.nvim
+integrates with formatters/lsp
+
 => nvim-ts-autotag
 auto insert closing html-like tags
 
@@ -79,3 +85,8 @@ Misc library used by many other plugins. Dependency
 => todo-comments.nvim
 highlights and searches TODO, FIXME etc in comments
 
+=> trouble.nvim
+show lsp diagnostics in a window/list
+
+=> lazydev.nvim
+Hack to make lua lsp faster + auto sets it up for neovim api integeration

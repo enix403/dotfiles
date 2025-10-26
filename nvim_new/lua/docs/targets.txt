@@ -1,50 +1,17 @@
-Clean (3)
-○ gruvbox.nvim
-○ mason-lspconfig.nvim
-○ mini.indentscope
-
-Loaded (16)
-● blink.cmp 9.97ms  CmdlineEnter
-● bufferline.nvim 2.77ms  VeryLazy
-● flash.nvim 0.97ms  VeryLazy
-● friendly-snippets 0.43ms  blink.cmp
-● lualine.nvim 11.59ms  VeryLazy
-● mini.ai 0.56ms  VeryLazy
-● mini.pairs 1.13ms  VeryLazy
-● noice.nvim 2.21ms  VeryLazy
-● nui.nvim 0.07ms 󰢱 nui.object  noice.nvim
-● nvim-treesitter 3.24ms  VeryLazy
-● nvim-treesitter-textobjects 0.43ms  VeryLazy
-● transparent.nvim 0.27ms  start
-● ts-comments.nvim 0.91ms  VeryLazy
-● vim-kitty-navigator 0.33ms  start
-● vim-visual-multi 1.67ms  start
-● which-key.nvim 0.73ms  VeryLazy
-
-Not Loaded (10)
-○ gitsigns.nvim  LazyFile
-○ grug-far.nvim  GrugFarWithin  GrugFar  <leader>sr  <leader>sr (x)
-○ mason.nvim  Mason  <leader>cm  nvim-lspconfig  conform.nvim
-○ mini.icons
-○ nvim-lint  LazyFile
-○ nvim-ts-autotag  LazyFile
-○ persistence.nvim  <leader>qs  <leader>qS  <leader>ql  <leader>qd  BufReadPre
-○ plenary.nvim
-○ todo-comments.nvim  TodoTelescope  TodoTrouble  <leader>sT  [t  ]t  <leader>xt  <leader>xT  <leader>st  LazyFile
-○ treesj  <space>s  <space>m  <space>j
-
-Disabled (1)
-○ mason-lspconfig.nvim
-
-------
-
 marks
-terminal
-sessions
+fix terminalS
+learn grug-far
 enter in strings
 split borders are barely visible
+vim-visual-multi: select all words instead of one by one
+search for commands (better)
+per project config: config-local
+gopls
+look into toggleterm (so three terminals hehe)
 
-----
+DONE:
+sessions
 
-some
-
+future
+port config to rust
+kanagawa theme
