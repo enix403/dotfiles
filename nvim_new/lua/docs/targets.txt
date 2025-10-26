@@ -48,21 +48,3 @@ split borders are barely visible
 
 some
 
-I want you to create a keymap for neovim <A-BS> (Alt + Backspace). it should delete the last word behind the cursor in insert mode. Let me give you some examples
-
-
-When cursor is at the last letter of word e.g "some text|" then it should delete that word (but not the space behind it) e.g -> "some "
-
-When cursor is in the middle of a word then it should delete it to the start of the word e.g "some tex|t" -> "some |t"
-
-when cursor is *exactly* on the immediate whitespace (only single) after the word, it should delete to the start of the word e.g "some text |" -> "some |"
-
-when cursor is past more than one whitespace of the word in a continous region of whitespaces, it should delete to the whitespaces following the end of previous word e.g "some text   |" -> "some text|"
-
-make sure to handle single letter words the same way e.g "this is a|" -> "this is |"
-
-in all of the examples above, make sure that after the deletion, the cursor ends up in the position shown in the examples
-
-this deletion must preserve any buffer it uses. try to use some temporary register and even then preserve its contents at the end of this keybind
-
-a "word" is defined as any continuous sequence of letters, numbers, and underscore
