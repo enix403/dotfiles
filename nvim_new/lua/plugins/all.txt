@@ -58,14 +58,24 @@ Enhances the built in A and I text objects
 => mini.pairs
 Auto inserts closing pair
 
-----
+=> mini.icons
+Icons
+
+=> mini.indentscope
+Indent line in code. Appears to disabled and instead snacks.nvim's indent line is used
 
 => grug-far.nvim
-=> mini.icons
-=> nvim-lint
-=> nvim-ts-autotag
-=> plenary.nvim
-=> todo-comments.nvim
+Supercharged find and replace plugin
 
-=> gruvbox.nvim
-=> mini.indentscope
+=> nvim-lint
+integrates with linters
+
+=> nvim-ts-autotag
+auto insert closing html-like tags
+
+=> plenary.nvim
+Misc library used by many other plugins. Dependency
+
+=> todo-comments.nvim
+highlights and searches TODO, FIXME etc in comments
+
