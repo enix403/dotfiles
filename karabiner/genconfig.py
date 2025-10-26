@@ -4,11 +4,13 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
 import json
 from pathlib import Path
-from genlib import (
+from keylib import (
     mappings,
-    shell_mappings,
+    global_shell_mappings,
     KeyboardDevice,
-    build_karabiner_config
+    build_karabiner_config,
+    KeySet,
+    tp
 )
 
 # =====================================
@@ -40,61 +42,13 @@ terminals = ["net.kovidgoyal.kitty", "com.apple.Terminal"]
 
 # ========== Common ==========
 
-shell_mappings(
+global_shell_mappings(
     desc="Common Shell Mapping",
     maps=[
         ("opt+enter", "sh -c '/Applications/kitty.app/Contents/MacOS/kitty --single-instance --directory=/Users/qateef.ahmad --detach'"),
         ("opt+p", "open -a Launchpad"),
     ]
 )
-
-# -------------
-
-class KeySet:
-    # list, but supports the difference operator a - b
-    class SubtractableList(list):
-        def __sub__(self, other):
-            # Support subtracting either another iterable or a single item
-            if isinstance(other, (list, tuple, set)):
-                to_remove = set(other)
-            else:
-                to_remove = {other}
-
-            # Preserve order and duplicates (if not removed)
-            return self.__class__(x for x in self if x not in to_remove)
-
-    letters = SubtractableList("abcdefghijklmnopqrstuvwxyz")
-    digits = SubtractableList("0123456789")
-    symbols = SubtractableList("`-=[]\\;',./")
-    # special = SubtractableList(["tab", "escape", "delete", "enter", "space"])
-    special = SubtractableList(["delete", "space", "enter", "tab", "escape"])
-
-    h_arrows = SubtractableList(["left_arrow", "right_arrow"])
-    v_arrows = SubtractableList(["up_arrow", "down_arrow"])
-    arrows = SubtractableList(["left_arrow", "up_arrow", "right_arrow", "down_arrow"])
-
-
-def recursive_flatmap(iterable):
-    for item in iterable:
-        if isinstance(item, (list, tuple)):
-            # Recursively yield items from the nested iterable
-            yield from recursive_flatmap(item)
-        else:
-            yield item
-
-
-# translate prefix
-def tp(from_prefix: str, to_prefix: str, keys: list):
-    from_prefix = from_prefix.strip()
-    to_prefix = to_prefix.strip()
-
-    keys_flat = [k.strip() for k in list(recursive_flatmap(keys))]
-
-    return [
-        f"{from_prefix}+{k} == {to_prefix}+{k}"
-        for k in keys_flat
-    ]
-
 
 # ========== Built in keyboard ==========
 
