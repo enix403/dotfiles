@@ -62,13 +62,6 @@ return {
           end,
         },
       },
-      keymap = {
-        ["<C-space>"] = {
-          function(cmp)
-            cmp.show({ providers = { "snippets", "lsp", "buffer" } })
-          end,
-        },
-      },
     },
     -- opts_extend = { "sources.default" },
   },
