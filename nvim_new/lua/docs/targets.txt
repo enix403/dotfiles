@@ -27,7 +27,15 @@ nvim-possession
 port config to rust
 kanagawa theme
 better dashboard
-github PRs
+view github PRs
+resolve merge conflicts
 smooth scrolling:
     Snack scrolling
     https://github.com/karb94/neoscroll.nvim
+
+
+----------
+
+
+
+
