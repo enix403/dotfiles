@@ -241,3 +241,10 @@ vim.keymap.set("i", "<A-BS>", ctrl_bs_delete_prev_word, {
 -- Tab navigation using Tab and Shift+Tab
 map("n", "<Tab>", "<cmd>BufferLineCycleNext<CR>", { desc = "Next buffer/tab" })
 map("n", "<S-Tab>", "<cmd>BufferLineCyclePrev<CR>", { desc = "Previous buffer/tab" })
+
+---------------
+
+-- Swap ctrl i/o
+-- TODO: Explain in comments
+map("n", "<C-i>", "<C-o>")
+map("n", "<C-o>", "<C-i>")
