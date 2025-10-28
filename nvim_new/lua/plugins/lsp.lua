@@ -18,9 +18,22 @@ return {
         clangd = {},
 
         -- Installed manually outside of neovim
-        basedpyright = { mason = false },
+        basedpyright = {
+          mason = false,
+          settings = {
+            basedpyright = {
+              analysis = {
+                -- ignore = { "*" }, --usually used to ignore specific files or folders, can be used for all
+                typeCheckingMode = "basic", -- set this to "off" (or one of the other 4 levels of strictness) if you don't want it to type check, can also uncomment the above ignore = {"*"} line for only LSP feats
+                diagnosticMode = "workspace",
+                useLibraryCodeForTypes = true,
+                autoImportCompletions = true,
+                autoSearchPaths = true,
+              },
+            },
+          },
+        },
       },
     },
   },
 }
-
