@@ -1,4 +1,15 @@
 return {
   "folke/snacks.nvim",
-  opts = {},
+  -- opts.picker.sources.files.hidden = true
+  opts = {
+    picker = {
+      sources = {
+        files = {
+          hidden = true,
+        },
+      },
+      hidden = true, -- for hidden files
+      ignored = true, -- for .gitignore files
+    },
+  },
 }
