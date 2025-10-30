@@ -16,6 +16,7 @@ return {
 
         -- Installed via Mason
         clangd = {},
+        rust_analyzer = {},
 
         -- Installed manually outside of neovim
         basedpyright = {
