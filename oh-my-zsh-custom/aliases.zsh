@@ -81,6 +81,11 @@ function echol() {
     done
 }
 
+
+st() {
+  date '+%I:%M %p, %A '$(date +%d | awk '{d=$1+0; if (d%10==1 && d!=11) s="st"; else if (d%10==2 && d!=12) s="nd"; else if (d%10==3 && d!=13) s="rd"; else s="th"; printf "%02d%s", d, s;}')', %b %Y';
+}
+
 # ===========================
 # ---------- Tools ----------
 # ===========================
