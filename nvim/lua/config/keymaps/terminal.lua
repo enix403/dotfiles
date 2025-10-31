@@ -11,5 +11,5 @@ vim.keymap.del({ "n", "t" }, "<C-_>")
 -- seems to get out of terminal mode
 map("t", "<Esc><Esc>", [[<C-\><C-n>]], { desc = "Exit terminal mode to normal mode" })
 
--- Toggle Terminal
-map({ "n", "t" }, "<C-/>", "<cmd>ToggleTerm size=25<CR>", { desc = "Toggle Terminal" })
+-- Toggle Terminal in current directory
+map({ "n", "t" }, "<C-/>", "<cmd>ToggleTerm dir=%:p:h size=25<CR>", { desc = "Toggle Terminal" })
