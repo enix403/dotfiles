@@ -10,3 +10,6 @@ vim.keymap.del({ "n", "t" }, "<C-_>")
 -- Not needed in lazyvim, since apparently pressing Esc twice really fast
 -- seems to get out of terminal mode
 map("t", "<Esc><Esc>", [[<C-\><C-n>]], { desc = "Exit terminal mode to normal mode" })
+
+-- Toggle Terminal
+map({ "n", "t" }, "<C-/>", "<cmd>ToggleTerm size=25<CR>", { desc = "Toggle Terminal" })
