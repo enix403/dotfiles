@@ -95,6 +95,7 @@ mappings(
     maps=tp("fn+shift", "ctrl+shift", [
         KeySet.special - {"delete"},
         KeySet.printable - {'c', 'v'},
+        KeySet.v_arrows,
     ])
 )
 
@@ -105,6 +106,7 @@ mappings(
     maps=tp("cmd+shift", "ctrl+shift", [
         KeySet.special - {"delete"},
         KeySet.printable - {'c', 'v'},
+        KeySet.v_arrows,
     ])
 )
 
@@ -117,6 +119,7 @@ mappings(
     maps=tp("fn", "ctrl", [
         KeySet.special - {"delete"},
         KeySet.printable,
+        KeySet.v_arrows,
     ]),
 )
 
@@ -127,6 +130,7 @@ mappings(
     maps=tp("cmd", "ctrl", [
         KeySet.special - {"delete"},
         KeySet.printable,
+        KeySet.v_arrows,
     ]),
 )
 

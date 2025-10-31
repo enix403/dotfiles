@@ -289,6 +289,9 @@ map("n", "<S-Tab>", "<cmd>BufferLineCyclePrev<CR>", { desc = "Previous buffer/ta
 ---------------
 
 -- Swap ctrl i/o
+-- used for lsp goto def unwinding
+-- Make ctrl-i go backwards
+-- Make ctrl-o go forwards
 -- TODO: Explain in comments
 map("n", "<C-i>", "<C-o>")
 map("n", "<C-o>", "<C-i>")
