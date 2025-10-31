@@ -24,6 +24,8 @@ return {
 
     opts.picker.sources = sources
 
+    opts.terminal.enabled = false
+
     return opts
-  end,
+  end
 }
