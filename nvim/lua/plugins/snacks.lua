@@ -47,6 +47,10 @@ return {
       },
     }
 
+    opts.explorer = {
+      replace_netrw = false,
+    }
+
     return opts
-  end
+  end,
 }
