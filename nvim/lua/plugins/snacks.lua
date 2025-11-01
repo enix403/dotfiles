@@ -1,3 +1,6 @@
+-- TODO: this might break if ascii is not yet installed. Make sure to
+-- manage this correctly inside this file's dependencies table below and
+-- require it inside the opts function
 local asciiart = require("ascii")
 
 return {
