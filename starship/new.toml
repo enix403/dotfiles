@@ -34,7 +34,9 @@ aliases = { "MT-H0Y07DWWNY-Qateef-Ahmad" = "motive" }
 # format = '$hostname $ssh_symbol '
 
 [directory]
-home_symbol = 'δ'
+# home_symbol = 'δ'
+# home_symbol = '󱂵 '
+home_symbol = ' '
 # home_symbol = 'ζ'
 
 truncation_length = 3

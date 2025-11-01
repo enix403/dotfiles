@@ -29,6 +29,16 @@ return {
 
     opts.picker.sources = sources
 
+    -- Making sure to start = { at the right place
+    -- as to not overwrite existing settings
+    opts.picker.sources.explorer.win = {
+      list = {
+        keys = {
+          ["<Esc>"] = function() end,
+        },
+      },
+    }
+
     opts.terminal.enabled = false
 
     opts.dashboard = {
