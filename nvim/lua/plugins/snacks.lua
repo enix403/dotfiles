@@ -1,3 +1,5 @@
+local asciiart = require("ascii")
+
 return {
   "folke/snacks.nvim",
   -- opts.picker.sources.files.hidden = true
@@ -25,6 +27,22 @@ return {
     opts.picker.sources = sources
 
     opts.terminal.enabled = false
+
+    opts.dashboard = {
+      preset = {
+        -- header = table.concat(require("ascii").art.gaming.pacman, "\n"),
+        -- header = table.concat(asciiart.art.gaming.pacman.basic, "\n"),
+        -- header = table.concat(asciiart.art.text.slogons.make_cool_stuff, "\n"),
+        -- header = table.concat(asciiart.art.text.slogons.arch_btw_bulbhead, "\n"),
+        header = table.concat(asciiart.art.text.slogons.arch_btw_doom, "\n"),
+        -- header = table.concat(asciiart.art.text.neovim.sharp, "\n"),
+        -- header = table.concat(asciiart.art.text.neovim.dos_rebel, "\n"),
+        -- header = table.concat(asciiart.art.text.neovim.bloody, "\n"),
+        -- header = table.concat(asciiart.art.text.neovim.delta_corps_priest1, "\n"),
+        -- header = table.concat(asciiart.art.text.neovim.elite, "\n"),
+        -- header = table.concat(asciiart.art.text.neovim.the_edge, "\n"),
+      },
+    }
 
     return opts
   end
