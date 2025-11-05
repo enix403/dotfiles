@@ -148,6 +148,26 @@ _kx() {
 compdef _kx kx
 alias kxx="kubectl config get-contexts"
 
+
+function kc() {
+  if [[ -z "$1" ]]; then
+    # Show current context and its namespace
+    ctx=$(kubectl config current-context 2>/dev/null)
+    ns=$(kubectl config view --minify --output 'jsonpath={..namespace}' 2>/dev/null)
+    ns=${ns:-default}
+    echo "Context: $ctx"
+    echo "Namespace: $ns"
+  else
+    # Set namespace for current context
+    kubectl config set-context --current --namespace="$1"
+  fi
+}
+
+function kcc() {
+  # Clear namespace for current context
+  kubectl config set-context --current --namespace=""
+}
+
 # ========== Bundle ==========
 
 alias b="bundle"
