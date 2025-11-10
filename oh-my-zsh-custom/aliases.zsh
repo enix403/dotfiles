@@ -135,8 +135,12 @@ function kx() {
     elif [ $# -eq 1 ]; then
         # "kx <context> sets the given context as current"
         kubectl config use-context "$1"
+    elif [ $# -eq 2 ]; then
+        # "kx <context> <namespace>" sets context and default namespace
+        kubectl config use-context "$1"
+        kubectl config set-context --current --namespace="$2"
     else
-        echo "Usage: kx [context-name]" >&2
+        echo "Usage: kx [context] [namespace]" >&2
         return 1
     fi
 }
