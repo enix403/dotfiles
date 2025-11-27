@@ -4,6 +4,7 @@
 [alias]
 	br = branch
 	st = status
+	stu = status -uno
 	co = checkout
 	cm = commit
 	sw = switch
@@ -13,6 +14,8 @@
   lg = log --decorate --oneline --graph --color --date=short
   ps = push
   pl = pull
+  bl = blame
+  rb = rebase
 [pager]
 	branch = false
 	stash = false
@@ -48,8 +51,5 @@
   
   hyperlinks = true
   hyperlinks-file-link-format = "cursor://file/{path}:{line}"
-[credential]
-	helper = oauth
-	helper = cache --timeout 2592000
 [push]
 	autoSetupRemote = true
