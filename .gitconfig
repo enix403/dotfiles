@@ -53,3 +53,6 @@
   hyperlinks-file-link-format = "cursor://file/{path}:{line}"
 [push]
 	autoSetupRemote = true
+[credential]
+	helper = oauth
+	helper = cache --timeout 2592000
