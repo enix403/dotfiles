@@ -1,4 +1,5 @@
-source ./work-secrets.sh
+# https://unix.stackexchange.com/a/115431
+source ${0:a:h}/work-secrets.sh
 
 # ============================
 # ========== Direnv ==========
