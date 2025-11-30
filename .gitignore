@@ -11,4 +11,5 @@ bin/az
 karabiner/*
 karabiner/**
 !karabiner/karabiner.json
-!karabiner/gen*.py
+!karabiner/genconfig.py
+!karabiner/keylib.py
