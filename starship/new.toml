@@ -98,8 +98,12 @@ version_format = 'v${raw}'
 # symbol = '🐍'
 symbol = 'λ'
 style = 'bold green'
-detect_extensions = ['py', 'ipynb']
-detect_files = ['.python-version', 'Pipfile', '__init__.py', 'pyproject.toml', 'requirements.txt', 'setup.py', 'tox.ini']
+# detect_extensions = ['py', 'ipynb']
+# detect_files = ['.python-version', 'Pipfile', '__init__.py', 'pyproject.toml', 'requirements.txt', 'setup.py', 'tox.ini']
+detect_extensions = []
+detect_files = []
+detect_folders = []
+python_binary = ["python", "python3", "python2"]
 
 # Status of last command run
 [status]
