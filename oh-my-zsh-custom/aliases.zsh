@@ -87,6 +87,37 @@ st() {
 
 alias kb='(cd ~/kb && nvim)'
 
+function qr() {
+    # 1. Validate that an argument was provided
+    if [[ -z "$1" ]]; then
+        echo "Usage: q <number 1-30>"
+        return 1
+    fi
+
+    # 2. Validate that the input is an integer between 1 and 30
+    if ! [[ "$1" =~ ^[0-9]+$ ]] || (( $1 < 1 || $1 > 30 )); then
+        echo "Error: Input must be an integer between 1 and 30."
+        return 1
+    fi
+
+    # 3. Pad the input number to 2 digits (e.g., 1 -> 01, 15 -> 15)
+    # Uses printf to format the string
+    local padded_num=$(printf "%02d" "$1")
+
+    # 4. Define the file path
+    local file_path="$HOME/code/plays/merge-q-pdf/output/qp-${padded_num}.pdf"
+
+    # 5. Check if the file exists before trying to open it
+    if [[ -f "$file_path" ]]; then
+        echo "Opening $file_path..."
+        open "$file_path"
+    else
+        echo "Error: File not found at:"
+        echo "$file_path"
+        return 1
+    fi
+}
+
 # ===========================
 # ---------- Tools ----------
 # ===========================
