@@ -119,6 +119,7 @@ function qr() {
 }
 
 alias jl="jupyter-lab"
+alias cr="cursor"
 
 # ===========================
 # ---------- Tools ----------

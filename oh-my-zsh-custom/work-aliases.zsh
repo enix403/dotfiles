@@ -94,3 +94,7 @@ function kp() {
   echo "Running: kubectl --context='${kube_context}' port-forward --namespace '${kube_namespace}' svc/${kube_service} ${port}"
   kubectl --context="${kube_context}" port-forward --namespace "${kube_namespace}" "svc/${kube_service}" "${port}"
 }
+
+function grpc_ui_spd() {
+    grpcui --plaintext --proto $SPD_PROTO_API_PATH localhost:$SVC_SPD_KUBE_PORT
+}
