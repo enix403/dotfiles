@@ -2,9 +2,17 @@
 # =========== Move ============
 # =============================
 
+# High-precedence custom shortcuts: name -> absolute path
+typeset -g -A MOVE_CUSTOM_MAP
+MOVE_CUSTOM_MAP=(
+  spd $KT_SVC_PATH_SPD
+  slf $KT_SVC_PATH_SLF
+  sbc $KT_SVC_PATH_SBC
+)
+
 move() {
   local skip=false
-  local arg
+  local arg dir_arg
 
   # Parse arguments (allow --skip before or after)
   for arg in "$@"; do
@@ -16,11 +24,18 @@ move() {
   done
 
   if [[ -z "$dir_arg" ]]; then
-    echo "Usage: move [--skip] <dir>"
+    echo "Usage: move [--skip] <dir-or-shortcut>"
     return 1
   fi
 
-  local target="$MY_ALL_REPOS/$dir_arg"
+  local target
+
+  # High precedence: custom shortcuts
+  if [[ -n "${MOVE_CUSTOM_MAP[$dir_arg]+set}" ]]; then
+    target="${MOVE_CUSTOM_MAP[$dir_arg]}"
+  else
+    target="$MY_ALL_REPOS/$dir_arg"
+  fi
 
   if [[ -d "$target" ]]; then
     cd "$target" || return 1
@@ -38,12 +53,17 @@ move() {
 # Completion function for move
 _move_complete() {
   local base="$MY_ALL_REPOS"
-  local -a dirs
+  local -a dirs custom_keys
 
-  # Use BSD-compatible find; skip hidden dirs (starting with .)
-  # Only list one level deep
+  # Custom shortcut names
+  custom_keys=("${(@k)MOVE_CUSTOM_MAP}")
+
+  # Directories one level deep under $MY_ALL_REPOS (skip dot dirs)
   dirs=($(find "$base" -mindepth 1 -maxdepth 1 -type d \
-          -not -name ".*" -exec basename {} \; 2>/dev/null))
+    -not -name ".*" -exec basename {} \; 2>/dev/null))
+
+  # Combine: show custom shortcuts first, then normal dirs
+  dirs=("${custom_keys[@]}" "${dirs[@]}")
 
   _describe 'directories' dirs
 }
