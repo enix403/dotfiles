@@ -113,7 +113,8 @@
                     "keyword.control.import.python",
                     "keyword.control.flow.python",
                     "entity.other.attribute-name.tsx",
-                    "support.function"
+                    "support.function",
+                    "entity.other.inherited-class"
                 ],
                 "settings": {
                     "fontStyle": ""
