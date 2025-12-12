@@ -1,0 +1,218 @@
+{
+    "workbench.tree.indent": 14,
+    "workbench.tree.renderIndentGuides": "always",
+    "workbench.colorCustomizations": {
+        "tree.indentGuidesStroke": "#A08070"
+    },
+    "workbench.editor.closeEmptyGroups": false,
+    "settingsSync.keybindingsPerPlatform": false,
+    "workbench.activityBar.orientation": "vertical",
+    "editor.fontFamily": "Rec Mono Casual",
+    // "editor.fontFamily": "Fira Code",
+    "window.zoomLevel": 0.55,
+    "editor.lineHeight": 1.35,
+    "editor.fontSize": 13,
+    "editor.fontLigatures": true,
+    "editor.occurrencesHighlight": "off",
+    "editor.selectionHighlight": false,
+    "editor.dragAndDrop": false,
+    "explorer.enableDragAndDrop": false,
+    "editor.cursorStyle": "line-thin",
+    "editor.formatOnSave": false,
+    "editor.matchBrackets": "near",
+    "editor.wordWrap": "on",
+    "editor.snippetSuggestions": "inline",
+    "editor.pasteAs.enabled": false,
+    "explorer.autoReveal": false,
+    "files.trimTrailingWhitespace": true,
+    "editor.smoothScrolling": true,
+    "editor.codeActionsOnSave": {
+        "source.organizeImports": "never",
+        "source.fixAll": "never"
+    },
+    "explorer.compactFolders": false,
+    "window.titleBarStyle": "custom",
+    "window.customMenuBarAltFocus": false,
+    "window.enableMenuBarMnemonics": false,
+    "window.menuBarVisibility": "visible",
+    "window.openFilesInNewWindow": "off",
+    "window.openFoldersInNewWindow": "off",
+    "window.density.editorTabHeight": "default",
+    "workbench.editor.pinnedTabsOnSeparateRow": true,
+    "html.autoClosingTags": false,
+    "typescript.autoClosingTags": false,
+    "javascript.autoClosingTags": false,
+    "[typescriptreact]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[jsonc]": {
+        "editor.defaultFormatter": "vscode.json-language-features"
+    },
+    "[typescript]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "workbench.list.openMode": "doubleClick",
+    "editor.tokenColorCustomizations": {
+        "textMateRules": [
+            {
+                "scope": [
+                    "comment",
+                    "punctuation.definition.comment",
+                    "support.class.component",
+                    "variable.parameter",
+                    "keyword.control",
+                    "keyword.control.import",
+                    "keyword.control.export",
+                    "keyword.control.from",
+                    "entity.other.attribute-name",
+                    "variable.other.property",
+                    "variable.other.object.property",
+                    "variable.language",
+                    "storage.modifier",
+                    "support.type.primitive",
+                    "keyword.operator",
+                    "meta.attribute.id entity.other.attribute-name",
+                    "support.type.vendored",
+                    "comment.block.documentation punctuation.definition.block.tag",
+                    "comment.block.documentation storage.type.class",
+                    "comment.line",
+                    "meta.import keyword.control",
+                    "support.type.builtin",
+                    "source.rust meta.attribute.rust",
+                    "markup.list",
+                    "fenced_code.block.language",
+                    "storage.type.function",
+                    "storage.type",
+                    "storage.type.type",
+                    "entity.name.function",
+                    "entity.name.type.class",
+                    "support.class.dart",
+                    "comment.line.double-slash",
+                    "keyword.control.import.python",
+                    "keyword.control.flow.python",
+                    "entity.other.attribute-name.tsx",
+                ],
+                "settings": {
+                    "fontStyle": ""
+                }
+            },
+            {
+                "scope": "meta.tag meta.jsx.children",
+                "settings": {
+                    "foreground": "#d2d2d2"
+                }
+            }
+        ]
+    },
+    "editor.semanticTokenColorCustomizations": {
+        "enabled": true,
+        "rules": {
+            "property.static:typescript": {
+                "underline": false
+            },
+            "method.static:typescript": {
+                "underline": false
+            },
+            "function.declaration": {
+                "bold": false
+            }
+        }
+    },
+    "[css]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[scss]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "editor.renderLineHighlight": "gutter",
+    "symbols.hidesExplorerArrows": false,
+    "[postcss]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "css.lint.unknownAtRules": "ignore",
+    "scss.lint.unknownAtRules": "ignore",
+    "editor.minimap.enabled": false,
+    "editor.linkedEditing": true,
+    "svg.preview.mode": "img",
+    "[json]": {
+        "editor.defaultFormatter": "vscode.json-language-features"
+    },
+    "typescript.preferences.jsxAttributeCompletionStyle": "none",
+    "svelte.enable-ts-plugin": true,
+    "editor.inlayHints.enabled": "offUnlessPressed",
+    "[javascript]": {
+        "editor.defaultFormatter": "vscode.typescript-language-features"
+    },
+    "explorer.confirmDelete": false,
+    "dart.closingLabels": false,
+    "editor.trimAutoWhitespace": false,
+    "[html]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "workbench.startupEditor": "none",
+    "[javascriptreact]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "mdmath.delimiters": "dollars",
+    "mdmath.theme": "publication",
+    "mdmath.style": "/home/radium/hwlab/analysis/global.css",
+    "markdown.preview.scrollEditorWithPreview": false,
+    "markdown.preview.scrollPreviewWithEditor": false,
+    "markdown-pdf.displayHeaderFooter": false,
+    "markdown-pdf.highlightStyle": "lightfair.css",
+    "git.openRepositoryInParentFolders": "never",
+    "diffEditor.ignoreTrimWhitespace": false,
+    "typescript.updateImportsOnFileMove.enabled": "never",
+    "files.exclude": {
+        "**/.git": true,
+        "**/.svn": true,
+        "**/.hg": true,
+        "**/CVS": true,
+        "**/.DS_Store": true,
+        "**/Thumbs.db": true,
+        "**/node_modules": true,
+        "**/postgres-data": true
+    },
+    "editor.stickyScroll.enabled": false,
+    "workbench.editor.empty.hint": "hidden",
+    "javascript.updateImportsOnFileMove.enabled": "never",
+    "notebook.output.textLineLimit": 50,
+    "dart.flutterCreateAndroidLanguage": "java",
+    "dart.debugExternalPackageLibraries": false,
+    "dart.debugSdkLibraries": false,
+    "rest-client.previewOption": "full",
+    "rest-client.defaultHeaders": {
+        "User-Agent": "vscode-restclient",
+        "Content-Type": "application/json",
+        "Accept": "application/json",
+        "Accept-Language": "en-US,en;q=0.5",
+        "Accept-Encoding": "gzip, deflate, br, zstd"
+    },
+    "[svelte]": {
+        "editor.defaultFormatter": "svelte.svelte-vscode"
+    },
+    "python.analysis.diagnosticSeverityOverrides": {
+        "reportMissingImports": "none",
+        "reportUndefinedVariable": "none",
+        "reportMissingModuleSource": "none"
+    },
+    "files.associations": {
+        "*.css": "tailwindcss",
+        "*.kts": "kotlinscript",
+        "*.conf": "properties"
+    },
+    "workbench.editorAssociations": {
+        "*.svg": "default"
+    },
+    "workbench.editor.enablePreview": false,
+    "workbench.iconTheme": "helium-icon-theme",
+    "eyecons.folderColor": "orange",
+    "eyecons.hidesExplorerArrows": true,
+    "eyecons.theme": "github-dark",
+    "security.promptForLocalFileProtocolHandling": false,
+    "typescript.enablePromptUseWorkspaceTsdk": true,
+    "workbench.colorTheme": "Quiet Light",
+    "pop-icon-theme.folders.color": "#ff7043",
+    "helium-icon-theme.folders.color": "#90a4ae",
+    "csv.enabled": true
+}
