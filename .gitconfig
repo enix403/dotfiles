@@ -1,13 +1,14 @@
 [user]
 	name = enix403
 	email = fog.code000@gmail.com
+
 [alias]
-	br = branch
-	st = status
-	stu = status -uno
-	co = checkout
-	cm = commit
-	sw = switch
+  br = branch
+  st = status
+  stu = status -uno
+  co = checkout
+  cm = commit
+  sw = switch
   ss = stash
   df = diff
   mr = merge
@@ -16,13 +17,25 @@
   pl = pull
   bl = blame
   rb = rebase
+  rp = rev-parse
+  ft = fetch
+
 [pager]
 	branch = false
 	stash = false
+
 [init]
 	defaultBranch = main
+
 [diff]
   colorMoved = default
+
+[push]
+	autoSetupRemote = true
+
+[credential]
+	helper = oauth
+	helper = cache --timeout 2592000
 
 # ================
 # Config for Delta
@@ -43,16 +56,16 @@
 
 [delta]
   features = mantis-shrimp # set theme
-  
+
   # use n and N to move between diff sections
-  navigate = true 
+  navigate = true
   line-numbers = true
   side-by-side = true
-  
+
   hyperlinks = true
   hyperlinks-file-link-format = "cursor://file/{path}:{line}"
-[push]
-	autoSetupRemote = true
-[credential]
-	helper = oauth
-	helper = cache --timeout 2592000
+
+# ====================
+# END Config for Delta
+# ====================
+
