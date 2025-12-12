@@ -7,20 +7,37 @@
     "workbench.editor.closeEmptyGroups": false,
     "settingsSync.keybindingsPerPlatform": false,
     "workbench.activityBar.orientation": "vertical",
-    "editor.fontFamily": "Rec Mono Casual",
-    // "editor.fontFamily": "Fira Code",
     "window.zoomLevel": 0.55,
-    "editor.lineHeight": 1.35,
-    "editor.fontSize": 13,
     "editor.fontLigatures": true,
+    // ================
+    // "editor.fontFamily": "Rec Mono Casual",
+    // "editor.fontSize": 14,
+    // // "editor.lineHeight": 1.35,
+    // "editor.lineHeight": 1.6,
+    // "editor.letterSpacing": -0.5,
+    // ================
+    "editor.fontFamily": "Maple Mono",
+    "editor.lineHeight": 1.45,
+    "editor.fontSize": 13,
+    // "editor.letterSpacing": -0.25,
+    // ================
+    // "editor.fontFamily": "Google Sans Code",
+    // "editor.lineHeight": 1.5,
+    // "editor.fontSize": 13,
+    // "editor.letterSpacing": -0.25,
+    // ================
     "editor.occurrencesHighlight": "off",
     "editor.selectionHighlight": false,
     "editor.dragAndDrop": false,
     "explorer.enableDragAndDrop": false,
     "editor.cursorStyle": "line-thin",
     "editor.formatOnSave": false,
+    "[go]": {
+        "editor.formatOnSave": false,
+    },
     "editor.matchBrackets": "near",
     "editor.wordWrap": "on",
+    "editor.wrappingIndent": "deepIndent",
     "editor.snippetSuggestions": "inline",
     "editor.pasteAs.enabled": false,
     "explorer.autoReveal": false,
@@ -65,7 +82,11 @@
                     "keyword.control.export",
                     "keyword.control.from",
                     "entity.other.attribute-name",
+                    "variable",
                     "variable.other.property",
+                    "variable.other.readwrite",
+                    "variable.other.enummember",
+                    "variable.other.constant",
                     "variable.other.object.property",
                     "variable.language",
                     "storage.modifier",
@@ -76,6 +97,7 @@
                     "comment.block.documentation punctuation.definition.block.tag",
                     "comment.block.documentation storage.type.class",
                     "comment.line",
+                    "comment.line.number-sign.python",
                     "meta.import keyword.control",
                     "support.type.builtin",
                     "source.rust meta.attribute.rust",
@@ -91,6 +113,7 @@
                     "keyword.control.import.python",
                     "keyword.control.flow.python",
                     "entity.other.attribute-name.tsx",
+                    "support.function"
                 ],
                 "settings": {
                     "fontStyle": ""
@@ -115,6 +138,9 @@
             },
             "function.declaration": {
                 "bold": false
+            },
+            "method": {
+                "italic": false
             }
         }
     },
@@ -141,7 +167,7 @@
     "svelte.enable-ts-plugin": true,
     "editor.inlayHints.enabled": "offUnlessPressed",
     "[javascript]": {
-        "editor.defaultFormatter": "vscode.typescript-language-features"
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
     },
     "explorer.confirmDelete": false,
     "dart.closingLabels": false,
@@ -199,7 +225,7 @@
     "files.associations": {
         "*.css": "tailwindcss",
         "*.kts": "kotlinscript",
-        "*.conf": "properties"
+        "*.conf": "shellscript"
     },
     "workbench.editorAssociations": {
         "*.svg": "default"
@@ -211,8 +237,21 @@
     "eyecons.theme": "github-dark",
     "security.promptForLocalFileProtocolHandling": false,
     "typescript.enablePromptUseWorkspaceTsdk": true,
-    "workbench.colorTheme": "Quiet Light",
     "pop-icon-theme.folders.color": "#ff7043",
     "helium-icon-theme.folders.color": "#90a4ae",
-    "csv.enabled": true
+    "window.commandCenter": true,
+    "[ruby]": {
+        "editor.defaultFormatter": "rubocop.vscode-rubocop"
+    },
+    "bazel.executable": "/nix/store/y1zdzring1mji64iy0njvb7fz62khz80-ktmr-final-environment/bin/bazel",
+    "files.trimTrailingWhitespaceInRegexAndStrings": false,
+    "editor.inlineSuggest.edits.showCollapsed": true,
+    "editor.accessibilitySupport": "off",
+    "workbench.colorTheme": "Serendipity Midnight",
+    "C_Cpp.default.cppStandard": "c++17",
+    "cursor.cpp.disabledLanguages": [
+        "markdown",
+        "plaintext",
+        "dart"
+    ],
 }
