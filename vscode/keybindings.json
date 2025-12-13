@@ -398,5 +398,9 @@
         "key": "browserback",
         "command": "-workbench.action.navigateBack",
         "when": "canNavigateBack"
+    },
+    {
+        "key": "shift+cmd+=",
+        "command": "extension.calculate"
     }
 ]
