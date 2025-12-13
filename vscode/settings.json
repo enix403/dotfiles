@@ -69,6 +69,7 @@
         "editor.defaultFormatter": "esbenp.prettier-vscode"
     },
     "workbench.list.openMode": "doubleClick",
+    "workbench.startupEditor": "welcomePage",
     "editor.tokenColorCustomizations": {
         "textMateRules": [
             {
@@ -176,7 +177,6 @@
     "[html]": {
         "editor.defaultFormatter": "esbenp.prettier-vscode"
     },
-    "workbench.startupEditor": "none",
     "[javascriptreact]": {
         "editor.defaultFormatter": "esbenp.prettier-vscode"
     },

@@ -38,7 +38,7 @@ alias {bat,bt}='bat --theme="Catppuccin Mocha" --style=plain'
 alias feh="feh --scale-down --auto-zoom --draw-filename --action9 \";feh --bg-scale '%f'\""
 alias fdf="fd -t f"
 alias fdd="fd -t d"
-py() {
+function py() {
   if command -v python >/dev/null 2>&1; then
     python "$@"
   elif command -v python3 >/dev/null 2>&1; then
@@ -48,6 +48,73 @@ py() {
     return 1
   fi
 }
+
+# I learned this the hard way...
+function rm() {
+  local PROTECTED_DIRS=(
+    "/Applications"
+    "/Library"
+    "/System"
+    "/usr/local"
+    "/opt"
+    "/Volumes"
+    "/etc"
+    "$HOME"
+    "$HOME/Documents"
+    "$HOME/code"
+    "$HOME/col"
+    "$HOME/MyBackups"
+    "$HOME/dotfiles"
+    "$HOME/kb"
+    "$HOME/tmp"
+  )
+
+  local TARGETS=()
+  local DANGEROUS=0
+
+  # collect non-flag args
+  for arg in "$@"; do
+    [[ "$arg" == -* ]] && continue
+    TARGETS+=("${arg:a}")   # <-- FIX
+  done
+
+  # check targets
+  for t in "${TARGETS[@]}"; do
+    # deleting any home directory
+    if [[ "$t" == /Users/* && "$t" != /Users/*/* ]]; then
+      DANGEROUS=1
+    fi
+
+    # deleting protected dirs or their parents
+    for p in "${PROTECTED_DIRS[@]}"; do
+      if [[ "$t" == "$p" || "$t" == "$p/"* ]]; then
+        DANGEROUS=1
+      fi
+    done
+  done
+
+  echo $DANGEROUS
+
+  if (( DANGEROUS )); then
+    echo
+    echo -e "\033[1;31m================== DANGEROUS RM ==================\033[0m"
+    echo -e "\033[1;31mYOU ARE ABOUT TO DELETE A PROTECTED LOCATION:\033[0m"
+    printf '\033[1;31m - %s\033[0m\n' "${TARGETS[@]}"
+    echo -e "\033[1;31m=================================================\033[0m"
+    echo
+
+    read -r "REPLY1?Type 'yes' to continue: "
+    echo
+    [[ "$REPLY1" != "yes" ]] && { echo "Aborted."; return 1; }
+
+    read -r "REPLY2?Type 'yes' AGAIN to confirm: "
+    echo
+    [[ "$REPLY2" != "yes" ]] && { echo "Aborted."; return 1; }
+  fi
+
+  command rm "$@"
+}
+
 
 # Non essentials, but cool
 alias tree="erd --human --icons --sort=name --dir-order=last --layout=inverted --suppress-size"
