@@ -87,13 +87,11 @@ function rm() {
 
     # deleting protected dirs or their parents
     for p in "${PROTECTED_DIRS[@]}"; do
-      if [[ "$t" == "$p" || "$t" == "$p/"* ]]; then
+      if [[ "$t" == "$p" ]]; then
         DANGEROUS=1
       fi
     done
   done
-
-  echo $DANGEROUS
 
   if (( DANGEROUS )); then
     echo

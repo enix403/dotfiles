@@ -257,5 +257,13 @@
     ],
     "[cpp]": {
         "editor.defaultFormatter": "xaver.clang-format"
+    },
+    "github.copilot.enable": {
+        "*": true,
+        "plaintext": false,
+        "markdown": false,
+        "scminput": false,
+        "python": false,
+        "sql": false
     }
 }
