@@ -5,9 +5,9 @@
 # High-precedence custom shortcuts: name -> absolute path
 typeset -g -A MOVE_CUSTOM_MAP
 MOVE_CUSTOM_MAP=(
-  spd $KT_SVC_PATH_SPD
-  slf $KT_SVC_PATH_SLF
-  sbc $KT_SVC_PATH_SBC
+  spd $WX_SPD_KT_PATH
+  slf $WX_SLF_KT_PATH
+  sbc $WX_SBC_KT_PATH
 )
 
 move() {
@@ -34,7 +34,7 @@ move() {
   if [[ -n "${MOVE_CUSTOM_MAP[$dir_arg]+set}" ]]; then
     target="${MOVE_CUSTOM_MAP[$dir_arg]}"
   else
-    target="$MY_ALL_REPOS/$dir_arg"
+    target="$WX_MY_ALL_REPOS/$dir_arg"
   fi
 
   if [[ -d "$target" ]]; then
@@ -52,13 +52,13 @@ move() {
 
 # Completion function for move
 _move_complete() {
-  local base="$MY_ALL_REPOS"
+  local base="$WX_MY_ALL_REPOS"
   local -a dirs custom_keys
 
   # Custom shortcut names
   custom_keys=("${(@k)MOVE_CUSTOM_MAP}")
 
-  # Directories one level deep under $MY_ALL_REPOS (skip dot dirs)
+  # Directories one level deep under $WX_MY_ALL_REPOS (skip dot dirs)
   dirs=($(find "$base" -mindepth 1 -maxdepth 1 -type d \
     -not -name ".*" -exec basename {} \; 2>/dev/null))
 
@@ -80,17 +80,17 @@ compdef _move_complete move
 # Port can be "8080" or "8080:80" (LOCAL[:REMOTE] syntax)
 
 # Fill the following variables
-# export KUBE_CTX_PRVW=
-# export KUBE_CTX_STAG=
-# export KUBE_CTX_PROD=
+# export WX_KUBE_CTX_PRVW=
+# export WX_KUBE_CTX_STAG=
+# export WX_KUBE_CTX_PROD=
 
-# export SVC_SLF_KUBE_NS=
-# export SVC_SLF_KUBE_SVC=
-# export SVC_SLF_KUBE_PORT=
+# export WX_SLF_KUBE_NS=
+# export WX_SLF_KUBE_SVC=
+# export WX_SLF_KUBE_PORT=
 
-# export SVC_SPD_KUBE_NS=
-# export SVC_SPD_KUBE_SVC=
-# export SVC_SPD_KUBE_PORT=
+# export WX_SPD_KUBE_NS=
+# export WX_SPD_KUBE_SVC=
+# export WX_SPD_KUBE_PORT=
 
 function kp() {
   if (( $# < 1 || $# > 2 )); then
@@ -117,22 +117,22 @@ function kp() {
   # PRW environment mappings
   KP_MAP_PRW=(
     # Examples (edit these to your real values)
-    slf "$KUBE_CTX_PRVW|$SVC_SLF_KUBE_NS|${SVC_SLF_KUBE_SVC}-preview|$SVC_SLF_KUBE_PORT"
-    spd "$KUBE_CTX_PRVW|$SVC_SPD_KUBE_NS|${SVC_SPD_KUBE_SVC}-preview|$SVC_SPD_KUBE_PORT"
-    fleetdb "$KUBE_CTX_PRVW|$DB_FLEET_KUBE_NS|${DB_FLEET_PRVW_KUBE_SVC}|$DB_FLEET_KUBE_PORT"
+    slf "$WX_KUBE_CTX_PRVW|$WX_SLF_KUBE_NS|${WX_SLF_KUBE_SVC}-preview|$WX_SLF_KUBE_PORT"
+    spd "$WX_KUBE_CTX_PRVW|$WX_SPD_KUBE_NS|${WX_SPD_KUBE_SVC}-preview|$WX_SPD_KUBE_PORT"
+    fleetdb "$WX_KUBE_CTX_PRVW|$WX_DB_FLEET_KUBE_NS|${WX_DB_FLEET_PRVW_KUBE_SVC}|$WX_DB_FLEET_KUBE_PORT"
   )
 
   # STG environment mappings
   KP_MAP_STG=(
-    slf "$KUBE_CTX_STAG|$SVC_SLF_KUBE_NS|${SVC_SLF_KUBE_SVC}-staging|$SVC_SLF_KUBE_PORT"
-    spd "$KUBE_CTX_STAG|$SVC_SPD_KUBE_NS|${SVC_SPD_KUBE_SVC}-staging|$SVC_SPD_KUBE_PORT"
-    fleetdb "$KUBE_CTX_PRVW|$DB_FLEET_KUBE_NS|${DB_FLEET_STAG_KUBE_SVC}|$DB_FLEET_KUBE_PORT"
+    slf "$WX_KUBE_CTX_STAG|$WX_SLF_KUBE_NS|${WX_SLF_KUBE_SVC}-staging|$WX_SLF_KUBE_PORT"
+    spd "$WX_KUBE_CTX_STAG|$WX_SPD_KUBE_NS|${WX_SPD_KUBE_SVC}-staging|$WX_SPD_KUBE_PORT"
+    fleetdb "$WX_KUBE_CTX_PRVW|$WX_DB_FLEET_KUBE_NS|${WX_DB_FLEET_STAG_KUBE_SVC}|$WX_DB_FLEET_KUBE_PORT"
   )
 
   # PROD environment mappings
   KP_MAP_PROD=(
-    slf "$KUBE_CTX_PROD|$SVC_SLF_KUBE_NS|${SVC_SLF_KUBE_SVC}-production|$SVC_SLF_KUBE_PORT"
-    spd "$KUBE_CTX_PROD|$SVC_SPD_KUBE_NS|${SVC_SPD_KUBE_SVC}-production|$SVC_SPD_KUBE_PORT"
+    slf "$WX_KUBE_CTX_PROD|$WX_SLF_KUBE_NS|${WX_SLF_KUBE_SVC}-production|$WX_SLF_KUBE_PORT"
+    spd "$WX_KUBE_CTX_PROD|$WX_SPD_KUBE_NS|${WX_SPD_KUBE_SVC}-production|$WX_SPD_KUBE_PORT"
   )
 
   # Select the env map without using namerefs (for older zsh)
@@ -174,5 +174,5 @@ function kp() {
 }
 
 # function grpc_ui_spd() {
-#     $(cd $k/kt && grpcui --plaintext --proto $SPD_PROTO_API_PATH localhost:$SVC_SPD_KUBE_PORT)
+#     $(cd $k/kt && grpcui --plaintext --proto $WX_SPD_PROTO_API_PATH localhost:$WX_SPD_KUBE_PORT)
 # }

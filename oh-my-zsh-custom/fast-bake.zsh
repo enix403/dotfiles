@@ -10,7 +10,7 @@ alias dac='eval "$(direnv export /bin/zsh)"'
 
 _get_app_name_from_pwd() {
   local pwd_curr="$(pwd)"
-  local base_path="$MY_ALL_REPOS"
+  local base_path="$WX_MY_ALL_REPOS"
   local app_name
   # ensure current directory is under base_path
   if [[ "$pwd_curr" != "$base_path"/* ]]; then
@@ -37,7 +37,7 @@ _activate_prebaked_direnv() {
   # construct env file path
   local app_name
   app_name="$(_get_app_name_from_pwd)" || return 1
-  local app_env_path="$BAKED_ENVS_PATH/${app_name}-env.sh"
+  local app_env_path="$WX_BAKED_ENVS_PATH/${app_name}-env.sh"
 
   # source if exists
   if [[ -f "$app_env_path" ]]; then
@@ -55,8 +55,8 @@ _rebake_app_direnv() {
 
   # Get current app name
   app_name="$(_get_app_name_from_pwd)" || return 1
-  app_repo_path="$MY_ALL_REPOS/$app_name"
-  app_env_path="$BAKED_ENVS_PATH/${app_name}-env.sh"
+  app_repo_path="$WX_MY_ALL_REPOS/$app_name"
+  app_env_path="$WX_BAKED_ENVS_PATH/${app_name}-env.sh"
   backup_path="${app_env_path}.bak"
 
   echo "🔄 Rebaking env for app: $app_name"
