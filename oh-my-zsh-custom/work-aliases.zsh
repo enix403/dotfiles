@@ -77,20 +77,6 @@ compdef _move_complete move
 # kp <service> [<env>]
 # <env>: prw (default), stg, prod
 # Hardcoded per-env map: service -> "kube-context|kube-namespace|kube-service|port"
-# Port can be "8080" or "8080:80" (LOCAL[:REMOTE] syntax)
-
-# Fill the following variables
-# export WX_KUBE_CTX_PRVW=
-# export WX_KUBE_CTX_STAG=
-# export WX_KUBE_CTX_PROD=
-
-# export WX_SLF_KUBE_NS=
-# export WX_SLF_KUBE_SVC=
-# export WX_SLF_KUBE_PORT=
-
-# export WX_SPD_KUBE_NS=
-# export WX_SPD_KUBE_SVC=
-# export WX_SPD_KUBE_PORT=
 
 function kp() {
   if (( $# < 1 || $# > 2 )); then
