@@ -119,12 +119,14 @@ function kp() {
     # Examples (edit these to your real values)
     slf "$KUBE_CTX_PRVW|$SVC_SLF_KUBE_NS|${SVC_SLF_KUBE_SVC}-preview|$SVC_SLF_KUBE_PORT"
     spd "$KUBE_CTX_PRVW|$SVC_SPD_KUBE_NS|${SVC_SPD_KUBE_SVC}-preview|$SVC_SPD_KUBE_PORT"
+    fleetdb "$KUBE_CTX_PRVW|$DB_FLEET_KUBE_NS|${DB_FLEET_PRVW_KUBE_SVC}|$DB_FLEET_KUBE_PORT"
   )
 
   # STG environment mappings
   KP_MAP_STG=(
     slf "$KUBE_CTX_STAG|$SVC_SLF_KUBE_NS|${SVC_SLF_KUBE_SVC}-staging|$SVC_SLF_KUBE_PORT"
     spd "$KUBE_CTX_STAG|$SVC_SPD_KUBE_NS|${SVC_SPD_KUBE_SVC}-staging|$SVC_SPD_KUBE_PORT"
+    fleetdb "$KUBE_CTX_PRVW|$DB_FLEET_KUBE_NS|${DB_FLEET_STAG_KUBE_SVC}|$DB_FLEET_KUBE_PORT"
   )
 
   # PROD environment mappings
