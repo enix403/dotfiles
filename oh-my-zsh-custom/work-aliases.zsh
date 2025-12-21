@@ -162,3 +162,35 @@ function kp() {
 # function grpc_ui_spd() {
 #     $(cd $k/kt && grpcui --plaintext --proto $WX_SPD_PROTO_API_PATH localhost:$WX_SPD_KUBE_PORT)
 # }
+
+function lrun-slf-prw () {
+  env \
+    SL_SPEEDING_HOST="localhost:$WX_SPD_KUBE_PORT" \
+    SL_K2WEB_REPLICA_PG_HOST="localhost" \
+    SL_K2WEB_REPLICA_PG_PORT="$WX_DB_FLEET_KUBE_PORT" \
+    SL_K2WEB_REPLICA_PG_NAME="$WX_DB_FLEET_PRVW_NAME" \
+    SL_K2WEB_REPLICA_PG_USER="$WX_DB_FLEET_PRVW_USER" \
+    SL_K2WEB_REPLICA_PG_PASS="$WX_DB_FLEET_PRVW_PASS" \
+    SL_K2WEB_REPLICA_PG_SSL_MODE="require" \
+    SL_K2WEB_REPLICA_PG_BINARY_PARAMETERS="yes" \
+    SL_STATSIG_SDK_KEY="secret-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx" \
+    AWS_REGION="us-east-1" \
+    GIN_MODE="release" \
+    bazel run . -- serve-http --log-level=trace
+}
+
+function lrun-slf-stg () {
+  env \
+    SL_SPEEDING_HOST="localhost:$WX_SPD_KUBE_PORT" \
+    SL_K2WEB_REPLICA_PG_HOST="localhost" \
+    SL_K2WEB_REPLICA_PG_PORT="$WX_DB_FLEET_KUBE_PORT" \
+    SL_K2WEB_REPLICA_PG_NAME="$WX_DB_FLEET_STAG_NAME" \
+    SL_K2WEB_REPLICA_PG_USER="$WX_DB_FLEET_STAG_USER" \
+    SL_K2WEB_REPLICA_PG_PASS="$WX_DB_FLEET_STAG_PASS" \
+    SL_K2WEB_REPLICA_PG_SSL_MODE="require" \
+    SL_K2WEB_REPLICA_PG_BINARY_PARAMETERS="yes" \
+    SL_STATSIG_SDK_KEY="secret-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx" \
+    AWS_REGION="us-east-1" \
+    GIN_MODE="release" \
+    bazel run . -- serve-http --log-level=trace
+}
