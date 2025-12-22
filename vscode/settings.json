@@ -27,7 +27,6 @@
     "window.density.editorTabHeight": "default",
     "window.commandCenter": true,
 
-
     "editor.fontLigatures": true,
     // ================
     // "editor.fontFamily": "Rec Mono Casual",
@@ -194,7 +193,9 @@
         "dart"
     ],
 
+    /* ========================================= */
     /* =========== Language Specific =========== */
+    /* ========================================= */
 
     // ------- C++ -------
     "C_Cpp.default.cppStandard": "c++17",
@@ -281,8 +282,11 @@
         "editor.defaultFormatter": "svelte.svelte-vscode"
     },
 
+    /* ========================================== */
     /* =========== Extension Specific =========== */
+    /* ========================================== */
 
+    // ------- Rest Client -------
     "rest-client.previewOption": "full",
     "rest-client.defaultHeaders": {
         "User-Agent": "vscode-restclient",
@@ -292,19 +296,26 @@
         "Accept-Encoding": "gzip, deflate, br, zstd"
     },
 
+    // ------- Eyecons -------
     "eyecons.folderColor": "orange",
     "eyecons.hidesExplorerArrows": true,
     "eyecons.theme": "github-dark",
+
+    // ------- Pop Icons -------
     "pop-icon-theme.folders.color": "#ff7043",
+
+    // ------- Helium Icons -------
     "helium-icon-theme.folders.color": "#90a4ae",
 
+    // ------- Bazel -------
     // TODO: what about this ?
     "bazel.executable": "/nix/store/y1zdzring1mji64iy0njvb7fz62khz80-ktmr-final-environment/bin/bazel",
 
+    // ------- Symbol Icons -------
     "symbols.hidesExplorerArrows": false,
     "svg.preview.mode": "img",
 
-
+    // ------- Markdown -------
     "mdmath.delimiters": "dollars",
     "mdmath.theme": "publication",
     "mdmath.style": "/home/radium/hwlab/analysis/global.css",
