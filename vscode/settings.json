@@ -5,9 +5,29 @@
         "tree.indentGuidesStroke": "#A08070"
     },
     "workbench.editor.closeEmptyGroups": false,
-    "settingsSync.keybindingsPerPlatform": false,
     "workbench.activityBar.orientation": "vertical",
+    "workbench.editor.pinnedTabsOnSeparateRow": true,
+    "workbench.list.openMode": "doubleClick",
+    "workbench.startupEditor": "welcomePage",
+    "workbench.editor.empty.hint": "hidden",
+    "workbench.editorAssociations": {
+        "*.svg": "default"
+    },
+    "workbench.editor.enablePreview": false,
+    "workbench.colorTheme": "Best Themes - Rose Noctis",
+    "workbench.iconTheme": "material-icon-theme",
+
     "window.zoomLevel": 0.55,
+    "window.titleBarStyle": "custom",
+    "window.customMenuBarAltFocus": false,
+    "window.enableMenuBarMnemonics": false,
+    "window.menuBarVisibility": "visible",
+    "window.openFilesInNewWindow": "off",
+    "window.openFoldersInNewWindow": "off",
+    "window.density.editorTabHeight": "default",
+    "window.commandCenter": true,
+
+
     "editor.fontLigatures": true,
     // ================
     // "editor.fontFamily": "Rec Mono Casual",
@@ -32,44 +52,22 @@
     "explorer.enableDragAndDrop": false,
     "editor.cursorStyle": "line-thin",
     "editor.formatOnSave": false,
-    "[go]": {
-        "editor.formatOnSave": false,
-    },
     "editor.matchBrackets": "near",
     "editor.wordWrap": "on",
     "editor.wrappingIndent": "deepIndent",
     "editor.snippetSuggestions": "inline",
     "editor.pasteAs.enabled": false,
-    "explorer.autoReveal": false,
-    "files.trimTrailingWhitespace": true,
-    "editor.smoothScrolling": true,
     "editor.codeActionsOnSave": {
         "source.organizeImports": "never",
         "source.fixAll": "never"
     },
-    "explorer.compactFolders": false,
-    "window.titleBarStyle": "custom",
-    "window.customMenuBarAltFocus": false,
-    "window.enableMenuBarMnemonics": false,
-    "window.menuBarVisibility": "visible",
-    "window.openFilesInNewWindow": "off",
-    "window.openFoldersInNewWindow": "off",
-    "window.density.editorTabHeight": "default",
-    "workbench.editor.pinnedTabsOnSeparateRow": true,
-    "html.autoClosingTags": false,
-    "typescript.autoClosingTags": false,
-    "javascript.autoClosingTags": false,
-    "[typescriptreact]": {
-        "editor.defaultFormatter": "esbenp.prettier-vscode"
-    },
-    "[jsonc]": {
-        "editor.defaultFormatter": "vscode.json-language-features"
-    },
-    "[typescript]": {
-        "editor.defaultFormatter": "esbenp.prettier-vscode"
-    },
-    "workbench.list.openMode": "doubleClick",
-    "workbench.startupEditor": "welcomePage",
+    "editor.renderLineHighlight": "gutter",
+    "editor.smoothScrolling": true,
+    "editor.minimap.enabled": false,
+    "editor.linkedEditing": true,
+    "editor.stickyScroll.enabled": false,
+    "editor.inlineSuggest.edits.showCollapsed": true,
+    "editor.accessibilitySupport": "off",
     "editor.tokenColorCustomizations": {
         "textMateRules": [
             {
@@ -148,21 +146,120 @@
             }
         }
     },
+
+    "explorer.autoReveal": false,
+    "explorer.compactFolders": false,
+
+    "files.trimTrailingWhitespace": true,
+    "files.trimTrailingWhitespaceInRegexAndStrings": false,
+    "files.associations": {
+        "*.css": "tailwindcss",
+        "*.kts": "kotlinscript",
+        "*.conf": "shellscript"
+    },
+    "files.exclude": {
+        "**/.git": true,
+        "**/.svn": true,
+        "**/.hg": true,
+        "**/CVS": true,
+        "**/.DS_Store": true,
+        "**/Thumbs.db": true,
+        "**/node_modules": true,
+        "**/postgres-data": true
+    },
+
+    "security.promptForLocalFileProtocolHandling": false,
+
+    "settingsSync.keybindingsPerPlatform": false,
+
+    "git.openRepositoryInParentFolders": "never",
+
+    "diffEditor.ignoreTrimWhitespace": false,
+
+    "github.copilot.enable": {
+        "*": true,
+        "plaintext": false,
+        "markdown": false,
+        "scminput": false,
+        "python": false,
+        "sql": false
+    },
+
+    /* ==================================== */
+
+    "javascript.updateImportsOnFileMove.enabled": "never",
+    "notebook.output.textLineLimit": 50,
+    "dart.flutterCreateAndroidLanguage": "java",
+    "dart.debugExternalPackageLibraries": false,
+    "dart.debugSdkLibraries": false,
+    "rest-client.previewOption": "full",
+    "rest-client.defaultHeaders": {
+        "User-Agent": "vscode-restclient",
+        "Content-Type": "application/json",
+        "Accept": "application/json",
+        "Accept-Language": "en-US,en;q=0.5",
+        "Accept-Encoding": "gzip, deflate, br, zstd"
+    },
+    "[svelte]": {
+        "editor.defaultFormatter": "svelte.svelte-vscode"
+    },
+    "python.analysis.diagnosticSeverityOverrides": {
+        "reportMissingImports": "none",
+        "reportUndefinedVariable": "none",
+        "reportMissingModuleSource": "none"
+    },
+
+
+    "eyecons.folderColor": "orange",
+    "eyecons.hidesExplorerArrows": true,
+    "eyecons.theme": "github-dark",
+    "typescript.enablePromptUseWorkspaceTsdk": true,
+    "pop-icon-theme.folders.color": "#ff7043",
+    "helium-icon-theme.folders.color": "#90a4ae",
+    "[ruby]": {
+        "editor.defaultFormatter": "rubocop.vscode-rubocop"
+    },
+    "bazel.executable": "/nix/store/y1zdzring1mji64iy0njvb7fz62khz80-ktmr-final-environment/bin/bazel",
+
+    "C_Cpp.default.cppStandard": "c++17",
+    "cursor.cpp.disabledLanguages": [
+        "markdown",
+        "plaintext",
+        "dart"
+    ],
+    "[cpp]": {
+        "editor.defaultFormatter": "xaver.clang-format"
+    },
+
+
+    "html.autoClosingTags": false,
+    "typescript.autoClosingTags": false,
+    "javascript.autoClosingTags": false,
+    "[typescriptreact]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[jsonc]": {
+        "editor.defaultFormatter": "vscode.json-language-features"
+    },
+    "[go]": {
+        "editor.formatOnSave": false,
+    },
+    "[typescript]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
     "[css]": {
         "editor.defaultFormatter": "esbenp.prettier-vscode"
     },
     "[scss]": {
         "editor.defaultFormatter": "esbenp.prettier-vscode"
     },
-    "editor.renderLineHighlight": "gutter",
     "symbols.hidesExplorerArrows": false,
     "[postcss]": {
         "editor.defaultFormatter": "esbenp.prettier-vscode"
     },
     "css.lint.unknownAtRules": "ignore",
     "scss.lint.unknownAtRules": "ignore",
-    "editor.minimap.enabled": false,
-    "editor.linkedEditing": true,
+
     "svg.preview.mode": "img",
     "[json]": {
         "editor.defaultFormatter": "vscode.json-language-features"
@@ -189,82 +286,8 @@
     "markdown.preview.scrollPreviewWithEditor": false,
     "markdown-pdf.displayHeaderFooter": false,
     "markdown-pdf.highlightStyle": "lightfair.css",
-    "git.openRepositoryInParentFolders": "never",
-    "diffEditor.ignoreTrimWhitespace": false,
+
     "typescript.updateImportsOnFileMove.enabled": "never",
-    "files.exclude": {
-        "**/.git": true,
-        "**/.svn": true,
-        "**/.hg": true,
-        "**/CVS": true,
-        "**/.DS_Store": true,
-        "**/Thumbs.db": true,
-        "**/node_modules": true,
-        "**/postgres-data": true
-    },
-    "editor.stickyScroll.enabled": false,
-    "workbench.editor.empty.hint": "hidden",
-    "javascript.updateImportsOnFileMove.enabled": "never",
-    "notebook.output.textLineLimit": 50,
-    "dart.flutterCreateAndroidLanguage": "java",
-    "dart.debugExternalPackageLibraries": false,
-    "dart.debugSdkLibraries": false,
-    "rest-client.previewOption": "full",
-    "rest-client.defaultHeaders": {
-        "User-Agent": "vscode-restclient",
-        "Content-Type": "application/json",
-        "Accept": "application/json",
-        "Accept-Language": "en-US,en;q=0.5",
-        "Accept-Encoding": "gzip, deflate, br, zstd"
-    },
-    "[svelte]": {
-        "editor.defaultFormatter": "svelte.svelte-vscode"
-    },
-    "python.analysis.diagnosticSeverityOverrides": {
-        "reportMissingImports": "none",
-        "reportUndefinedVariable": "none",
-        "reportMissingModuleSource": "none"
-    },
-    "files.associations": {
-        "*.css": "tailwindcss",
-        "*.kts": "kotlinscript",
-        "*.conf": "shellscript"
-    },
-    "workbench.editorAssociations": {
-        "*.svg": "default"
-    },
-    "workbench.editor.enablePreview": false,
-    "eyecons.folderColor": "orange",
-    "eyecons.hidesExplorerArrows": true,
-    "eyecons.theme": "github-dark",
-    "security.promptForLocalFileProtocolHandling": false,
-    "typescript.enablePromptUseWorkspaceTsdk": true,
-    "pop-icon-theme.folders.color": "#ff7043",
-    "helium-icon-theme.folders.color": "#90a4ae",
-    "window.commandCenter": true,
-    "[ruby]": {
-        "editor.defaultFormatter": "rubocop.vscode-rubocop"
-    },
-    "bazel.executable": "/nix/store/y1zdzring1mji64iy0njvb7fz62khz80-ktmr-final-environment/bin/bazel",
-    "files.trimTrailingWhitespaceInRegexAndStrings": false,
-    "editor.inlineSuggest.edits.showCollapsed": true,
-    "editor.accessibilitySupport": "off",
-    "C_Cpp.default.cppStandard": "c++17",
-    "cursor.cpp.disabledLanguages": [
-        "markdown",
-        "plaintext",
-        "dart"
-    ],
-    "[cpp]": {
-        "editor.defaultFormatter": "xaver.clang-format"
-    },
-    "github.copilot.enable": {
-        "*": true,
-        "plaintext": false,
-        "markdown": false,
-        "scminput": false,
-        "python": false,
-        "sql": false
-    },
-    "workbench.colorTheme": "Best Themes - Rose Noctis"
+
+
 }
