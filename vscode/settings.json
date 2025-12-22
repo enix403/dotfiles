@@ -84,7 +84,7 @@
     /* ======================================== */
 
     "fonted.font": "Maple Mono",
-    "fonted.fontStretch": "50%",
+    // "fonted.fontStretch": "50%",
     "editor.fontFamily": "Maple Mono",
     "editor.lineHeight": 1.45,
     "editor.fontSize": 13,
