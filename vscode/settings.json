@@ -1,74 +1,109 @@
 {
-    "workbench.tree.indent": 14,
-    "workbench.tree.renderIndentGuides": "always",
-    "workbench.colorCustomizations": {
-        "tree.indentGuidesStroke": "#A08070"
-    },
+    /* =================================== */
+    /* ============ Behaviour ============ */
+    /* =================================== */
+
     "workbench.editor.closeEmptyGroups": false,
-    "workbench.activityBar.orientation": "vertical",
-    "workbench.editor.pinnedTabsOnSeparateRow": true,
     "workbench.list.openMode": "doubleClick",
     "workbench.startupEditor": "welcomePage",
-    "workbench.editor.empty.hint": "hidden",
     "workbench.editorAssociations": {
         "*.svg": "default"
     },
     "workbench.editor.enablePreview": false,
-    "workbench.colorTheme": "Best Themes - Rose Noctis",
-    "workbench.iconTheme": "material-icon-theme",
 
-    "window.zoomLevel": 0.55,
-    "window.titleBarStyle": "custom",
-    "window.customMenuBarAltFocus": false,
-    "window.enableMenuBarMnemonics": false,
-    "window.menuBarVisibility": "visible",
     "window.openFilesInNewWindow": "off",
     "window.openFoldersInNewWindow": "off",
-    "window.density.editorTabHeight": "default",
     "window.commandCenter": true,
 
-    "editor.fontLigatures": true,
-    // ================
-    // "editor.fontFamily": "Rec Mono Casual",
-    // "editor.fontSize": 14,
-    // // "editor.lineHeight": 1.35,
-    // "editor.lineHeight": 1.6,
-    // "editor.letterSpacing": -0.5,
-    // ================
-    "editor.fontFamily": "Maple Mono",
-    "editor.lineHeight": 1.45,
-    "editor.fontSize": 13,
-    // "editor.letterSpacing": -0.25,
-    // ================
-    // "editor.fontFamily": "Google Sans Code",
-    // "editor.lineHeight": 1.5,
-    // "editor.fontSize": 13,
-    // "editor.letterSpacing": -0.25,
-    // ================
-    "editor.occurrencesHighlight": "off",
-    "editor.selectionHighlight": false,
-    "editor.dragAndDrop": false,
     "explorer.enableDragAndDrop": false,
-    "editor.cursorStyle": "line-thin",
+    "explorer.autoReveal": false,
+    "explorer.compactFolders": false,
+    "explorer.confirmDelete": false,
+
+    "files.trimTrailingWhitespace": true,
+    "files.trimTrailingWhitespaceInRegexAndStrings": false,
+    "files.associations": {
+        "*.css": "tailwindcss",
+        "*.kts": "kotlinscript",
+        "*.conf": "shellscript"
+    },
+    "files.exclude": {
+        "**/.git": true,
+        "**/.svn": true,
+        "**/.hg": true,
+        "**/CVS": true,
+        "**/.DS_Store": true,
+        "**/Thumbs.db": true,
+        "**/node_modules": true,
+        "**/postgres-data": true
+    },
+
+    "editor.dragAndDrop": false,
     "editor.formatOnSave": false,
-    "editor.matchBrackets": "near",
-    "editor.wordWrap": "on",
-    "editor.wrappingIndent": "deepIndent",
-    "editor.snippetSuggestions": "inline",
     "editor.pasteAs.enabled": false,
     "editor.codeActionsOnSave": {
         "source.organizeImports": "never",
         "source.fixAll": "never"
     },
+    "editor.linkedEditing": true,
+    "editor.accessibilitySupport": "off",
+    "editor.trimAutoWhitespace": false,
+
+    "security.promptForLocalFileProtocolHandling": false,
+
+    "diffEditor.ignoreTrimWhitespace": false,
+
+    "git.openRepositoryInParentFolders": "never",
+
+    /* ====================================== */
+    /* ============ UI Rendering ============ */
+    /* ====================================== */
+
+    "workbench.tree.indent": 14,
+    "workbench.tree.renderIndentGuides": "always",
+    "workbench.activityBar.orientation": "vertical",
+    "workbench.editor.pinnedTabsOnSeparateRow": true,
+    "workbench.editor.empty.hint": "hidden",
+
+    "window.titleBarStyle": "custom",
+    "window.density.editorTabHeight": "default",
+
+    "editor.snippetSuggestions": "inline",
     "editor.renderLineHighlight": "gutter",
     "editor.smoothScrolling": true,
     "editor.minimap.enabled": false,
-    "editor.linkedEditing": true,
     "editor.stickyScroll.enabled": false,
     "editor.inlineSuggest.edits.showCollapsed": true,
-    "editor.accessibilitySupport": "off",
     "editor.inlayHints.enabled": "offUnlessPressed",
-    "editor.trimAutoWhitespace": false,
+
+    // keep it near font size settings
+    "window.zoomLevel": 0.55,
+
+    /* ======================================== */
+    /* ============ Text Rendering ============ */
+    /* ======================================== */
+
+    "editor.fontFamily": "Maple Mono",
+    "editor.lineHeight": 1.45,
+    "editor.fontSize": 13,
+    // "editor.letterSpacing": -0.25,
+    // -----------------
+    // "editor.fontFamily": "Rec Mono Casual",
+    // "editor.fontSize": 14,
+    // // "editor.lineHeight": 1.35,
+    // "editor.lineHeight": 1.6,
+    // "editor.letterSpacing": -0.5,
+    // -----------------
+    // "editor.fontFamily": "Google Sans Code",
+    // "editor.lineHeight": 1.5,
+    // "editor.fontSize": 13,
+    // "editor.letterSpacing": -0.25,
+    // -----------------
+    "editor.fontLigatures": true,
+    "editor.cursorStyle": "line-thin",
+    "editor.wordWrap": "on",
+    "editor.wrappingIndent": "deepIndent",
+
     "editor.tokenColorCustomizations": {
         "textMateRules": [
             {
@@ -148,35 +183,23 @@
         }
     },
 
-    "explorer.autoReveal": false,
-    "explorer.compactFolders": false,
-    "explorer.confirmDelete": false,
+    /* ============================================= */
+    /* =========== Colors/Themes/Visuals =========== */
+    /* ============================================= */
 
-    "files.trimTrailingWhitespace": true,
-    "files.trimTrailingWhitespaceInRegexAndStrings": false,
-    "files.associations": {
-        "*.css": "tailwindcss",
-        "*.kts": "kotlinscript",
-        "*.conf": "shellscript"
-    },
-    "files.exclude": {
-        "**/.git": true,
-        "**/.svn": true,
-        "**/.hg": true,
-        "**/CVS": true,
-        "**/.DS_Store": true,
-        "**/Thumbs.db": true,
-        "**/node_modules": true,
-        "**/postgres-data": true
+    "workbench.colorTheme": "Best Themes - Rose Noctis",
+    "workbench.iconTheme": "material-icon-theme",
+    "workbench.colorCustomizations": {
+        "tree.indentGuidesStroke": "#A08070"
     },
 
-    "security.promptForLocalFileProtocolHandling": false,
+    "editor.matchBrackets": "near",
+    "editor.occurrencesHighlight": "off",
+    "editor.selectionHighlight": false,
 
-    "settingsSync.keybindingsPerPlatform": false,
-
-    "git.openRepositoryInParentFolders": "never",
-
-    "diffEditor.ignoreTrimWhitespace": false,
+    /* ============================ */
+    /* =========== Misc =========== */
+    /* ============================ */
 
     "github.copilot.enable": {
         "*": true,
@@ -192,6 +215,9 @@
         "plaintext",
         "dart"
     ],
+    "window.customMenuBarAltFocus": false,
+    "window.enableMenuBarMnemonics": false,
+    "window.menuBarVisibility": "visible",
 
     /* ========================================= */
     /* =========== Language Specific =========== */
@@ -323,6 +349,9 @@
     "markdown.preview.scrollPreviewWithEditor": false,
     "markdown-pdf.displayHeaderFooter": false,
     "markdown-pdf.highlightStyle": "lightfair.css",
+
+    // ------- Settings Sync -------
+    "settingsSync.keybindingsPerPlatform": false,
 
     // ==========================
 }
