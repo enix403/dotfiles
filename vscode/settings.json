@@ -77,12 +77,14 @@
     "editor.inlayHints.enabled": "offUnlessPressed",
 
     // keep it near font size settings
-    "window.zoomLevel": 0.55,
+    "window.zoomLevel": 0.05,
 
     /* ======================================== */
     /* ============ Text Rendering ============ */
     /* ======================================== */
 
+    "fonted.font": "Maple Mono",
+    "fonted.fontStretch": "50%",
     "editor.fontFamily": "Maple Mono",
     "editor.lineHeight": 1.45,
     "editor.fontSize": 13,
