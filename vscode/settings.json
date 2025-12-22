@@ -68,6 +68,8 @@
     "editor.stickyScroll.enabled": false,
     "editor.inlineSuggest.edits.showCollapsed": true,
     "editor.accessibilitySupport": "off",
+    "editor.inlayHints.enabled": "offUnlessPressed",
+    "editor.trimAutoWhitespace": false,
     "editor.tokenColorCustomizations": {
         "textMateRules": [
             {
@@ -149,6 +151,7 @@
 
     "explorer.autoReveal": false,
     "explorer.compactFolders": false,
+    "explorer.confirmDelete": false,
 
     "files.trimTrailingWhitespace": true,
     "files.trimTrailingWhitespaceInRegexAndStrings": false,
@@ -185,13 +188,101 @@
         "sql": false
     },
 
-    /* ==================================== */
+    "cursor.cpp.disabledLanguages": [
+        "markdown",
+        "plaintext",
+        "dart"
+    ],
 
-    "javascript.updateImportsOnFileMove.enabled": "never",
+    /* =========== Language Specific =========== */
+
+    // ------- C++ -------
+    "C_Cpp.default.cppStandard": "c++17",
+    "[cpp]": {
+        "editor.defaultFormatter": "xaver.clang-format"
+    },
+
+    // ------- Python -------
+    "python.analysis.diagnosticSeverityOverrides": {
+        "reportMissingImports": "none",
+        "reportUndefinedVariable": "none",
+        "reportMissingModuleSource": "none"
+    },
     "notebook.output.textLineLimit": 50,
+
+    // ------- Dart -------
     "dart.flutterCreateAndroidLanguage": "java",
     "dart.debugExternalPackageLibraries": false,
     "dart.debugSdkLibraries": false,
+    "dart.closingLabels": false,
+
+    // --------- Ruby -------
+    "[ruby]": {
+        "editor.defaultFormatter": "rubocop.vscode-rubocop"
+    },
+
+    // ------- Golang -------
+    "[go]": {
+        "editor.formatOnSave": false,
+    },
+
+    // ------- JSON -------
+    "[json]": {
+        "editor.defaultFormatter": "vscode.json-language-features"
+    },
+    "[jsonc]": {
+        "editor.defaultFormatter": "vscode.json-language-features"
+    },
+
+    // ------- HTML -------
+    "html.autoClosingTags": false,
+    "[html]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+
+    // ------- JavaScript -------
+    "javascript.updateImportsOnFileMove.enabled": "never",
+    "javascript.autoClosingTags": false,
+    "[javascript]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[javascriptreact]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+
+    // ------- TypeScript -------
+    "typescript.enablePromptUseWorkspaceTsdk": true,
+    "typescript.autoClosingTags": false,
+    "typescript.preferences.jsxAttributeCompletionStyle": "none",
+    "typescript.updateImportsOnFileMove.enabled": "never",
+    "[typescript]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[typescriptreact]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+
+    // ------- CSS -------
+    "css.lint.unknownAtRules": "ignore",
+    "scss.lint.unknownAtRules": "ignore",
+    "[css]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[scss]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[postcss]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+
+    // ------- Svelte -------
+    "svelte.enable-ts-plugin": true,
+    "[svelte]": {
+        "editor.defaultFormatter": "svelte.svelte-vscode"
+    },
+
+    /* =========== Extension Specific =========== */
+
     "rest-client.previewOption": "full",
     "rest-client.defaultHeaders": {
         "User-Agent": "vscode-restclient",
@@ -200,85 +291,20 @@
         "Accept-Language": "en-US,en;q=0.5",
         "Accept-Encoding": "gzip, deflate, br, zstd"
     },
-    "[svelte]": {
-        "editor.defaultFormatter": "svelte.svelte-vscode"
-    },
-    "python.analysis.diagnosticSeverityOverrides": {
-        "reportMissingImports": "none",
-        "reportUndefinedVariable": "none",
-        "reportMissingModuleSource": "none"
-    },
-
 
     "eyecons.folderColor": "orange",
     "eyecons.hidesExplorerArrows": true,
     "eyecons.theme": "github-dark",
-    "typescript.enablePromptUseWorkspaceTsdk": true,
     "pop-icon-theme.folders.color": "#ff7043",
     "helium-icon-theme.folders.color": "#90a4ae",
-    "[ruby]": {
-        "editor.defaultFormatter": "rubocop.vscode-rubocop"
-    },
+
+    // TODO: what about this ?
     "bazel.executable": "/nix/store/y1zdzring1mji64iy0njvb7fz62khz80-ktmr-final-environment/bin/bazel",
 
-    "C_Cpp.default.cppStandard": "c++17",
-    "cursor.cpp.disabledLanguages": [
-        "markdown",
-        "plaintext",
-        "dart"
-    ],
-    "[cpp]": {
-        "editor.defaultFormatter": "xaver.clang-format"
-    },
-
-
-    "html.autoClosingTags": false,
-    "typescript.autoClosingTags": false,
-    "javascript.autoClosingTags": false,
-    "[typescriptreact]": {
-        "editor.defaultFormatter": "esbenp.prettier-vscode"
-    },
-    "[jsonc]": {
-        "editor.defaultFormatter": "vscode.json-language-features"
-    },
-    "[go]": {
-        "editor.formatOnSave": false,
-    },
-    "[typescript]": {
-        "editor.defaultFormatter": "esbenp.prettier-vscode"
-    },
-    "[css]": {
-        "editor.defaultFormatter": "esbenp.prettier-vscode"
-    },
-    "[scss]": {
-        "editor.defaultFormatter": "esbenp.prettier-vscode"
-    },
     "symbols.hidesExplorerArrows": false,
-    "[postcss]": {
-        "editor.defaultFormatter": "esbenp.prettier-vscode"
-    },
-    "css.lint.unknownAtRules": "ignore",
-    "scss.lint.unknownAtRules": "ignore",
-
     "svg.preview.mode": "img",
-    "[json]": {
-        "editor.defaultFormatter": "vscode.json-language-features"
-    },
-    "typescript.preferences.jsxAttributeCompletionStyle": "none",
-    "svelte.enable-ts-plugin": true,
-    "editor.inlayHints.enabled": "offUnlessPressed",
-    "[javascript]": {
-        "editor.defaultFormatter": "esbenp.prettier-vscode"
-    },
-    "explorer.confirmDelete": false,
-    "dart.closingLabels": false,
-    "editor.trimAutoWhitespace": false,
-    "[html]": {
-        "editor.defaultFormatter": "esbenp.prettier-vscode"
-    },
-    "[javascriptreact]": {
-        "editor.defaultFormatter": "esbenp.prettier-vscode"
-    },
+
+
     "mdmath.delimiters": "dollars",
     "mdmath.theme": "publication",
     "mdmath.style": "/home/radium/hwlab/analysis/global.css",
@@ -287,7 +313,5 @@
     "markdown-pdf.displayHeaderFooter": false,
     "markdown-pdf.highlightStyle": "lightfair.css",
 
-    "typescript.updateImportsOnFileMove.enabled": "never",
-
-
+    // ==========================
 }
