@@ -184,6 +184,7 @@ function qr() {
 }
 
 alias jl="jupyter-lab"
+alias jconv="jupyter nbconvert --to script"
 alias cr="cursor"
 
 # ===========================

@@ -115,7 +115,9 @@
                     "keyword.control.flow.python",
                     "entity.other.attribute-name.tsx",
                     "support.function",
-                    "entity.other.inherited-class"
+                    "entity.other.inherited-class",
+                    "source.go storage.type",
+                    "constant.other.placeholder"
                 ],
                 "settings": {
                     "fontStyle": ""
@@ -232,7 +234,6 @@
         "*.svg": "default"
     },
     "workbench.editor.enablePreview": false,
-    "workbench.iconTheme": "helium-icon-theme",
     "eyecons.folderColor": "orange",
     "eyecons.hidesExplorerArrows": true,
     "eyecons.theme": "github-dark",
@@ -248,7 +249,6 @@
     "files.trimTrailingWhitespaceInRegexAndStrings": false,
     "editor.inlineSuggest.edits.showCollapsed": true,
     "editor.accessibilitySupport": "off",
-    "workbench.colorTheme": "Serendipity Midnight",
     "C_Cpp.default.cppStandard": "c++17",
     "cursor.cpp.disabledLanguages": [
         "markdown",
@@ -265,5 +265,6 @@
         "scminput": false,
         "python": false,
         "sql": false
-    }
+    },
+    "workbench.colorTheme": "Best Themes - Rose Noctis"
 }
