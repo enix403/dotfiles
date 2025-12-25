@@ -153,7 +153,9 @@
                     "support.function",
                     "entity.other.inherited-class",
                     "source.go storage.type",
-                    "constant.other.placeholder"
+                    "constant.other.placeholder",
+                    "variable.other.field",
+                    "constant.other.table-name"
                 ],
                 "settings": {
                     "fontStyle": ""
