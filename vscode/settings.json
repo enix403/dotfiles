@@ -155,7 +155,8 @@
                     "source.go storage.type",
                     "constant.other.placeholder",
                     "variable.other.field",
-                    "constant.other.table-name"
+                    "constant.other.table-name",
+                    "string.quoted.docstring.multi"
                 ],
                 "settings": {
                     "fontStyle": ""
@@ -356,6 +357,9 @@
 
     // ------- Settings Sync -------
     "settingsSync.keybindingsPerPlatform": false,
+
+    // ------- CSV (A UI csv Viewer) -------
+    "csv.enabled": false,
 
     // ==========================
 }
