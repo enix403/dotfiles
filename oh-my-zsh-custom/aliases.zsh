@@ -5,7 +5,9 @@ alias dt='cd "$DOTFILES_PATH"'
 
 unalias l
 alias ls="LC_COLLATE=C ls --color=auto -lh --group-directories-first"
-alias la="LC_COLLATE=C ls --color=auto -Alh --group-directories-first"
+alias la="ls -A"
+alias l1="LC_COLLATE=C \ls --color=auto -1h --group-directories-first"
+alias la1="l1 -A"
 alias cls="clear"
 alias where="which"
 alias mkd="mkdir"
