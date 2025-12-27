@@ -63,8 +63,4 @@ ZSH_HIGHLIGHT_STYLES[comment]='fg=blue,bg=black'
 ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern)
 
 # Added by Antigravity
-export PATH="/Users/qateef.ahmad/.antigravity/antigravity/bin:$PATH"
-
-# tiv completions
-fpath=(~/.zsh/completions $fpath)
-autoload -Uz compinit && compinit
+export PATH="$HOME/.antigravity/antigravity/bin:$PATH"
