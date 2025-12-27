@@ -51,11 +51,6 @@ alias fdd="fd -t d"
 # alias py="python"
 # alias py3="python3"
 
-# TODO: is this optimal ?
-# the idea is I do not want direnv's messing with my current python selection
-alias py="$HOME/.pyenv/shims/python"
-alias pip="$HOME/.pyenv/shims/pip"
-
 # I learned this the hard way... :)
 function rm() {
   local PROTECTED_DIRS=(
@@ -274,10 +269,14 @@ alias cloc='cloc --vcs=git'
 alias b="bundle"
 alias be="bundle exec"
 
-# ========== Jupyter lab ==========
+# ========== Python and Related ==========
 
-alias jl="jupyter-lab"
-alias jconv="jupyter nbconvert --to script"
+# TODO: is this optimal ?
+# the idea is I do not want direnv's messing with my current python selection
+alias py="$HOME/.pyenv/shims/python"
+alias pip="$HOME/.pyenv/shims/pip"
+alias jl="$HOME/.pyenv/shims/jupyter-lab"
+alias jconv="$HOME/.pyenv/shims/jupyter nbconvert --to script"
 
 # ========== Bazel ==========
 
