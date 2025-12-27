@@ -35,7 +35,8 @@
         "**/.DS_Store": true,
         "**/Thumbs.db": true,
         "**/node_modules": true,
-        "**/postgres-data": true
+        "**/postgres-data": true,
+        "**/__pycache__": true,
     },
 
     "editor.dragAndDrop": false,

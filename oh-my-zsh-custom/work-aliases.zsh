@@ -24,8 +24,10 @@ move() {
   done
 
   if [[ -z "$dir_arg" ]]; then
-    echo "Usage: move [--skip] <dir-or-shortcut>"
-    return 1
+    # echo "Usage: move [--skip] <dir-or-shortcut>"
+    # return 1
+    cd "$WX_MY_ALL_REPOS"
+    return 0
   fi
 
   local target
@@ -194,3 +196,5 @@ function lrun-slf-stg () {
     GIN_MODE="release" \
     bazel run . -- serve-http --log-level=trace
 }
+
+export PATH="$k/tivcli/bin:$PATH"
