@@ -50,7 +50,9 @@ alias fdd="fd -t d"
 # }
 # alias py="python"
 # alias py3="python3"
-# TODO: is this optimal ? the idea is i do want direnv's messing with my python selection
+
+# TODO: is this optimal ?
+# the idea is I do not want direnv's messing with my current python selection
 alias py="$HOME/.pyenv/shims/python"
 alias pip="$HOME/.pyenv/shims/pip"
 
