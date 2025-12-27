@@ -161,10 +161,7 @@ function kp() {
   kubectl --context="${kube_context}" port-forward --namespace "${kube_namespace}" "svc/${kube_service}" "${port}"
 }
 
-# function grpc_ui_spd() {
-#     $(cd $k/kt && grpcui --plaintext --proto $WX_SPD_PROTO_API_PATH localhost:$WX_SPD_KUBE_PORT)
-# }
-
+# TODO: make better
 function lrun-slf-prvw () {
   env \
     SL_SPEEDING_HOST="localhost:$WX_SPD_KUBE_PORT" \
@@ -197,13 +194,14 @@ function lrun-slf-stag () {
     bazel run . -- serve-http --log-level=trace
 }
 
-export PATH="$k/tivcli/bin:$PATH"
+# -------------------
+
+export PATH="$PATH:$k/tivcli/bin"
 
 # tiv completions
 # fpath=(~/.zsh/completions $fpath)
 # autoload -Uz compinit && compinit
 
-#compdef tiv
 _tiv_completion() {
     local -a completions
     local -a completions_with_descriptions

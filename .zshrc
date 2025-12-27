@@ -16,11 +16,6 @@ setopt INC_APPEND_HISTORY        # Write as you go, not only on exit
 setopt SHARE_HISTORY             # Share history between sessions
 setopt HIST_FCNTL_LOCK           # Prevent race condition truncation
 
-# Note: These are *prepened* to the current path, so the last one take priority
-export PATH=$HOME/bin:$PATH
-export PATH=/opt/homebrew/opt/ruby/bin:$PATH
-export PATH=/usr/local/bin/override:$PATH
-
 export ZSH="$HOME/.oh-my-zsh"
 ZSH_CUSTOM="$HOME/.config/oh-my-zsh-custom"
 
@@ -61,6 +56,3 @@ ZSH_HIGHLIGHT_STYLES[path]=fg=cyan
 ZSH_HIGHLIGHT_STYLES[unknown-token]=fg=red
 ZSH_HIGHLIGHT_STYLES[comment]='fg=blue,bg=black'
 ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern)
-
-# Added by Antigravity
-export PATH="$HOME/.antigravity/antigravity/bin:$PATH"
