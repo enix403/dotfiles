@@ -38,16 +38,21 @@ alias feh="feh --scale-down --auto-zoom --draw-filename --action9 \";feh --bg-sc
 alias fdf="fd -t f"
 alias fdd="fd -t d"
 
-function py() {
-  if command -v python >/dev/null 2>&1; then
-    python "$@"
-  elif command -v python3 >/dev/null 2>&1; then
-    python3 "$@"
-  else
-    echo "❌ Neither 'python' nor 'python3' is available in PATH." >&2
-    return 1
-  fi
-}
+# function py() {
+#   if command -v python >/dev/null 2>&1; then
+#     python "$@"
+#   elif command -v python3 >/dev/null 2>&1; then
+#     python3 "$@"
+#   else
+#     echo "❌ Neither 'python' nor 'python3' is available in PATH." >&2
+#     return 1
+#   fi
+# }
+# alias py="python"
+# alias py3="python3"
+# TODO: is this optimal ? the idea is i do want direnv's messing with my python selection
+alias py="$HOME/.pyenv/shims/python"
+alias pip="$HOME/.pyenv/shims/pip"
 
 # I learned this the hard way... :)
 function rm() {

@@ -12,3 +12,12 @@ export PATH="$PATH:$HOME/.cargo/bin"
 
 # not needed for now
 # export PATH="$HOME/.antigravity/antigravity/bin:$PATH"
+
+# ----------------
+# Pyenv
+
+# brew install pyenv
+# brew install openssl readline sqlite3 xz tcl-tk@8 libb2 zstd zlib pkgconfig
+export PYENV_ROOT="$HOME/.pyenv"
+[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init - zsh)"
