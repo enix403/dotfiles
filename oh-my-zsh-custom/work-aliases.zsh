@@ -77,22 +77,22 @@ compdef _move_complete move
 # ================================
 
 # kp <service> [<env>]
-# <env>: prw (default), stg, prod
+# <env>: prvw (default), stag, prod
 # Hardcoded per-env map: service -> "kube-context|kube-namespace|kube-service|port"
 
 function kp() {
   if (( $# < 1 || $# > 2 )); then
-    echo "Usage: kp <service> [prw|stg|prod]"
+    echo "Usage: kp <service> [prvw|stag|prod]"
     return 1
   fi
 
   local svc="$1"
-  local env="${2:-prw}"
+  local env="${2:-stag}"
 
   case "$env" in
-    prw|stg|prod) ;;
+    prvw|stag|prod) ;;
     *)
-      echo "Invalid env: $env. Expected one of: prw, stg, prod"
+      echo "Invalid env: $env. Expected one of: prvw, stag, prod"
       return 1
       ;;
   esac
@@ -126,8 +126,8 @@ function kp() {
   # Select the env map without using namerefs (for older zsh)
   typeset -A MAP
   case "$env" in
-    prw)  MAP=("${(@kv)KP_MAP_PRW}") ;;
-    stg)  MAP=("${(@kv)KP_MAP_STG}") ;;
+    prvw)  MAP=("${(@kv)KP_MAP_PRW}") ;;
+    stag)  MAP=("${(@kv)KP_MAP_STG}") ;;
     prod) MAP=("${(@kv)KP_MAP_PROD}") ;;
   esac
 
@@ -165,7 +165,7 @@ function kp() {
 #     $(cd $k/kt && grpcui --plaintext --proto $WX_SPD_PROTO_API_PATH localhost:$WX_SPD_KUBE_PORT)
 # }
 
-function lrun-slf-prw () {
+function lrun-slf-prvw () {
   env \
     SL_SPEEDING_HOST="localhost:$WX_SPD_KUBE_PORT" \
     SL_K2WEB_REPLICA_PG_HOST="localhost" \
@@ -181,7 +181,7 @@ function lrun-slf-prw () {
     bazel run . -- serve-http --log-level=trace
 }
 
-function lrun-slf-stg () {
+function lrun-slf-stag () {
   env \
     SL_SPEEDING_HOST="localhost:$WX_SPD_KUBE_PORT" \
     SL_K2WEB_REPLICA_PG_HOST="localhost" \
