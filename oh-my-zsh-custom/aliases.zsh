@@ -1,5 +1,6 @@
 export DOTFILES_PATH=~/dotfiles
 alias dt='cd "$DOTFILES_PATH"'
+alias dtv='(cd "$DOTFILES_PATH"; nvim .)'
 
 # ======= Absolute Necessaties =========
 
@@ -153,6 +154,7 @@ function st() {
 }
 
 alias kb='cd ~/kb'
+alias kbv='(cd ~/kb; nvim .)'
 
 function qr() {
   # 1. Validate that an argument was provided

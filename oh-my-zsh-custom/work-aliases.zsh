@@ -175,7 +175,7 @@ function lrun-slf-prvw () {
     SL_STATSIG_SDK_KEY="secret-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx" \
     AWS_REGION="us-east-1" \
     GIN_MODE="release" \
-    bazel run . -- serve-http --log-level=trace
+    bazel run . -- serve-http "$@"
 }
 
 function lrun-slf-stag () {
@@ -191,7 +191,7 @@ function lrun-slf-stag () {
     SL_STATSIG_SDK_KEY="secret-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx" \
     AWS_REGION="us-east-1" \
     GIN_MODE="release" \
-    bazel run . -- serve-http --log-level=trace
+    bazel run . -- serve-http "$@"
 }
 
 # -------------------
