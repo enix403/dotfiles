@@ -158,7 +158,8 @@
                     "constant.other.placeholder",
                     "variable.other.field",
                     "constant.other.table-name",
-                    "string.quoted.docstring.multi"
+                    "string.quoted.docstring.multi",
+                    "storage.type.built-in",
                 ],
                 "settings": {
                     "fontStyle": ""
