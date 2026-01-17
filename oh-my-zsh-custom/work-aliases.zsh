@@ -80,6 +80,32 @@ compdef _move_complete move
 # <env>: prvw (default), stag, prod
 # Hardcoded per-env map: service -> "kube-context|kube-namespace|kube-service|port"
 
+# -------------------------
+# HARD-CODED SERVICE MAPS
+# -------------------------
+typeset -g -A KP_MAP_PRW KP_MAP_STG KP_MAP_PROD
+
+# PRW environment mappings
+KP_MAP_PRW=(
+  # Examples (edit these to your real values)
+  slf "$WX_KUBE_CTX_PRVW|$WX_SLF_KUBE_NS|${WX_SLF_KUBE_SVC}-preview|$WX_SLF_KUBE_PORT"
+  spd "$WX_KUBE_CTX_PRVW|$WX_SPD_KUBE_NS|${WX_SPD_KUBE_SVC}-preview|$WX_SPD_KUBE_PORT"
+  fleetdb "$WX_KUBE_CTX_PRVW|$WX_DB_FLEET_KUBE_NS|${WX_DB_FLEET_PRVW_KUBE_SVC}|$WX_DB_FLEET_KUBE_PORT"
+)
+
+# STG environment mappings
+KP_MAP_STG=(
+  slf "$WX_KUBE_CTX_STAG|$WX_SLF_KUBE_NS|${WX_SLF_KUBE_SVC}-staging|$WX_SLF_KUBE_PORT"
+  spd "$WX_KUBE_CTX_STAG|$WX_SPD_KUBE_NS|${WX_SPD_KUBE_SVC}-staging|$WX_SPD_KUBE_PORT"
+  fleetdb "$WX_KUBE_CTX_PRVW|$WX_DB_FLEET_KUBE_NS|${WX_DB_FLEET_STAG_KUBE_SVC}|$WX_DB_FLEET_KUBE_PORT"
+)
+
+# PROD environment mappings
+KP_MAP_PROD=(
+  slf "$WX_KUBE_CTX_PROD|$WX_SLF_KUBE_NS|${WX_SLF_KUBE_SVC}-production|$WX_SLF_KUBE_PORT"
+  spd "$WX_KUBE_CTX_PROD|$WX_SPD_KUBE_NS|${WX_SPD_KUBE_SVC}-production|$WX_SPD_KUBE_PORT"
+)
+
 function kp() {
   if (( $# < 1 || $# > 2 )); then
     echo "Usage: kp <service> [prvw|stag|prod]"
@@ -96,32 +122,6 @@ function kp() {
       return 1
       ;;
   esac
-
-  # -------------------------
-  # HARD-CODED SERVICE MAPS
-  # -------------------------
-  typeset -A KP_MAP_PRW KP_MAP_STG KP_MAP_PROD
-
-  # PRW environment mappings
-  KP_MAP_PRW=(
-    # Examples (edit these to your real values)
-    slf "$WX_KUBE_CTX_PRVW|$WX_SLF_KUBE_NS|${WX_SLF_KUBE_SVC}-preview|$WX_SLF_KUBE_PORT"
-    spd "$WX_KUBE_CTX_PRVW|$WX_SPD_KUBE_NS|${WX_SPD_KUBE_SVC}-preview|$WX_SPD_KUBE_PORT"
-    fleetdb "$WX_KUBE_CTX_PRVW|$WX_DB_FLEET_KUBE_NS|${WX_DB_FLEET_PRVW_KUBE_SVC}|$WX_DB_FLEET_KUBE_PORT"
-  )
-
-  # STG environment mappings
-  KP_MAP_STG=(
-    slf "$WX_KUBE_CTX_STAG|$WX_SLF_KUBE_NS|${WX_SLF_KUBE_SVC}-staging|$WX_SLF_KUBE_PORT"
-    spd "$WX_KUBE_CTX_STAG|$WX_SPD_KUBE_NS|${WX_SPD_KUBE_SVC}-staging|$WX_SPD_KUBE_PORT"
-    fleetdb "$WX_KUBE_CTX_PRVW|$WX_DB_FLEET_KUBE_NS|${WX_DB_FLEET_STAG_KUBE_SVC}|$WX_DB_FLEET_KUBE_PORT"
-  )
-
-  # PROD environment mappings
-  KP_MAP_PROD=(
-    slf "$WX_KUBE_CTX_PROD|$WX_SLF_KUBE_NS|${WX_SLF_KUBE_SVC}-production|$WX_SLF_KUBE_PORT"
-    spd "$WX_KUBE_CTX_PROD|$WX_SPD_KUBE_NS|${WX_SPD_KUBE_SVC}-production|$WX_SPD_KUBE_PORT"
-  )
 
   # Select the env map without using namerefs (for older zsh)
   typeset -A MAP
