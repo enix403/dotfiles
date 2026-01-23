@@ -157,7 +157,16 @@
         "command": "workbench.action.terminal.newWithCwd",
         "args": {
             "cwd": "${fileDirname}"
-        }
+        },
+        "when": "editorIsOpen && resourceScheme == 'file'"
+    },
+    {
+        "key": "cmd+shift+o",
+        "command": "workbench.action.terminal.newWithCwd",
+        "args": {
+            "cwd": "${workspaceFolder}"
+        },
+        "when": "!editorIsOpen || resourceScheme != 'file'"
     },
     {
         "key": "cmd+shift+=",

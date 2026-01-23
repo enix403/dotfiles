@@ -243,11 +243,12 @@
     },
 
     "cursor.cpp.disabledLanguages": [
-        "markdown",
         "plaintext",
         "dart",
         "cpp",
-        "untitled"
+        "untitled",
+        "csv",
+        "jsonc"
     ],
     "window.customMenuBarAltFocus": false,
     "window.enableMenuBarMnemonics": false,

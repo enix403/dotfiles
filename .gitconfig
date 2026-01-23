@@ -8,6 +8,7 @@
   stu = status -uno
   co = checkout
   cm = commit
+  cp = cherry-pick
   sw = switch
   ss = stash
   df = diff

@@ -8,6 +8,7 @@ MOVE_CUSTOM_MAP=(
   spd $WX_SPD_KT_PATH
   slf $WX_SLF_KT_PATH
   sbc $WX_SBC_KT_PATH
+  safety $WX_SAFETY_KT_PATH
 )
 
 move() {
