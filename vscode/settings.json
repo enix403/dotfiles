@@ -24,8 +24,10 @@
     "files.trimTrailingWhitespaceInRegexAndStrings": false,
     "files.associations": {
         "*.css": "tailwindcss",
-        "*.kts": "kotlinscript",
-        "*.conf": "shellscript"
+        "*.kts": "gradle-kotlin-dsl",
+        "*.conf": "shellscript",
+        "*.kt": "gradle-kotlin-dsl",
+        "*.ctl": "sql"
     },
     "files.exclude": {
         "**/.git": true,
@@ -391,6 +393,7 @@
 
     // ------- CSV (A UI csv Viewer) -------
     "csv.enabled": false,
+    "redhat.telemetry.enabled": false,
 
     // ==========================
 }
