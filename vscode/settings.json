@@ -186,6 +186,7 @@
                     "constant.other.table-name",
                     "string.quoted.docstring.multi",
                     "storage.type.built-in",
+                    "storage.type.modifier"
                 ],
                 "settings": {
                     "fontStyle": ""
@@ -227,7 +228,7 @@
         "tree.indentGuidesStroke": "#A08070"
     },
 
-    "editor.matchBrackets": "near",
+    "editor.matchBrackets": "never",
     "editor.occurrencesHighlight": "off",
     "editor.selectionHighlight": false,
 
@@ -302,7 +303,7 @@
     // ------- HTML -------
     "html.autoClosingTags": false,
     "[html]": {
-        "editor.defaultFormatter": "esbenp.prettier-vscode"
+        "editor.defaultFormatter": "vscode.html-language-features"
     },
 
     // ------- JavaScript -------
