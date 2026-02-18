@@ -236,3 +236,8 @@ _tiv_completion() {
 }
 
 compdef _tiv_completion tiv
+
+# ----------------
+
+
+alias nerd="nerdctl -n k8s.io"

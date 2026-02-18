@@ -21,3 +21,20 @@ export PATH="$PATH:$HOME/.cargo/bin"
 export PYENV_ROOT="$HOME/.pyenv"
 [[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
 # eval "$(pyenv init - zsh)" # not needed for my specific usecase
+
+# ---------
+# Mise
+
+# >>> mise bootstrap managed by local-dev >>>
+# mise activation marker not set due to;
+# less pollute the shell rc files directly.
+# Please refer to the .envrc file in the project directory for mise activation instructions.
+# TO manually activate mise, run the mise activate zsh command in your shell.
+# <<< end mise bootstrap managed by local-dev <<<
+
+# >>> local-dev managed PATH >>>
+if [[ ":$PATH:" != *":$HOME/.local/bin:"* ]]; then export PATH="$HOME/.local/bin:$PATH"; fi
+# <<< end local-dev managed PATH <<<
+# >>> direnv bootstrap managed by local-dev >>>
+# eval "$(direnv hook zsh)" ## commented out in favour of daff
+# <<< end direnv bootstrap managed by local-dev <<<
