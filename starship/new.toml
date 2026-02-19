@@ -2,8 +2,8 @@
 add_newline = true
 
 format = """
-$username$hostname $git_branch$git_commit $python $fill$status
-$directory $fill$cmd_duration
+$username$hostname $git_branch$git_commit $python $status
+$cmd_duration$directory
 $character
 """
 
@@ -66,7 +66,7 @@ format = "[$path]($style)"
 # rewrite this in rust as a custom starship module
 
 [git_branch]
-truncation_length = 15
+truncation_length = 30
 truncation_symbol = '…'
 # Disable it when in a detached head
 only_attached = true
@@ -122,7 +122,7 @@ not_found_symbol = '§'
 # ⟪ ⟫
 # ⟦ ⟧
 # format = '[ « $symbol $common_meaning$signal_name$maybe_int » ]($style) '
-format = ' [ $symbol $common_meaning$signal_name$maybe_int $symbol ]($style)'
+format = '[ $symbol $common_meaning$signal_name$maybe_int $symbol ]($style)'
 style = 'bg:bright-red fg:black fg:bold'
 
 # Try to figure out signal from exit code, if possible
@@ -136,7 +136,7 @@ map_symbol = true
 [cmd_duration]
 # ignore command that execute under this number of milliseconds
 min_time = 7000
-format = ' [⧗ $duration](bold yellow)'
+format = '[\( ⧗ $duration \)](bold yellow) '
 
 # Actual Prompt
 [character]
