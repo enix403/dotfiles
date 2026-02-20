@@ -13,7 +13,8 @@
   ss = stash
   df = diff
   mr = merge
-  lg = log --decorate --oneline --graph --color --date=short
+  lgg = log --decorate --oneline --graph --color --date=short
+  lg = lgg --max-count=25
   ps = push
   pl = pull
   bl = blame

@@ -128,6 +128,12 @@ alias tree="erd --human --icons --sort=name --dir-order=last --layout=inverted -
 alias mee="source .me.env 1>/dev/null 2>&1 || :"
 alias acv="source .venv/bin/activate && mee"
 
+alias btj="bat -l json"
+alias bty="bat -l yaml"
+
+alias otj="otree -t json"
+alias oty="otree -t yaml"
+
 # alias kff="killall -9 firefox"
 
 # Print the absolute path to the given file
