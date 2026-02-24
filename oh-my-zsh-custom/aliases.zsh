@@ -120,7 +120,7 @@ function rm() {
 
 # ======= Good to have =========
 
-alias tree="erd --human --icons --sort=name --dir-order=last --layout=inverted --suppress-size"
+alias tree="erd --human --icons --no-ignore --sort=name --dir-order=last --layout=inverted --suppress-size"
 
 # ======= Custom Shortcuts =========
 # These are new custom workflows/shortcuts
@@ -153,6 +153,20 @@ function echol() {
   do
     echo $arg;
   done
+}
+
+# Function to jump to the directory of a file or into a directory
+function cdd() {
+    if [ -z "$1" ]; then
+        echo "Usage: cdd <path>"
+        return 1
+    fi
+
+    if [ -d "$1" ]; then
+        cd "$1"
+    else
+        cd "$(dirname "$1")"
+    fi
 }
 
 function st() {

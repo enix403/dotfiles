@@ -222,7 +222,7 @@
     /* =========== Colors/Themes/Visuals =========== */
     /* ============================================= */
 
-    "workbench.colorTheme": "Best Themes - Rose Noctis",
+    "workbench.colorTheme": "Perpetuity Light",
     "workbench.iconTheme": "material-icon-theme",
     "workbench.colorCustomizations": {
         "tree.indentGuidesStroke": "#A08070"

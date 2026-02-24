@@ -1,4 +1,4 @@
 #!/bin/bash
 
-TIVCLI_ROOT="$k/tivcli"
+TIVCLI_ROOT="$k/x-tivcli"
 exec "$HOME/.pyenv/versions/3.11.14/bin/python" "$TIVCLI_ROOT/main.py" "$@"
