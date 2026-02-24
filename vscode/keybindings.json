@@ -43,7 +43,7 @@
     {
         "key": "shift+cmd+right",
         "command": "editor.action.revealDefinition",
-        "when": "editorHasDefinitionProvider && editorTextFocus && !isInEmbeddedEditor"
+        "when": "editorHasDefinitionProvider && editorTextFocus && !isInEmbeddedEditor && !hasNonEmptySelection && !hasMultipleSelections"
     },
     {
         "key": "f12",
@@ -365,16 +365,6 @@
         "command": "-composer.newAgentChat"
     },
     {
-        "key": "ctrl+shift+right",
-        "command": "-editor.action.smartSelect.expand",
-        "when": "editorTextFocus"
-    },
-    {
-        "key": "ctrl+shift+right",
-        "command": "editor.action.revealDefinition",
-        "when": "editorHasDefinitionProvider && editorTextFocus && !isInEmbeddedEditor"
-    },
-    {
         "key": "cmd+w",
         "command": "-workbench.action.closeWindow",
         "when": "!cursor.agentIdeUnification.enabled && !editorIsOpen && !multipleEditorGroups || currentComposerIsEmpty && cursor.agentIdeUnification.enabled && !editorIsOpen && !multipleEditorGroups"
@@ -415,11 +405,6 @@
     {
         "key": "cmd+enter",
         "command": "notebook.cell.execute",
-        "when": "notebookCellListFocused && notebookMissingKernelExtension && !notebookCellExecuting && notebookCellType == 'code' || notebookCellListFocused && !notebookCellExecuting && notebookCellType == 'code' && notebookKernelCount > 0 || notebookCellListFocused && !notebookCellExecuting && notebookCellType == 'code' && notebookKernelSourceCount > 0"
-    },
-    {
-        "key": "ctrl+enter",
-        "command": "-notebook.cell.execute",
         "when": "notebookCellListFocused && notebookMissingKernelExtension && !notebookCellExecuting && notebookCellType == 'code' || notebookCellListFocused && !notebookCellExecuting && notebookCellType == 'code' && notebookKernelCount > 0 || notebookCellListFocused && !notebookCellExecuting && notebookCellType == 'code' && notebookKernelSourceCount > 0"
     },
     {
