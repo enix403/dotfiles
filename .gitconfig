@@ -21,6 +21,7 @@
   rb = rebase
   rp = rev-parse
   ft = fetch
+  wt = worktree
 
 [pager]
 	branch = false

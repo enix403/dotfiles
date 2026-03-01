@@ -38,8 +38,8 @@ alias rscopy="rsync -av --progress"
 alias mnt='sudo mount -o umask=0022,gid="$GID",uid="$UID"' # mount with user previliges
 alias {bat,bt}='bat --theme="Catppuccin Mocha" --style=plain'
 alias feh="feh --scale-down --auto-zoom --draw-filename --action9 \";feh --bg-scale '%f'\""
-alias fdf="fd -t f"
-alias fdd="fd -t d"
+alias fdf="fd -t f -H"
+alias fdd="fd -t d -H" 
 
 # function py() {
 #   if command -v python >/dev/null 2>&1; then
@@ -313,3 +313,7 @@ alias bz="bazel"
 # ========== VSCode/Cursor ==========
 
 alias cr="cursor"
+
+# ========== Copilot CLI ==========
+
+alias cop="copilot"
