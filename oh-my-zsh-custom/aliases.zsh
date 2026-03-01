@@ -39,7 +39,7 @@ alias mnt='sudo mount -o umask=0022,gid="$GID",uid="$UID"' # mount with user pre
 alias {bat,bt}='bat --theme="Catppuccin Mocha" --style=plain'
 alias feh="feh --scale-down --auto-zoom --draw-filename --action9 \";feh --bg-scale '%f'\""
 alias fdf="fd -t f -H"
-alias fdd="fd -t d -H" 
+alias fdd="fd -t d -H"
 
 # function py() {
 #   if command -v python >/dev/null 2>&1; then
@@ -276,6 +276,8 @@ function kcc() {
   # Clear namespace for current context
   kubectl config set-context --current --namespace=""
 }
+
+alias nerd="nerdctl -n k8s.io"
 
 # ========== Yazi ==========
 
