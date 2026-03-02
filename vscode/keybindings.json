@@ -292,7 +292,7 @@
     },
     {
         "key": "shift+cmd+c",
-        "command": "composer.startComposerPrompt"
+        "command": "composer.startComposerPrompt",
     },
     {
         "key": "cmd+i",

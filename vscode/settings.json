@@ -27,7 +27,8 @@
         "*.kts": "gradle-kotlin-dsl",
         "*.conf": "shellscript",
         "*.kt": "gradle-kotlin-dsl",
-        "*.ctl": "sql"
+        "*.ctl": "sql",
+        "*.devshell": "shellscript"
     },
     "files.exclude": {
         "**/.git": true,
@@ -276,6 +277,7 @@
     },
     "notebook.output.textLineLimit": 50,
     "python.defaultInterpreterPath": "/Users/qateef.ahmad/.pyenv/versions/3.11.14/bin/python",
+    "python.terminal.activateEnvironment": false,
 
     // ------- Dart -------
     "dart.flutterCreateAndroidLanguage": "java",
@@ -475,7 +477,9 @@
         "eval": false,
         "iex": false,
         "kubectl --context=local": true
-    }
+    },
+    "terminal.integrated.initialHint": false,
+    "chat.viewSessions.orientation": "stacked"
 
     // ==========================
 }
