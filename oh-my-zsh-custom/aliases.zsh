@@ -173,6 +173,23 @@ function st() {
   date '+%I:%M %p, %A '$(date +%d | awk '{d=$1+0; if (d%10==1 && d!=11) s="st"; else if (d%10==2 && d!=12) s="nd"; else if (d%10==3 && d!=13) s="rd"; else s="th"; printf "%02d%s", d, s;}')', %b %Y';
 }
 
+# Convert Unix timestamp to ISO 8601 UTC
+# Usage: tiso [timestamp]
+function tiso() {
+  local input=${1:-$(date +%s)}
+  date -u -r "$input" +"%Y-%m-%dT%H:%M:%SZ"
+}
+
+# Convert ISO 8601 UTC string to Unix timestamp
+# Usage: tunix [ISO string]
+function tunix() {
+  if [[ -z "$1" ]]; then
+    date +%s
+  else
+    date -u -j -f "%Y-%m-%dT%H:%M:%SZ" "$1" "+%s"
+  fi
+}
+
 alias kb='cd ~/kb'
 alias kbv='(cd ~/kb; nvim .)'
 
@@ -278,6 +295,30 @@ function kcc() {
 }
 
 alias nerd="nerdctl -n k8s.io"
+
+function ksl() {
+    # If no arguments are provided, exit early
+    [[ $# -eq 0 ]] && { echo "Usage: ksl [flags] <instance_name>"; return 1; }
+
+    # Extract the last argument
+    local instance_name="${@: -1}"
+    
+    # Extract everything EXCEPT the last argument
+    # We use a check to ensure we don't duplicate the single argument
+    local other_params=""
+    if [ $# -gt 1 ]; then
+        other_params="${@:1:$#-1}"
+    fi
+
+    kubecolor logs \
+        --max-log-requests 100 \
+        --all-containers=true \
+        --tail=-1 \
+        --prefix \
+        -f \
+        -l "app.kubernetes.io/instance=${instance_name}" \
+        $other_params
+}
 
 # ========== Yazi ==========
 

@@ -188,7 +188,9 @@
                     "string.quoted.docstring.multi",
                     "storage.type.built-in",
                     "storage.type.modifier",
-                    "keyword.function.go"
+                    "keyword.function.go",
+                    "storage.type.function.kotlin",
+                    "entity.name.type.kotlin",
                 ],
                 "settings": {
                     "fontStyle": ""
@@ -244,7 +246,8 @@
         "markdown": false,
         "scminput": false,
         "python": false,
-        "sql": false
+        "sql": false,
+        "coffeescript": false
     },
 
     "cursor.cpp.disabledLanguages": [
@@ -476,10 +479,22 @@
         "xargs": false,
         "eval": false,
         "iex": false,
-        "kubectl --context=local": true
+        "kubectl --context=local": true,
+        "git rev-list": true,
+        "gh pr create": true,
+        "git rev-parse": true
     },
     "terminal.integrated.initialHint": false,
-    "chat.viewSessions.orientation": "stacked"
+    "chat.viewSessions.orientation": "stacked",
+    "chat.agent.maxRequests": 100,
+
+    "gitlens.currentLine.enabled": false,
+    "gitlens.codeLens.authors.enabled": false,
+    "gitlens.codeLens.recentChange.enabled": false,
+    "cursorBlame.editorDecoration.enabled": false,
+    "[java]": {
+        "editor.defaultFormatter": "redhat.java"
+    }
 
     // ==========================
 }

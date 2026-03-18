@@ -56,3 +56,9 @@ ZSH_HIGHLIGHT_STYLES[path]=fg=cyan
 ZSH_HIGHLIGHT_STYLES[unknown-token]=fg=red
 ZSH_HIGHLIGHT_STYLES[comment]='fg=blue,bg=black'
 ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern)
+
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="$HOME/.sdkman"
+[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
+autoload -U +X bashcompinit && bashcompinit
+autoload -U +X compinit && compinit
