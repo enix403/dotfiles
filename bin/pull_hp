@@ -1,0 +1,21 @@
+#!/bin/bash
+
+# Check if exactly two arguments are provided
+if [ "$#" -ne 2 ]; then
+  echo "Usage: $0 <source_path> <destination_path>"
+  echo "Example: $0 /home/radium/data /Users/local/backups"
+  exit 1
+fi
+
+# Assign arguments to descriptive variables
+SOURCE=$1
+DEST=$2
+
+# Execute rsync
+/opt/homebrew/bin/rsync \
+  --stats \
+  -haz \
+  --info=progress2 \
+  --no-i-r \
+  radium@192.168.10.14:"$SOURCE" \
+  "$DEST"

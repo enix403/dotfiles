@@ -352,6 +352,7 @@ alias jconv="$HOME/.pyenv/shims/jupyter nbconvert --to script"
 # ========== Bazel ==========
 
 alias bz="bazel"
+alias bzt="bazel test --test_output=all --test_arg=-test.v --cache_test_results=no --runs_per_test=1 --local_test_jobs=1"
 
 # ========== VSCode/Cursor ==========
 

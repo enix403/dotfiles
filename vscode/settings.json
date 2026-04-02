@@ -221,12 +221,6 @@
             }
         }
     },
-
-    /* ============================================= */
-    /* =========== Colors/Themes/Visuals =========== */
-    /* ============================================= */
-
-    "workbench.colorTheme": "Best Themes - Gruvbox Concoctis Dark",
     "workbench.iconTheme": "material-icon-theme",
     "workbench.colorCustomizations": {
         "tree.indentGuidesStroke": "#A08070"
@@ -494,7 +488,8 @@
     "cursorBlame.editorDecoration.enabled": false,
     "[java]": {
         "editor.defaultFormatter": "redhat.java"
-    }
+    },
+    "workbench.colorTheme": "Best Themes - Gruvbox Concoctis Dark"
 
     // ==========================
 }
