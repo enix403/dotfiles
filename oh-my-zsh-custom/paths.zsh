@@ -8,36 +8,16 @@ export PATH="/usr/local/bin/override:$PATH"
 # Order matters less
 export PATH="$PATH:$HOME/.cargo/bin"
 
-# not needed for now
-# export PATH="$HOME/.antigravity/antigravity/bin:$PATH"
+# ----------------
+# Pyenv (TODO: get rid of it in favor of mise)
+
+# brew install openssl readline sqlite3 xz tcl-tk@8 libb2 zstd zlib pkgconfig pyenv
+PYENV_ROOT="$HOME/.pyenv"
+[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
 
 # ----------------
-# Pyenv
+# Mise (my own one)
 
-# brew install pyenv
-# brew install openssl readline sqlite3 xz tcl-tk@8 libb2 zstd zlib pkgconfig
-export PYENV_ROOT="$HOME/.pyenv"
-[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
-# eval "$(pyenv init - zsh)" # not needed for my specific usecase
-
-# -----------
-# rbenv
-
-# eval "$(rbenv init - --no-rehash zsh)"
-
-# ---------
-# Mise
-
-# >>> mise bootstrap managed by local-dev >>>
-# mise activation marker not set due to;
-# less pollute the shell rc files directly.
-# Please refer to the .envrc file in the project directory for mise activation instructions.
-# TO manually activate mise, run the mise activate zsh command in your shell.
-# <<< end mise bootstrap managed by local-dev <<<
-
-# >>> local-dev managed PATH >>>
-if [[ ":$PATH:" != *":$HOME/.local/bin:"* ]]; then export PATH="$HOME/.local/bin:$PATH"; fi
-# <<< end local-dev managed PATH <<<
-# >>> direnv bootstrap managed by local-dev >>>
-# eval "$(direnv hook zsh)" ## commented out in favour of daff
-# <<< end direnv bootstrap managed by local-dev <<<
+if [[ "$HOST" == "radium-fed" && "$OSTYPE" == linux* ]]; then
+    eval "$(mise activate zsh)" # for interactive shells
+fi
