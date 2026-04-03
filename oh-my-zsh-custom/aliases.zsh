@@ -248,7 +248,8 @@ alias v="nvim"
 # alias k="kubectl"
 alias k="kubecolor"
 # Make "kubecolor" borrow the same completion logic as "kubectl"
-compdef kubecolor=kubectl
+# compdef kubecolor=kubectl
+(( $+functions[_kubectl] )) && compdef kubecolor=kubectl
 
 function kx() {
   if [ $# -eq 0 ]; then
