@@ -41,7 +41,11 @@ DISABLE_UNTRACKED_FILES_DIRTY="true"
 
 plugins=(
     colored-man-pages
+
+    # git submodule add https://github.com/Aloxaf/fzf-tab.git oh-my-zsh-custom/plugins/fzf-tab
     fzf-tab
+
+    # git submodule add https://github.com/zsh-users/zsh-syntax-highlighting.git oh-my-zsh-custom/plugins/zsh-syntax-highlighting
     # zsh-syntax-highlighting must come at end
     zsh-syntax-highlighting
 )
