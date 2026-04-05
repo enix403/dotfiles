@@ -12,6 +12,7 @@
   sw = switch
   ss = stash
   df = diff
+  dfc = diff --cached
   mr = merge
   lgg = log --decorate --oneline --graph --color --date=short
   lg = lgg --max-count=25
