@@ -1,0 +1,501 @@
+{
+    /* ================================================= */
+    /* ================================================= */
+    /* =============== PLATFORM SPECIFIC =============== */
+    /* ================================================= */
+    /* ================================================= */
+
+    /* ======================================= */
+    /* ============ Major Visuals ============ */
+    /* ======================================= */
+
+    // ----- UI Mod from Custom UI Style Extension -----
+    "custom-ui-style.font.sansSerif": "'Maple Mono', sans-serif",
+
+    "window.zoomLevel": 0.05,
+
+    "editor.fontFamily": "Maple Mono",
+    "editor.lineHeight": 1.45,
+    "editor.fontSize": 13,
+    // "editor.letterSpacing": -0.25,
+    // -----------------
+    // "editor.fontFamily": "Rec Mono Casual",
+    // "editor.fontSize": 14,
+    // // "editor.lineHeight": 1.35,
+    // "editor.lineHeight": 1.6,
+    // "editor.letterSpacing": -0.5,
+    // -----------------
+    // "editor.fontFamily": "Google Sans Code",
+    // "editor.lineHeight": 1.5,
+    // "editor.fontSize": 13,
+    // "editor.letterSpacing": -0.25,
+
+    /* ================================================ */
+    /* ================================================ */
+    /* ================ CROSS PLATFORM ================ */
+    /* ================================================ */
+    /* ================================================ */
+
+    /* =================================== */
+    /* ============ Behaviour ============ */
+    /* =================================== */
+
+    "workbench.editor.closeEmptyGroups": false,
+    "workbench.list.openMode": "doubleClick",
+    "workbench.startupEditor": "welcomePage",
+    "workbench.editorAssociations": {
+        "*.svg": "default"
+    },
+    "workbench.editor.enablePreview": false,
+    "workbench.editor.useModal": "off",
+
+    "window.openFilesInNewWindow": "off",
+    "window.openFoldersInNewWindow": "off",
+    "window.commandCenter": true,
+
+    "explorer.enableDragAndDrop": false,
+    "explorer.autoReveal": false,
+    "explorer.compactFolders": false,
+    "explorer.confirmDelete": false,
+
+    "files.trimTrailingWhitespace": true,
+    "files.trimTrailingWhitespaceInRegexAndStrings": false,
+    "files.associations": {
+        "*.css": "tailwindcss",
+        "*.kts": "gradle-kotlin-dsl",
+        "*.conf": "shellscript",
+        "*.kt": "gradle-kotlin-dsl",
+        "*.ctl": "sql",
+        "*.devshell": "shellscript"
+    },
+    "files.exclude": {
+        "**/.git": true,
+        "**/.svn": true,
+        "**/.hg": true,
+        "**/CVS": true,
+        "**/.DS_Store": true,
+        "**/Thumbs.db": true,
+        "**/node_modules": true,
+        "**/postgres-data": true,
+        "**/__pycache__": true,
+    },
+
+    "editor.dragAndDrop": false,
+    "editor.formatOnSave": false,
+    "editor.pasteAs.enabled": false,
+    "editor.codeActionsOnSave": {
+        "source.organizeImports": "never",
+        "source.fixAll": "never"
+    },
+    "editor.linkedEditing": true,
+    "editor.accessibilitySupport": "off",
+    "editor.trimAutoWhitespace": false,
+
+    "security.promptForLocalFileProtocolHandling": false,
+
+    "diffEditor.ignoreTrimWhitespace": false,
+
+    "git.openRepositoryInParentFolders": "never",
+
+    /* ====================================== */
+    /* ============ UI Rendering ============ */
+    /* ====================================== */
+
+    "workbench.tree.indent": 14,
+    "workbench.tree.renderIndentGuides": "always",
+    "workbench.activityBar.orientation": "vertical",
+    "workbench.editor.pinnedTabsOnSeparateRow": true,
+    "workbench.editor.empty.hint": "hidden",
+
+    "window.titleBarStyle": "custom",
+    "window.density.editorTabHeight": "default",
+
+    "editor.snippetSuggestions": "inline",
+    "editor.renderLineHighlight": "gutter",
+    "editor.smoothScrolling": true,
+    "editor.minimap.enabled": false,
+    "editor.stickyScroll.enabled": false,
+    "editor.inlineSuggest.edits.showCollapsed": true,
+    "editor.inlayHints.enabled": "offUnlessPressed",
+
+    "terminal.integrated.initialHint": false,
+    "cursorBlame.editorDecoration.enabled": false,
+
+    /* ======================================== */
+    /* ============ Text Rendering ============ */
+    /* ======================================== */
+
+    "editor.fontLigatures": true,
+    "editor.cursorStyle": "line-thin",
+    "editor.wordWrap": "on",
+    "editor.wrappingIndent": "deepIndent",
+
+    "editor.tokenColorCustomizations": {
+        "textMateRules": [
+            {
+                "scope": [
+                    "comment",
+                    "punctuation.definition.comment",
+                    "support.class.component",
+                    "variable.parameter",
+                    "keyword.control",
+                    "keyword.control.import",
+                    "keyword.control.export",
+                    "keyword.control.from",
+                    "entity.other.attribute-name",
+                    "variable",
+                    "variable.other.property",
+                    "variable.other.readwrite",
+                    "variable.other.enummember",
+                    "variable.other.constant",
+                    "variable.other.member",
+                    "variable.other.object.property",
+                    "variable.language",
+                    "storage.modifier",
+                    "support.type.primitive",
+                    "keyword.operator",
+                    "meta.attribute.id entity.other.attribute-name",
+                    "support.type.vendored",
+                    "comment.block.documentation punctuation.definition.block.tag",
+                    "comment.block.documentation storage.type.class",
+                    "comment.line",
+                    "comment.line.number-sign.python",
+                    "meta.import keyword.control",
+                    "support.type.builtin",
+                    "source.rust meta.attribute.rust",
+                    "markup.list",
+                    "fenced_code.block.language",
+                    "storage.type.function",
+                    "storage.type",
+                    "storage.type.type",
+                    "entity.name.function",
+                    "entity.name.type.class",
+                    "support.class.dart",
+                    "comment.line.double-slash",
+                    "keyword.control.import.python",
+                    "keyword.control.flow.python",
+                    "entity.other.attribute-name.tsx",
+                    "support.function",
+                    "entity.other.inherited-class",
+                    "source.go storage.type",
+                    "constant.other.placeholder",
+                    "variable.other.field",
+                    "constant.other.table-name",
+                    "string.quoted.docstring.multi",
+                    "storage.type.built-in",
+                    "storage.type.modifier",
+                    "keyword.function.go",
+                    "storage.type.function.kotlin",
+                    "entity.name.type.kotlin",
+                ],
+                "settings": {
+                    "fontStyle": ""
+                }
+            },
+            {
+                "scope": "meta.tag meta.jsx.children",
+                "settings": {
+                    "foreground": "#d2d2d2"
+                }
+            }
+        ]
+    },
+    "editor.semanticTokenColorCustomizations": {
+        "enabled": true,
+        "rules": {
+            "property.static:typescript": {
+                "underline": false
+            },
+            "method.static:typescript": {
+                "underline": false
+            },
+            "function.declaration": {
+                "bold": false
+            },
+            "method": {
+                "italic": false
+            }
+        }
+    },
+    "workbench.iconTheme": "material-icon-theme",
+    "workbench.colorCustomizations": {
+        "tree.indentGuidesStroke": "#A08070"
+    },
+
+    "editor.matchBrackets": "never",
+    "editor.occurrencesHighlight": "off",
+    "editor.selectionHighlight": false,
+
+    /* ================================= */
+    /* ============ Copilot ============ */
+    /* ================================= */
+
+    "chat.tools.terminal.autoApprove": {
+        "cd": true,
+        "echo": true,
+        "ls": true,
+        "dir": true,
+        "pwd": true,
+        "cat": true,
+        "head": true,
+        "tail": true,
+        "findstr": true,
+        "wc": true,
+        "tr": true,
+        "cut": true,
+        "cmp": true,
+        "which": true,
+        "basename": true,
+        "dirname": true,
+        "realpath": true,
+        "readlink": true,
+        "stat": true,
+        "file": true,
+        "od": true,
+        "du": true,
+        "df": true,
+        "sleep": true,
+        "nl": true,
+        "grep": true,
+        "git add": true,
+        "git reset": true,
+        "/^git(\\s+(-C\\s+\\S+|--no-pager))*\\s+status\\b/": true,
+        "/^git(\\s+(-C\\s+\\S+|--no-pager))*\\s+log\\b/": true,
+        "/^git(\\s+(-C\\s+\\S+|--no-pager))*\\s+show\\b/": true,
+        "/^git(\\s+(-C\\s+\\S+|--no-pager))*\\s+diff\\b/": true,
+        "/^git(\\s+(-C\\s+\\S+|--no-pager))*\\s+ls-files\\b/": true,
+        "/^git(\\s+(-C\\s+\\S+|--no-pager))*\\s+grep\\b/": true,
+        "/^git(\\s+(-C\\s+\\S+|--no-pager))*\\s+branch\\b/": true,
+        "/^git(\\s+(-C\\s+\\S+|--no-pager))*\\s+branch\\b.*\\s-(d|D|m|M|-delete|-force)\\b/": false,
+        "column": true,
+        "/^column\\b.*\\s-c\\s+[0-9]{4,}/": false,
+        "date": true,
+        "/^date\\b.*\\s(-s|--set)\\b/": false,
+        "find": true,
+        "/^find\\b.*\\s-(delete|exec|execdir|fprint|fprintf|fls|ok|okdir)\\b/": false,
+        "rg": true,
+        "/^rg\\b.*\\s(--pre|--hostname-bin)\\b/": false,
+        "sed": true,
+        "/^sed\\b.*\\s(-[a-zA-Z]*(e|f)[a-zA-Z]*|--expression|--file)\\b/": false,
+        "/^sed\\b.*s\\/.*\\/.*\\/[ew]/": false,
+        "/^sed\\b.*;W/": false,
+        "sort": true,
+        "/^sort\\b.*\\s-(o|S)\\b/": false,
+        "tree": true,
+        "/^tree\\b.*\\s-o\\b/": false,
+        "/^xxd$/": true,
+        "/^xxd\\b(\\s+-\\S+)*\\s+[^-\\s]\\S*$/": true,
+        "rm": false,
+        "rmdir": false,
+        "ri": false,
+        "rd": false,
+        "erase": false,
+        "dd": false,
+        "kill": false,
+        "ps": false,
+        "top": false,
+        "spps": false,
+        "curl": false,
+        "wget": false,
+        "irm": false,
+        "iwr": false,
+        "chmod": false,
+        "chown": false,
+        "sp": false,
+        "jq": false,
+        "xargs": false,
+        "eval": false,
+        "iex": false,
+        "kubectl --context=local": true,
+        "git rev-list": true,
+        "gh pr create": true,
+        "git rev-parse": true
+    },
+    "chat.viewSessions.orientation": "stacked",
+    "chat.agent.maxRequests": 500,
+
+    /* ============================ */
+    /* =========== Misc =========== */
+    /* ============================ */
+
+    "github.copilot.enable": {
+        "*": true,
+        "plaintext": false,
+        "markdown": false,
+        "scminput": false,
+        "python": false,
+        "sql": false,
+        "coffeescript": false
+    },
+
+    "cursor.cpp.disabledLanguages": [
+        "plaintext",
+        "dart",
+        "cpp",
+        "untitled",
+        "csv",
+        "jsonc"
+    ],
+    "window.customMenuBarAltFocus": false,
+    "window.enableMenuBarMnemonics": false,
+    "window.menuBarVisibility": "visible",
+
+    /* ========================================= */
+    /* =========== Language Specific =========== */
+    /* ========================================= */
+
+    // ------- C++ -------
+    "C_Cpp.default.cppStandard": "c++17",
+    "[cpp]": {
+        "editor.defaultFormatter": "xaver.clang-format"
+    },
+
+    // ------- Python -------
+    "python.analysis.diagnosticSeverityOverrides": {
+        "reportMissingImports": "none",
+        "reportUndefinedVariable": "none",
+        "reportMissingModuleSource": "none"
+    },
+    "notebook.output.textLineLimit": 50,
+    "python.defaultInterpreterPath": "/Users/qateef.ahmad/.pyenv/versions/3.11.14/bin/python",
+    "python.terminal.activateEnvironment": false,
+
+    // ------- Dart -------
+    "dart.flutterCreateAndroidLanguage": "java",
+    "dart.debugExternalPackageLibraries": false,
+    "dart.debugSdkLibraries": false,
+    "dart.closingLabels": false,
+
+    // --------- Ruby -------
+    "[ruby]": {
+        "editor.defaultFormatter": "rubocop.vscode-rubocop"
+    },
+
+    // ------- Golang -------
+    "[go]": {
+        "editor.formatOnSave": false,
+    },
+
+    // ------- Java -------
+    "[java]": {
+        "editor.defaultFormatter": "redhat.java"
+    },
+
+    // ------- JSON -------
+    "[json]": {
+        "editor.defaultFormatter": "vscode.json-language-features"
+    },
+    "[jsonc]": {
+        "editor.defaultFormatter": "vscode.json-language-features"
+    },
+
+    // ------- HTML -------
+    "html.autoClosingTags": false,
+    "[html]": {
+        "editor.defaultFormatter": "vscode.html-language-features"
+    },
+
+    // ------- JavaScript -------
+    "javascript.updateImportsOnFileMove.enabled": "never",
+    "javascript.autoClosingTags": false,
+    "[javascript]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[javascriptreact]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+
+    // ------- TypeScript -------
+    "typescript.enablePromptUseWorkspaceTsdk": true,
+    "typescript.autoClosingTags": false,
+    "typescript.preferences.jsxAttributeCompletionStyle": "none",
+    "typescript.updateImportsOnFileMove.enabled": "never",
+    "[typescript]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[typescriptreact]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+
+    // ------- CSS -------
+    "css.lint.unknownAtRules": "ignore",
+    "scss.lint.unknownAtRules": "ignore",
+    "[css]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[scss]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[postcss]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+
+    // ------- Svelte -------
+    "svelte.enable-ts-plugin": true,
+    "[svelte]": {
+        "editor.defaultFormatter": "svelte.svelte-vscode"
+    },
+
+    /* ========================================== */
+    /* =========== Extension Specific =========== */
+    /* ========================================== */
+
+    // ------- Rest Client -------
+    "rest-client.previewOption": "full",
+    "rest-client.defaultHeaders": {
+        "User-Agent": "vscode-restclient",
+        "Content-Type": "application/json",
+        "Accept": "application/json",
+        "Accept-Language": "en-US,en;q=0.5",
+        "Accept-Encoding": "gzip, deflate, br, zstd"
+    },
+
+    // ------- Eyecons -------
+    "eyecons.folderColor": "orange",
+    "eyecons.hidesExplorerArrows": true,
+    "eyecons.theme": "github-dark",
+
+    // ------- Pop Icons -------
+    "pop-icon-theme.folders.color": "#ff7043",
+
+    // ------- Helium Icons -------
+    "helium-icon-theme.folders.color": "#90a4ae",
+
+    // ------- Bazel -------
+    // TODO: what about this ?
+    "bazel.executable": "/nix/store/y1zdzring1mji64iy0njvb7fz62khz80-ktmr-final-environment/bin/bazel",
+
+    // ------- Symbol Icons -------
+    "symbols.hidesExplorerArrows": false,
+    "svg.preview.mode": "img",
+
+    // ------- Markdown -------
+    "mdmath.delimiters": "dollars",
+    "mdmath.theme": "publication",
+    "mdmath.style": "/home/radium/hwlab/analysis/global.css",
+    "markdown.preview.scrollEditorWithPreview": false,
+    "markdown.preview.scrollPreviewWithEditor": false,
+    "markdown-pdf.displayHeaderFooter": false,
+    "markdown-pdf.highlightStyle": "lightfair.css",
+
+    // ------- Settings Sync -------
+    "settingsSync.keybindingsPerPlatform": false,
+
+    // ------- CSV (A UI csv Viewer) -------
+    "csv.enabled": false,
+
+    // ------- GitLens -------
+    "gitlens.currentLine.enabled": false,
+    "gitlens.codeLens.authors.enabled": false,
+    "gitlens.codeLens.recentChange.enabled": false,
+
+    // ------- RedHat (for Java) -------
+    "redhat.telemetry.enabled": false,
+
+    // --------- UNORG ---------
+
+    // ==========================
+
+    // keeping it here since vscode/cursor often like to move it to end anyway
+    "workbench.colorTheme": "Best Themes - Gruvbox Concoctis Dark"
+}
