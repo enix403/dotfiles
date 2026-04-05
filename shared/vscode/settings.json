@@ -60,6 +60,31 @@
 
     "git.openRepositoryInParentFolders": "never",
 
+    /* ======================================= */
+    /* ============ Major Visuals ============ */
+    /* ======================================= */
+
+    // ----- UI Mod from Custom UI Style Extension -----
+    "custom-ui-style.font.sansSerif": "'Maple Mono', sans-serif",
+
+    "window.zoomLevel": 0.05,
+
+    "editor.fontFamily": "Maple Mono",
+    "editor.lineHeight": 1.45,
+    "editor.fontSize": 13,
+    // "editor.letterSpacing": -0.25,
+    // -----------------
+    // "editor.fontFamily": "Rec Mono Casual",
+    // "editor.fontSize": 14,
+    // // "editor.lineHeight": 1.35,
+    // "editor.lineHeight": 1.6,
+    // "editor.letterSpacing": -0.5,
+    // -----------------
+    // "editor.fontFamily": "Google Sans Code",
+    // "editor.lineHeight": 1.5,
+    // "editor.fontSize": 13,
+    // "editor.letterSpacing": -0.25,
+
     /* ====================================== */
     /* ============ UI Rendering ============ */
     /* ====================================== */
@@ -81,55 +106,13 @@
     "editor.inlineSuggest.edits.showCollapsed": true,
     "editor.inlayHints.enabled": "offUnlessPressed",
 
-    // keep it near font size settings
-    "window.zoomLevel": 0.05,
+    "terminal.integrated.initialHint": false,
+    "cursorBlame.editorDecoration.enabled": false,
 
     /* ======================================== */
     /* ============ Text Rendering ============ */
     /* ======================================== */
 
-    "fonted.font": "Maple Mono",
-    // "fonted.fontStretch": "50%",
-
-    // "custom-ui-style.font.monospace": "'Terminus (TTF)', 'Droid Sans Mono', monospace",
-    "custom-ui-style.font.sansSerif": "'Maple Mono', sans-serif",
-    // "custom-ui-style.stylesheet": {
-    //   // Adjust Chat UI text
-    //   ".anysphere-markdown-container-root": "font-size: 12px; line-height: 1.8;",
-    //   // Adjust Chat UI Code block
-    //   ".markdown-block-code *": "font-size: 12px !important; line-height: 1.8;",
-    //   // Adjust Chat Font
-    //   ".aislash-editor-input": "font-size: 14px !important; line-height: 1.8 !important;",
-    //   ".aislash-editor-input-readonly": "font-size: 14px !important; line-height: 1.8 !important;",
-    //   ".aislash-editor-placeholder": "font-size: 14px !important; line-height: 1.8 !important;",
-    //   // Others
-    //   ".anysphere.cursor-retrieval": "font-size: 14px !important; line-height: 1.8 !important;",
-    //   ".aiEditorBox-anysphere": "font-size: 14px !important; line-height: 1.8 !important;",
-    //   ".aichat-code-block-anysphere": "font-size: 14px !important; line-height: 1.8 !important;",
-    //   ".composer-code-block-anysphere": "font-size: 14px !important; line-height: 1.8 !important;",
-    //   ".aicmdk-context-code-block-anysphere": "font-size: 14px !important; line-height: 1.8 !important;",
-    //   // Explorer
-    //   ".monaco-panel-view": "font-size: 12px !important; line-height: 1.8 !important;",
-    //   ".monaco-list-row": "font-size: 12px !important; line-height: 1.8 !important;",
-    //   ".monaco-workbench": "font-size: 12px !important; line-height: 1.8 !important;"
-    // },
-
-    "editor.fontFamily": "Maple Mono",
-    "editor.lineHeight": 1.45,
-    "editor.fontSize": 13,
-    // "editor.letterSpacing": -0.25,
-    // -----------------
-    // "editor.fontFamily": "Rec Mono Casual",
-    // "editor.fontSize": 14,
-    // // "editor.lineHeight": 1.35,
-    // "editor.lineHeight": 1.6,
-    // "editor.letterSpacing": -0.5,
-    // -----------------
-    // "editor.fontFamily": "Google Sans Code",
-    // "editor.lineHeight": 1.5,
-    // "editor.fontSize": 13,
-    // "editor.letterSpacing": -0.25,
-    // -----------------
     "editor.fontLigatures": true,
     "editor.cursorStyle": "line-thin",
     "editor.wordWrap": "on",
@@ -293,6 +276,11 @@
         "editor.formatOnSave": false,
     },
 
+    // ------- Java -------
+    "[java]": {
+        "editor.defaultFormatter": "redhat.java"
+    },
+
     // ------- JSON -------
     "[json]": {
         "editor.defaultFormatter": "vscode.json-language-features"
@@ -396,6 +384,11 @@
     // ------- CSV (A UI csv Viewer) -------
     "csv.enabled": false,
 
+    // ------- GitLens -------
+    "gitlens.currentLine.enabled": false,
+    "gitlens.codeLens.authors.enabled": false,
+    "gitlens.codeLens.recentChange.enabled": false,
+
     // --------- UNORG ---------
     "redhat.telemetry.enabled": false,
     "chat.tools.terminal.autoApprove": {
@@ -479,18 +472,11 @@
         "gh pr create": true,
         "git rev-parse": true
     },
-    "terminal.integrated.initialHint": false,
     "chat.viewSessions.orientation": "stacked",
     "chat.agent.maxRequests": 100,
 
-    "gitlens.currentLine.enabled": false,
-    "gitlens.codeLens.authors.enabled": false,
-    "gitlens.codeLens.recentChange.enabled": false,
-    "cursorBlame.editorDecoration.enabled": false,
-    "[java]": {
-        "editor.defaultFormatter": "redhat.java"
-    },
-    "workbench.colorTheme": "Best Themes - Gruvbox Concoctis Dark"
-
     // ==========================
+
+    // keeping it here since vscode/cursor often like to move it to end anyway
+    "workbench.colorTheme": "Best Themes - Gruvbox Concoctis Dark"
 }
