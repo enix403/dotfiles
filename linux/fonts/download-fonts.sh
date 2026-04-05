@@ -6,7 +6,7 @@ mkdir -p ~/.local/share/fonts
 
 # ======= Fira Code ======
 
-# comes pre-installed with fedora
+# Installed via fira-code-fonts dnf package
 
 # ======= Fira Code Nerd Font ======
 
