@@ -1,5 +1,96 @@
 // Place your key bindings in this file to override the defaultsauto[]
 [
+    /* =========================== */
+    /* ======= Cleanup/Unbinds === */
+    /* =========================== */
+    // ---- Search & AI ----
+    {
+        "key": "cmd+shift+l",
+        "command": "-addCursorsAtSearchResults",
+        "when": "fileMatchOrMatchFocus && searchViewletVisible"
+    },
+    {
+        "key": "shift+cmd+k",
+        "command": "-aipopup.action.modal.generate",
+        "when": "editorFocus && !composerBarIsVisible"
+    },
+    {
+        "key": "shift+cmd+k",
+        "command": "-editor.action.inlineDiffs.focusEditor",
+        "when": "editorHasPromptBar && editorPromptBarFocused"
+    },
+    {
+        "key": "cmd+l",
+        "command": "-composer.sendToAgent",
+        "when": "editorHasPromptBar && editorPromptBarFocused"
+    },
+    // ---- Terminal ----
+    {
+        "key": "cmd+\\",
+        "command": "-workbench.action.terminal.split",
+        "when": "terminalFocus && terminalProcessSupported || terminalFocus && terminalWebExtensionContributedProfile"
+    },
+    {
+        "key": "cmd+\\",
+        "command": "-workbench.action.terminal.splitActiveTab",
+        "when": "terminalProcessSupported && terminalTabsFocus"
+    },
+    {
+        "key": "shift+cmd+left",
+        "command": "-workbench.action.terminal.sendSequence",
+        "when": "terminalFocus && terminalShellType == 'pwsh'"
+    },
+    // ---- TODO ----
+    {
+        "key": "shift+cmd+right",
+        "command": "-cursorEndSelect",
+        "when": "textInputFocus"
+    },
+    {
+        "key": "shift+cmd+left",
+        "command": "-cursorHomeSelect",
+        "when": "textInputFocus"
+    },
+    {
+        "key": "cmd+\\",
+        "command": "-workbench.action.splitEditor"
+    },
+    {
+        "key": "cmd+up",
+        "command": "-interactive.scrollToTop",
+        "when": "activeEditor == 'workbench.editor.interactive'"
+    },
+    {
+        "key": "cmd+up",
+        "command": "-cursorTop",
+        "when": "textInputFocus"
+    },
+    {
+        "key": "cmd+down",
+        "command": "-cursorBottom",
+        "when": "textInputFocus"
+    },
+    {
+        "key": "cmd+down",
+        "command": "-interactive.scrollToBottom",
+        "when": "activeEditor == 'workbench.editor.interactive'"
+    },
+    {
+        "key": "pageup",
+        "command": "-cursorPageUp",
+        "when": "textInputFocus"
+    },
+    {
+        "key": "pagedown",
+        "command": "-cursorPageDown",
+        "when": "textInputFocus"
+    },
+    {
+        "key": "shift+cmd+left",
+        "command": "-cursorWordAccessibilityLeftSelect",
+        "when": "accessibilityModeEnabled && isWindows && textInputFocus && focusedView == 'workbench.panel.output'"
+    },
+
     /* ================================ */
     /* ======= Multiple Cursors ======= */
     /* ================================ */
@@ -389,98 +480,5 @@
         "key": "cmd+enter",
         "command": "notebook.cell.execute",
         "when": "notebookCellListFocused && notebookMissingKernelExtension && !notebookCellExecuting && notebookCellType == 'code' || notebookCellListFocused && !notebookCellExecuting && notebookCellType == 'code' && notebookKernelCount > 0 || notebookCellListFocused && !notebookCellExecuting && notebookCellType == 'code' && notebookKernelSourceCount > 0"
-    },
-    /* =========================== */
-/* ======= Cleanup/Unbinds === */
-/* =========================== */
-    ///////////////////
-    ///////////////////
-    /////////////////// temp
-    ///////////////////
-    ///////////////////
-    {
-        "key": "cmd+shift+l",
-        "command": "-addCursorsAtSearchResults",
-        "when": "fileMatchOrMatchFocus && searchViewletVisible"
-    },
-
-    {
-        "key": "shift+cmd+k",
-        "command": "-aipopup.action.modal.generate",
-        "when": "editorFocus && !composerBarIsVisible"
-    },
-    {
-        "key": "shift+cmd+k",
-        "command": "-editor.action.inlineDiffs.focusEditor",
-        "when": "editorHasPromptBar && editorPromptBarFocused"
-    },
-    {
-        "key": "cmd+l",
-        "command": "-composer.sendToAgent",
-        "when": "editorHasPromptBar && editorPromptBarFocused"
-    },
-    {
-        "key": "shift+cmd+right",
-        "command": "-cursorEndSelect",
-        "when": "textInputFocus"
-    },
-    {
-        "key": "cmd+\\",
-        "command": "-workbench.action.terminal.split",
-        "when": "terminalFocus && terminalProcessSupported || terminalFocus && terminalWebExtensionContributedProfile"
-    },
-    {
-        "key": "cmd+\\",
-        "command": "-workbench.action.splitEditor"
-    },
-    {
-        "key": "cmd+\\",
-        "command": "-workbench.action.terminal.splitActiveTab",
-        "when": "terminalProcessSupported && terminalTabsFocus"
-    },
-    {
-        "key": "cmd+up",
-        "command": "-interactive.scrollToTop",
-        "when": "activeEditor == 'workbench.editor.interactive'"
-    },
-    {
-        "key": "cmd+up",
-        "command": "-cursorTop",
-        "when": "textInputFocus"
-    },
-    {
-        "key": "cmd+down",
-        "command": "-cursorBottom",
-        "when": "textInputFocus"
-    },
-    {
-        "key": "cmd+down",
-        "command": "-interactive.scrollToBottom",
-        "when": "activeEditor == 'workbench.editor.interactive'"
-    },
-    {
-        "key": "pageup",
-        "command": "-cursorPageUp",
-        "when": "textInputFocus"
-    },
-    {
-        "key": "pagedown",
-        "command": "-cursorPageDown",
-        "when": "textInputFocus"
-    },
-    {
-        "key": "shift+cmd+left",
-        "command": "-cursorHomeSelect",
-        "when": "textInputFocus"
-    },
-    {
-        "key": "shift+cmd+left",
-        "command": "-cursorWordAccessibilityLeftSelect",
-        "when": "accessibilityModeEnabled && isWindows && textInputFocus && focusedView == 'workbench.panel.output'"
-    },
-    {
-        "key": "shift+cmd+left",
-        "command": "-workbench.action.terminal.sendSequence",
-        "when": "terminalFocus && terminalShellType == 'pwsh'"
     }
 ]
