@@ -241,11 +241,15 @@ alias v="nvim"
 
 # ========== Kubernetes ==========
 
-# alias k="kubectl"
-alias k="kubecolor"
-# Make "kubecolor" borrow the same completion logic as "kubectl"
-# compdef kubecolor=kubectl
-(( $+functions[_kubectl] )) && compdef kubecolor=kubectl
+if (( $+commands[kubecolor] )); then
+  alias k='kubecolor'
+  # Nested: Only try to bind completion if kubecolor was chosen
+  if (( $+functions[compdef] && $+functions[_kubectl] )); then
+    compdef kubecolor=kubectl
+  fi
+else
+  alias k='kubectl'
+fi
 
 function kx() {
   if [ $# -eq 0 ]; then
@@ -293,13 +297,14 @@ function kcc() {
 
 alias nerd="nerdctl -n k8s.io"
 
+# logs of all kube pods
 function ksl() {
     # If no arguments are provided, exit early
     [[ $# -eq 0 ]] && { echo "Usage: ksl [flags] <instance_name>"; return 1; }
 
     # Extract the last argument
     local instance_name="${@: -1}"
-    
+
     # Extract everything EXCEPT the last argument
     # We use a check to ensure we don't duplicate the single argument
     local other_params=""
@@ -307,7 +312,7 @@ function ksl() {
         other_params="${@:1:$#-1}"
     fi
 
-    kubecolor logs \
+    kubectl logs \
         --max-log-requests 100 \
         --all-containers=true \
         --tail=-1 \
@@ -337,14 +342,6 @@ alias b="bundle"
 alias be="bundle exec"
 
 # ========== Python and Related ==========
-
-# TODO: is this optimal ?
-# the idea is I do not want direnv's messing with my current python selection
-alias py="$HOME/.pyenv/shims/python"
-alias pip="$HOME/.pyenv/shims/pip"
-alias ipy="$HOME/.pyenv/shims/ipython"
-alias jl="$HOME/.pyenv/shims/jupyter-lab"
-alias jconv="$HOME/.pyenv/shims/jupyter nbconvert --to script"
 
 # ========== Bazel ==========
 
