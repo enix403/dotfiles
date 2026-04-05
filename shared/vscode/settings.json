@@ -10,6 +10,7 @@
         "*.svg": "default"
     },
     "workbench.editor.enablePreview": false,
+    "workbench.editor.useModal": "off",
 
     "window.openFilesInNewWindow": "off",
     "window.openFoldersInNewWindow": "off",
