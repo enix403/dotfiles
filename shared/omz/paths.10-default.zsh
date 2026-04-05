@@ -1,5 +1,9 @@
 # Note: These are *prepened* to the current path, so the last one take priority
-export PATH="/opt/homebrew/bin:$PATH"
+
+if [[ "$OSTYPE" == darwin* ]]; then
+    export PATH="/opt/homebrew/bin:$PATH"
+fi
+
 export PATH="$HOME/probin:$PATH"
 export PATH="$HOME/bin:$PATH"
 export PATH="/usr/local/bin/override:$PATH"
@@ -18,6 +22,7 @@ PYENV_ROOT="$HOME/.pyenv"
 # ----------------
 # Mise (my own one)
 
-if [[ "$HOST" == "radium-fed" && "$OSTYPE" == linux* ]]; then
+# if [[ "$HOST" == "radium-fed" && "$OSTYPE" == linux* ]]; then
+if [[ "$OSTYPE" == linux* ]]; then
     eval "$(mise activate zsh)" # for interactive shells
 fi
