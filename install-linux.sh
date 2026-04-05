@@ -11,6 +11,7 @@ then
     [[ "$0" = "$BASH_SOURCE" ]] && exit 1 || return 1
 fi
 
+# TODO, uncomment this.
 exit
 
 ./shared/_apply/install-omz.sh

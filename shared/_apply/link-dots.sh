@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 # inside home
 cd ~
 ln -nfrs ./dotfiles/shared/bin .
