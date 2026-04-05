@@ -41,19 +41,6 @@ alias feh="feh --scale-down --auto-zoom --draw-filename --action9 \";feh --bg-sc
 alias fdf="fd -t f -H"
 alias fdd="fd -t d -H"
 
-# function py() {
-#   if command -v python >/dev/null 2>&1; then
-#     python "$@"
-#   elif command -v python3 >/dev/null 2>&1; then
-#     python3 "$@"
-#   else
-#     echo "❌ Neither 'python' nor 'python3' is available in PATH." >&2
-#     return 1
-#   fi
-# }
-# alias py="python"
-# alias py3="python3"
-
 # I learned this the hard way... :)
 function rm() {
   local PROTECTED_DIRS=(
@@ -342,6 +329,20 @@ alias b="bundle"
 alias be="bundle exec"
 
 # ========== Python and Related ==========
+
+function py() {
+  if command -v python >/dev/null 2>&1; then
+    python "$@"
+  elif command -v python3 >/dev/null 2>&1; then
+    python3 "$@"
+  else
+    echo "❌ Neither 'python' nor 'python3' is available in PATH." >&2
+    return 1
+  fi
+}
+alias ipy="ipython"
+alias jl="jupyter-lab"
+alias jconv="jupyter nbconvert --to script"
 
 # ========== Bazel ==========
 
