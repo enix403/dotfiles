@@ -369,16 +369,7 @@
         "key": "alt+w",
         "command": "editor.action.showDefinitionPreviewHover"
     },
-    ///////////////////
-    ///////////////////
-    /////////////////// temp
-    ///////////////////
-    ///////////////////
-    {
-        "key": "cmd+shift+l",
-        "command": "-addCursorsAtSearchResults",
-        "when": "fileMatchOrMatchFocus && searchViewletVisible"
-    },
+    // ---- Custom Extension/Scripts ----
     {
         "key": "cmd+k cmd+p",
         "command": "extension.saveToHtml",
@@ -389,6 +380,30 @@
         "command": "-extension.saveToHtml",
         "when": "editorTextFocus"
     },
+    {
+        "key": "shift+cmd+=",
+        "command": "extension.calculate"
+    },
+    // ---- Notebooks ----
+    {
+        "key": "cmd+enter",
+        "command": "notebook.cell.execute",
+        "when": "notebookCellListFocused && notebookMissingKernelExtension && !notebookCellExecuting && notebookCellType == 'code' || notebookCellListFocused && !notebookCellExecuting && notebookCellType == 'code' && notebookKernelCount > 0 || notebookCellListFocused && !notebookCellExecuting && notebookCellType == 'code' && notebookKernelSourceCount > 0"
+    },
+    /* =========================== */
+/* ======= Cleanup/Unbinds === */
+/* =========================== */
+    ///////////////////
+    ///////////////////
+    /////////////////// temp
+    ///////////////////
+    ///////////////////
+    {
+        "key": "cmd+shift+l",
+        "command": "-addCursorsAtSearchResults",
+        "when": "fileMatchOrMatchFocus && searchViewletVisible"
+    },
+
     {
         "key": "shift+cmd+k",
         "command": "-aipopup.action.modal.generate",
@@ -467,14 +482,5 @@
         "key": "shift+cmd+left",
         "command": "-workbench.action.terminal.sendSequence",
         "when": "terminalFocus && terminalShellType == 'pwsh'"
-    },
-    {
-        "key": "shift+cmd+=",
-        "command": "extension.calculate"
-    },
-    {
-        "key": "cmd+enter",
-        "command": "notebook.cell.execute",
-        "when": "notebookCellListFocused && notebookMissingKernelExtension && !notebookCellExecuting && notebookCellType == 'code' || notebookCellListFocused && !notebookCellExecuting && notebookCellType == 'code' && notebookKernelCount > 0 || notebookCellListFocused && !notebookCellExecuting && notebookCellType == 'code' && notebookKernelSourceCount > 0"
     }
 ]
