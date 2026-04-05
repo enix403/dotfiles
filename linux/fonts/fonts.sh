@@ -2,7 +2,7 @@
 
 ## Custom fonts stored in: ~/.local/share/fonts/custom_*
 
-mkd -p ~/.local/share/fonts
+mkdir -p ~/.local/share/fonts
 
 # ======= Fira Code ======
 
