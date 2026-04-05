@@ -157,19 +157,32 @@ function st() {
 }
 
 # Convert Unix timestamp to ISO 8601 UTC
-# Usage: tiso [timestamp]
 function tiso() {
   local input=${1:-$(date +%s)}
-  date -u -r "$input" +"%Y-%m-%dT%H:%M:%SZ"
+
+  if date --version >/dev/null 2>&1; then
+    # GNU (Linux)
+    date -u -d "@$input" +"%Y-%m-%dT%H:%M:%SZ"
+  else
+    # BSD (macOS)
+    date -u -r "$input" +"%Y-%m-%dT%H:%M:%SZ"
+  fi
 }
 
 # Convert ISO 8601 UTC string to Unix timestamp
-# Usage: tunix [ISO string]
 function tunix() {
-  if [[ -z "$1" ]]; then
+  local input="$1"
+  if [[ -z "$input" ]]; then
     date +%s
+    return
+  fi
+
+  if date --version >/dev/null 2>&1; then
+    # GNU (Linux)
+    date -u -d "$input" +%s
   else
-    date -u -j -f "%Y-%m-%dT%H:%M:%SZ" "$1" "+%s"
+    # BSD (macOS)
+    date -u -j -f "%Y-%m-%dT%H:%M:%SZ" "$input" "+%s"
   fi
 }
 
