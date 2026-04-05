@@ -63,7 +63,7 @@
   conflictstyle = zdiff3
 
 [include]
-  path = ~/dotfiles/delta/themes.gitconfig
+  path = ~/dotfiles/shared/delta/themes.gitconfig
 
 [delta]
   features = mantis-shrimp # set theme
