@@ -1,2 +1,2 @@
 x-*.zsh
-./*.local.zsh
+*.local.zsh
