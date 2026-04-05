@@ -14,10 +14,10 @@ alias where="which"
 alias mkd="mkdir"
 alias mkf="touch"
 function mke() {
-    # Make executable files
-    all_args=( "$@" )
-    touch "${all_args[@]}"
-    chmod +x "${all_args[@]}"
+  # Make executable files
+  all_args=( "$@" )
+  touch "${all_args[@]}"
+  chmod +x "${all_args[@]}"
 }
 alias cp="cp -i"
 alias mv="mv -i"
@@ -189,37 +189,6 @@ function tunix() {
 alias kb='cd ~/kb'
 alias kbv='(cd ~/kb; nvim .)'
 
-function qr() {
-  # 1. Validate that an argument was provided
-  if [[ -z "$1" ]]; then
-    echo "Usage: q <number 1-30>"
-    return 1
-  fi
-
-  # 2. Validate that the input is an integer between 1 and 30
-  if ! [[ "$1" =~ ^[0-9]+$ ]] || (( $1 < 1 || $1 > 30 )); then
-    echo "Error: Input must be an integer between 1 and 30."
-    return 1
-  fi
-
-  # 3. Pad the input number to 2 digits (e.g., 1 -> 01, 15 -> 15)
-  # Uses printf to format the string
-  local padded_num=$(printf "%02d" "$1")
-
-  # 4. Define the file path
-  local file_path="$HOME/code/plays/merge-q-pdf/output/qp-${padded_num}.pdf"
-
-  # 5. Check if the file exists before trying to open it
-  if [[ -f "$file_path" ]]; then
-    echo "Opening $file_path..."
-    open "$file_path"
-  else
-    echo "Error: File not found at:"
-    echo "$file_path"
-    return 1
-  fi
-}
-
 # ===========================
 # ---------- Tools ----------
 # ===========================
@@ -268,9 +237,9 @@ function kx() {
   fi
 }
 _kx() {
-    local -a contexts
-    contexts=($(kubectl config get-contexts -o name 2>/dev/null))
-    _describe 'context' contexts
+  local -a contexts
+  contexts=($(kubectl config get-contexts -o name 2>/dev/null))
+  _describe 'context' contexts
 }
 compdef _kx kx
 
