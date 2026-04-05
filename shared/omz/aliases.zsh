@@ -118,10 +118,6 @@ function rm() {
   command rm "$@"
 }
 
-# ======= Good to have =========
-
-alias tree="erd --human --icons --no-ignore --sort=name --dir-order=last --layout=inverted --suppress-size"
-
 # ======= Custom Shortcuts =========
 # These are new custom workflows/shortcuts
 
