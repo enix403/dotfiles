@@ -325,7 +325,8 @@
         "scminput": false,
         "python": false,
         "sql": false,
-        "coffeescript": false
+        "coffeescript": false,
+        "jsonc": false
     },
 
     "cursor.cpp.disabledLanguages": [
