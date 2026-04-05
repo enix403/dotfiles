@@ -1,4 +1,41 @@
 {
+    /* ================================================= */
+    /* ================================================= */
+    /* =============== PLATFORM SPECIFIC =============== */
+    /* ================================================= */
+    /* ================================================= */
+
+    /* ======================================= */
+    /* ============ Major Visuals ============ */
+    /* ======================================= */
+
+    // ----- UI Mod from Custom UI Style Extension -----
+    "custom-ui-style.font.sansSerif": "'Maple Mono', sans-serif",
+
+    "window.zoomLevel": 0.05,
+
+    "editor.fontFamily": "Maple Mono",
+    "editor.lineHeight": 1.45,
+    "editor.fontSize": 13,
+    // "editor.letterSpacing": -0.25,
+    // -----------------
+    // "editor.fontFamily": "Rec Mono Casual",
+    // "editor.fontSize": 14,
+    // // "editor.lineHeight": 1.35,
+    // "editor.lineHeight": 1.6,
+    // "editor.letterSpacing": -0.5,
+    // -----------------
+    // "editor.fontFamily": "Google Sans Code",
+    // "editor.lineHeight": 1.5,
+    // "editor.fontSize": 13,
+    // "editor.letterSpacing": -0.25,
+
+    /* ================================================ */
+    /* ================================================ */
+    /* ================ CROSS PLATFORM ================ */
+    /* ================================================ */
+    /* ================================================ */
+
     /* =================================== */
     /* ============ Behaviour ============ */
     /* =================================== */
@@ -59,31 +96,6 @@
     "diffEditor.ignoreTrimWhitespace": false,
 
     "git.openRepositoryInParentFolders": "never",
-
-    /* ======================================= */
-    /* ============ Major Visuals ============ */
-    /* ======================================= */
-
-    // ----- UI Mod from Custom UI Style Extension -----
-    "custom-ui-style.font.sansSerif": "'Maple Mono', sans-serif",
-
-    "window.zoomLevel": 0.05,
-
-    "editor.fontFamily": "Maple Mono",
-    "editor.lineHeight": 1.45,
-    "editor.fontSize": 13,
-    // "editor.letterSpacing": -0.25,
-    // -----------------
-    // "editor.fontFamily": "Rec Mono Casual",
-    // "editor.fontSize": 14,
-    // // "editor.lineHeight": 1.35,
-    // "editor.lineHeight": 1.6,
-    // "editor.letterSpacing": -0.5,
-    // -----------------
-    // "editor.fontFamily": "Google Sans Code",
-    // "editor.lineHeight": 1.5,
-    // "editor.fontSize": 13,
-    // "editor.letterSpacing": -0.25,
 
     /* ====================================== */
     /* ============ UI Rendering ============ */
