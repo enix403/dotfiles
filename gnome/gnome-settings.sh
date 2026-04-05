@@ -1,5 +1,12 @@
 #!/usr/bin/env bash
 
+# UI
+
+# Disable hot corner (mouse moving to top-left corner shows overview of all windows)
+gsettings set org.gnome.desktop.interface enable-hot-corners false
+
+# -------------
+
 # Display
 
 # Disable the abrupt "pre-dimming" of screen after 30 seconds. This delay
