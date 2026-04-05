@@ -1,5 +1,9 @@
 // Place your key bindings in this file to override the defaultsauto[]
 [
+    /* ================================ */
+    /* ======= Multiple Cursors ======= */
+    /* ================================ */
+    // ---- Insert cursor above ----
     {
         "key": "shift+alt+up",
         "command": "editor.action.insertCursorAbove",
@@ -10,6 +14,7 @@
         "command": "-editor.action.insertCursorAbove",
         "when": "editorTextFocus"
     },
+    // ---- Insert cursor below ----
     {
         "key": "shift+alt+down",
         "command": "editor.action.insertCursorBelow",
@@ -20,6 +25,10 @@
         "command": "-editor.action.insertCursorBelow",
         "when": "editorTextFocus"
     },
+    /* ========================== */
+    /* ======= Move Lines ======= */
+    /* ========================== */
+    // ---- Move lines Up ----
     {
         "key": "cmd+shift+up",
         "command": "editor.action.moveLinesUpAction",
@@ -30,6 +39,7 @@
         "command": "-editor.action.moveLinesUpAction",
         "when": "editorTextFocus && !editorReadonly"
     },
+    // ---- Move lines Down ----
     {
         "key": "cmd+shift+down",
         "command": "editor.action.moveLinesDownAction",
@@ -40,6 +50,10 @@
         "command": "-editor.action.moveLinesDownAction",
         "when": "editorTextFocus && !editorReadonly"
     },
+    /* =============================== */
+    /* ======= Navigation/Def  ======= */
+    /* =============================== */
+    // ---- Reveal Definition ----
     {
         "key": "shift+cmd+right",
         "command": "editor.action.revealDefinition",
@@ -50,6 +64,7 @@
         "command": "-editor.action.revealDefinition",
         "when": "editorHasDefinitionProvider && editorTextFocus && !isInEmbeddedEditor"
     },
+    // ---- Tab/Editor Navigation ----
     {
         "key": "cmd+alt+right",
         "command": "workbench.action.nextEditor"
@@ -66,6 +81,21 @@
         "key": "cmd+pageup",
         "command": "-workbench.action.previousEditor"
     },
+    // ---- Navigate Back ----
+    {
+        "key": "shift+cmd+left",
+        "command": "workbench.action.navigateBack",
+        "when": "canNavigateBack"
+    },
+    {
+        "key": "browserback",
+        "command": "-workbench.action.navigateBack",
+        "when": "canNavigateBack"
+    },
+    /* ============================== */
+    /* ======= Text Editing   ======= */
+    /* ============================== */
+    // ---- Duplicate Lines ----
     {
         "key": "cmd+shift+d",
         "command": "editor.action.copyLinesDownAction",
@@ -76,6 +106,7 @@
         "command": "-editor.action.copyLinesDownAction",
         "when": "editorTextFocus && !editorReadonly"
     },
+    // ---- Multi-Select Next Match ----
     {
         "key": "cmd+shift+j",
         "command": "editor.action.addSelectionToNextFindMatch",
@@ -86,6 +117,7 @@
         "command": "-editor.action.addSelectionToNextFindMatch",
         "when": "editorFocus"
     },
+    // ---- Commenting ----
     {
         "key": "cmd+shift+/",
         "command": "editor.action.blockComment",
@@ -96,6 +128,7 @@
         "command": "-editor.action.blockComment",
         "when": "editorTextFocus && !editorReadonly"
     },
+    // ---- Formatting ----
     {
         "key": "cmd+alt+l",
         "command": "editor.action.formatDocument",
@@ -106,6 +139,7 @@
         "command": "-editor.action.formatDocument",
         "when": "editorHasDocumentFormattingProvider && editorTextFocus && !editorReadonly && !inCompositeEditor"
     },
+    // ---- Selection Expansion ----
     {
         "key": "cmd+.",
         "command": "editor.action.smartSelect.expand",
@@ -116,6 +150,28 @@
         "command": "-editor.action.smartSelect.expand",
         "when": "editorTextFocus"
     },
+    // ---- Case Transformation ----
+    {
+        "key": "cmd+k cmd+u",
+        "command": "editor.action.transformToUppercase"
+    },
+    {
+        "key": "cmd+k cmd+l",
+        "command": "editor.action.transformToLowercase"
+    },
+    // ---- Toggle Word Wrap ----
+    {
+        "key": "shift+cmd+w",
+        "command": "editor.action.toggleWordWrap"
+    },
+    {
+        "key": "alt+z",
+        "command": "-editor.action.toggleWordWrap"
+    },
+    /* =========================== */
+    /* ======= Workspace    ====== */
+    /* =========================== */
+    // ---- Symbol Search ----
     {
         "key": "cmd+r",
         "command": "workbench.action.gotoSymbol"
@@ -132,18 +188,52 @@
         "key": "cmd+t",
         "command": "-workbench.action.showAllSymbols"
     },
+    // ---- Sidebar/Explorer ----
     {
         "key": "cmd+shift+i",
         "command": "workbench.files.action.showActiveFileInExplorer"
     },
     {
-        "key": "cmd+k cmd+u",
-        "command": "editor.action.transformToUppercase"
+        "key": "cmd+k cmd+d",
+        "command": "workbench.action.toggleSidebarVisibility"
     },
     {
-        "key": "cmd+k cmd+l",
-        "command": "editor.action.transformToLowercase"
+        "key": "cmd+b",
+        "command": "-workbench.action.toggleSidebarVisibility"
     },
+    {
+        "key": "cmd+0",
+        "command": "-workbench.action.focusSideBar"
+    },
+    {
+        "key": "alt+cmd+s",
+        "command": "workbench.action.toggleUnifiedSidebarFromKeyboard",
+        "when": "cursor.agentIdeUnification.enabled == true && !isAuxiliaryWindowFocusedContext"
+    },
+    // ---- Window/Editor Management ----
+    {
+        "key": "cmd+k cmd+w",
+        "command": "workbench.action.closeAllEditors"
+    },
+    {
+        "key": "cmd+r cmd+w",
+        "command": "-workbench.action.closeAllEditors"
+    },
+    {
+        "key": "cmd+w",
+        "command": "-workbench.action.closeWindow",
+        "when": "!editorIsOpen && !multipleEditorGroups"
+    },
+    {
+        "key": "cmd+w",
+        "command": "-workbench.action.closeWindow",
+        "when": "!cursor.agentIdeUnification.enabled && !editorIsOpen && !multipleEditorGroups || currentComposerIsEmpty && cursor.agentIdeUnification.enabled && !editorIsOpen && !multipleEditorGroups"
+    },
+    {
+        "key": "shift+cmd+w",
+        "command": "-workbench.action.closeWindow"
+    },
+    /////////////////// temp
     {
         "key": "cmd+numpad_add",
         "command": "-workbench.action.zoomIn"
@@ -187,14 +277,6 @@
     {
         "key": "cmd+-",
         "command": "editor.action.fontZoomOut"
-    },
-    {
-        "key": "cmd+k cmd+d",
-        "command": "workbench.action.toggleSidebarVisibility"
-    },
-    {
-        "key": "cmd+b",
-        "command": "-workbench.action.toggleSidebarVisibility"
     },
     {
         "key": "cmd+shift+l",
@@ -254,10 +336,6 @@
         "command": "editor.action.fontZoomReset"
     },
     {
-        "key": "cmd+0",
-        "command": "-workbench.action.focusSideBar"
-    },
-    {
         "key": "cmd+space",
         "command": "editor.action.triggerSuggest",
         "when": "editorHasCompletionItemProvider && textInputFocus && !editorReadonly && !suggestWidgetVisible"
@@ -298,19 +376,7 @@
         "key": "cmd+i",
         "command": "-composer.startComposerPrompt"
     },
-    {
-        "key": "cmd+k cmd+w",
-        "command": "workbench.action.closeAllEditors"
-    },
-    {
-        "key": "cmd+r cmd+w",
-        "command": "-workbench.action.closeAllEditors"
-    },
-    {
-        "key": "cmd+w",
-        "command": "-workbench.action.closeWindow",
-        "when": "!editorIsOpen && !multipleEditorGroups"
-    },
+
     {
         "key": "shift+cmd+right",
         "command": "-cursorEndSelect",
@@ -364,15 +430,8 @@
         "key": "shift+cmd+l",
         "command": "-composer.newAgentChat"
     },
-    {
-        "key": "cmd+w",
-        "command": "-workbench.action.closeWindow",
-        "when": "!cursor.agentIdeUnification.enabled && !editorIsOpen && !multipleEditorGroups || currentComposerIsEmpty && cursor.agentIdeUnification.enabled && !editorIsOpen && !multipleEditorGroups"
-    },
-    {
-        "key": "shift+cmd+w",
-        "command": "-workbench.action.closeWindow"
-    },
+
+
     {
         "key": "shift+cmd+left",
         "command": "-cursorHomeSelect",
@@ -389,16 +448,6 @@
         "when": "terminalFocus && terminalShellType == 'pwsh'"
     },
     {
-        "key": "shift+cmd+left",
-        "command": "workbench.action.navigateBack",
-        "when": "canNavigateBack"
-    },
-    {
-        "key": "browserback",
-        "command": "-workbench.action.navigateBack",
-        "when": "canNavigateBack"
-    },
-    {
         "key": "shift+cmd+=",
         "command": "extension.calculate"
     },
@@ -406,18 +455,5 @@
         "key": "cmd+enter",
         "command": "notebook.cell.execute",
         "when": "notebookCellListFocused && notebookMissingKernelExtension && !notebookCellExecuting && notebookCellType == 'code' || notebookCellListFocused && !notebookCellExecuting && notebookCellType == 'code' && notebookKernelCount > 0 || notebookCellListFocused && !notebookCellExecuting && notebookCellType == 'code' && notebookKernelSourceCount > 0"
-    },
-    {
-        "key": "shift+cmd+w",
-        "command": "editor.action.toggleWordWrap"
-    },
-    {
-        "key": "alt+z",
-        "command": "-editor.action.toggleWordWrap"
-    },
-    {
-        "key": "alt+cmd+s",
-        "command": "workbench.action.toggleUnifiedSidebarFromKeyboard",
-        "when": "cursor.agentIdeUnification.enabled == true && !isAuxiliaryWindowFocusedContext"
     }
 ]
