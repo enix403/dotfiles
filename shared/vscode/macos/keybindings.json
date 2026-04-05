@@ -233,15 +233,10 @@
         "key": "shift+cmd+w",
         "command": "-workbench.action.closeWindow"
     },
-    /////////////////// temp
-    {
-        "key": "cmd+numpad_add",
-        "command": "-workbench.action.zoomIn"
-    },
-    {
-        "key": "cmd+numpad_subtract",
-        "command": "-workbench.action.zoomOut"
-    },
+    /* =========================== */
+    /* ======= Terminal     ====== */
+    /* =========================== */
+    // ---- Terminal with CWD ----
     {
         "key": "cmd+shift+o",
         "command": "workbench.action.terminal.newWithCwd",
@@ -258,6 +253,31 @@
         },
         "when": "!editorIsOpen || resourceScheme != 'file'"
     },
+    /* =========================== */
+    /* ======= Zoom/Fonts   ====== */
+    /* =========================== */
+    // ---- Editor Font Zoom ----
+    {
+        "key": "cmd+=",
+        "command": "editor.action.fontZoomIn"
+    },
+    {
+        "key": "cmd+-",
+        "command": "editor.action.fontZoomOut"
+    },
+    {
+        "key": "cmd+0",
+        "command": "editor.action.fontZoomReset"
+    },
+    // ---- Global Workbench Zoom Unbinds ----
+    {
+        "key": "cmd+numpad_add",
+        "command": "-workbench.action.zoomIn"
+    },
+    {
+        "key": "cmd+numpad_subtract",
+        "command": "-workbench.action.zoomOut"
+    },
     {
         "key": "cmd+shift+=",
         "command": "-workbench.action.zoomIn"
@@ -270,23 +290,60 @@
         "key": "cmd+-",
         "command": "-workbench.action.zoomOut"
     },
+    /* ========================== */
+    /* ======= AI/Composer ======= */
+    /* ========================== */
+    // ---- Composer Shortcuts ----
     {
-        "key": "cmd+=",
-        "command": "editor.action.fontZoomIn"
+        "key": "shift+cmd+c",
+        "command": "composer.startComposerPrompt",
     },
     {
-        "key": "cmd+-",
-        "command": "editor.action.fontZoomOut"
+        "key": "cmd+i",
+        "command": "-composer.startComposerPrompt"
     },
     {
-        "key": "cmd+shift+l",
-        "command": "-addCursorsAtSearchResults",
-        "when": "fileMatchOrMatchFocus && searchViewletVisible"
+        "key": "cmd+l",
+        "command": "-aichat.newchataction"
     },
+    {
+        "key": "shift+cmd+l",
+        "command": "-aichat.insertselectionintochat"
+    },
+    {
+        "key": "shift+cmd+l",
+        "command": "-composer.newAgentChat"
+    },
+    /* =========================== */
+    /* ======= Misc/Others  ====== */
+    /* =========================== */
+    // ---- Explorer File Creation ----
+    {
+        "key": "a",
+        "command": "explorer.newFile",
+        "when": "explorerViewletFocus && !inputFocus"
+    },
+    {
+        "key": "shift+a",
+        "command": "explorer.newFolder",
+        "when": "explorerViewletFocus && !inputFocus"
+    },
+    // ---- Snippets/Suggestions ----
     {
         "key": "shift+enter",
         "command": "editor.action.showSnippets"
     },
+    {
+        "key": "cmd+space",
+        "command": "editor.action.triggerSuggest",
+        "when": "editorHasCompletionItemProvider && textInputFocus && !editorReadonly && !suggestWidgetVisible"
+    },
+    {
+        "key": "cmd+space",
+        "command": "-editor.action.triggerSuggest",
+        "when": "editorHasCompletionItemProvider && textInputFocus && !editorReadonly && !suggestWidgetVisible"
+    },
+    // ---- Quick Fix/Hints ----
     {
         "key": "alt+enter",
         "command": "editor.action.quickFix",
@@ -298,16 +355,6 @@
         "when": "editorHasCodeActionsProvider && textInputFocus && !editorReadonly"
     },
     {
-        "key": "cmd+k cmd+p",
-        "command": "extension.saveToHtml",
-        "when": "editorTextFocus"
-    },
-    {
-        "key": "cmd+k ,",
-        "command": "-extension.saveToHtml",
-        "when": "editorTextFocus"
-    },
-    {
         "key": "alt+q",
         "command": "editor.action.triggerParameterHints",
         "when": "editorHasSignatureHelpProvider && editorTextFocus"
@@ -317,33 +364,30 @@
         "command": "-editor.action.triggerParameterHints",
         "when": "editorHasSignatureHelpProvider && editorTextFocus"
     },
+    // ---- Previews/Hover ----
     {
         "key": "alt+w",
         "command": "editor.action.showDefinitionPreviewHover"
     },
+    ///////////////////
+    ///////////////////
+    /////////////////// temp
+    ///////////////////
+    ///////////////////
     {
-        "key": "a",
-        "command": "explorer.newFile",
-        "when": "explorerViewletFocus && !inputFocus"
+        "key": "cmd+shift+l",
+        "command": "-addCursorsAtSearchResults",
+        "when": "fileMatchOrMatchFocus && searchViewletVisible"
     },
     {
-        "key": "shift+a",
-        "command": "explorer.newFolder",
-        "when": "explorerViewletFocus && !inputFocus"
+        "key": "cmd+k cmd+p",
+        "command": "extension.saveToHtml",
+        "when": "editorTextFocus"
     },
     {
-        "key": "cmd+0",
-        "command": "editor.action.fontZoomReset"
-    },
-    {
-        "key": "cmd+space",
-        "command": "editor.action.triggerSuggest",
-        "when": "editorHasCompletionItemProvider && textInputFocus && !editorReadonly && !suggestWidgetVisible"
-    },
-    {
-        "key": "cmd+space",
-        "command": "-editor.action.triggerSuggest",
-        "when": "editorHasCompletionItemProvider && textInputFocus && !editorReadonly && !suggestWidgetVisible"
+        "key": "cmd+k ,",
+        "command": "-extension.saveToHtml",
+        "when": "editorTextFocus"
     },
     {
         "key": "shift+cmd+k",
@@ -357,26 +401,9 @@
     },
     {
         "key": "cmd+l",
-        "command": "-aichat.newchataction"
-    },
-    {
-        "key": "cmd+l",
         "command": "-composer.sendToAgent",
         "when": "editorHasPromptBar && editorPromptBarFocused"
     },
-    {
-        "key": "shift+cmd+l",
-        "command": "-aichat.insertselectionintochat"
-    },
-    {
-        "key": "shift+cmd+c",
-        "command": "composer.startComposerPrompt",
-    },
-    {
-        "key": "cmd+i",
-        "command": "-composer.startComposerPrompt"
-    },
-
     {
         "key": "shift+cmd+right",
         "command": "-cursorEndSelect",
@@ -426,12 +453,6 @@
         "command": "-cursorPageDown",
         "when": "textInputFocus"
     },
-    {
-        "key": "shift+cmd+l",
-        "command": "-composer.newAgentChat"
-    },
-
-
     {
         "key": "shift+cmd+left",
         "command": "-cursorHomeSelect",
