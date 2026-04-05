@@ -38,8 +38,15 @@
 	autoSetupRemote = true
 
 [credential]
-	helper = oauth
-	helper = cache --timeout 2592000
+  helper = cache --timeout 259200 # 72 hours / 3 days
+  helper = "!f() { \
+    if [ \"$(uname)\" = \"Darwin\" ]; then \
+        git credential-osxkeychain $@; \
+    else \
+        git credential-libsecret $@; \
+    fi; \
+  }; f"
+	helper = oauth # use "oauth -device" if you are running e.g over ssh and cannot open browser
 
 # ================
 # Config for Delta
