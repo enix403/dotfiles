@@ -31,7 +31,7 @@ typeset -U PATH
 # ===================
 
 export ZSH="$HOME/.oh-my-zsh"
-export ZSH_CUSTOM="$HOME/.config/oh-my-zsh-custom"
+export ZSH_CUSTOM="$HOME/.config/omz"
 
 # Prevent OMZ from changing title. TODO: why is this here btw ? is it needed ?
 DISABLE_AUTO_TITLE="true"
@@ -42,10 +42,10 @@ DISABLE_UNTRACKED_FILES_DIRTY="true"
 plugins=(
     colored-man-pages
 
-    # git submodule add https://github.com/Aloxaf/fzf-tab.git oh-my-zsh-custom/plugins/fzf-tab
+    # git submodule add https://github.com/Aloxaf/fzf-tab.git omz/plugins/fzf-tab
     fzf-tab
 
-    # git submodule add https://github.com/zsh-users/zsh-syntax-highlighting.git oh-my-zsh-custom/plugins/zsh-syntax-highlighting
+    # git submodule add https://github.com/zsh-users/zsh-syntax-highlighting.git omz/plugins/zsh-syntax-highlighting
     # zsh-syntax-highlighting must come at end
     zsh-syntax-highlighting
 )
