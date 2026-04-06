@@ -198,6 +198,7 @@ alias kbv='(cd ~/kb; nvim .)'
 
 alias g="git"
 alias sclone="git clone --depth 1 --single-branch"
+alias tclone="git clone --filter=tree:0 --depth=1 --no-checkout"
 function userignore() {
   local git_root;
   git_root=$(git rev-parse --show-toplevel) || return $?;
