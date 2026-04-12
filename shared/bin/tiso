@@ -1,0 +1,30 @@
+#!/usr/bin/env bun
+
+// =====================================
+// ====== tiso — ISO 8601 from Unix ====
+// =====================================
+//
+// Usage: tiso [unix_seconds]
+//
+// No args  → prints the current time in ISO 8601 UTC
+// With arg → converts the given unix timestamp (seconds) to ISO 8601 UTC
+//
+// Output format: 2026-04-12T17:43:41Z
+
+const input = Bun.argv[2]?.trim();
+
+if (!input) {
+  // No argument — use current time
+  console.log(new Date().toISOString().replace(/\.\d+Z$/, "Z"));
+  process.exit(0);
+}
+
+const seconds = Number(input);
+
+if (!Number.isFinite(seconds)) {
+  console.error(`Invalid unix timestamp: ${input}`);
+  process.exit(1);
+}
+
+// Convert seconds to milliseconds, build ISO string, strip fractional seconds
+console.log(new Date(seconds * 1000).toISOString().replace(/\.\d+Z$/, "Z"));

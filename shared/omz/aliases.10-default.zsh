@@ -158,35 +158,6 @@ function st() {
   date '+%I:%M %p, %A '$(date +%d | awk '{d=$1+0; if (d%10==1 && d!=11) s="st"; else if (d%10==2 && d!=12) s="nd"; else if (d%10==3 && d!=13) s="rd"; else s="th"; printf "%02d%s", d, s;}')', %b %Y';
 }
 
-# Convert Unix timestamp to ISO 8601 UTC
-function tiso() {
-  local input=${1:-$(date +%s)}
-
-  if date --version >/dev/null 2>&1; then
-    # GNU (Linux)
-    date -u -d "@$input" +"%Y-%m-%dT%H:%M:%SZ"
-  else
-    # BSD (macOS)
-    date -u -r "$input" +"%Y-%m-%dT%H:%M:%SZ"
-  fi
-}
-
-# Convert ISO 8601 UTC string to Unix timestamp
-function tunix() {
-  local input="$1"
-  if [[ -z "$input" ]]; then
-    date +%s
-    return
-  fi
-
-  if date --version >/dev/null 2>&1; then
-    # GNU (Linux)
-    date -u -d "$input" +%s
-  else
-    # BSD (macOS)
-    date -u -j -f "%Y-%m-%dT%H:%M:%SZ" "$input" "+%s"
-  fi
-}
 
 alias kb='cd ~/kb'
 alias kbv='(cd ~/kb; nvim .)'

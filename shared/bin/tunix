@@ -1,0 +1,131 @@
+#!/usr/bin/env bun
+
+// ===================================
+// ====== tunix — Unix Time Tool =====
+// ===================================
+//
+// Usage: tunix [timestamp]
+//
+// No args  → prints the current unix time (seconds since epoch)
+// With arg → parses the given timestamp string into unix time
+//
+// Accepts a wide variety of timestamp formats including:
+//   20260412T174341Z              compact ISO, no dashes/colons
+//   2026-04-12T174341Z            dashed date, compact time
+//   2026-04-12T17:43:41Z          standard ISO 8601
+//   2026-04-12T17.43.41Z          dots as time separators
+//   2026-04-12 17:43:41           space-separated, no timezone
+//   2026-04-12 17:43:41 +0000     with numeric offset
+//   2026-04-12T17:43:41+05:30     offset with colon
+//   2026-04-12 5:43 PM            12-hour with AM/PM
+//   2026-04-12 17:43              no seconds
+//   2026-04-12                    date only (midnight)
+//   2026-04-12 12:09:22.000 -0800 fractional seconds + offset
+//
+// Rules:
+//   - If no timezone/offset is given, UTC is assumed
+//   - Fractional seconds are accepted but truncated (output is whole seconds)
+//   - Irregular spacing between components is handled gracefully
+
+// Join all argv into one string so shell-split inputs like
+// `tunix 2026-04-12 17:43:41 +0000` (3 separate args) are reassembled
+const input = Bun.argv.slice(2).join(" ").trim();
+
+// No input → just output current unix time
+if (!input) {
+  console.log(Math.floor(Date.now() / 1000).toString());
+  process.exit(0);
+}
+
+function parseTimestamp(raw) {
+  // Normalize: trim and collapse all runs of whitespace into single spaces
+  let s = raw.trim().replace(/\s+/g, " ");
+
+  // ------------------------------------------
+  // Step 1: Extract timezone offset from the end
+  // ------------------------------------------
+  // Default to UTC (offset = 0) if nothing is found.
+  // Handles: Z, z, +0000, +00:00, -0800, -08:00, +0530, +05:30, etc.
+  let offsetMinutes = 0;
+
+  if (/Z$/i.test(s)) {
+    // Zulu / UTC indicator — just strip it
+    s = s.slice(0, -1).trim();
+  } else {
+    // Try to match a numeric offset at the end: [+-]H:?MM or [+-]HH:?MM
+    const m = s.match(/([+-])(\d{1,2}):?(\d{2})\s*$/);
+    if (m) {
+      const sign = m[1] === "+" ? 1 : -1;
+      offsetMinutes = sign * (parseInt(m[2]) * 60 + parseInt(m[3]));
+      // Remove the matched offset from the string so it doesn't interfere with time parsing
+      s = s.slice(0, m.index).trim();
+    }
+  }
+
+  // ------------------------------------------
+  // Step 2: Extract the date portion
+  // ------------------------------------------
+  // Matches both dashed (2026-04-12) and compact (20260412) forms
+  const dm = s.match(/^(\d{4})-?(\d{2})-?(\d{2})/);
+  if (!dm) {
+    console.error(`Cannot parse date from: ${raw}`);
+    process.exit(1);
+  }
+
+  const year = parseInt(dm[1]);
+  const month = parseInt(dm[2]);
+  const day = parseInt(dm[3]);
+
+  // Remove the date and the optional T/space separator between date and time
+  // Handles: "T", " T ", " ", or nothing between date and time
+  let rest = s.slice(dm[0].length).replace(/^\s*T?\s*/i, "");
+
+  // ------------------------------------------
+  // Step 3: Parse the time portion (if present)
+  // ------------------------------------------
+  // If no time is given (date-only input), defaults to midnight 00:00:00
+  let hours = 0, minutes = 0, seconds = 0;
+
+  if (rest) {
+    // --- 12-hour format ---
+    // Matches: 5:43 PM, 12:00 AM, 5:43:41 PM, 5:43:41.999 PM
+    // The fractional seconds (\.\d+) are captured but discarded
+    const ap = rest.match(/^(\d{1,2}):(\d{2})(?::(\d{2})(?:\.\d+)?)?\s*(AM|PM)$/i);
+    if (ap) {
+      hours = parseInt(ap[1]);
+      minutes = parseInt(ap[2]);
+      seconds = parseInt(ap[3] || "0");
+      // Convert 12-hour to 24-hour:
+      //   12 PM = 12 (noon), 1 PM = 13, ..., 11 PM = 23
+      //   12 AM = 0 (midnight), 1 AM = 1, ..., 11 AM = 11
+      if (ap[4].toUpperCase() === "PM" && hours !== 12) hours += 12;
+      if (ap[4].toUpperCase() === "AM" && hours === 12) hours = 0;
+    } else {
+      // --- 24-hour format ---
+      // Separators between H:M:S can be colons or dots (or nothing for compact form)
+      // Matches: 17:43:41, 17.43.41, 174341, 1743, 17:43, 5:43:41, 17:43:41.123456
+      // The fractional seconds (\.\d+) are captured but discarded
+      const tm = rest.match(/^(\d{1,2})[:.]?(\d{2})[:.]?(\d{2})?(?:\.\d+)?$/);
+      if (tm) {
+        hours = parseInt(tm[1]);
+        minutes = parseInt(tm[2]);
+        seconds = parseInt(tm[3] || "0");
+      } else {
+        console.error(`Cannot parse time from: ${rest}`);
+        process.exit(1);
+      }
+    }
+  }
+
+  // ------------------------------------------
+  // Step 4: Build UTC date and apply offset
+  // ------------------------------------------
+  // Construct the date as if the parsed components are in the input's local time,
+  // then subtract the offset to convert to true UTC.
+  // e.g. 17:43:41 +05:30 → UTC is 17:43:41 minus 5h30m = 12:13:41 UTC
+  const date = new Date(Date.UTC(year, month - 1, day, hours, minutes, seconds));
+  date.setUTCMinutes(date.getUTCMinutes() - offsetMinutes);
+  return Math.floor(date.getTime() / 1000);
+}
+
+console.log(parseTimestamp(input).toString());
