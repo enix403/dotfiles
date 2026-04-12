@@ -18,7 +18,7 @@ export PATH="$PATH:$HOME/.cargo/bin"
 # brew install openssl readline sqlite3 xz tcl-tk@8 libb2 zstd zlib pkgconfig pyenv
 PYENV_ROOT="$HOME/.pyenv"
 [[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init - zsh)"
+[[ -d $PYENV_ROOT/bin ]] && eval "$(pyenv init - zsh)"
 
 # ----------------
 # Mise (my own one)
