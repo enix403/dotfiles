@@ -6,6 +6,7 @@
   br = branch
   st = status
   stu = status -uno
+  sti = status --ignored
   co = checkout
   cm = commit
   cp = cherry-pick

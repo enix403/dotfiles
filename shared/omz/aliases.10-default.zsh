@@ -10,7 +10,7 @@ alias la="ls -A"
 alias l1="LC_COLLATE=C \ls --color=auto -1h --group-directories-first"
 alias la1="l1 -A"
 alias cls="clear"
-alias where="which"
+alias {where,wr}="which"
 alias mkd="mkdir"
 alias mkf="touch"
 function mke() {
@@ -116,6 +116,8 @@ alias bty="bat -l yaml"
 
 alias otj="otree -t json"
 alias oty="otree -t yaml"
+
+alias rscopy="rsync --stats -haz --info=progress2 --no-i-r"
 
 # alias kff="killall -9 firefox"
 
@@ -331,6 +333,7 @@ alias jconv="jupyter nbconvert --to script"
 
 alias bz="bazel"
 alias bzt="bazel test --test_output=all --test_arg=-test.v --cache_test_results=no --runs_per_test=1 --local_test_jobs=1"
+alias bzts="bazel test --test_output=all --test_arg=-test.v --cache_test_results=no --runs_per_test=1 --local_test_jobs=1 --test_arg=-test.short"
 
 # ========== VSCode/Cursor ==========
 
