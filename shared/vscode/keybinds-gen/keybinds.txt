@@ -1,0 +1,335 @@
+// ============================================================================
+// VSCode keybinds — canonical, OS-agnostic source of truth.
+// ============================================================================
+//
+// Modifiers:
+//   mod    -> cmd  (macOS) / ctrl (Linux)   [bottom-left physical key]
+//   super  -> alt  (macOS) / meta (Linux)   [next physical key over]
+//   alt    -> alt on both (physical Alt on Linux; unused on macOS)
+//   shift  -> shift
+//   Escape hatches: literal `ctrl`, `cmd`, `meta` pass through unchanged.
+//
+// Line syntax:
+//   <chord> [<chord>...] -> <command>
+//      [os: <target>] [app: <name>] [when: <expr>] [args: <json>]
+//
+// Auto-unbind (applied to every positive, non-app-scoped DSL bind):
+//   - Chord-based: defaults at the new chord are unbound.
+//   - Command-based (move semantics): the command is also unbound at its
+//     original default chord(s) in each OS — so moving a command to a new
+//     chord clears its old home automatically and cross-platform.
+//
+// Special forms:
+//   - `<command>` starting with `-` is a **targeted unbind** (no auto-unbind).
+//     Use for: pure chord disables, or unbinding commands not in the
+//     upstream VSCode defaults (extensions like Cursor's composer/aichat).
+//   - A line starting with `{ ... }` is a **raw JSON** pass-through; an
+//     optional trailing `os: <target>` and/or `app: <name>` applies.
+//
+// Per-app scope:
+//   A bind tagged `app: <name>` goes ONLY into keybinds.<name>.<os>.json,
+//   never the base keybinds.<os>.json file. App-tagged binds do NOT get
+//   auto-unbind — pair them with targeted unbinds as needed. Each `app: X`
+//   used anywhere in this file causes a keybinds.X.<os>.json pair to be
+//   generated; a single bind can target at most one app.
+//
+// Comments: `#` or `//` line, `/* ... */` block.
+// A line starting with whitespace continues the previous logical entry.
+// ============================================================================
+
+
+// ============================================================================
+// SYNTAX REFERENCE — concrete examples of every feature.
+// (These are all inside // line comments, so the parser ignores them.)
+// ============================================================================
+//
+// ---- 1. Minimal bind: chord -> command -----------------------------------
+//   mod+s  -> workbench.action.files.save
+//
+// ---- 2. Modifier translation (canonical names) ---------------------------
+//   mod          = cmd  on macOS, ctrl on Linux
+//   super        = alt  on macOS (Option), meta on Linux (Win)
+//   alt          = alt  on both (physical Alt; rarely used on macOS)
+//   shift        = shift
+//
+//   mod+shift+s     -> workbench.action.files.saveAs
+//   shift+super+up  -> editor.action.insertCursorAbove   when: editorTextFocus
+//   alt+x           -> some.command                       // physical Alt key
+//
+// ---- 3. Escape hatches: literal modifiers pass through unchanged ---------
+//   ctrl+c  -> workbench.action.terminal.sendSequence  when: terminalFocus \
+//             args: {"text": "\u0003"}
+//   cmd+q   -> workbench.action.quit            os: macos   // literal cmd
+//   meta+e  -> workbench.view.explorer.focus    os: linux   // literal meta
+//
+// ---- 4. Chord sequences (space-separated chords) -------------------------
+//   mod+k mod+s  -> workbench.action.openGlobalKeybindings
+//   mod+k ,      -> editor.action.openSettings                // single-key 2nd chord
+//
+// ---- 5. `when:` clause (any VSCode context expression) -------------------
+//   mod+shift+l  -> editor.action.selectHighlights  when: editorTextFocus
+//   mod+enter    -> notebook.cell.execute \
+//       when: notebookCellListFocused && !notebookCellExecuting && notebookCellType == 'code'
+//
+// ---- 6. `args:` clause (JSON; must be the LAST label) --------------------
+//   mod+shift+p  -> workbench.action.quickOpen  args: {"prefix": "@"}
+//
+// ---- 7. `os:` label — restrict to one OS (macos | linux | both) ----------
+//   cmd+q       -> workbench.action.showCommands   os: macos
+//   ctrl+alt+t  -> workbench.action.terminal.new   os: linux
+//   mod+y       -> some.command                     os: both    // same as omitting
+//
+// ---- 8. `app:` label — restrict to one app, free-form name ---------------
+//   (Each distinct `app: X` generates keybinds.X.<os>.json alongside the
+//    base file. App-tagged binds do NOT trigger auto-unbind.)
+//   mod+shift+c  -> composer.startComposerPrompt  app: cursor
+//   mod+shift+x  -> vim.reload                    app: vscode-vim
+//
+// ---- 9. All labels together — fixed order: os, app, when, args -----------
+//   mod+k mod+s  -> my.custom.action \
+//       os: macos  app: cursor  when: editorFocus  args: {"id": 1}
+//
+// ---- 10. Targeted unbind (command prefixed with `-`) ---------------------
+//   (Disables one specific command at that chord; does NOT trigger
+//    auto-unbind of other defaults at the same chord.)
+//   mod+l        -> -aichat.newchataction                   app: cursor
+//   mod+\        -> -workbench.action.splitEditor            // chord disable
+//   pageup       -> -cursorPageUp    when: textInputFocus    // scoped disable
+//
+// ---- 11. Raw JSON pass-through -------------------------------------------
+//   (For VSCode keybind fields not covered by the DSL — paste the object
+//    verbatim. Modifier translation still applies to `key`; everything else
+//    passes through. No auto-unbind.)
+//   { "key": "mod+shift+e", "command": "workbench.view.explorer", "any-new-field": "x" }
+//   { "key": "mod+j", "command": "my.action" } os: linux
+//   { "key": "mod+k", "command": "my.action" } app: cursor
+//   { "key": "mod+n", "command": "my.action" } os: macos app: cursor   // both labels OK, any order
+//
+// ---- 12. Continuation lines (indent = continue previous entry) -----------
+//   mod+shift+o  -> workbench.action.terminal.newWithCwd
+//       when: editorIsOpen && resourceScheme == 'file'
+//       args: {"cwd": "${fileDirname}"}
+//
+// ---- 13. Comments --------------------------------------------------------
+//   # Hash line comment
+//   // Slash-slash line comment
+//   /* Block comment
+//      spanning multiple lines */
+//   mod+s -> foo      # trailing hash comment (stripped)
+//   mod+s -> foo      // trailing slash comment (stripped)
+//
+// ---- 14. Auto-unbind behavior (implicit on every positive, non-app bind) -
+//   Example: `mod+shift+d -> editor.action.copyLinesDownAction` produces:
+//     - Chord-based unbind: every default at mod+shift+d is unbound per OS.
+//     - Command-based unbind: copyLinesDownAction is unbound at its default
+//       chord per OS — shift+alt+cmd+down on macOS, ctrl+shift+alt+down on
+//       Linux — so moving the command clears its old home cross-platform.
+//   Opt out by using: `-command` targeted unbind, raw JSON, or `app:` tag.
+//
+// ---- 15. Dedup -----------------------------------------------------------
+//   If an explicit `-command` matches an auto-emitted unbind at the same
+//   (key, command, when), only one entry is kept — safe to write both.
+// ============================================================================
+
+
+// ============================================================================
+// Global disables / clean-ups
+//   Chords or commands disabled outright, with no replacement binding.
+//   (Kept as explicit targeted unbinds because no positive exists to drive
+//   command-based auto-unbind.)
+// ============================================================================
+
+// ---- Terminal / editor split ----
+mod+\  -> -workbench.action.splitEditor
+mod+\  -> -workbench.action.terminal.split
+   when: terminalFocus && terminalProcessSupported || terminalFocus && terminalWebExtensionContributedProfile
+mod+\  -> -workbench.action.terminal.splitActiveTab
+   when: terminalProcessSupported && terminalTabsFocus
+
+// ---- Interactive editor / cursor top-bottom ----
+mod+up    -> -cursorTop                         when: textInputFocus
+mod+up    -> -interactive.scrollToTop           when: activeEditor == 'workbench.editor.interactive'
+mod+down  -> -cursorBottom                      when: textInputFocus
+mod+down  -> -interactive.scrollToBottom        when: activeEditor == 'workbench.editor.interactive'
+
+// ---- Page up/down (don't move the cursor on these) ----
+pageup    -> -cursorPageUp                      when: textInputFocus
+pagedown  -> -cursorPageDown                    when: textInputFocus
+
+// ---- Workbench zoom (we use editor font zoom instead, see below) ----
+mod+numpad_add       -> -workbench.action.zoomIn
+mod+numpad_subtract  -> -workbench.action.zoomOut
+
+// ---- Close window (reserve mod+w for tab close, never the whole window) ----
+mod+w  -> -workbench.action.closeWindow
+   when: !editorIsOpen && !multipleEditorGroups
+mod+w  -> -workbench.action.closeWindow
+   when: !cursor.agentIdeUnification.enabled && !editorIsOpen && !multipleEditorGroups || currentComposerIsEmpty && cursor.agentIdeUnification.enabled && !editorIsOpen && !multipleEditorGroups
+
+
+// ============================================================================
+// Multiple cursors
+// ============================================================================
+
+shift+super+up    -> editor.action.insertCursorAbove  when: editorTextFocus
+shift+super+down  -> editor.action.insertCursorBelow  when: editorTextFocus
+
+
+// ============================================================================
+// Move lines  (old default chord cleared by command-based auto-unbind)
+// ============================================================================
+
+mod+shift+up    -> editor.action.moveLinesUpAction    when: editorTextFocus && !editorReadonly
+mod+shift+down  -> editor.action.moveLinesDownAction  when: editorTextFocus && !editorReadonly
+
+
+// ============================================================================
+// Navigation: Go to Definition / Editor tabs / Navigate Back
+// ============================================================================
+
+mod+shift+right  -> editor.action.revealDefinition
+   when: editorHasDefinitionProvider && editorTextFocus && !isInEmbeddedEditor && !hasNonEmptySelection && !hasMultipleSelections
+
+mod+super+right  -> workbench.action.nextEditor
+mod+super+left   -> workbench.action.previousEditor
+
+mod+shift+left  -> workbench.action.navigateBack  when: canNavigateBack
+
+
+// ============================================================================
+// Text editing
+// ============================================================================
+
+// ---- Duplicate line down ----
+mod+shift+d  -> editor.action.copyLinesDownAction  when: editorTextFocus && !editorReadonly
+
+// ---- Multi-select next match ----
+mod+shift+j  -> editor.action.addSelectionToNextFindMatch  when: editorFocus
+
+// ---- Block comment ----
+mod+shift+/  -> editor.action.blockComment  when: editorTextFocus && !editorReadonly
+
+// ---- Format document ----
+mod+super+l  -> editor.action.formatDocument
+   when: editorHasDocumentFormattingProvider && editorTextFocus && !editorReadonly && !inCompositeEditor
+
+// ---- Smart-select expand ----
+mod+.  -> editor.action.smartSelect.expand  when: editorTextFocus
+
+// ---- Case transform ----
+mod+k mod+u  -> editor.action.transformToUppercase
+mod+k mod+l  -> editor.action.transformToLowercase
+
+// ---- Toggle word wrap ----
+mod+shift+w  -> editor.action.toggleWordWrap
+
+
+// ============================================================================
+// Symbols / Workspace / Sidebar / Tabs
+// ============================================================================
+
+// ---- Symbol search ----
+mod+r        -> workbench.action.gotoSymbol
+mod+shift+r  -> workbench.action.showAllSymbols
+
+// ---- Reveal active file in Explorer ----
+mod+shift+i  -> workbench.files.action.showActiveFileInExplorer
+
+// ---- Toggle sidebar ----
+mod+k mod+d  -> workbench.action.toggleSidebarVisibility
+
+// ---- Close all editors ----
+mod+k mod+w  -> workbench.action.closeAllEditors
+
+
+// ============================================================================
+// Terminal — new terminal with CWD on mod+shift+o
+// ============================================================================
+
+mod+shift+o  -> workbench.action.terminal.newWithCwd
+   when: editorIsOpen && resourceScheme == 'file'
+   args: {"cwd": "${fileDirname}"}
+
+mod+shift+o  -> workbench.action.terminal.newWithCwd
+   when: !editorIsOpen || resourceScheme != 'file'
+   args: {"cwd": "${workspaceFolder}"}
+
+
+// ============================================================================
+// Zoom / Fonts — editor-level zoom on mod+= / mod+- / mod+0
+// ============================================================================
+
+mod+=  -> editor.action.fontZoomIn
+mod+-  -> editor.action.fontZoomOut
+mod+0  -> editor.action.fontZoomReset
+
+
+// ============================================================================
+// AI / Composer (Cursor-only — these commands don't exist in vanilla VSCode,
+// so the binds live in keybinds.cursor.<os>.json only)
+// ============================================================================
+
+// ---- Start composer prompt ----
+mod+shift+c  -> composer.startComposerPrompt               app: cursor
+mod+i        -> -composer.startComposerPrompt              app: cursor
+
+// ---- Silence unused AI chords ----
+mod+l        -> -aichat.newchataction                      app: cursor
+mod+l        -> -composer.sendToAgent                      app: cursor
+   when: editorHasPromptBar && editorPromptBarFocused
+mod+shift+l  -> -aichat.insertselectionintochat            app: cursor
+mod+shift+l  -> -composer.newAgentChat                     app: cursor
+mod+shift+k  -> -aipopup.action.modal.generate             app: cursor
+   when: editorFocus && !composerBarIsVisible
+mod+shift+k  -> -editor.action.inlineDiffs.focusEditor     app: cursor
+   when: editorHasPromptBar && editorPromptBarFocused
+
+// `addCursorsAtSearchResults` IS a VSCode default, so this targeted unbind
+// lives in the base file and applies to both VSCode and Cursor.
+mod+shift+l  -> -addCursorsAtSearchResults
+   when: fileMatchOrMatchFocus && searchViewletVisible
+
+
+// ============================================================================
+// Explorer / Snippets / Suggestions / Quick fix / Hover
+// ============================================================================
+
+// ---- Explorer: single-letter file/folder creation ----
+a        -> explorer.newFile    when: explorerViewletFocus && !inputFocus
+shift+a  -> explorer.newFolder  when: explorerViewletFocus && !inputFocus
+
+// ---- Snippets & suggest widgets ----
+shift+enter  -> editor.action.showSnippets
+mod+space    -> editor.action.triggerSuggest
+   when: editorHasCompletionItemProvider && textInputFocus && !editorReadonly && !suggestWidgetVisible
+
+// ---- Quick fix ----
+super+enter  -> editor.action.quickFix
+   when: editorHasCodeActionsProvider && textInputFocus && !editorReadonly
+
+// ---- Parameter hints ----
+super+q  -> editor.action.triggerParameterHints
+   when: editorHasSignatureHelpProvider && editorTextFocus
+
+// ---- Hover / definition preview ----
+super+w  -> editor.action.showDefinitionPreviewHover
+
+
+// ============================================================================
+// Extensions / Custom
+// ============================================================================
+
+// ---- saveToHtml (extension command, so its old chord must be cleared manually) ----
+mod+k mod+p  -> extension.saveToHtml  when: editorTextFocus
+mod+k ,      -> -extension.saveToHtml when: editorTextFocus
+
+// ---- Calculator extension ----
+mod+shift+=  -> extension.calculate
+
+
+// ============================================================================
+// Notebooks
+// ============================================================================
+
+mod+enter  -> notebook.cell.execute
+   when: notebookCellListFocused && notebookMissingKernelExtension && !notebookCellExecuting && notebookCellType == 'code' || notebookCellListFocused && !notebookCellExecuting && notebookCellType == 'code' && notebookKernelCount > 0 || notebookCellListFocused && !notebookCellExecuting && notebookCellType == 'code' && notebookKernelSourceCount > 0
