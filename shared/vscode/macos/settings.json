@@ -66,7 +66,7 @@
         "*.conf": "shellscript",
         "*.kt": "gradle-kotlin-dsl",
         "*.ctl": "sql",
-        "*.devshell": "shellscript"
+        "*.devshell": "shellscript",
     },
     "files.exclude": {
         "**/.git": true,
@@ -498,5 +498,12 @@
     // ==========================
 
     // keeping it here since vscode/cursor often like to move it to end anyway
-    "workbench.colorTheme": "Best Themes - Gruvbox Concoctis Dark"
+    "workbench.colorTheme": "Best Themes - Gruvbox Concoctis Dark",
+    "claudeCode.preferredLocation": "panel",
+    "notebook.cellToolbarLocation": {
+        "default": "right",
+        "jupyter-notebook": "right"
+    },
+    "kotlin.languageServer.enabled": false,
+    "kotlin.debugAdapter.enabled": false
 }

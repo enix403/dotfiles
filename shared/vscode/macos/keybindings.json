@@ -297,12 +297,6 @@
         "command": "-workbench.action.focusSideBar"
     },
     {
-        "key": "alt+cmd+s",
-        "command": "workbench.action.toggleUnifiedSidebarFromKeyboard",
-        "when": "cursor.agentIdeUnification.enabled == true && !isAuxiliaryWindowFocusedContext"
-    },
-    // ---- Window/Editor Management ----
-    {
         "key": "cmd+k cmd+w",
         "command": "workbench.action.closeAllEditors"
     },

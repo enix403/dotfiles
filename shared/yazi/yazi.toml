@@ -1,3 +1,7 @@
 [tasks]
 # increase image preview limit to 10000x10000 images
 image_bound = [ 10000, 10000 ]
+
+[preview]
+max_width = 2000   # in pixels
+max_height = 2000  # in pixels

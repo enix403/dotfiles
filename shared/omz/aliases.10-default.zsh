@@ -38,8 +38,9 @@ alias rscopy="rsync -av --progress"
 alias mnt='sudo mount -o umask=0022,gid="$GID",uid="$UID"' # mount with user previliges
 alias {bat,bt}='bat --theme="Catppuccin Mocha" --style=plain'
 alias feh="feh --scale-down --auto-zoom --draw-filename --action9 \";feh --bg-scale '%f'\""
-alias fdf="fd -t f -H"
-alias fdd="fd -t d -H"
+alias fd="fd --one-file-system --hidden --no-ignore-vcs"
+alias fdf="fd --one-file-system --hidden --no-ignore-vcs -t f"
+alias fdd="fd --one-file-system --hidden --no-ignore-vcs -t d"
 
 # I learned this the hard way... :)
 function rm() {
