@@ -441,15 +441,6 @@ def generate_for_os(
     for d in defaults:
         defaults_by_command.setdefault(d.command, []).append(d)
 
-    # Chord-based auto-unbind: for each chord the user rebinds, unbind all
-    # defaults that live on that exact chord in this OS.
-    unbind_norms: dict[tuple, str] = {}  # norm -> resolved key string
-    for b in dsl_positives:
-        resolved_key = resolve_for_os(b.key, target_os)
-        norm = normalize_chord_sequence(resolved_key)
-        if norm not in unbind_norms:
-            unbind_norms[norm] = resolved_key
-
     entries: list[dict[str, object]] = []
     emitted_unbinds: set[tuple[str, str, str | None]] = set()
 
@@ -465,9 +456,17 @@ def generate_for_os(
             entry["when"] = when
         entries.append(entry)
 
-    # 1. Chord-based unbinds.
-    for norm, resolved_key in unbind_norms.items():
-        for d in [d for d in defaults if d.norm == norm]:
+    # 1. Chord-based unbinds: for each chord the user rebinds, unbind only
+    #    defaults that live on that exact chord AND share the same `when`
+    #    clause, so defaults on the same chord in a different context
+    #    (e.g. a terminal default vs. a notebook rebind on cmd+enter) are
+    #    preserved. Two missing `when`s count as a match.
+    for b in dsl_positives:
+        resolved_key = resolve_for_os(b.key, target_os)
+        norm = normalize_chord_sequence(resolved_key)
+        for d in defaults:
+            if d.norm != norm or d.when != b.when:
+                continue
             _emit_unbind(resolved_key, d.command, d.when)
 
     # 2. Command-based unbinds (move semantics). For each positive, look up

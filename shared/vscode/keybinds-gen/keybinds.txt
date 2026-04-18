@@ -14,7 +14,10 @@
 //      [os: <target>] [app: <name>] [when: <expr>] [args: <json>]
 //
 // Auto-unbind (applied to every positive, non-app-scoped DSL bind):
-//   - Chord-based: defaults at the new chord are unbound.
+//   - Chord-based: defaults at the new chord are unbound ONLY where their
+//     `when` clause matches the new bind's `when` exactly (both missing
+//     also counts as a match) — defaults on the same chord in a different
+//     context are left intact.
 //   - Command-based (move semantics): the command is also unbound at its
 //     original default chord(s) in each OS — so moving a command to a new
 //     chord clears its old home automatically and cross-platform.
@@ -120,7 +123,11 @@
 //
 // ---- 14. Auto-unbind behavior (implicit on every positive, non-app bind) -
 //   Example: `mod+shift+d -> editor.action.copyLinesDownAction` produces:
-//     - Chord-based unbind: every default at mod+shift+d is unbound per OS.
+//     - Chord-based unbind: defaults at mod+shift+d whose `when` clause
+//       matches this bind's `when` (here: both none) are unbound per OS.
+//       Defaults on the same chord with a different `when` survive —
+//       e.g. binding `mod+enter -> foo when: editorTextFocus` will not
+//       unbind a default `mod+enter` that fires in the terminal or chat.
 //     - Command-based unbind: copyLinesDownAction is unbound at its default
 //       chord per OS — shift+alt+cmd+down on macOS, ctrl+shift+alt+down on
 //       Linux — so moving the command clears its old home cross-platform.
