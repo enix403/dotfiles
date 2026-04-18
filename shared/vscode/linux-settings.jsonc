@@ -499,5 +499,5 @@
     // ==========================
 
     // keeping it here since vscode/cursor often like to move it to end anyway
-    "workbench.colorTheme": "Visual Studio Dark"
+    "workbench.colorTheme": "Best Themes - Rose Noctis"
 }
