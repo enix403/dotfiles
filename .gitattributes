@@ -1,1 +1,3 @@
 nvim/lazy-lock.json binary
+shared/vscode/keybinds-gen/defaults/* binary
+shared/vscode/keybinds-gen/out/* binary
