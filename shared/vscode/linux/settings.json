@@ -90,6 +90,7 @@
     "editor.linkedEditing": true,
     "editor.accessibilitySupport": "off",
     "editor.trimAutoWhitespace": false,
+    "editor.mouseWheelScrollSensitivity": 2.5,
 
     "security.promptForLocalFileProtocolHandling": false,
 
