@@ -8,8 +8,8 @@ bin/az
 
 .vscode/
 
-karabiner/*
-karabiner/**
-!karabiner/karabiner.json
-!karabiner/genconfig.py
-!karabiner/keylib.py
+macos/karabiner/*
+macos/karabiner/**
+!macos/karabiner/karabiner.json
+!macos/karabiner/genconfig.py
+!macos/karabiner/keylib.py

@@ -1,203 +1,91 @@
+"""Generate karabiner.json for my Mac keyboard layouts.
+
+Goal: on macOS, make the bottom-left three modifier keys behave like Linux:
+  #1 = cmd (acts as "linux ctrl"), #3/#4 = ctrl, #2 untouched.
+
+Linux laptops and Galaxy65 in Linux mode are untouched (Karabiner is Mac-only).
+"""
+
 import sys
 import os
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
 import json
 from pathlib import Path
+
 from keylib import (
-    mappings,
-    global_shell_mappings,
     KeyboardDevice,
+    Layout,
     build_karabiner_config,
-    KeySet,
-    tp
+    mappings,
+    shell_mappings,
 )
 
-# =====================================
-# ============= Keyboards =============
-# =====================================
+
+# ---------------------------------------------------------------------------
+# Devices
+# ---------------------------------------------------------------------------
 
 builtin = KeyboardDevice.built_in(name="BL")
 galaxy65 = KeyboardDevice.external(
     name="GX",
     idens=[
-        (10473, 12645), # Wired mode
-        (10473, 8192),  # Bluetooth mode
-    ]
+        (10473, 12645),  # Wired
+        (10473, 8192),   # Bluetooth
+    ],
 )
+
+# ---------------------------------------------------------------------------
+# Physical -> intended modifier remaps, per keyboard.
+#
+# Bottom-left numbering (#1 is leftmost key on the bottom row):
+#
+# MacBook built-in physical: fn (#1) | ctrl (#2) | opt (#3) | cmd (#4)
+#   fn  -> cmd     : #1 acts as linux-ctrl (save, etc.)
+#   cmd -> ctrl    : #4 acts as mac-ctrl
+#   #2 and #3 untouched
+#
+# Galaxy65 (Mac mode) physical: ctrl (#1) | opt (#2) | cmd (#3)
+#   ctrl -> cmd    : #1 acts as linux-ctrl
+#   cmd  -> ctrl   : #3 acts as mac-ctrl
+#   #2 untouched
+# ---------------------------------------------------------------------------
+
+Layout(builtin,  {"fn":   "cmd", "cmd": "ctrl"}).register()
+Layout(galaxy65, {"ctrl": "cmd", "cmd": "ctrl"}).register()
+
+# ---------------------------------------------------------------------------
+# App-specific overrides
+# ---------------------------------------------------------------------------
+
+# Chrome's devtools shortcut on macOS is cmd+opt+i. After the remaps above,
+# pressing the linux-ctrl key + shift + i produces cmd+shift+i on both
+# keyboards, so a single rule covers both devices.
+mappings(
+    desc="Chrome: devtools shortcut",
+    apps=["com.google.Chrome"],
+    maps=["cmd+shift+i == cmd+opt+i"],
+)
+
+# ---------------------------------------------------------------------------
+# Global shell launchers
+# ---------------------------------------------------------------------------
+
+shell_mappings(
+    desc="Shell launchers",
+    maps=[
+        ("opt+enter", "open -n -a /Applications/kitty.app"),
+        ("opt+p",     "open -a Launchpad"),
+    ],
+)
+
+# ---------------------------------------------------------------------------
+# Emit karabiner2.json (NOT karabiner.json) for safe diffing.
+# ---------------------------------------------------------------------------
 
 all_devices = [builtin, galaxy65]
 
-# ====================================
-# =========== Applications ===========
-# ====================================
-
-chrome = "com.google.Chrome"
-terminals = ["net.kovidgoyal.kitty", "com.apple.Terminal"]
-# finder = "com.apple.finder"
-
-# ===========================================
-# ============= Global Keymaps ==============
-# ===========================================
-
-global_shell_mappings(
-    desc="Common Shell Mapping",
-    maps=[
-        ("opt+enter", "open -n -a /Applications/kitty.app"),
-        ("opt+p", "open -a Launchpad"),
-    ]
-)
-
-# ====================================
-# ============= Keymaps ==============
-# ====================================
-
-mappings(
-    desc="Chrome: Force Keymaps",
-    devices=[builtin],
-    apps=[chrome],
-    maps=[
-        "fn+shift+i == cmd+opt+i",
-    ]
-)
-
-mappings(
-    desc="Chrome: Force Keymaps",
-    devices=[galaxy65],
-    apps=[chrome],
-    maps=[
-        "cmd+shift+i == cmd+opt+i",
-    ]
-)
-
-# -----------------------------------------
-
-mappings(
-    desc="Terminal: Special Copy and Paste actions",
-    devices=[builtin],
-    apps=terminals,
-    maps=tp("fn+shift", "cmd", ['c', 'v'])
-)
-
-mappings(
-    desc="Terminal: Special Copy and Paste actions",
-    devices=[galaxy65],
-    apps=terminals,
-    maps=tp("cmd+shift", "cmd", ['c', 'v'])
-)
-
-# -----------------------------------------
-
-mappings(
-    desc="Terminal: <fn> + <shift> to <ctrl> + <shift>",
-    devices=[builtin],
-    apps=terminals,
-    maps=tp("fn+shift", "ctrl+shift", [
-        KeySet.special - {"delete"},
-        KeySet.printable - {'c', 'v'},
-        KeySet.v_arrows,
-    ])
-)
-
-mappings(
-    desc="Terminal: <cmd> + <shift> to <ctrl> + <shift>",
-    devices=[galaxy65],
-    apps=terminals,
-    maps=tp("cmd+shift", "ctrl+shift", [
-        KeySet.special - {"delete"},
-        KeySet.printable - {'c', 'v'},
-        KeySet.v_arrows,
-    ])
-)
-
-# -----------------------------------------
-
-mappings(
-    desc="Terminal: <fn> to <ctrl>",
-    devices=[builtin],
-    apps=terminals,
-    maps=tp("fn", "ctrl", [
-        KeySet.special - {"delete"},
-        KeySet.printable,
-        KeySet.v_arrows,
-    ]),
-)
-
-mappings(
-    desc="Terminal: <cmd> to <ctrl>",
-    devices=[galaxy65],
-    apps=terminals,
-    maps=tp("cmd", "ctrl", [
-        KeySet.special - {"delete"},
-        KeySet.printable,
-        KeySet.v_arrows,
-    ]),
-)
-
-# -----------------------------------------
-
-mappings(
-    desc="(Deprecate) Global: Cursor Movement By Word",
-    devices=[builtin],
-    maps=[
-        *tp("fn", "opt", ["delete"]),
-        *tp("fn", "opt", KeySet.h_arrows),
-        *tp("fn+shift", "opt+shift", KeySet.h_arrows),
-    ]
-)
-
-mappings(
-    desc="(Deprecate) Global: Cursor Movement By Word",
-    devices=[galaxy65],
-    maps=[
-        *tp("cmd", "opt", ["delete"]),
-        *tp("cmd", "opt", KeySet.h_arrows),
-        *tp("cmd+shift", "opt+shift", KeySet.h_arrows),
-    ]
-)
-
-# -----------------------------------------
-
-mappings(
-    desc="Global: <fn> + <opt> to <cmd> + <opt> (because macos cmd = app's ctrl)",
-    devices=[builtin],
-    maps=tp("fn+opt", "cmd+opt", [
-        KeySet.arrows,
-        KeySet.special,
-        KeySet.printable,
-    ])
-)
-
-# -----------------------------------------
-
-mappings(
-    desc="Global: <fn> + <shift> to <cmd> + <shift> (because macos cmd = app's ctrl)",
-    devices=[builtin],
-    maps=tp("fn+shift", "cmd+shift", [
-        KeySet.special - {"delete"},
-        # Cannot bind horizontal arrows due cursor movement mappings
-        # TODO: look into thid
-        KeySet.v_arrows,
-        KeySet.printable,
-    ]),
-)
-
-# -----------------------------------------
-
-mappings(
-    desc="Global: <fn> to <cmd> (because macos cmd = app's ctrl)",
-    devices=[builtin],
-    maps=tp("fn", "cmd", [
-        KeySet.special - {"delete"},
-        KeySet.printable,
-    ])
-)
-
-# ====================================
-# ============= Generate =============
-# ====================================
-
-output_path = Path(__file__).parent / "karabiner.json"
+output_path = Path(__file__).parent / "karabiner2.json"
 with output_path.open("w") as f:
     config = build_karabiner_config({
         "name": "Generated By genconfig.py",
@@ -210,16 +98,13 @@ with output_path.open("w") as f:
                     "is_pointing_device": True,
                     "vendor_id": vendor_id,
                     "product_id": product_id,
-                }
+                },
             }
             for device in all_devices
             for (vendor_id, product_id) in device.idens
         ],
-        "virtual_hid_keyboard": {
-            "keyboard_type_v2": "ansi"
-        }
+        "virtual_hid_keyboard": {"keyboard_type_v2": "ansi"},
     })
-
     json.dump(config, f, indent=2)
 
 print(f"Output written to: {output_path}")
