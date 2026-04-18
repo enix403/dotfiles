@@ -1,6 +1,5 @@
 [tools]
 node = "24"
-"npm:ngrok" = "4"
 pnpm = "10"
 python = "3.14"
 yarn = "1.22"
