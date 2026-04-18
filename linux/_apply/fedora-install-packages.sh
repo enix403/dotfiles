@@ -3,32 +3,32 @@
 sudo dnf -y install fedora-workstation-repositories
 
 sudo dnf -y install \
-    git-credential-oauth \
-    git-credential-libsecret \
-    neovim \
-    clang \
-    urar \
-    zsh \
-    git-lfs \
-    bat \
-    jq \
-    ncdu \
-    qpdf \
-    fastfetch \
-    kitty \
-    htop \
-    fzf \
-    git-delta \
-    darkhttpd \
-    wev \
-    gnome-extensions-app \
-    kruler \
-    gpick \
-    gparted \
-    vlc \
-    zathura zathura-pdf-mupdf \
-    duf \
-    tokei \
+  git-credential-oauth \
+  git-credential-libsecret \
+  neovim \
+  clang \
+  urar \
+  zsh \
+  git-lfs \
+  bat \
+  jq \
+  ncdu \
+  qpdf \
+  fastfetch \
+  kitty \
+  htop \
+  fzf \
+  git-delta \
+  darkhttpd \
+  wev \
+  gnome-extensions-app \
+  kruler \
+  gpick \
+  gparted \
+  vlc \
+  zathura zathura-pdf-mupdf \
+  duf \
+  tokei
 
 # COPRs
 sudo dnf -y copr enable atim/starship && sudo dnf -y install starship
@@ -44,6 +44,7 @@ sudo dnf -y install fira-code-fonts open-sans-fonts
 
 : '
 manual install
+    bun (website, bash install script)
     typst (website, exe)
     ngrok (website, exe)
     popsicle-bin (github releases, AppImage)
@@ -55,3 +56,4 @@ rpm repo install
 
     beekeeper-studio: sudo rpm --import https://rpm.beekeeperstudio.io/beekeeper.key && sudo curl -o /etc/yum.repos.d/my-beekeeper-studio.repo https://rpm.beekeeperstudio.io/beekeeper-studio.repo
 '
+

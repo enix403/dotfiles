@@ -27,3 +27,8 @@ PYENV_ROOT="$HOME/.pyenv"
 if [[ "$OSTYPE" == linux* ]]; then
     eval "$(mise activate zsh)" # for interactive shells
 fi
+
+# ---------
+# bun
+BUN_INSTALL="$HOME/.bun"
+export PATH="$PATH:$BUN_INSTALL/bin"
