@@ -167,6 +167,7 @@ gsettings set org.gnome.desktop.wm.keybindings move-to-monitor-up "[]"
 
 gsettings set org.gnome.desktop.wm.keybindings maximize "['<Super>Up']"
 gsettings set org.gnome.desktop.wm.keybindings unmaximize "['<Super>Down']"
+gsettings set org.gnome.desktop.wm.keybindings close "['<Super><Shift>q']"
 
 # =======================
 
