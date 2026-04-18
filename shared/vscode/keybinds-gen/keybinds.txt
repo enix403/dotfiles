@@ -194,13 +194,17 @@ mod+shift+down  -> editor.action.moveLinesDownAction  when: editorTextFocus && !
 // Navigation: Go to Definition / Editor tabs / Navigate Back
 // ============================================================================
 
-mod+shift+right  -> editor.action.revealDefinition
+shift+ctrl+right  -> editor.action.revealDefinition  os: macos
    when: editorHasDefinitionProvider && editorTextFocus && !isInEmbeddedEditor && !hasNonEmptySelection && !hasMultipleSelections
+shift+alt+right   -> editor.action.revealDefinition  os: linux
+   when: editorHasDefinitionProvider && editorTextFocus && !isInEmbeddedEditor && !hasNonEmptySelection && !hasMultipleSelections
+
+shift+ctrl+left  -> workbench.action.navigateBack  os: macos  when: canNavigateBack
+shift+alt+left   -> workbench.action.navigateBack  os: linux  when: canNavigateBack
 
 mod+super+right  -> workbench.action.nextEditor
 mod+super+left   -> workbench.action.previousEditor
 
-mod+shift+left  -> workbench.action.navigateBack  when: canNavigateBack
 
 
 // ============================================================================
