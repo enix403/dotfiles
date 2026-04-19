@@ -47,17 +47,6 @@ KARABINER_KEY_NAMES: dict[str, str] = {
     "down":  "down_arrow",
 }
 
-# Modifiers use their "left_*" form inside `to`, but Karabiner's `from.modifiers`
-# list expects just the logical name (e.g. "command", not "left_command").
-_MODIFIER_FROM_NAME = {
-    "left_command": "command",
-    "left_option":  "option",
-    "left_control": "control",
-    "left_shift":   "shift",
-    "fn":           "fn",
-}
-
-
 def _kcode(name: str) -> str:
     return KARABINER_KEY_NAMES.get(name, name)
 
@@ -125,7 +114,7 @@ class Chord:
     def as_from(self) -> dict:
         return {
             "modifiers": {
-                "mandatory": [_MODIFIER_FROM_NAME.get(m, m) for m in self.mods],
+                "mandatory": [*self.mods],
             },
             "key_code": self.key,
         }
