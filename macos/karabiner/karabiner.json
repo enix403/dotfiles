@@ -29,6 +29,95 @@
       "complex_modifications": {
         "rules": [
           {
+            "description": "[BL] Chrome: devtools shortcut",
+            "manipulators": [
+              {
+                "type": "basic",
+                "from": {
+                  "modifiers": {
+                    "mandatory": [
+                      "fn",
+                      "left_shift"
+                    ]
+                  },
+                  "key_code": "i"
+                },
+                "to": [
+                  {
+                    "modifiers": [
+                      "left_command",
+                      "left_option"
+                    ],
+                    "key_code": "i"
+                  }
+                ],
+                "conditions": [
+                  {
+                    "type": "frontmost_application_if",
+                    "bundle_identifiers": [
+                      "^com\\.google\\.Chrome$"
+                    ]
+                  },
+                  {
+                    "type": "device_if",
+                    "identifiers": [
+                      {
+                        "is_built_in_keyboard": true
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "description": "[GX] Chrome: devtools shortcut",
+            "manipulators": [
+              {
+                "type": "basic",
+                "from": {
+                  "modifiers": {
+                    "mandatory": [
+                      "left_control",
+                      "left_shift"
+                    ]
+                  },
+                  "key_code": "i"
+                },
+                "to": [
+                  {
+                    "modifiers": [
+                      "left_command",
+                      "left_option"
+                    ],
+                    "key_code": "i"
+                  }
+                ],
+                "conditions": [
+                  {
+                    "type": "frontmost_application_if",
+                    "bundle_identifiers": [
+                      "^com\\.google\\.Chrome$"
+                    ]
+                  },
+                  {
+                    "type": "device_if",
+                    "identifiers": [
+                      {
+                        "vendor_id": 10473,
+                        "product_id": 12645
+                      },
+                      {
+                        "vendor_id": 10473,
+                        "product_id": 8192
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
             "description": "[BL] Cursor movement by word",
             "manipulators": [
               {
@@ -14565,40 +14654,6 @@
                         "vendor_id": 10473,
                         "product_id": 8192
                       }
-                    ]
-                  }
-                ]
-              }
-            ]
-          },
-          {
-            "description": "Chrome: devtools shortcut",
-            "manipulators": [
-              {
-                "type": "basic",
-                "from": {
-                  "modifiers": {
-                    "mandatory": [
-                      "left_command",
-                      "left_shift"
-                    ]
-                  },
-                  "key_code": "i"
-                },
-                "to": [
-                  {
-                    "modifiers": [
-                      "left_command",
-                      "left_option"
-                    ],
-                    "key_code": "i"
-                  }
-                ],
-                "conditions": [
-                  {
-                    "type": "frontmost_application_if",
-                    "bundle_identifiers": [
-                      "^com\\.google\\.Chrome$"
                     ]
                   }
                 ]

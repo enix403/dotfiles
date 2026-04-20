@@ -51,21 +51,33 @@ galaxy65 = KeyboardDevice.external(
 #   #2 untouched
 # ---------------------------------------------------------------------------
 
-Layout(builtin,  {"fn":   "cmd", "cmd": "ctrl"}).register()
-Layout(galaxy65, {"ctrl": "cmd", "cmd": "ctrl"}).register()
-
 # ---------------------------------------------------------------------------
-# App-specific overrides
+# App-specific overrides — MUST be registered before the Layout expansion,
+# because once a Layout rule matches (e.g. fn+shift+X -> cmd+shift+X), the
+# event is consumed and downstream app-scoped rules never fire. These rules
+# therefore use the PHYSICAL linux-ctrl key (fn on built-in, ctrl on Galaxy65).
 # ---------------------------------------------------------------------------
 
-# Chrome's devtools shortcut on macOS is cmd+opt+i. After the remaps above,
-# pressing the linux-ctrl key + shift + i produces cmd+shift+i on both
-# keyboards, so a single rule covers both devices.
+# Chrome devtools — native shortcut is cmd+opt+i.
 mappings(
     desc="Chrome: devtools shortcut",
+    devices=[builtin],
     apps=["com.google.Chrome"],
-    maps=["cmd+shift+i == cmd+opt+i"],
+    maps=["fn+shift+i == cmd+opt+i"],
 )
+mappings(
+    desc="Chrome: devtools shortcut",
+    devices=[galaxy65],
+    apps=["com.google.Chrome"],
+    maps=["ctrl+shift+i == cmd+opt+i"],
+)
+
+# ---------------------------------------------------------------------------
+# Layout expansion (general modifier remaps)
+# ---------------------------------------------------------------------------
+
+Layout(builtin,  {"fn":   "cmd", "cmd": "ctrl"}).register()
+Layout(galaxy65, {"ctrl": "cmd", "cmd": "ctrl"}).register()
 
 # ---------------------------------------------------------------------------
 # Global shell launchers
