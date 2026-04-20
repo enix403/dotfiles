@@ -211,6 +211,9 @@ mod+shift+] -> workbench.action.moveEditorRightInGroup
 mod+; -> workbench.action.focusLeftGroupWithoutWrap
 mod+' -> workbench.action.focusRightGroupWithoutWrap
 
+mod+shift+; -> workbench.action.moveActiveEditorGroupLeft
+mod+shift+' -> workbench.action.moveActiveEditorGroupRight
+
 // ============================================================================
 // Text editing
 // ============================================================================
