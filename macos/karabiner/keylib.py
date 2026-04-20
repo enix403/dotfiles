@@ -111,13 +111,11 @@ class Chord:
         parts = [_kcode(p.strip()) for p in s.split("+")]
         return cls(mods=parts[:-1], key=parts[-1])
 
-    def as_from(self) -> dict:
-        return {
-            "modifiers": {
-                "mandatory": [*self.mods],
-            },
-            "key_code": self.key,
-        }
+    def as_from(self, *, optional: list[str] | None = None) -> dict:
+        mods: dict = {"mandatory": [*self.mods]}
+        if optional:
+            mods["optional"] = optional
+        return {"modifiers": mods, "key_code": self.key}
 
     def as_to(self) -> dict:
         return {"modifiers": self.mods, "key_code": self.key}
@@ -169,12 +167,23 @@ def mappings(
     maps: list[str],
     devices: list[KeyboardDevice] | None = None,
     apps: list[str] | None = None,
+    preserve_extra_mods: bool = False,
 ) -> None:
-    """Register chord->chord mappings. Each entry in `maps` is `"from == to"`."""
+    """Register chord->chord mappings. Each entry in `maps` is `"from == to"`.
+
+    If `preserve_extra_mods` is True, the `from` side gets `optional: [any]`:
+    extra modifiers held during the chord are allowed and pass through to the
+    output. E.g. `fn+s == cmd+s` with this flag makes `fn+opt+s` -> `cmd+opt+s`.
+    """
+    optional = ["any"] if preserve_extra_mods else None
     manipulators = []
     for rule in maps:
         left, right = [Chord.parse(s.strip()) for s in rule.split("==")]
-        manipulators.append({"type": "basic", "from": left.as_from(), "to": [right.as_to()]})
+        manipulators.append({
+            "type": "basic",
+            "from": left.as_from(optional=optional),
+            "to": [right.as_to()],
+        })
     _register(desc, devices or [], apps or [], manipulators)
 
 
@@ -259,27 +268,20 @@ class Layout:
         )
 
     # ----- step 2: general chord translation per modifier -----
+    # Each rule uses `optional: [any]` so extra modifiers pass through, e.g.
+    # `fn+opt+right` -> `cmd+opt+right`. Shift is subsumed by this, so there's
+    # no need for a separate `+shift` rule. Cursor-movement rules (registered
+    # earlier, strict mandatory-only) still win for bare `fn+left/right/delete`
+    # and `fn+shift+left/right`.
     def _register_modifier_remaps(self) -> None:
-        linux_ctrl = self._linux_ctrl_key()
+        all_keys = KeySet.printable + KeySet.special + KeySet.arrows
 
         for phys, intended in self.modifier_map.items():
-            if phys == linux_ctrl:
-                # Cursor-movement rule owns {delete, left, right} — exclude here.
-                plain_keys = KeySet.printable + (KeySet.special - "delete") + KeySet.v_arrows
-                shift_keys = KeySet.printable + (KeySet.special - "delete") + KeySet.v_arrows
-            else:
-                plain_keys = KeySet.printable + KeySet.special + KeySet.arrows
-                shift_keys = KeySet.printable + KeySet.special + KeySet.arrows
-
             mappings(
-                desc=f"{phys} -> {intended}",
+                desc=f"{phys} -> {intended} (preserve extra mods)",
                 devices=[self.device],
-                maps=chords(phys, intended, plain_keys),
-            )
-            mappings(
-                desc=f"{phys}+shift -> {intended}+shift",
-                devices=[self.device],
-                maps=chords(f"{phys}+shift", f"{intended}+shift", shift_keys),
+                maps=chords(phys, intended, all_keys),
+                preserve_extra_mods=True,
             )
 
 
