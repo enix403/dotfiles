@@ -202,11 +202,14 @@ shift+alt+right   -> editor.action.revealDefinition  os: linux
 shift+ctrl+left  -> workbench.action.navigateBack  os: macos  when: canNavigateBack
 shift+alt+left   -> workbench.action.navigateBack  os: linux  when: canNavigateBack
 
-mod+[  -> workbench.action.previousEditor
-mod+]  -> workbench.action.nextEditor
+mod+[  -> workbench.action.previousEditorInGroup
+mod+]  -> workbench.action.nextEditorInGroup
 
 mod+shift+[ -> workbench.action.moveEditorLeftInGroup
 mod+shift+] -> workbench.action.moveEditorRightInGroup
+
+mod+; -> workbench.action.focusLeftGroupWithoutWrap
+mod+' -> workbench.action.focusRightGroupWithoutWrap
 
 // ============================================================================
 // Text editing

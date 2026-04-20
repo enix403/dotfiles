@@ -533,12 +533,13 @@ BANNER = (
     "Edit keybinds.txt and re-run generate.py."
 )
 
+source_dir = Path(__file__).parent
 
 def main(argv: list[str] | None = None) -> int:
     p = argparse.ArgumentParser(description=__doc__)
-    p.add_argument("--input", type=Path, default=Path("keybinds.txt"))
-    p.add_argument("--defaults-dir", type=Path, default=Path("defaults"))
-    p.add_argument("--out-dir", type=Path, default=Path("out"))
+    p.add_argument("--input", type=Path, default=(source_dir / "keybinds.txt"))
+    p.add_argument("--defaults-dir", type=Path, default=(source_dir / "defaults"))
+    p.add_argument("--out-dir", type=Path, default=(source_dir / "out"))
     p.add_argument("--os", choices=["macos", "linux", "both"], default="both")
     args = p.parse_args(argv)
 
