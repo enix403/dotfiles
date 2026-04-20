@@ -40,7 +40,8 @@
     /* ============ Behaviour ============ */
     /* =================================== */
 
-    "workbench.editor.closeEmptyGroups": false,
+    // "workbench.editor.closeEmptyGroups": false,
+    "workbench.editor.closeEmptyGroups": true,
     "workbench.list.openMode": "doubleClick",
     "workbench.startupEditor": "welcomePage",
     "workbench.editorAssociations": {

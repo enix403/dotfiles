@@ -80,7 +80,7 @@ shell_mappings(
 )
 
 # ---------------------------------------------------------------------------
-# Emit karabiner2.json (NOT karabiner.json) for safe diffing.
+# Emit karabiner.json
 # ---------------------------------------------------------------------------
 
 all_devices = [builtin, galaxy65]
