@@ -206,6 +206,10 @@
     "editor.matchBrackets": "never",
     "editor.occurrencesHighlight": "off",
     "editor.selectionHighlight": false,
+    /* ============================ */
+    /* ========== Claude ========== */
+    /* ============================ */
+    "claudeCode.preferredLocation": "panel",
     /* ================================= */
     /* ============ Copilot ============ */
     /* ================================= */
@@ -292,6 +296,11 @@
     },
     "chat.viewSessions.orientation": "stacked",
     "chat.agent.maxRequests": 500,
+    "chat.useHooks": true,
+    "chat.hookFilesLocations": {
+        "~/.copilot/hooks": true
+    },
+    "github.copilot.nextEditSuggestions.enabled": false,
     /* ============================ */
     /* =========== Misc =========== */
     /* ============================ */
@@ -332,6 +341,10 @@
         "reportMissingModuleSource": "none"
     },
     "notebook.output.textLineLimit": 50,
+    "notebook.cellToolbarLocation": {
+        "default": "right",
+        "jupyter-notebook": "right"
+    },
     "python.defaultInterpreterPath": "/Users/qateef.ahmad/.pyenv/versions/3.11.14/bin/python",
     "python.terminal.activateEnvironment": false,
     // ------- Dart -------
@@ -347,6 +360,9 @@
     "[go]": {
         "editor.formatOnSave": false,
     },
+    // ------- kotlin -------
+    "kotlin.languageServer.enabled": false,
+    "kotlin.debugAdapter.enabled": false,
     // ------- Java -------
     "[java]": {
         "editor.defaultFormatter": "redhat.java"
@@ -461,16 +477,4 @@
     // ==========================
     // keeping it here since vscode/cursor often like to move it to end anyway
     "workbench.colorTheme": "Best Themes - Gruvbox Concoctis Dark",
-    "claudeCode.preferredLocation": "panel",
-    "notebook.cellToolbarLocation": {
-        "default": "right",
-        "jupyter-notebook": "right"
-    },
-    "kotlin.languageServer.enabled": false,
-    "kotlin.debugAdapter.enabled": false,
-    "chat.useHooks": true,
-    "chat.hookFilesLocations": {
-        "~/.copilot/hooks": true
-    },
-    "github.copilot.nextEditSuggestions.enabled": false
 }
