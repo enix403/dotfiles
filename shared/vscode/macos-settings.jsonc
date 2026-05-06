@@ -4,16 +4,12 @@
     /* =============== PLATFORM SPECIFIC =============== */
     /* ================================================= */
     /* ================================================= */
-
     /* ======================================= */
     /* ============ Major Visuals ============ */
     /* ======================================= */
-
     // ----- UI Mod from Custom UI Style Extension -----
     "custom-ui-style.font.sansSerif": "'Maple Mono', sans-serif",
-
     "window.zoomLevel": 0.05,
-
     "editor.fontFamily": "Maple Mono",
     "editor.lineHeight": 1.45,
     "editor.fontSize": 13,
@@ -29,17 +25,14 @@
     // "editor.lineHeight": 1.5,
     // "editor.fontSize": 13,
     // "editor.letterSpacing": -0.25,
-
     /* ================================================ */
     /* ================================================ */
     /* ================ CROSS PLATFORM ================ */
     /* ================================================ */
     /* ================================================ */
-
     /* =================================== */
     /* ============ Behaviour ============ */
     /* =================================== */
-
     // "workbench.editor.closeEmptyGroups": false,
     "workbench.editor.closeEmptyGroups": true,
     "workbench.list.openMode": "doubleClick",
@@ -49,16 +42,13 @@
     },
     "workbench.editor.enablePreview": false,
     "workbench.editor.useModal": "off",
-
     "window.openFilesInNewWindow": "off",
     "window.openFoldersInNewWindow": "off",
     "window.commandCenter": true,
-
     "explorer.enableDragAndDrop": false,
     "explorer.autoReveal": false,
     "explorer.compactFolders": false,
     "explorer.confirmDelete": false,
-
     "files.trimTrailingWhitespace": true,
     "files.trimTrailingWhitespaceInRegexAndStrings": false,
     "files.associations": {
@@ -80,7 +70,6 @@
         "**/postgres-data": true,
         "**/__pycache__": true,
     },
-
     "editor.dragAndDrop": false,
     "editor.formatOnSave": false,
     "editor.pasteAs.enabled": false,
@@ -91,26 +80,19 @@
     "editor.linkedEditing": true,
     "editor.accessibilitySupport": "off",
     "editor.trimAutoWhitespace": false,
-
     "security.promptForLocalFileProtocolHandling": false,
-
     "diffEditor.ignoreTrimWhitespace": false,
-
     "git.openRepositoryInParentFolders": "never",
-
     /* ====================================== */
     /* ============ UI Rendering ============ */
     /* ====================================== */
-
     "workbench.tree.indent": 14,
     "workbench.tree.renderIndentGuides": "always",
     "workbench.activityBar.orientation": "vertical",
     "workbench.editor.pinnedTabsOnSeparateRow": true,
     "workbench.editor.empty.hint": "hidden",
-
     "window.titleBarStyle": "custom",
     "window.density.editorTabHeight": "default",
-
     "editor.snippetSuggestions": "inline",
     "editor.renderLineHighlight": "gutter",
     "editor.smoothScrolling": true,
@@ -118,19 +100,15 @@
     "editor.stickyScroll.enabled": false,
     "editor.inlineSuggest.edits.showCollapsed": true,
     "editor.inlayHints.enabled": "offUnlessPressed",
-
     "terminal.integrated.initialHint": false,
     "cursorBlame.editorDecoration.enabled": false,
-
     /* ======================================== */
     /* ============ Text Rendering ============ */
     /* ======================================== */
-
     "editor.fontLigatures": true,
     "editor.cursorStyle": "line-thin",
     "editor.wordWrap": "on",
     "editor.wrappingIndent": "deepIndent",
-
     "editor.tokenColorCustomizations": {
         "textMateRules": [
             {
@@ -225,15 +203,12 @@
     "workbench.colorCustomizations": {
         "tree.indentGuidesStroke": "#A08070"
     },
-
     "editor.matchBrackets": "never",
     "editor.occurrencesHighlight": "off",
     "editor.selectionHighlight": false,
-
     /* ================================= */
     /* ============ Copilot ============ */
     /* ================================= */
-
     "chat.tools.terminal.autoApprove": {
         "cd": true,
         "echo": true,
@@ -317,11 +292,9 @@
     },
     "chat.viewSessions.orientation": "stacked",
     "chat.agent.maxRequests": 500,
-
     /* ============================ */
     /* =========== Misc =========== */
     /* ============================ */
-
     "github.copilot.enable": {
         "*": true,
         "plaintext": false,
@@ -333,7 +306,6 @@
         "jsonc": false,
         "ruby": false
     },
-
     "cursor.cpp.disabledLanguages": [
         "plaintext",
         "dart",
@@ -345,17 +317,14 @@
     "window.customMenuBarAltFocus": false,
     "window.enableMenuBarMnemonics": false,
     "window.menuBarVisibility": "visible",
-
     /* ========================================= */
     /* =========== Language Specific =========== */
     /* ========================================= */
-
     // ------- C++ -------
     "C_Cpp.default.cppStandard": "c++17",
     "[cpp]": {
         "editor.defaultFormatter": "xaver.clang-format"
     },
-
     // ------- Python -------
     "python.analysis.diagnosticSeverityOverrides": {
         "reportMissingImports": "none",
@@ -365,28 +334,23 @@
     "notebook.output.textLineLimit": 50,
     "python.defaultInterpreterPath": "/Users/qateef.ahmad/.pyenv/versions/3.11.14/bin/python",
     "python.terminal.activateEnvironment": false,
-
     // ------- Dart -------
     "dart.flutterCreateAndroidLanguage": "java",
     "dart.debugExternalPackageLibraries": false,
     "dart.debugSdkLibraries": false,
     "dart.closingLabels": false,
-
     // --------- Ruby -------
     "[ruby]": {
         "editor.defaultFormatter": "rubocop.vscode-rubocop"
     },
-
     // ------- Golang -------
     "[go]": {
         "editor.formatOnSave": false,
     },
-
     // ------- Java -------
     "[java]": {
         "editor.defaultFormatter": "redhat.java"
     },
-
     // ------- JSON -------
     "[json]": {
         "editor.defaultFormatter": "vscode.json-language-features",
@@ -394,20 +358,17 @@
         "editor.insertSpaces": true,
         "editor.detectIndentation": true
     },
-
     "[jsonc]": {
         "editor.defaultFormatter": "vscode.json-language-features",
         "editor.tabSize": 2,
         "editor.insertSpaces": true,
         "editor.detectIndentation": true
     },
-
     // ------- HTML -------
     "html.autoClosingTags": false,
     "[html]": {
         "editor.defaultFormatter": "vscode.html-language-features"
     },
-
     // ------- JavaScript -------
     "javascript.updateImportsOnFileMove.enabled": "never",
     "javascript.autoClosingTags": false,
@@ -417,7 +378,6 @@
     "[javascriptreact]": {
         "editor.defaultFormatter": "esbenp.prettier-vscode"
     },
-
     // ------- TypeScript -------
     "typescript.enablePromptUseWorkspaceTsdk": true,
     "typescript.autoClosingTags": false,
@@ -429,7 +389,6 @@
     "[typescriptreact]": {
         "editor.defaultFormatter": "esbenp.prettier-vscode"
     },
-
     // ------- CSS -------
     "css.lint.unknownAtRules": "ignore",
     "scss.lint.unknownAtRules": "ignore",
@@ -442,13 +401,11 @@
     "[postcss]": {
         "editor.defaultFormatter": "esbenp.prettier-vscode"
     },
-
     // ------- Svelte -------
     "svelte.enable-ts-plugin": true,
     "[svelte]": {
         "editor.defaultFormatter": "svelte.svelte-vscode"
     },
-
     // ------- Ruby -------
     "svelte.enable-ts-plugin": true,
     "[ruby]": {
@@ -456,11 +413,9 @@
         "editor.insertSpaces": true,
         "editor.detectIndentation": true
     },
-
     /* ========================================== */
     /* =========== Extension Specific =========== */
     /* ========================================== */
-
     // ------- Rest Client -------
     "rest-client.previewOption": "full",
     "rest-client.defaultHeaders": {
@@ -470,26 +425,20 @@
         "Accept-Language": "en-US,en;q=0.5",
         "Accept-Encoding": "gzip, deflate, br, zstd"
     },
-
     // ------- Eyecons -------
     "eyecons.folderColor": "orange",
     "eyecons.hidesExplorerArrows": true,
     "eyecons.theme": "github-dark",
-
     // ------- Pop Icons -------
     "pop-icon-theme.folders.color": "#ff7043",
-
     // ------- Helium Icons -------
     "helium-icon-theme.folders.color": "#90a4ae",
-
     // ------- Bazel -------
     // TODO: what about this ?
     "bazel.executable": "/nix/store/y1zdzring1mji64iy0njvb7fz62khz80-ktmr-final-environment/bin/bazel",
-
     // ------- Symbol Icons -------
     "symbols.hidesExplorerArrows": false,
     "svg.preview.mode": "img",
-
     // ------- Markdown -------
     "mdmath.delimiters": "dollars",
     "mdmath.theme": "publication",
@@ -498,25 +447,18 @@
     "markdown.preview.scrollPreviewWithEditor": false,
     "markdown-pdf.displayHeaderFooter": false,
     "markdown-pdf.highlightStyle": "lightfair.css",
-
     // ------- Settings Sync -------
     "settingsSync.keybindingsPerPlatform": false,
-
     // ------- CSV (A UI csv Viewer) -------
     "csv.enabled": false,
-
     // ------- GitLens -------
     "gitlens.currentLine.enabled": false,
     "gitlens.codeLens.authors.enabled": false,
     "gitlens.codeLens.recentChange.enabled": false,
-
     // ------- RedHat (for Java) -------
     "redhat.telemetry.enabled": false,
-
     // --------- UNORG ---------
-
     // ==========================
-
     // keeping it here since vscode/cursor often like to move it to end anyway
     "workbench.colorTheme": "Best Themes - Gruvbox Concoctis Dark",
     "claudeCode.preferredLocation": "panel",
@@ -526,9 +468,9 @@
     },
     "kotlin.languageServer.enabled": false,
     "kotlin.debugAdapter.enabled": false,
-  "chat.useHooks": true,
-"chat.hookFilesLocations": {
-    "~/.copilot/hooks": true
-},
-"github.copilot.nextEditSuggestions.enabled": false
+    "chat.useHooks": true,
+    "chat.hookFilesLocations": {
+        "~/.copilot/hooks": true
+    },
+    "github.copilot.nextEditSuggestions.enabled": false
 }
