@@ -65,9 +65,9 @@
         "*.css": "tailwindcss",
         "*.kts": "gradle-kotlin-dsl",
         "*.conf": "shellscript",
-        "*.kt": "gradle-kotlin-dsl",
+        "*.kt": "kotlin",
         "*.ctl": "sql",
-        "*.devshell": "shellscript",
+        "*.devshell": "shellscript"
     },
     "files.exclude": {
         "**/.git": true,
@@ -188,6 +188,9 @@
                     "keyword.function.go",
                     "storage.type.function.kotlin",
                     "entity.name.type.kotlin",
+                    "comment.block.documentation",
+                    "variable.language.self",
+                    "variable.parameter.function"
                 ],
                 "settings": {
                     "fontStyle": ""
@@ -327,7 +330,8 @@
         "python": false,
         "sql": false,
         "coffeescript": false,
-        "jsonc": false
+        "jsonc": false,
+        "ruby": false
     },
 
     "cursor.cpp.disabledLanguages": [
@@ -385,10 +389,17 @@
 
     // ------- JSON -------
     "[json]": {
-        "editor.defaultFormatter": "vscode.json-language-features"
+        "editor.defaultFormatter": "vscode.json-language-features",
+        "editor.tabSize": 2,
+        "editor.insertSpaces": true,
+        "editor.detectIndentation": true
     },
+
     "[jsonc]": {
-        "editor.defaultFormatter": "vscode.json-language-features"
+        "editor.defaultFormatter": "vscode.json-language-features",
+        "editor.tabSize": 2,
+        "editor.insertSpaces": true,
+        "editor.detectIndentation": true
     },
 
     // ------- HTML -------
@@ -436,6 +447,14 @@
     "svelte.enable-ts-plugin": true,
     "[svelte]": {
         "editor.defaultFormatter": "svelte.svelte-vscode"
+    },
+
+    // ------- Ruby -------
+    "svelte.enable-ts-plugin": true,
+    "[ruby]": {
+        "editor.tabSize": 2,
+        "editor.insertSpaces": true,
+        "editor.detectIndentation": true
     },
 
     /* ========================================== */
@@ -506,5 +525,10 @@
         "jupyter-notebook": "right"
     },
     "kotlin.languageServer.enabled": false,
-    "kotlin.debugAdapter.enabled": false
+    "kotlin.debugAdapter.enabled": false,
+  "chat.useHooks": true,
+"chat.hookFilesLocations": {
+    "~/.copilot/hooks": true
+},
+"github.copilot.nextEditSuggestions.enabled": false
 }
