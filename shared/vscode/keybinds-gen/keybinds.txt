@@ -218,6 +218,10 @@ mod+shift+' -> workbench.action.moveActiveEditorGroupRight
 // Text editing
 // ============================================================================
 
+// ---- Indent / de-indent ----
+mod+.  -> editor.action.indentLines   when: editorTextFocus && !editorReadonly
+mod+,  -> editor.action.outdentLines  when: editorTextFocus && !editorReadonly
+
 // ---- Duplicate line down ----
 mod+shift+d  -> editor.action.copyLinesDownAction  when: editorTextFocus && !editorReadonly
 
@@ -230,9 +234,6 @@ mod+shift+/  -> editor.action.blockComment  when: editorTextFocus && !editorRead
 // ---- Format document ----
 mod+super+l  -> editor.action.formatDocument
    when: editorHasDocumentFormattingProvider && editorTextFocus && !editorReadonly && !inCompositeEditor
-
-// ---- Smart-select expand ----
-mod+.  -> editor.action.smartSelect.expand  when: editorTextFocus
 
 // ---- Case transform ----
 mod+k mod+u  -> editor.action.transformToUppercase
