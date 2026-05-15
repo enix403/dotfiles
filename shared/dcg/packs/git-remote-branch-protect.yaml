@@ -1,0 +1,81 @@
+schema_version: 1
+id: user.git_branch_delete_protect
+name: Git Branch Delete Protection
+version: 1.0.0
+description: |
+  Blocks all branch deletion via git push (--delete, colon-syntax),
+  git branch -D/--delete, and gh CLI api calls. Covers git aliases.
+
+keywords:
+  - git
+  - gh
+
+safe_patterns:
+  - name: push-refspec-with-source
+    pattern: '(?:^|[^[:alnum:]_-])git\s+(?:\S+\s+)*push\s+(?:\S+\s+)*\S+:\S+'
+    description: Refspec push with non-empty source (e.g. HEAD:main) is allowed
+
+destructive_patterns:
+  - name: push-delete-long
+    severity: critical
+    pattern: '(?:^|[^[:alnum:]_-])git\s+(?:\S+\s+)*push\s+(?:\S+\s+)*--delete\b'
+    description: Remote branch deletion via --delete is blocked.
+    explanation: |
+      git push --delete removes the branch from the remote permanently.
+      This applies regardless of git alias used (ps, p, etc.).
+      Safe alternative: delete the branch via GitHub/GitLab UI.
+
+  - name: push-delete-short
+    severity: critical
+    pattern: '(?:^|[^[:alnum:]_-])git\s+(?:\S+\s+)*push\s+(?:\S+\s+)*-[a-zA-Z]*d[a-zA-Z]*\b'
+    description: Remote branch deletion via -d is blocked.
+    explanation: |
+      git push -d is the short form of --delete and removes the remote branch permanently.
+      Safe alternative: delete the branch via GitHub/GitLab UI.
+
+  - name: push-colon-delete
+    severity: critical
+    pattern: '(?:^|[^[:alnum:]_-])git\s+(?:\S+\s+)*push\s+(?:\S+\s+)+:\S+'
+    description: Colon-delete syntax (git push origin :branch) is blocked.
+    explanation: |
+      Pushing an empty refspec (e.g. git push origin :my-branch) deletes the remote branch.
+      This is the POSIX-style delete syntax, distinct from refspec pushes like HEAD:main
+      which are explicitly allowed.
+      Safe alternative: delete the branch via GitHub/GitLab UI.
+
+  - name: branch-force-delete
+    severity: critical
+    pattern: '(?:^|[^[:alnum:]_-])git\s+(?:\S+\s+)*branch\s+(?:\S+\s+)*-[a-zA-Z]*D[a-zA-Z]*\b'
+    description: Force local branch deletion (-D) is blocked.
+    explanation: |
+      git branch -D force-deletes a branch regardless of merge status,
+      potentially losing unmerged commits permanently.
+      Safe alternative: use git branch -d which refuses if the branch
+      has unmerged commits.
+
+  - name: branch-delete-long
+    severity: critical
+    pattern: '(?:^|[^[:alnum:]_-])git\s+(?:\S+\s+)*branch\s+(?:\S+\s+)*--delete\b'
+    description: git branch --delete is blocked.
+    explanation: |
+      git branch --delete removes a local branch. Use git branch -d instead,
+      which checks merge status before deleting and refuses if there are
+      unmerged commits.
+
+  - name: gh-api-delete-ref
+    severity: critical
+    pattern: '^gh\s+(?:\S+\s+)*api\s+(?:\S+\s+)*(?:-X\s*DELETE|--method(?:=|\s+)DELETE)\b.*refs/heads'
+    description: Deleting a remote branch via gh api is blocked.
+    explanation: |
+      gh api with DELETE method targeting refs/heads permanently removes
+      the remote branch via the GitHub API.
+      Safe alternative: delete the branch via GitHub UI.
+
+  - name: gh-api-delete-ref-trailing
+    severity: critical
+    pattern: '^gh\s+(?:\S+\s+)*api\s+(?:\S+\s+)*refs/heads.*(?:-X\s*DELETE|--method(?:=|\s+)DELETE)\b'
+    description: Deleting a remote branch via gh api is blocked.
+    explanation: |
+      gh api targeting refs/heads with DELETE method (flag after URL)
+      permanently removes the remote branch via the GitHub API.
+      Safe alternative: delete the branch via GitHub UI.

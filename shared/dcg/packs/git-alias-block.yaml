@@ -1,0 +1,109 @@
+schema_version: 1
+id: user.git_alias_block
+name: Git Alias Block
+version: 1.0.0
+description: |
+  Blocks git invocations that use personal aliases for mutating operations.
+  Read-only aliases (st, df, log, blame, etc.) are permitted.
+
+keywords:
+  - git
+
+safe_patterns: []
+
+destructive_patterns:
+  - name: alias-co
+    severity: critical
+    pattern: '(?:^|[^[:alnum:]_-])git\s+co\b'
+    description: "Do not use git aliases. Use 'git checkout' instead of 'git co'."
+    explanation: |
+      Git aliases are not permitted. Always use the full canonical git command.
+      Replace 'git co' with 'git checkout'.
+
+  - name: alias-cm
+    severity: critical
+    pattern: '(?:^|[^[:alnum:]_-])git\s+cm\b'
+    description: "Do not use git aliases. Use 'git commit' instead of 'git cm'."
+    explanation: |
+      Git aliases are not permitted. Always use the full canonical git command.
+      Replace 'git cm' with 'git commit'.
+
+  - name: alias-cp
+    severity: critical
+    pattern: '(?:^|[^[:alnum:]_-])git\s+cp\b'
+    description: "Do not use git aliases. Use 'git cherry-pick' instead of 'git cp'."
+    explanation: |
+      Git aliases are not permitted. Always use the full canonical git command.
+      Replace 'git cp' with 'git cherry-pick'.
+
+  - name: alias-rs
+    severity: critical
+    pattern: '(?:^|[^[:alnum:]_-])git\s+rs\b'
+    description: "Do not use git aliases. Use 'git reset' instead of 'git rs'."
+    explanation: |
+      Git aliases are not permitted. Always use the full canonical git command.
+      Replace 'git rs' with 'git reset'.
+
+  - name: alias-sw
+    severity: critical
+    pattern: '(?:^|[^[:alnum:]_-])git\s+sw\b'
+    description: "Do not use git aliases. Use 'git switch' instead of 'git sw'."
+    explanation: |
+      Git aliases are not permitted. Always use the full canonical git command.
+      Replace 'git sw' with 'git switch'.
+
+  - name: alias-ss
+    severity: critical
+    pattern: '(?:^|[^[:alnum:]_-])git\s+ss\b'
+    description: "Do not use git aliases. Use 'git stash' instead of 'git ss'."
+    explanation: |
+      Git aliases are not permitted. Always use the full canonical git command.
+      Replace 'git ss' with 'git stash'.
+
+  - name: alias-mr
+    severity: critical
+    pattern: '(?:^|[^[:alnum:]_-])git\s+mr\b'
+    description: "Do not use git aliases. Use 'git merge' instead of 'git mr'."
+    explanation: |
+      Git aliases are not permitted. Always use the full canonical git command.
+      Replace 'git mr' with 'git merge'.
+
+  - name: alias-ps
+    severity: critical
+    pattern: '(?:^|[^[:alnum:]_-])git\s+ps\b'
+    description: "Do not use git aliases. Use 'git push' instead of 'git ps'."
+    explanation: |
+      Git aliases are not permitted. Always use the full canonical git command.
+      Replace 'git ps' with 'git push'.
+
+  - name: alias-pl
+    severity: critical
+    pattern: '(?:^|[^[:alnum:]_-])git\s+pl\b'
+    description: "Do not use git aliases. Use 'git pull' instead of 'git pl'."
+    explanation: |
+      Git aliases are not permitted. Always use the full canonical git command.
+      Replace 'git pl' with 'git pull'.
+
+  - name: alias-rb
+    severity: critical
+    pattern: '(?:^|[^[:alnum:]_-])git\s+rb\b'
+    description: "Do not use git aliases. Use 'git rebase' instead of 'git rb'."
+    explanation: |
+      Git aliases are not permitted. Always use the full canonical git command.
+      Replace 'git rb' with 'git rebase'.
+
+  - name: alias-ft
+    severity: critical
+    pattern: '(?:^|[^[:alnum:]_-])git\s+ft\b'
+    description: "Do not use git aliases. Use 'git fetch' instead of 'git ft'."
+    explanation: |
+      Git aliases are not permitted. Always use the full canonical git command.
+      Replace 'git ft' with 'git fetch'.
+
+  - name: alias-wt
+    severity: critical
+    pattern: '(?:^|[^[:alnum:]_-])git\s+wt\b'
+    description: "Do not use git aliases. Use 'git worktree' instead of 'git wt'."
+    explanation: |
+      Git aliases are not permitted. Always use the full canonical git command.
+      Replace 'git wt' with 'git worktree'.

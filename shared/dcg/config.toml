@@ -1,0 +1,19 @@
+[packs]
+enabled = [
+  "core.filesystem",
+  "core.git",
+  "strict_git",
+  "cloud.aws",
+# "infrastructure.terraform",
+  "system.disk",
+  "system.permissions",
+  "system.services",
+  "cicd.github_actions",
+  "platform.github",
+  "package_managers",
+]
+
+custom_paths = [
+  "~/.config/dcg/packs/git-alias-block.yaml",
+  "~/.config/dcg/packs/git-remote-branch-protect.yaml",
+]
