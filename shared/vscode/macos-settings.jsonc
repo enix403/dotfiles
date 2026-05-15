@@ -477,4 +477,6 @@
     // ==========================
     // keeping it here since vscode/cursor often like to move it to end anyway
     "workbench.colorTheme": "Best Themes - Gruvbox Concoctis Dark",
+    "window.autoDetectColorScheme": false,
+    "claudeCode.enableNewConversationShortcut": true,
 }

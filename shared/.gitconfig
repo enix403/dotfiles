@@ -10,6 +10,7 @@
   co = checkout
   cm = commit
   cp = cherry-pick
+  rs = reset
   sw = switch
   ss = stash
   df = diff
