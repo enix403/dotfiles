@@ -777,10 +777,7 @@
     "gitlens.codeLens.recentChange.enabled": false,
     // ------- RedHat (for Java) -------
     "redhat.telemetry.enabled": false,
-    // --------- UNORG ---------
-    // ==========================
-    // keeping it here since vscode/cursor often like to move it to end anyway
-    "workbench.colorTheme": "Ilyat Cosmic",
     "window.autoDetectColorScheme": false,
     "claudeCode.enableNewConversationShortcut": true,
+    "workbench.colorTheme": "Ilyat Cosmic",
 }

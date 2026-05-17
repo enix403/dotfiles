@@ -1,16 +1,19 @@
 acarreiro.calculate
+anthropic.claude-code
 bazelbuild.vscode-bazel
 bbenoist.nix
 datadog.datadog-vscode
 detachhead.basedpyright
+donjayamanne.vscode-default-python-kernel
 drblury.protobuf-vsc
-dsrkafuu.vscode-theme-aofuji
+fwcd.kotlin
 github.copilot-chat
 golang.go
 hashicorp.terraform
 humao.rest-client
 karunamurti.haml
 lakshits11.best-themes-redefined
+ljwhite-wv.ilyat-vscode
 llvm-vs-code-extensions.vscode-clangd
 mechatroner.rainbow-csv
 ms-python.python
@@ -20,6 +23,9 @@ ms-toolsai.jupyter-keymap
 ms-toolsai.jupyter-renderers
 ms-toolsai.vscode-jupyter-cell-tags
 ms-toolsai.vscode-jupyter-slideshow
+ms-vscode-remote.remote-ssh
+ms-vscode-remote.remote-ssh-edit
+ms-vscode.remote-explorer
 myriad-dreamin.tinymist
 pkief.material-icon-theme
 repreng.csv
@@ -27,6 +33,5 @@ sathwikkuncham.perpetuity-theme
 stripe.endsmart
 subframe7536.custom-ui-style
 tamasfe.even-better-toml
-vadimcn.vscode-lldb
 wicked-labs.wvsc-serendipity
 xaver.clang-format
