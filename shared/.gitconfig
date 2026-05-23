@@ -8,7 +8,7 @@
   stt = status
   stu = status --short --untracked=no
   unadd = restore --staged
-  ll = "!git ls-files -v | grep '^[hs]'" # list tracked but ignored local files
+  ll = "!git ls-files -v | grep '^[hsHS]'" # list tracked but ignored local files
   li = status --ignored --short # list ignored files
   co = checkout
   cm = commit

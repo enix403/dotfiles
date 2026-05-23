@@ -314,3 +314,12 @@ alias cr="cursor"
 # ========== Copilot CLI ==========
 
 alias cop="copilot"
+
+# ====== Claude =====
+
+alias cld="claude"
+
+# ======== Colima ===========
+
+alias clm="colima"
+
