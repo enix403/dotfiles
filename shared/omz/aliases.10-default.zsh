@@ -123,7 +123,17 @@ alias rscopy="rsync --stats -haz --info=progress2 --no-i-r"
 # alias kff="killall -9 firefox"
 
 # Print the absolute path to the given file
-function showp() { echo $(pwd)/"$@" }
+function showp() {
+  local p=$(pwd)/"$@"
+  echo "$p"
+  if [[ "$OSTYPE" == darwin* ]]; then
+    echo -n "$p" | pbcopy
+  elif [[ "$XDG_SESSION_TYPE" == "wayland" ]]; then
+    echo -n "$p" | wl-copy
+  else
+    echo -n "$p" | xclip -selection clipboard
+  fi
+}
 
 # Do some math: mth "56 + 80"
 function mth() { echo $(( $1 )) }
