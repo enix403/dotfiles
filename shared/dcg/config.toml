@@ -16,4 +16,5 @@ enabled = [
 custom_paths = [
   "~/.config/dcg/packs/git-alias-block.yaml",
   "~/.config/dcg/packs/git-remote-branch-protect.yaml",
+  "~/.config/dcg/packs/kubernetes-block.yaml",
 ]

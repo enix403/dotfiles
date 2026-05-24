@@ -1,0 +1,123 @@
+schema_version: 1
+id: user.kubernetes_block
+name: Kubernetes Command Block
+version: 1.0.0
+description: |
+  Blocks all Kubernetes cluster-interacting CLIs. Claude Code should
+  never interact with a Kubernetes cluster directly.
+
+keywords:
+  - kubectl
+  - helm
+  - k9s
+  - kubens
+  - kubectx
+  - kustomize
+  - argocd
+  - istioctl
+  - skaffold
+  - tilt
+  - oc
+  - kubecolor
+
+safe_patterns:
+  - name: kubectl-context-local
+    pattern: '(?:^|[^[:alnum:]_-])kubectl\b.*--context[=\s]local\b'
+    description: kubectl with --context=local targets the local dev cluster and is allowed
+
+destructive_patterns:
+  - name: kubectl
+    severity: critical
+    pattern: '(?:^|[^[:alnum:]_-])kubectl\b'
+    description: "kubectl is blocked. Do not interact with Kubernetes clusters."
+    explanation: |
+      All kubectl commands are blocked — read-only and mutating alike.
+      Claude Code must not interact with Kubernetes clusters directly.
+
+  - name: helm
+    severity: critical
+    pattern: '(?:^|[^[:alnum:]_-])helm\b'
+    description: "helm is blocked. Do not interact with Kubernetes clusters."
+    explanation: |
+      All helm commands are blocked. Claude Code must not interact
+      with Kubernetes clusters directly.
+
+  - name: k9s
+    severity: critical
+    pattern: '(?:^|[^[:alnum:]_-])k9s\b'
+    description: "k9s is blocked. Do not interact with Kubernetes clusters."
+    explanation: |
+      k9s is a terminal UI for Kubernetes. Claude Code must not
+      interact with Kubernetes clusters directly.
+
+  - name: kubens
+    severity: critical
+    pattern: '(?:^|[^[:alnum:]_-])kubens\b'
+    description: "kubens is blocked. Do not interact with Kubernetes clusters."
+    explanation: |
+      kubens switches Kubernetes namespaces. Claude Code must not
+      interact with Kubernetes clusters directly.
+
+  - name: kubectx
+    severity: critical
+    pattern: '(?:^|[^[:alnum:]_-])kubectx\b'
+    description: "kubectx is blocked. Do not interact with Kubernetes clusters."
+    explanation: |
+      kubectx switches Kubernetes contexts. Claude Code must not
+      interact with Kubernetes clusters directly.
+
+  - name: kustomize
+    severity: critical
+    pattern: '(?:^|[^[:alnum:]_-])kustomize\b'
+    description: "kustomize is blocked. Do not interact with Kubernetes clusters."
+    explanation: |
+      kustomize builds and applies Kubernetes manifests. Claude Code
+      must not interact with Kubernetes clusters directly.
+
+  - name: argocd
+    severity: critical
+    pattern: '(?:^|[^[:alnum:]_-])argocd\b'
+    description: "argocd is blocked. Do not interact with Kubernetes clusters."
+    explanation: |
+      argocd manages Argo CD GitOps deployments. Claude Code must not
+      interact with Kubernetes clusters directly.
+
+  - name: istioctl
+    severity: critical
+    pattern: '(?:^|[^[:alnum:]_-])istioctl\b'
+    description: "istioctl is blocked. Do not interact with Kubernetes clusters."
+    explanation: |
+      istioctl manages the Istio service mesh. Claude Code must not
+      interact with Kubernetes clusters directly.
+
+  - name: skaffold
+    severity: critical
+    pattern: '(?:^|[^[:alnum:]_-])skaffold\b'
+    description: "skaffold is blocked. Do not interact with Kubernetes clusters."
+    explanation: |
+      skaffold is a Kubernetes development tool. Claude Code must not
+      interact with Kubernetes clusters directly.
+
+  - name: tilt
+    severity: critical
+    pattern: '(?:^|[^[:alnum:]_-])tilt\b'
+    description: "tilt is blocked. Do not interact with Kubernetes clusters."
+    explanation: |
+      tilt is a Kubernetes dev environment tool. Claude Code must not
+      interact with Kubernetes clusters directly.
+
+  - name: oc
+    severity: critical
+    pattern: '(?:^|[^[:alnum:]_-])oc\b'
+    description: "oc (OpenShift CLI) is blocked. Do not interact with Kubernetes clusters."
+    explanation: |
+      oc is the OpenShift CLI. Claude Code must not interact with
+      Kubernetes clusters directly.
+
+  - name: kubecolor
+    severity: critical
+    pattern: '(?:^|[^[:alnum:]_-])kubecolor\b'
+    description: "kubecolor is blocked. Do not interact with Kubernetes clusters."
+    explanation: |
+      kubecolor is a colorized kubectl wrapper. Claude Code must not
+      interact with Kubernetes clusters directly.
