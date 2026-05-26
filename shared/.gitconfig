@@ -8,8 +8,12 @@
   stt = status
   stu = status --short --untracked=no
   unadd = restore --staged
-  ll = "!git ls-files -v | grep '^[hsHS]'" # list tracked but ignored local files
-  li = status --ignored --short # list ignored files
+  # list tracked but ignored local files
+  # lowercase letters -> --assume-unchanged'd
+  # S -> --skip-worktree'd
+  ll = "!git ls-files -v | grep --color=always '^[hmrckusS]'"
+  # list ignored files
+  li = status --ignored --short
   co = checkout
   cm = commit
   cp = cherry-pick
@@ -28,6 +32,11 @@
   rp = rev-parse
   ft = fetch
   wt = worktree
+  ui = update-index
+  uia = update-index --assume-unchanged
+  uina = update-index --no-assume-unchanged
+  uis = update-index --skip-worktree
+  uins = update-index --no-skip-worktree
 
 [pager]
 	branch = false
