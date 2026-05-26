@@ -352,6 +352,7 @@
                     "variable.parameter.function",
                     "constant.language.boolean.true",
                     "constant.language.boolean.false",
+                    "constant.language.null"
                 ],
                 "settings": {
                     "fontStyle": ""
