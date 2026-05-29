@@ -20,6 +20,7 @@
   rs = reset
   sw = switch
   ss = stash
+  tg = tag
   df = diff
   dfc = diff --cached
   mr = merge
