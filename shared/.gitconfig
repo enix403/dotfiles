@@ -23,6 +23,8 @@
   tg = tag
   df = diff
   dfc = diff --cached
+  dfn = diff --name-only
+  dfcn = diff --cached --name-only
   mr = merge
   lgg = log --decorate --oneline --graph --color --date=short
   lg = lgg --max-count=25
@@ -106,3 +108,6 @@
 	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process
 	required = true
+
+[include]
+	path = ~/.gitconfig.local

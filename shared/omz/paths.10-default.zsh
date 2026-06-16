@@ -26,7 +26,8 @@ PYENV_ROOT="$HOME/.pyenv"
 
 # if [[ "$HOST" == "radium-fed" && "$OSTYPE" == linux* ]]; then
 if [[ "$OSTYPE" == linux* ]]; then
-    eval "$(mise activate zsh)" # for interactive shells
+    # for interactive shells
+    eval "$(mise activate zsh)"
 fi
 
 # ---------
