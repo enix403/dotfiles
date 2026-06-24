@@ -781,4 +781,6 @@
     "window.autoDetectColorScheme": false,
     "claudeCode.enableNewConversationShortcut": true,
     "workbench.colorTheme": "Ilyat Cosmic",
+    "extensions.installCooldownHours": 72,
+    "gitTreeCompare.diffMode": "full",
 }

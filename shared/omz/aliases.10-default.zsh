@@ -188,6 +188,8 @@ function userignore() {
   git_root=$(git rev-parse --show-toplevel) || return $?;
   vim "$git_root/.git/info/exclude"
 }
+# fixing a port, for DarkReader extension
+alias difit="difit --port 4966 --clean"
 
 # ========== Vim ==========
 
