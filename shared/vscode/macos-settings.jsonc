@@ -610,7 +610,7 @@
     /* =========== Misc =========== */
     /* ============================ */
     "github.copilot.enable": {
-        "*": true,
+        "*": false,
         "plaintext": false,
         "markdown": false,
         "scminput": false,
@@ -618,7 +618,8 @@
         "sql": false,
         "coffeescript": false,
         "jsonc": false,
-        "ruby": false
+        "ruby": false,
+        "go": false
     },
     "cursor.cpp.disabledLanguages": [
         "plaintext",
@@ -783,4 +784,5 @@
     "workbench.colorTheme": "Ilyat Cosmic",
     "extensions.installCooldownHours": 72,
     "gitTreeCompare.diffMode": "full",
+    "terraform.mcp.server.enable": true,
 }

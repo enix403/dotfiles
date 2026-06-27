@@ -34,7 +34,6 @@ alias df='df -h'
 alias free='free -h'
 alias diskusage="df -h | grep -vE \"^(tmpfs|run|dev)\" | (sed -u 1q; sort)"
 alias ddu="du -Pcshx"
-alias rscopy="rsync -av --progress"
 alias mnt='sudo mount -o umask=0022,gid="$GID",uid="$UID"' # mount with user previliges
 alias {bat,bt}='bat --theme="Catppuccin Mocha" --style=plain'
 alias feh="feh --scale-down --auto-zoom --draw-filename --action9 \";feh --bg-scale '%f'\""
