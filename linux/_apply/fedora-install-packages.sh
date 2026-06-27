@@ -28,7 +28,8 @@ sudo dnf -y install \
   vlc \
   zathura zathura-pdf-mupdf \
   duf \
-  tokei
+  tokei \
+  git-annex
 
 # COPRs
 sudo dnf -y copr enable atim/starship && sudo dnf -y install starship
@@ -56,4 +57,3 @@ rpm repo install
 
     beekeeper-studio: sudo rpm --import https://rpm.beekeeperstudio.io/beekeeper.key && sudo curl -o /etc/yum.repos.d/my-beekeeper-studio.repo https://rpm.beekeeperstudio.io/beekeeper-studio.repo
 '
-
