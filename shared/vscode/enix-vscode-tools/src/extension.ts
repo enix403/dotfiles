@@ -1,36 +1,89 @@
 import * as vscode from 'vscode';
 
+const CLOSING: Record<string, string> = { '(': ')', '[': ']', '{': '}', '<': '>' };
+
+function getContentRange(lines: string[]): [number, number] {
+    let start = 0, end = lines.length - 1;
+    while (start <= end && lines[start].trim() === '') { start++; }
+    while (end >= start && lines[end].trim() === '') { end--; }
+    return [start, end];
+}
+
+function applyToContent(lines: string[], fn: (content: string[]) => string[]): string[] {
+    const [start, end] = getContentRange(lines);
+    if (start > end) { return lines; }
+    return [
+        ...lines.slice(0, start),
+        ...fn(lines.slice(start, end + 1)),
+        ...lines.slice(end + 1),
+    ];
+}
+
+function selectedLines(editor: vscode.TextEditor): string[] | null {
+    if (editor.selection.isEmpty) {
+        vscode.window.showWarningMessage('Select a block of text first.');
+        return null;
+    }
+    return editor.document.getText(editor.selection).split('\n');
+}
+
 export function activate(context: vscode.ExtensionContext) {
     const joinLines = vscode.commands.registerCommand('enix-vscode-tools.joinLinesWithSeparator', async () => {
         const editor = vscode.window.activeTextEditor;
-        if (!editor || editor.selection.isEmpty) {
-            vscode.window.showWarningMessage('Select a block of text first.');
-            return;
-        }
+        const lines = editor ? selectedLines(editor) : null;
+        if (!editor || !lines) { return; }
 
-        const separator = await vscode.window.showInputBox({
-            prompt: 'Join lines with',
-            value: ',',
-            placeHolder: ',',
-        });
+        const separator = await vscode.window.showInputBox({ prompt: 'Join lines with', value: ',' });
+        if (separator === undefined) { return; }
 
-        if (separator === undefined) {
-            return;
-        }
-
-        const selection = editor.selection;
-        const text = editor.document.getText(selection);
-        const lines = text.split('\n').map(l => l.trim());
-        let start = 0;
-        let end = lines.length - 1;
-        while (start <= end && lines[start] === '') { start++; }
-        while (end >= start && lines[end] === '') { end--; }
-        const joined = lines.slice(start, end + 1).join(separator);
-
-        await editor.edit(edit => edit.replace(selection, joined));
+        const result = applyToContent(lines, content => [content.map(l => l.trim()).join(separator)]);
+        await editor.edit(edit => edit.replace(editor.selection, result.join('\n')));
     });
 
-    context.subscriptions.push(joinLines);
+    const splitIntoLines = vscode.commands.registerCommand('enix-vscode-tools.splitSelectionIntoLines', () => {
+        const editor = vscode.window.activeTextEditor;
+        const lines = editor ? selectedLines(editor) : null;
+        if (!editor || !lines) { return; }
+
+        const [start] = getContentRange(lines);
+        const selectionStartLine = editor.selection.start.line;
+
+        const [contentStart, contentEnd] = getContentRange(lines);
+        const cursors: vscode.Selection[] = [];
+        for (let i = contentStart; i <= contentEnd; i++) {
+            const pos = new vscode.Position(selectionStartLine + i, 0);
+            cursors.push(new vscode.Selection(pos, pos));
+        }
+        editor.selections = cursors;
+    });
+
+    const wrapLines = vscode.commands.registerCommand('enix-vscode-tools.wrapLines', async () => {
+        const editor = vscode.window.activeTextEditor;
+        const lines = editor ? selectedLines(editor) : null;
+        if (!editor || !lines) { return; }
+
+        const wrapper = await vscode.window.showInputBox({ prompt: 'Wrap each line with', value: '"' });
+        if (wrapper === undefined) { return; }
+
+        const open = wrapper;
+        const close = CLOSING[wrapper] ?? wrapper;
+        const result = applyToContent(lines, content => content.map(l => `${open}${l}${close}`));
+        await editor.edit(edit => edit.replace(editor.selection, result.join('\n')));
+    });
+
+    const appendToLines = vscode.commands.registerCommand('enix-vscode-tools.appendToLines', async () => {
+        const editor = vscode.window.activeTextEditor;
+        const lines = editor ? selectedLines(editor) : null;
+        if (!editor || !lines) { return; }
+
+        const suffix = await vscode.window.showInputBox({ prompt: 'Append to each line', value: ',' });
+        if (suffix === undefined) { return; }
+
+        const result = applyToContent(lines, content => content.map(l => `${l}${suffix}`));
+        await editor.edit(edit => edit.replace(editor.selection, result.join('\n')));
+    });
+
+    context.subscriptions.push(joinLines, splitIntoLines, wrapLines, appendToLines);
 }
 
 export function deactivate() {}

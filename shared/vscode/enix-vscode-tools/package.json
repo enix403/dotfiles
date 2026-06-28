@@ -13,7 +13,19 @@
     "commands": [
       {
         "command": "enix-vscode-tools.joinLinesWithSeparator",
-        "title": "Enix: Join Lines with Separator"
+        "title": "enix: join lines with separator"
+      },
+      {
+        "command": "enix-vscode-tools.splitSelectionIntoLines",
+        "title": "enix: split selection into lines"
+      },
+      {
+        "command": "enix-vscode-tools.wrapLines",
+        "title": "enix: wrap lines"
+      },
+      {
+        "command": "enix-vscode-tools.appendToLines",
+        "title": "enix: append to lines"
       }
     ]
   },
