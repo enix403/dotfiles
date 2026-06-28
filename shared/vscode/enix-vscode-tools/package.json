@@ -1,0 +1,38 @@
+{
+  "name": "enix-vscode-tools",
+  "displayName": "Enix VSCode Tools",
+  "description": "Custom VS Code tools for enix workflows",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.95.0"
+  },
+  "categories": ["Other"],
+  "activationEvents": [],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "enix-vscode-tools.helloWorld",
+        "title": "Enix: Hello World"
+      },
+      {
+        "command": "enix-vscode-tools.joinLinesWithSeparator",
+        "title": "Enix: Join Lines with Separator"
+      }
+    ]
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "lint": "eslint src"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.95.0",
+    "@types/node": "^22.x",
+    "@typescript-eslint/eslint-plugin": "^8.x",
+    "@typescript-eslint/parser": "^8.x",
+    "eslint": "^9.x",
+    "typescript": "^5.x"
+  }
+}
