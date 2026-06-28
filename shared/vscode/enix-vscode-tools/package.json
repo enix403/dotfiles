@@ -12,10 +12,6 @@
   "contributes": {
     "commands": [
       {
-        "command": "enix-vscode-tools.helloWorld",
-        "title": "Enix: Hello World"
-      },
-      {
         "command": "enix-vscode-tools.joinLinesWithSeparator",
         "title": "Enix: Join Lines with Separator"
       }

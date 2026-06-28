@@ -1,10 +1,6 @@
 import * as vscode from 'vscode';
 
 export function activate(context: vscode.ExtensionContext) {
-    const helloWorld = vscode.commands.registerCommand('enix-vscode-tools.helloWorld', () => {
-        vscode.window.showInformationMessage('Hello from enix-vscode-tools!');
-    });
-
     const joinLines = vscode.commands.registerCommand('enix-vscode-tools.joinLinesWithSeparator', async () => {
         const editor = vscode.window.activeTextEditor;
         if (!editor || editor.selection.isEmpty) {
@@ -34,7 +30,7 @@ export function activate(context: vscode.ExtensionContext) {
         await editor.edit(edit => edit.replace(selection, joined));
     });
 
-    context.subscriptions.push(helloWorld, joinLines);
+    context.subscriptions.push(joinLines);
 }
 
 export function deactivate() {}
