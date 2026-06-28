@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+
+SCRIPT_DIR=$(dirname "$(realpath "$0")")
+GITATTRPATH=$(realpath "$SCRIPT_DIR/../template.gitattributes")
+echo $GITATTRPATH
+
+git init
+git annex init "server"
+
+echo "" > ./.gitkeep
+cp $GITATTRPATH ./.gitattributes
+
+git add .gitkeep .gitattributes
+git commit -m "server-initial-commit"
+
+git annex adjust --unlock

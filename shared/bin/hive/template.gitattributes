@@ -1,0 +1,65 @@
+# ---------------------------------------------------------------------
+# 1. DEFAULT CATCH-ALL RULE (Size-based for Text & Code)
+# ---------------------------------------------------------------------
+# Any file not explicitly forced below falls back to this rule.
+# Files < 50KB (like standard source code) stay in plain Git.
+# Files > 50KB (like massive logs or data dumps) go to the annex.
+* annex.largefiles=(largerthan=50kb) annex.backend=MD5E
+
+# ---------------------------------------------------------------------
+# 2. BINARY & MEDIA FORCED TO ANNEX (Regardless of size)
+# ---------------------------------------------------------------------
+# OS Trash & Metadata
+*.DS_Store annex.largefiles=anything annex.backend=MD5E
+*.thumbs.db annex.largefiles=anything annex.backend=MD5E
+
+# Archives & Compressed Files
+*.zip annex.largefiles=anything annex.backend=MD5E
+*.tar annex.largefiles=anything annex.backend=MD5E
+*.gz annex.largefiles=anything annex.backend=MD5E
+*.tar.gz annex.largefiles=anything annex.backend=MD5E
+*.tgz annex.largefiles=anything annex.backend=MD5E
+*.rar annex.largefiles=anything annex.backend=MD5E
+*.7z annex.largefiles=anything annex.backend=MD5E
+*.bz2 annex.largefiles=anything annex.backend=MD5E
+
+# Documents
+*.pdf annex.largefiles=anything annex.backend=MD5E
+*.docx annex.largefiles=anything annex.backend=MD5E
+*.xlsx annex.largefiles=anything annex.backend=MD5E
+*.pptx annex.largefiles=anything annex.backend=MD5E
+*.doc annex.largefiles=anything annex.backend=MD5E
+*.xls annex.largefiles=anything annex.backend=MD5E
+*.ppt annex.largefiles=anything annex.backend=MD5E
+*.odt annex.largefiles=anything annex.backend=MD5E
+
+# Video formats
+*.mp4 annex.largefiles=anything annex.backend=MD5E
+*.mkv annex.largefiles=anything annex.backend=MD5E
+*.avi annex.largefiles=anything annex.backend=MD5E
+*.mov annex.largefiles=anything annex.backend=MD5E
+*.webm annex.largefiles=anything annex.backend=MD5E
+
+# Audio formats
+*.aac annex.largefiles=anything annex.backend=MD5E
+*.amr annex.largefiles=anything annex.backend=MD5E
+*.mp3 annex.largefiles=anything annex.backend=MD5E
+*.wav annex.largefiles=anything annex.backend=MD5E
+*.flac annex.largefiles=anything annex.backend=MD5E
+*.ogg annex.largefiles=anything annex.backend=MD5E
+
+# Images
+*.jpeg annex.largefiles=anything annex.backend=MD5E
+*.jpg annex.largefiles=anything annex.backend=MD5E
+*.gif annex.largefiles=anything annex.backend=MD5E
+*.webp annex.largefiles=anything annex.backend=MD5E
+*.png annex.largefiles=anything annex.backend=MD5E
+*.bmp annex.largefiles=anything annex.backend=MD5E
+*.tiff annex.largefiles=anything annex.backend=MD5E
+*.psd annex.largefiles=anything annex.backend=MD5E
+
+# Specialized / Miscellaneous
+*.inp annex.largefiles=anything annex.backend=MD5E
+*.exe annex.largefiles=anything annex.backend=MD5E
+*.dmg annex.largefiles=anything annex.backend=MD5E
+*.iso annex.largefiles=anything annex.backend=MD5E
