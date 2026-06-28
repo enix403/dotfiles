@@ -172,6 +172,8 @@ function st() {
 alias kb='cd ~/kb'
 alias kbv='(cd ~/kb; nvim .)'
 
+alias hv='cd ~/hive'
+
 # ===========================
 # ---------- Tools ----------
 # ===========================
