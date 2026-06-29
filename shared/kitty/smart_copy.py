@@ -9,24 +9,44 @@
 #     so kitty can track command output boundaries
 #   - In kitty.conf:
 #       map kitty_mod+shift+c kitten smart_copy.py
-#
-# This kitten runs inside the kitty process (no_ui=True), so it has direct
-# access to the window object and avoids the instance-targeting issues that
-# come with shelling out to `kitty @`.
 
 import subprocess
+import sys
 from kittens.tui.handler import result_handler
 from kitty.window import CommandOutput
 # CommandOutput enum values (from kitty.window):
-#   last_run       = 0  — output of the last command, even if empty
-#   first_on_screen= 1  — output of the first command visible on screen
-#   last_visited   = 2  — output of the last command scrolled to via hotkey
-#   last_non_empty = 3  — output of the last command that produced output
+#   last_run        = 0 — output of the last command, even if empty
+#   first_on_screen = 1 — output of the first command visible on screen
+#   last_visited    = 2 — output of the last command scrolled to via hotkey
+#   last_non_empty  = 3 — output of the last command that produced output
+
+# Ordered list of clipboard commands to try per platform. The first one that
+# exists and succeeds wins; if none are available we silently do nothing.
+if sys.platform == 'darwin':
+    _CLIPBOARD_CMDS = [['pbcopy']]
+else:
+    # Wayland first, then X11 fallbacks
+    _CLIPBOARD_CMDS = [
+        ['wl-copy'],
+        ['xclip', '-selection', 'clipboard'],
+        ['xsel', '--clipboard', '--input'],
+    ]
 
 
 def main(args):
     # Required entry point for kittens; no terminal UI needed here.
     pass
+
+
+def set_clipboard(text):
+    data = text.encode()
+    for cmd in _CLIPBOARD_CMDS:
+        try:
+            result = subprocess.run(cmd, input=data, capture_output=True)
+            if result.returncode == 0:
+                return
+        except FileNotFoundError:
+            continue  # binary not installed, try next
 
 
 @result_handler(no_ui=True)
@@ -49,4 +69,4 @@ def handle_result(args, answer, target_window_id, boss):
         return
 
     if text and text.strip():
-        subprocess.run(['pbcopy'], input=text.encode())
+        set_clipboard(text)
