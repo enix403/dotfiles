@@ -41,6 +41,7 @@
   uis = update-index --skip-worktree
   uins = update-index --no-skip-worktree
   ax = annex
+  ib = "!lazygit branch"
 
 [pager]
 	branch = false
