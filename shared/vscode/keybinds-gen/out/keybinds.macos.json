@@ -41,6 +41,7 @@
   {"key": "cmd+\\", "command": "-workbench.action.splitEditor"},
   {"key": "cmd+\\", "command": "-workbench.action.terminal.split", "when": "terminalFocus && terminalProcessSupported || terminalFocus && terminalWebExtensionContributedProfile"},
   {"key": "cmd+\\", "command": "-workbench.action.terminal.splitActiveTab", "when": "terminalProcessSupported && terminalTabsFocus"},
+  {"key": "shift+cmd+c", "command": "-workbench.action.terminal.openNativeConsole"},
   {"key": "cmd+up", "command": "-cursorTop", "when": "textInputFocus"},
   {"key": "cmd+up", "command": "-interactive.scrollToTop", "when": "activeEditor == 'workbench.editor.interactive'"},
   {"key": "cmd+down", "command": "-cursorBottom", "when": "textInputFocus"},

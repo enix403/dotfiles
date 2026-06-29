@@ -153,6 +153,9 @@ mod+\  -> -workbench.action.terminal.split
 mod+\  -> -workbench.action.terminal.splitActiveTab
    when: terminalProcessSupported && terminalTabsFocus
 
+// disable this shortcut that opens OS terminal
+mod+shift+c -> -workbench.action.terminal.openNativeConsole
+
 // ---- Interactive editor / cursor top-bottom ----
 mod+up    -> -cursorTop                         when: textInputFocus
 mod+up    -> -interactive.scrollToTop           when: activeEditor == 'workbench.editor.interactive'
