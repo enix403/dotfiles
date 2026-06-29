@@ -781,7 +781,7 @@
     "redhat.telemetry.enabled": false,
     "window.autoDetectColorScheme": false,
     "claudeCode.enableNewConversationShortcut": true,
-    "workbench.colorTheme": "Ilyat Cosmic",
+    "workbench.colorTheme": "Perpetuity Light",
     "extensions.installCooldownHours": 72,
     "gitTreeCompare.diffMode": "full",
     "terraform.mcp.server.enable": true,
