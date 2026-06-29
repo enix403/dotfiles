@@ -26,6 +26,10 @@
       {
         "command": "enix-vscode-tools.appendToLines",
         "title": "enix: append to lines"
+      },
+      {
+        "command": "enix-vscode-tools.mdclip",
+        "title": "enix: mdclip"
       }
     ]
   },

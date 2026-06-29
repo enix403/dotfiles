@@ -1,4 +1,5 @@
 import * as vscode from 'vscode';
+import { execFile } from 'child_process';
 
 const CLOSING: Record<string, string> = { '(': ')', '[': ']', '{': '}', '<': '>' };
 
@@ -83,7 +84,31 @@ export function activate(context: vscode.ExtensionContext) {
         await editor.edit(edit => edit.replace(editor.selection, result.join('\n')));
     });
 
-    context.subscriptions.push(joinLines, splitIntoLines, wrapLines, appendToLines);
+    const mdclip = vscode.commands.registerCommand('enix-vscode-tools.mdclip', async () => {
+        const editor = vscode.window.activeTextEditor;
+        if (!editor || editor.selection.isEmpty) {
+            vscode.window.showWarningMessage('Select a block of text first.');
+            return;
+        }
+
+        const text = editor.document.getText(editor.selection);
+        await vscode.env.clipboard.writeText(text);
+
+        await new Promise<void>(resolve => {
+            const proc = execFile('mdclip', [], (error) => {
+                if (error) {
+                    const msg = (error as { code?: string }).code === 'ENOENT'
+                        ? 'mdclip: command not found'
+                        : `mdclip failed: ${error.message}`;
+                    vscode.window.showWarningMessage(msg);
+                }
+                resolve();
+            });
+            proc.stdin?.end(text);
+        });
+    });
+
+    context.subscriptions.push(joinLines, splitIntoLines, wrapLines, appendToLines, mdclip);
 }
 
 export function deactivate() {}
