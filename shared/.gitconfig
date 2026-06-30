@@ -44,7 +44,7 @@
 	ib = !git branch --sort=-committerdate | sed \"s/^[ *]*//\" | fzf --height 30% --layout=reverse --border --info=inline | xargs git checkout
 	ibd = !git branch --sort=-committerdate | sed \"s/^[ *]*//\" | fzf --height 40% --layout=reverse --multi --bind \"space:toggle+down\" --border --header \"SPACE to select branches to DELETE\" | xargs -r git branch -d
 	ia = "!git status --short | perl -ne 'next if /^. /; my ($s, $w) = split //, substr($_, 0, 2); $s = \"\\e[32m$s\\e[0m\" if $s =~ /[^ ?]/; $s = \"\\e[31m$s\\e[0m\" if $s eq \"?\"; $w = \"\\e[31m$w\\e[0m\" if $w =~ /[^ ]/; print $s . $w . substr($_, 2)' | fzf --ansi --height 85% --layout=reverse --multi --bind \"space:toggle+down\" --border --header \"SPACE to choose, ENTER to stage\" --preview-window \"right:70%\" --preview \"git diff -- {2..} | delta --paging=never --width=\\$FZF_PREVIEW_COLUMNS | grep . || git diff --no-index /dev/null {2..} | delta --paging=never --width=\\$FZF_PREVIEW_COLUMNS\" | ansifilter | cut -c 4- | tr \"\\n\" \"\\0\" | xargs -0 -r git add"
-  is = "!gitui --theme catppuccin-mocha.ron"
+  is = "!gitui"
 
 [pager]
 	branch = false
