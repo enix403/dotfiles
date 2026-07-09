@@ -18,3 +18,4 @@ ln -nfrs ../dotfiles/shared/starship .
 ln -nfrs ../dotfiles/shared/omz .
 ln -nfrs ../dotfiles/shared/yazi .
 ln -nfrs ../dotfiles/shared/mise .
+ln -nfrs ../dotfiles/shared/fish .

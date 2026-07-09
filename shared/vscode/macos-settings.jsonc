@@ -53,7 +53,7 @@
     "files.trimTrailingWhitespaceInRegexAndStrings": false,
     "files.associations": {
         "*.css": "tailwindcss",
-        "*.kts": "gradle-kotlin-dsl",
+        "*.kts": "kotlin",
         "*.conf": "shellscript",
         "*.kt": "kotlin",
         "*.ctl": "sql",
@@ -352,7 +352,8 @@
                     "variable.parameter.function",
                     "constant.language.boolean.true",
                     "constant.language.boolean.false",
-                    "constant.language.null"
+                    "constant.language.null",
+                    "source.go keyword.control.go"
                 ],
                 "settings": {
                     "fontStyle": ""
