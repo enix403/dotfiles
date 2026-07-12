@@ -208,75 +208,177 @@ else
   alias k='kubectl'
 fi
 
+# function kx() {
+#   if [ $# -eq 0 ]; then
+#     # "kx" lists all available kubernetes contexts
+#     kubectl config current-context
+#   elif [ $# -eq 1 ]; then
+#     # "kx <context> sets the given context as current"
+#     kubectl config use-context "$1"
+#   elif [ $# -eq 2 ]; then
+#     # "kx <context> <namespace>" sets context and default namespace
+#     kubectl config use-context "$1"
+#     kubectl config set-context --current --namespace="$2"
+#   else
+#     echo "Usage: kx [context] [namespace]" >&2
+#     return 1
+#   fi
+# }
+# _kx() {
+#   local -a contexts
+#   contexts=($(kubectl config get-contexts -o name 2>/dev/null))
+#   _describe 'context' contexts
+# }
+# compdef _kx kx
+
+#
+
+# function kc() {
+#   if [[ -z "$1" ]]; then
+#     # Show current context and its namespace
+#     ctx=$(kubectl config current-context 2>/dev/null)
+#     ns=$(kubectl config view --minify --output 'jsonpath={..namespace}' 2>/dev/null)
+#     ns=${ns:-default}
+#     echo "Context: $ctx"
+#     echo "Namespace: $ns"
+#   else
+#     # Set namespace for current context
+#     kubectl config set-context --current --namespace="$1"
+#   fi
+# }
+
+# function kcc() {
+#   # Clear namespace for current context
+#   kubectl config set-context --current --namespace=""
+# }
+
+# -------------------------------------------------------------------
+# Kubectl Shortcuts & Context/Namespace Switchers
+# -------------------------------------------------------------------
+
+# Helper function to print current context and namespace
+function _k_current() {
+  local ctx=$(kubectl config current-context 2>/dev/null)
+  if [ -z "$ctx" ]; then
+    echo "\033[31mNo current context set.\033[0m"
+    return 1
+  fi
+  # Extract namespace, fallback to 'default' if empty
+  local ns=$(kubectl config view --minify --output 'jsonpath={..namespace}' 2>/dev/null)
+  [ -z "$ns" ] && ns="default"
+
+  echo "Context: \033[32m$ctx\033[0m | Namespace: \033[34m$ns\033[0m"
+}
+
+# kx [<context>] [<namespace>]
 function kx() {
   if [ $# -eq 0 ]; then
-    # "kx" lists all available kubernetes contexts
-    kubectl config current-context
+    _k_current
   elif [ $# -eq 1 ]; then
-    # "kx <context> sets the given context as current"
-    kubectl config use-context "$1"
+    kubectl config use-context "$1" >/dev/null && _k_current
   elif [ $# -eq 2 ]; then
-    # "kx <context> <namespace>" sets context and default namespace
-    kubectl config use-context "$1"
-    kubectl config set-context --current --namespace="$2"
+    kubectl config use-context "$1" >/dev/null && \
+      kubectl config set-context --current --namespace="$2" >/dev/null && \
+      _k_current
   else
-    echo "Usage: kx [context] [namespace]" >&2
+    echo "Usage: kx [<context>] [<namespace>]"
     return 1
   fi
 }
-_kx() {
-  local -a contexts
-  contexts=($(kubectl config get-contexts -o name 2>/dev/null))
-  _describe 'context' contexts
+# Completely isolated completion for kx
+function _kx() {
+  if (( CURRENT == 2 )); then
+    compadd $(kubectl config get-contexts -o name 2>/dev/null)
+  fi
 }
 compdef _kx kx
-
 alias kxx="kubectl config get-contexts"
 
-function kc() {
-  if [[ -z "$1" ]]; then
-    # Show current context and its namespace
-    ctx=$(kubectl config current-context 2>/dev/null)
-    ns=$(kubectl config view --minify --output 'jsonpath={..namespace}' 2>/dev/null)
-    ns=${ns:-default}
-    echo "Context: $ctx"
-    echo "Namespace: $ns"
+# kn [<namespace>]
+function kn() {
+  if [ $# -eq 0 ]; then
+    _k_current
+  elif [ $# -eq 1 ]; then
+    # Ensure a context is actually active before setting a namespace
+    if kubectl config current-context >/dev/null 2>&1; then
+      kubectl config set-context --current --namespace="$1" >/dev/null && _k_current
+    else
+      echo "\033[31mError: No active context to set namespace on.\033[0m"
+      return 1
+    fi
   else
-    # Set namespace for current context
-    kubectl config set-context --current --namespace="$1"
+    echo "Usage: kn [<namespace>]"
+    return 1
   fi
 }
 
-function kcc() {
-  # Clear namespace for current context
-  kubectl config set-context --current --namespace=""
+# ks <context> <...>
+function ks() {
+  if [ $# -lt 1 ]; then
+    echo "Usage: ks <context> [kubectl commands...]"
+    return 1
+  fi
+  local ctx="$1"
+  shift # Remove the context from the argument list
+  kubectl --context="$ctx" "$@"
 }
+function _ks_kube() {
+  if (( CURRENT == 2 )); then
+    compadd $(kubectl config get-contexts -o name 2>/dev/null)
+  else
+    # Force-load native kubectl completion if Zsh hasn't cached it yet
+    (( $+functions[_kubectl] )) || autoload -U _kubectl 2>/dev/null
+
+    if (( $+functions[_kubectl] )); then
+      # Explicitly override the service name so the native engine doesn't choke
+      local service=kubectl
+      words=(kubectl --context="$words[2]" "${words[3,-1]}")
+      _kubectl
+    fi
+  fi
+}
+compdef _ks ks # TODO: it does not work because it conflicts with OMZ's built in "ks" alias
+
+# kk <...>
+function kk() {
+  local ctx=$(kubectl config current-context 2>/dev/null)
+  if [ -z "$ctx" ]; then
+    echo "\033[31mError: No active context set.\033[0m"
+    return 1
+  fi
+  local ns=$(kubectl config view --minify --output 'jsonpath={..namespace}' 2>/dev/null)
+  [ -z "$ns" ] && ns="default"
+
+  echo "kubectl --context=$ctx -n $ns $@"
+}
+
+# ----------------------
 
 alias nerd="nerdctl -n k8s.io"
 
 # logs of all kube pods
-function ksl() {
-    # If no arguments are provided, exit early
-    [[ $# -eq 0 ]] && { echo "Usage: ksl [flags] <instance_name>"; return 1; }
+function kla() {
+  # If no arguments are provided, exit early
+  [[ $# -eq 0 ]] && { echo "Usage: ksl [flags] <instance_name>"; return 1; }
 
-    # Extract the last argument
-    local instance_name="${@: -1}"
+  # Extract the last argument
+  local instance_name="${@: -1}"
 
-    # Extract everything EXCEPT the last argument
-    # We use a check to ensure we don't duplicate the single argument
-    local other_params=""
-    if [ $# -gt 1 ]; then
-        other_params="${@:1:$#-1}"
-    fi
+  # Extract everything EXCEPT the last argument
+  # We use a check to ensure we don't duplicate the single argument
+  local other_params=""
+  if [ $# -gt 1 ]; then
+    other_params="${@:1:$#-1}"
+  fi
 
-    kubectl logs \
-        --max-log-requests 100 \
-        --all-containers=true \
-        --tail=-1 \
-        --prefix \
-        -f \
-        -l "app.kubernetes.io/instance=${instance_name}" \
-        $other_params
+  kubectl logs \
+    --max-log-requests 100 \
+    --all-containers=true \
+    --tail=-1 \
+    --prefix \
+    -f \
+    -l "app.kubernetes.io/instance=${instance_name}" \
+    $other_params
 }
 
 # ========== Yazi ==========
