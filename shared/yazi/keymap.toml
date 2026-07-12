@@ -22,3 +22,13 @@ desc = "Enter directory or open file"
 on   = "<Backspace>"
 run  = "leave"
 desc = "Move back to the parent directory"
+
+[[mgr.prepend_keymap]]
+on   = "a"
+run  = "create"
+desc = "Create a file"
+
+[[mgr.prepend_keymap]]
+on   = "A"
+run  = "create --dir"
+desc = "Create a directory"
