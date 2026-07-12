@@ -57,7 +57,9 @@
         "*.conf": "shellscript",
         "*.kt": "kotlin",
         "*.ctl": "sql",
-        "*.devshell": "shellscript"
+        "*.devshell": "shellscript",
+        "*.txt": "txt",
+        "Untitled-*": "txt",
     },
     "files.exclude": {
         "**/.git": true,
@@ -680,6 +682,9 @@
         "editor.tabSize": 2,
         "editor.insertSpaces": true,
         "editor.detectIndentation": true
+    },
+    "[txt]": {
+        "editor.foldingStrategy": "indentation",
     },
     "[jsonc]": {
         "editor.defaultFormatter": "vscode.json-language-features",
