@@ -773,7 +773,7 @@
     // ------- Settings Sync -------
     "settingsSync.keybindingsPerPlatform": false,
     // ------- CSV (A UI csv Viewer) -------
-    "csv.enabled": false,
+    "csv.enabled": true,
     // ------- GitLens -------
     "gitlens.currentLine.enabled": false,
     "gitlens.codeLens.authors.enabled": false,
