@@ -1,0 +1,24 @@
+[[mgr.prepend_keymap]]
+on   = "!"
+run  = 'shell "$SHELL" --block'
+desc = "Open shell in current directory"
+
+[[mgr.prepend_keymap]]
+on   = "y"
+run  = [ "yank", "plugin clipboard -- --action=copy" ]
+desc = "Yank files and copy to system clipboard"
+
+[[mgr.prepend_keymap]]
+on   = "<C-p>"
+run  = [ "plugin clipboard -- --action=paste" ]
+desc = "Paste files from system clipboard"
+
+[[mgr.prepend_keymap]]
+on   = "<Enter>"
+run  = "plugin smart-enter"
+desc = "Enter directory or open file"
+
+[[mgr.prepend_keymap]]
+on   = "<Backspace>"
+run  = "leave"
+desc = "Move back to the parent directory"
