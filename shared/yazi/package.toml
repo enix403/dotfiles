@@ -8,6 +8,11 @@ use = "XYenon/clipboard"
 rev = "0ac0320"
 hash = "f80172438b4b5c31e94d6c891f734445"
 
+[[plugin.deps]]
+use = "atareao/convert"
+rev = "ce060d9"
+hash = "1c0465351f2a344e842f065ab316f265"
+
 [[flavor.deps]]
 use = "yazi-rs/flavors:catppuccin-mocha"
 rev = "4770a34"
