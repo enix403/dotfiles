@@ -208,54 +208,6 @@ else
   alias k='kubectl'
 fi
 
-# function kx() {
-#   if [ $# -eq 0 ]; then
-#     # "kx" lists all available kubernetes contexts
-#     kubectl config current-context
-#   elif [ $# -eq 1 ]; then
-#     # "kx <context> sets the given context as current"
-#     kubectl config use-context "$1"
-#   elif [ $# -eq 2 ]; then
-#     # "kx <context> <namespace>" sets context and default namespace
-#     kubectl config use-context "$1"
-#     kubectl config set-context --current --namespace="$2"
-#   else
-#     echo "Usage: kx [context] [namespace]" >&2
-#     return 1
-#   fi
-# }
-# _kx() {
-#   local -a contexts
-#   contexts=($(kubectl config get-contexts -o name 2>/dev/null))
-#   _describe 'context' contexts
-# }
-# compdef _kx kx
-
-#
-
-# function kc() {
-#   if [[ -z "$1" ]]; then
-#     # Show current context and its namespace
-#     ctx=$(kubectl config current-context 2>/dev/null)
-#     ns=$(kubectl config view --minify --output 'jsonpath={..namespace}' 2>/dev/null)
-#     ns=${ns:-default}
-#     echo "Context: $ctx"
-#     echo "Namespace: $ns"
-#   else
-#     # Set namespace for current context
-#     kubectl config set-context --current --namespace="$1"
-#   fi
-# }
-
-# function kcc() {
-#   # Clear namespace for current context
-#   kubectl config set-context --current --namespace=""
-# }
-
-# -------------------------------------------------------------------
-# Kubectl Shortcuts & Context/Namespace Switchers
-# -------------------------------------------------------------------
-
 # Helper function to print current context and namespace
 function _k_current() {
   local ctx=$(kubectl config current-context 2>/dev/null)
