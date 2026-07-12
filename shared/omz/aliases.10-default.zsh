@@ -274,7 +274,7 @@ function ks() {
   shift # Remove the context from the argument list
   kubectl --context="$ctx" "$@"
 }
-function _ks_kube() {
+function _ks() {
   if (( CURRENT == 2 )); then
     compadd $(kubectl config get-contexts -o name 2>/dev/null)
   else
