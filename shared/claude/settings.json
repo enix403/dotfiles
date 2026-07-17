@@ -1,0 +1,39 @@
+{
+  "env": {
+    "BASH_DEFAULT_TIMEOUT_MS": "900000",
+    "BASH_MAX_TIMEOUT_MS": "7200000",
+    "ANTHROPIC_MODEL": "claude-opus-4-6[1m]",
+    "ENABLE_TOOL_SEARCH": "true"
+  },
+  "includeCoAuthoredBy": false,
+  "permissions": {
+    "allow": [
+      "Bash",
+      "Skill",
+      "Read",
+      "Edit",
+      "Write"
+    ]
+  },
+  "model": "sonnet",
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "dcg"
+          }
+        ]
+      }
+    ]
+  },
+  "statusLine": {
+    "type": "command",
+    "command": "claude-powerline"
+  },
+  "effortLevel": "medium",
+  "tui": "fullscreen",
+  "theme": "dark"
+}
