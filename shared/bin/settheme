@@ -73,9 +73,70 @@ list_themes() {
 # Machine-readable list of names, for shell completion.
 names() { registry | cut -d'|' -f1; }
 
+# Render a compact color preview of a theme's palette straight from its vendored
+# kitty conf, using 24-bit escapes with the theme's OWN hex values — so it shows
+# the true colors regardless of the terminal's current palette. Used as the fzf
+# `--preview` in `--pick`.
+swatch() {
+  local name="${1:-}" conf="$KITTY_THEMES_DIR/${1:-}.conf"
+  if [ -z "$name" ] || [ ! -f "$conf" ]; then echo "  (no palette: $name)"; return 0; fi
+
+  # hex (#rrggbb) -> a 2-cell block painted in that color
+  _blk() { local h=${1#\#}; printf '\033[48;2;%d;%d;%dm  \033[0m' \
+    "$((16#${h:0:2}))" "$((16#${h:2:2}))" "$((16#${h:4:2}))"; }
+  _val() { awk -v k="$1" '$1==k{print $2; exit}' "$conf"; }
+
+  local i hex
+  if [ "$name" = "$(current_theme)" ]; then printf '\n  %s (current)\n\n' "$name"
+  else printf '\n  %s\n\n' "$name"; fi
+  printf '  '; for i in 0 1 2 3 4 5 6 7;        do _blk "$(_val "color$i")"; done; printf '\n  '
+  for i in 8 9 10 11 12 13 14 15;               do _blk "$(_val "color$i")"; done; printf '\n\n'
+  local bg fg; bg=$(_val background); fg=$(_val foreground); bg=${bg#\#}; fg=${fg#\#}
+  printf '  \033[48;2;%d;%d;%dm\033[38;2;%d;%d;%dm  The quick brown fox jumps  \033[0m\n' \
+    "$((16#${bg:0:2}))" "$((16#${bg:2:2}))" "$((16#${bg:4:2}))" \
+    "$((16#${fg:0:2}))" "$((16#${fg:2:2}))" "$((16#${fg:4:2}))"
+}
+
+# Interactive picker with LIVE preview. As the selection moves, the whole
+# terminal repaints to that palette (transient `set-colors -a`, no disk write);
+# Enter commits the full reskin via apply_theme, Esc restores the palette that
+# was active on entry. Designed to be launched in a kitty overlay (see keymaps).
+pick() {
+  command -v fzf >/dev/null 2>&1 || { echo "settheme: fzf is required for --pick" >&2; exit 1; }
+  local orig list sel
+  orig="$(current_theme)"
+  # Put the current theme first so opening the picker previews it (no jarring
+  # color jump), and it's pre-selected.
+  if [ -n "$orig" ] && names | grep -qx "$orig"; then
+    list="$(printf '%s\n' "$orig"; names | grep -vx "$orig")"
+  else
+    list="$(names)"
+  fi
+
+  sel="$(printf '%s\n' "$list" | fzf \
+      --prompt='theme  ' \
+      --layout=reverse --height=100% --cycle --no-multi \
+      --preview='settheme --swatch {}' \
+      --preview-window='down,7,border-top' \
+      --bind="focus:execute-silent(kitten @ set-colors -a $KITTY_THEMES_DIR/{}.conf >/dev/null 2>&1)" \
+      --header='↑↓ live preview · enter: apply · esc: cancel')" || sel=""
+
+  if [ -n "$sel" ]; then
+    echo
+    apply_theme "$sel"
+  else
+    # Aborted: undo the transient preview by re-applying the entry palette.
+    if [ -n "$orig" ] && [ -f "$KITTY_THEMES_DIR/$orig.conf" ]; then
+      kitten @ set-colors -a "$KITTY_THEMES_DIR/$orig.conf" >/dev/null 2>&1 || true
+    fi
+    echo "settheme: cancelled${orig:+ — restored '$orig'}."
+  fi
+}
+
 usage() {
   cat <<EOF
 usage: settheme [<name>]        apply a theme across all tools
+       settheme --pick          interactive picker with live preview (fzf)
        settheme --list          list available themes (current marked with *)
        settheme --current       print the active theme name
        settheme --names         print theme names, one per line (for completion)
@@ -145,6 +206,8 @@ apply_theme() {
 
 case "${1:-}" in
   ""|-h|--help)  usage ;;
+  -p|--pick)     pick ;;
+  --swatch)      swatch "${2:-}" ;;
   -l|--list)     list_themes ;;
   --current)     current_theme ;;
   --names)       names ;;

@@ -97,7 +97,12 @@ One command reskins the whole terminal environment:
 ```bash
 settheme            # list themes (current marked with *)
 settheme gruvbox    # apply a theme everywhere
+settheme --pick     # interactive fzf picker with LIVE preview
 ```
+
+In kitty, `kitty_mod+shift+p` opens the picker in an overlay: arrow through the
+list to repaint the terminal live, **enter** applies the theme everywhere,
+**esc** cancels and restores the palette you started on.
 
 Available:
 
