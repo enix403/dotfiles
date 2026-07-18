@@ -323,6 +323,8 @@ function kla() {
     other_params="${@:1:$#-1}"
   fi
 
+  echo "Running: kubectl logs --max-log-requests 100 --all-containers=true --tail=-1 --prefix -f -l \"app.kubernetes.io/instance=${instance_name}\" ${other_params}"
+
   k logs \
     --max-log-requests 100 \
     --all-containers=true \
