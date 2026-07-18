@@ -323,7 +323,7 @@ function kla() {
     other_params="${@:1:$#-1}"
   fi
 
-  kubectl logs \
+  k logs \
     --max-log-requests 100 \
     --all-containers=true \
     --tail=-1 \
