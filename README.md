@@ -119,9 +119,9 @@ is the single source of the 16 ANSI colors and most tools just *follow* it.
   `yazi/theme.toml`. Open a new nvim/yazi to pick up the change.
 
 The theme registry (name → tinty scheme / nvim colorscheme / yazi flavor) lives in
-`shared/bin/settheme`. To add a theme: add a registry row, confirm `tinty info
-<scheme>` resolves, add the nvim colorscheme plugin in `nvim/lua/plugins/theme.lua`,
-and add the yazi flavor with `ya pkg add <repo>`.
+`shared/bin/settheme`. **Adding more themes** is a short, repeatable process —
+see [`shared/tinty/ADDING-THEMES.md`](shared/tinty/ADDING-THEMES.md) for the full
+runbook (with a worked example and the yazi-flavor gotchas).
 
 **Setup on a new machine:** `brew install tinty` (or your package manager), run
 `shared/_apply/link-dots.sh` to symlink configs, then `tinty install` and
