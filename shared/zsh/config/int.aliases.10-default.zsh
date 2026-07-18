@@ -4,7 +4,6 @@ alias dtv='(cd "$DOTFILES_PATH"; nvim .)'
 
 # ======= Absolute Necessaties =========
 
-unalias l
 alias ls="LC_COLLATE=C ls --color=auto -lh --group-directories-first"
 alias la="ls -A"
 alias l1="LC_COLLATE=C \ls --color=auto -1h --group-directories-first"

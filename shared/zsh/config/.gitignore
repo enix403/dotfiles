@@ -1,0 +1,5 @@
+# Machine-local override files. Sourced by the base/interactive loaders but
+# never committed — same spirit as the old `x-*` pattern.
+base.x-*.zsh
+int.x-*.zsh
+*.local.zsh

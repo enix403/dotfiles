@@ -14,7 +14,7 @@ dotfiles/
 │   ├── kitty/       # Kitty terminal config (with parts/ for modular includes)
 │   ├── mise/        # mise runtime version manager config
 │   ├── nvim/        # Neovim config (LazyVim-based)
-│   ├── omz/         # Oh My Zsh custom dir (aliases, paths, plugins)
+│   ├── omz/         # Zsh config: aliases/paths/vars, lib/, vendored thirdparty/
 │   ├── starship/    # Starship prompt config
 │   ├── vscode/      # VS Code settings (linux + macos variants) and extensions list
 │   └── yazi/        # Yazi file manager config
@@ -26,27 +26,52 @@ dotfiles/
 │   ├── fonts/       # Font download script
 │   ├── gnome/       # GNOME keybindings and settings scripts
 │   └── zathura/     # Zathura PDF viewer config
-├── oh-my-zsh-custom/  # Git submodules for OMZ plugins
-│   └── plugins/
-│       ├── fzf-tab                 # (submodule) fzf-powered tab completion
-│       └── zsh-syntax-highlighting # (submodule) syntax highlighting
 └── install-linux.sh   # Linux bootstrap script (WIP)
 ```
 
 ## Notable components
 
-### Shell (Zsh + Oh My Zsh)
+### Shell (plain Zsh)
 
-Aliases and functions are split across numbered files in `shared/omz/` for load ordering:
+Config lives in `shared/zsh/` (`.zshenv`, `.zshrc`, `.zprofile` symlinked into `~`).
+No framework — Oh My Zsh was removed in favor of plain zsh; the prompt is
+[Starship](https://starship.rs/).
 
-- `aliases.10-default.zsh` — core aliases and functions
-- `paths.10-default.zsh` — PATH setup (Homebrew, mise, pyenv, bun, cargo)
-- `vars.10-default.zsh` — exported variables
-- `aliases.11-work.local.zsh` — work-specific aliases (not committed)
+The config is split into **base** (every shell — interactive, scripts, `zsh -c`,
+cron, ssh commands) and **interactive** (prompt sessions only), matching zsh's own
+startup-file model:
 
-Plugins (git submodules):
-- `fzf-tab` — replaces zsh tab completion with fzf
-- `zsh-syntax-highlighting` — syntax highlighting in the prompt
+- **`.zshenv`** → base. Sets `typeset -U PATH`, then sources `config/base.*.zsh`.
+  Symlinked to `~/.zshenv` (replaces the former KTMR-managed file; `brew shellenv`
+  now lives in `config/base.paths.10-default.zsh`, repo-owned).
+- **`.zshrc`** → interactive. History, `compinit`, completion, keybindings, plugins,
+  aliases, Starship. Sources `config/int.*.zsh`. zsh always reads `.zshenv` first,
+  so this file assumes base is already loaded.
+
+Config files under `shared/zsh/config/` are auto-sourced by glob loops in filename
+order, keyed on a `base.` / `int.` scope marker:
+
+- `base.paths.10-default.zsh` — PATH setup (Homebrew via `brew shellenv`, mise, pyenv, bun, cargo)
+- `base.vars.10-default.zsh` — exported variables (EDITOR, PAGER, …)
+- `int.aliases.10-default.zsh` — core aliases and functions
+- `int.aliases.11-work.local.zsh` — work-specific aliases (not committed)
+
+Machine-local overrides use the same scope prefix and are gitignored: `base.x-*.zsh`,
+`int.x-*.zsh` (symlinks into a private repo, synced by that repo's `shsync`) and
+`*.local.zsh`.
+
+`config/` holds only autoloaded files (the glob-sourced `base.*`/`int.*`). Vendored
+code lives beside it under `shared/zsh/` and is sourced explicitly by `.zshrc`:
+
+`shared/zsh/lib/` holds small self-contained pieces vendored from Oh My Zsh's `lib/`
+(nav aliases + `auto_pushd`, interactive keybindings, completion `zstyle`s).
+
+`shared/zsh/thirdparty/` holds all vendored third-party zsh code (plain committed
+files — no submodules):
+- `fzf-tab/` — replaces zsh tab completion with fzf
+- `zsh-syntax-highlighting/` — syntax highlighting in the prompt (sourced last)
+- `colored-man-pages/` — colorized man pages
+- `zsh-window-title.zsh` — informative terminal window titles
 
 ### Neovim
 
