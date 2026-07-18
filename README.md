@@ -115,24 +115,31 @@ is the single source of the 16 ANSI colors and most tools just *follow* it.
   gitignored `kitty/theme.conf` (`globinclude`d, so `parts/colors.conf` stays the
   committed fallback) and live-reloads every running window via `$KITTY_LISTEN_ON`.
   base24 schemes are preferred where available (truer bright colors), else base16.
-- **bat, fzf, starship, gitui** — configured to follow the 16 ANSI colors,
-  so they track kitty automatically with **no per-theme config**. `bat --theme=base16`,
-  `fzf --color=16`, starship's named colors, and gitui's `ansi.ron`.
+- **fzf, starship, gitui** — configured to follow the 16 ANSI colors,
+  so they track kitty automatically with **no per-theme config**. `fzf --color=16`,
+  starship's named colors, and gitui's `ansi.ron`.
 - **delta** — intentionally left out of the theme flow. It keeps its own fixed
   `mantis-shrimp` diff theme (from `delta/themes.gitconfig`), independent of the
   terminal palette.
-- **nvim, yazi** — keep native theme ports. `settheme` writes the nvim colorscheme
-  to a gitignored `nvim/lua/config/colorscheme.lua` and repoints the yazi flavor in
-  `yazi/theme.toml`. Open a new nvim/yazi to pick up the change.
+- **nvim, yazi, bat** — keep native theme ports. `settheme` writes the nvim
+  colorscheme to a gitignored `nvim/lua/config/colorscheme.lua`, repoints the yazi
+  flavor in `yazi/theme.toml`, and writes the matching bat theme to a gitignored
+  `bat/config`. nvim/yazi need a new instance; **bat updates live** (it re-reads its
+  config each run). bat *used* to follow the ANSI palette (`--theme=base16`), but
+  base16's comment colour (ANSI 8) is unreadably dim on dark palettes and can't
+  suit both light and dark, so it's a native port with real per-theme `.tmTheme`s
+  (in `bat/themes/`) now.
 
-The theme registry (name → tinty scheme / nvim colorscheme / yazi flavor) lives in
+The theme registry (name → tinty scheme / nvim colorscheme / yazi flavor / bat
+theme) lives in
 `shared/bin/settheme`. **Adding more themes** is a short, repeatable process —
 see [`shared/tinty/ADDING-THEMES.md`](shared/tinty/ADDING-THEMES.md) for the full
 runbook (with a worked example and the yazi-flavor gotchas).
 
 **Setup on a new machine:** `brew install tinty` (or your package manager), run
 `shared/_apply/link-dots.sh` to symlink configs, then `tinty install` and
-(from `shared/yazi/`) `ya pkg install` to fetch schemes and flavors.
+(from `shared/yazi/`) `ya pkg install` to fetch schemes and flavors, and
+`bat cache --build` to register the bundled bat `.tmTheme`s.
 
 ### VS Code
 

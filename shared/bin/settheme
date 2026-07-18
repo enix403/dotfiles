@@ -6,13 +6,14 @@
 #   * kitty is the single source of the 16 ANSI colors. `tinty apply` repaints
 #     it (base24 where available for truer bright colors, else base16) and
 #     live-reloads every running window over its socket.
-#   * bat, delta, fzf, starship and gitui are all configured to FOLLOW those
-#     ANSI colors, so they need no per-theme handling here — they just track
-#     kitty automatically.
-#   * nvim and yazi keep their own native theme ports; this script repoints
-#     them so they match the chosen scheme.
+#   * fzf, starship and gitui are all configured to FOLLOW those ANSI colors, so
+#     they need no per-theme handling here — they just track kitty automatically.
+#   * nvim, yazi and bat keep their own native theme ports; this script repoints
+#     them so they match the chosen scheme. (bat followed the ANSI palette too,
+#     but base16's comment colour is unreadably dim, so it's a native port now.)
+#   * delta is intentionally NOT managed — it keeps its own mantis-shrimp theme.
 #
-# Registry columns:  name | tinty-scheme | nvim-colorscheme | yazi-flavor
+# Registry columns:  name | tinty-scheme | nvim-colorscheme | yazi-flavor | bat-theme
 #
 # The yazi-flavor column normally matches the theme, but a few themes have no
 # dedicated yazi flavor (yazi's flavor ecosystem is thin, esp. for light themes);
@@ -24,22 +25,23 @@ STATE_DIR="${XDG_STATE_HOME:-$HOME/.local/state}/settheme"
 STATE_FILE="$STATE_DIR/current"
 NVIM_CS_FILE="$HOME/.config/nvim/lua/config/colorscheme.lua"
 YAZI_THEME_FILE="$HOME/.config/yazi/theme.toml"
+BAT_CONFIG_FILE="$HOME/.config/bat/config"
 
 registry() {
   cat <<'EOF'
-catppuccin-mocha|base24-catppuccin-mocha|catppuccin-mocha|catppuccin-mocha
-tokyo-night|base16-tokyo-night-dark|tokyonight-night|tokyo-night
-gruvbox|base16-gruvbox-dark-hard|gruvbox|gruvbox-dark
-rose-pine|base16-rose-pine|rose-pine|rose-pine
-nord|base16-nord|nord|nord
-kanagawa|base16-kanagawa|kanagawa|kanagawa
-dracula|base24-dracula|dracula|dracula
-onedark|base16-onedark|onedark|onedark
-catppuccin-frappe|base24-catppuccin-frappe|catppuccin-frappe|catppuccin-frappe
-catppuccin-macchiato|base24-catppuccin-macchiato|catppuccin-macchiato|catppuccin-macchiato
-catppuccin-latte|base24-catppuccin-latte|catppuccin-latte|catppuccin-latte
-tokyo-night-day|base16-tokyo-night-light|tokyonight-day|tokyonight-day
-rose-pine-dawn|base16-rose-pine-dawn|rose-pine-dawn|catppuccin-latte
+catppuccin-mocha|base24-catppuccin-mocha|catppuccin-mocha|catppuccin-mocha|Catppuccin Mocha
+tokyo-night|base16-tokyo-night-dark|tokyonight-night|tokyo-night|tokyonight_night
+gruvbox|base16-gruvbox-dark-hard|gruvbox|gruvbox-dark|gruvbox-dark
+rose-pine|base16-rose-pine|rose-pine|rose-pine|rose-pine
+nord|base16-nord|nord|nord|Nord
+kanagawa|base16-kanagawa|kanagawa|kanagawa|Kanagawa
+dracula|base24-dracula|dracula|dracula|Dracula
+onedark|base16-onedark|onedark|onedark|TwoDark
+catppuccin-frappe|base24-catppuccin-frappe|catppuccin-frappe|catppuccin-frappe|Catppuccin Frappe
+catppuccin-macchiato|base24-catppuccin-macchiato|catppuccin-macchiato|catppuccin-macchiato|Catppuccin Macchiato
+catppuccin-latte|base24-catppuccin-latte|catppuccin-latte|catppuccin-latte|Catppuccin Latte
+tokyo-night-day|base16-tokyo-night-light|tokyonight-day|tokyonight-day|tokyonight_day
+rose-pine-dawn|base16-rose-pine-dawn|rose-pine-dawn|catppuccin-latte|rose-pine-dawn
 EOF
 }
 
@@ -70,17 +72,17 @@ EOF
 }
 
 apply_theme() {
-  local name="$1" row _ tinty_scheme nvim_cs yazi_flavor
+  local name="$1" row _ tinty_scheme nvim_cs yazi_flavor bat_theme
   if ! row="$(lookup "$name")"; then
     echo "settheme: unknown theme '$name'" >&2
     echo >&2
     list_themes >&2
     exit 1
   fi
-  IFS='|' read -r _ tinty_scheme nvim_cs yazi_flavor <<<"$row"
+  IFS='|' read -r _ tinty_scheme nvim_cs yazi_flavor bat_theme <<<"$row"
 
   # 1) Terminal palette (+ live reload of running kitty windows). The
-  #    ANSI-following tools (bat/delta/fzf/starship/gitui) inherit this for free.
+  #    ANSI-following tools (fzf/starship/gitui) inherit this for free.
   echo "› kitty  : tinty apply $tinty_scheme"
   tinty apply "$tinty_scheme"
 
@@ -103,11 +105,19 @@ apply_theme() {
     ' "$YAZI_THEME_FILE" >"$tmp" && mv "$tmp" "$YAZI_THEME_FILE"
   fi
 
+  # 4) bat: write the theme into its config (read on every invocation, so all
+  #    new `bat` runs pick it up immediately — even in already-open shells).
+  #    The .tmTheme files ship in dotfiles/shared/bat/themes; `bat cache --build`
+  #    (run once on setup) registers them by filename.
+  echo "› bat    : theme $bat_theme"
+  mkdir -p "$(dirname "$BAT_CONFIG_FILE")"
+  printf -- '--theme="%s"\n' "$bat_theme" >"$BAT_CONFIG_FILE"
+
   mkdir -p "$STATE_DIR"
   printf '%s\n' "$name" >"$STATE_FILE"
   echo
   echo "✓ theme set to '$name'."
-  echo "  kitty updated live. Open a new nvim / yazi / gitui to pick it up."
+  echo "  kitty + bat updated live. Open a new nvim / yazi / gitui to pick it up."
 }
 
 case "${1:-}" in

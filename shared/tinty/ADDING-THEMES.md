@@ -3,23 +3,29 @@
 How to add a new theme to the unified `settheme` setup. For the overall design,
 see the [Theming section of the README](../../README.md#theming-unified-via-settheme).
 
-## Mental model (why this is only 3 real steps)
+## Mental model (why this is only 4 real steps)
 
-`settheme` maps one friendly name to three things:
+`settheme` maps one friendly name to four things:
 
 ```
-name | tinty-scheme | nvim-colorscheme | yazi-flavor
+name | tinty-scheme | nvim-colorscheme | yazi-flavor | bat-theme
 ```
 
-Everything else — **bat, delta, fzf, starship, gitui** — follows the terminal's
-16 ANSI colors, so it re-themes automatically the moment kitty's palette changes.
-You never touch those tools when adding a theme. You only wire up:
+Everything else — **fzf, starship, gitui** — follows the terminal's 16 ANSI
+colors, so it re-themes automatically the moment kitty's palette changes. **delta**
+is intentionally out of the flow (fixed mantis-shrimp). You only wire up:
 
 1. **kitty palette** — a `tinty` scheme (base16/base24)
 2. **nvim** — a colorscheme plugin + its `:colorscheme` name
 3. **yazi** — a flavor package
+4. **bat** — a `.tmTheme` name (a built-in, or one dropped in `../bat/themes/`)
 
 Then add one row to the registry in [`../bin/settheme`](../bin/settheme).
+
+> **Why bat isn't ANSI-following:** it used to be (`--theme=base16`), but base16
+> maps comments to ANSI colour 8, which is unreadably dim on dark palettes — and no
+> single ANSI comment colour works for both light and dark. So bat is a native port
+> with real per-theme `.tmTheme`s, giving proper comment contrast everywhere.
 
 ---
 
@@ -117,18 +123,44 @@ If no flavor exists (common for light themes), the `yazi-flavor` column may borr
 the closest-lightness flavor as a stand-in — e.g. `rose-pine-dawn` uses
 `catppuccin-latte` for yazi. Kitty + nvim still get the real theme.
 
-## Step 4 — register it
+## Step 4 — bat theme
+
+Pick a bat `.tmTheme` name for the `bat-theme` column. bat identifies themes by
+**filename** (not the `name` key inside the file). First check for a match already
+available:
+
+```bash
+bat --list-themes | grep -i <family>
+```
+
+Built-ins cover several (`Nord`, `Dracula`, `gruvbox-dark`, `TwoDark`,
+`Coldark-Dark`/`Coldark-Cold`, `Solarized (dark)`/`(light)`, …). If there's no
+match, drop a `.tmTheme` into [`../bat/themes/`](../bat/themes) and rebuild:
+
+```bash
+# example: fetch a theme's Sublime/TextMate port
+curl -fsSL <raw-url>.tmTheme -o "../bat/themes/<Name>.tmTheme"
+bat cache --build                        # registers it (by filename)
+bat --list-themes | grep -i <name>       # confirm it appears
+```
+
+⚠️ bat keys themes by **filename**, so keep filenames unique (two files both named
+internally "TokyoNight" is fine; two *files* `tokyonight.tmTheme` is not). The
+`.tmTheme`s are committed in `../bat/themes/`; a fresh clone needs one
+`bat cache --build`.
+
+## Step 5 — register it
 
 Add a row to `registry()` in [`../bin/settheme`](../bin/settheme):
 
 ```
-name|tinty-scheme|nvim-colorscheme|yazi-flavor
+name|tinty-scheme|nvim-colorscheme|yazi-flavor|bat-theme
 ```
 
 Then test:
 
 ```bash
-settheme <name>            # kitty repaints live; nvim/yazi update on next launch
+settheme <name>      # kitty + bat repaint live; nvim/yazi update on next launch
 ```
 
 Completion picks up the new name automatically (it reads `settheme --names`).
@@ -142,15 +174,21 @@ Completion picks up the new name automatically (it reads `settheme --names`).
 tinty list | grep -i kanagawa      # -> base16-kanagawa (use this)
 tinty info base16-kanagawa         # exits 0 ✓
 
-# 2. nvim — add to theme.lua:  { "rebelot/kanagawa.nvim", lazy = true },
-nvim --headless "+Lazy! sync" +qa
+# 2. nvim — add to theme.lua:  { "rebelot/kanagawa.nvim", lazy = true }
+#    (use Lazy! install to add just the new plugin — NOT sync, which updates all)
+nvim --headless "+Lazy! install" +qa
 nvim --headless "+silent! colorscheme kanagawa" "+lua io.write(vim.g.colors_name)" +qa   # -> kanagawa ✓
 
 # 3. yazi flavor (single-flavor repo):
 cd ~/dotfiles/shared/yazi && ya pkg add dangooddd/kanagawa   # -> flavors/kanagawa.yazi
 
-# 4. registry row in shared/bin/settheme:
-#    kanagawa|base16-kanagawa|kanagawa|kanagawa
+# 4. bat theme — no built-in, so fetch a .tmTheme:
+curl -fsSL https://raw.githubusercontent.com/obergodmar/kanagawa-tmTheme/master/Kanagawa.tmTheme \
+  -o ~/dotfiles/shared/bat/themes/Kanagawa.tmTheme
+bat cache --build                 # registers it as "Kanagawa" (by filename)
+
+# 5. registry row in shared/bin/settheme:
+#    kanagawa|base16-kanagawa|kanagawa|kanagawa|Kanagawa
 
 settheme kanagawa
 ```
@@ -168,8 +206,9 @@ nvim --headless "+Lazy! update" +qa            # update nvim colorscheme plugins
 ## Removing a theme
 
 1. Delete its row from `registry()` in `../bin/settheme`.
-2. (optional) `ya pkg remove <owner/repo>` from `shared/yazi/` and delete the
-   nvim plugin line from `theme.lua`.
+2. (optional) `ya pkg remove <owner/repo>` from `shared/yazi/`, delete the nvim
+   plugin line from `theme.lua`, and remove any fetched `../bat/themes/<name>.tmTheme`
+   (then `bat cache --build`).
 
 ## Light themes
 
@@ -187,6 +226,10 @@ They're cheap because they reuse plugins already installed for their dark siblin
   `kalidyasin/yazi-flavors:tokyonight-day` both classify correctly as flavors.
   `rose-pine-dawn` has no working yazi flavor (`rose-pine/yazi` misfiles as a
   plugin), so it borrows `catppuccin-latte` for yazi — see the Step 3 gotcha.
+- **bat** — `Catppuccin Latte` is a built-in-style theme already in `../bat/themes/`;
+  `tokyonight_day` and `rose-pine-dawn` were fetched into `../bat/themes/`. Light
+  bat themes matter most for comment contrast — that's the whole reason bat is a
+  native port (see the Step 4 note).
 
 ⚠️ **gruvbox-light is deliberately not included.** `ellisonleao/gruvbox.nvim`
 uses a single `gruvbox` colorscheme and switches light/dark via `vim.o.background`,
@@ -201,6 +244,8 @@ colorscheme string (`config.colorscheme`), so a `gruvbox` row can't express
   Catppuccin Mocha). `settheme` writes the active palette to the gitignored
   `kitty/theme.conf`, which `globinclude` layers on top.
 - Runtime artifacts are gitignored: `kitty/theme.conf`,
-  `nvim/lua/config/colorscheme.lua`. The active yazi flavor lives in the tracked
-  `yazi/theme.toml` (so switching themes shows a diff there — that's expected).
+  `nvim/lua/config/colorscheme.lua`, `bat/config`. The active yazi flavor lives in
+  the tracked `yazi/theme.toml` (so switching themes shows a diff there — expected).
+- The bat `.tmTheme` files in `bat/themes/` ARE tracked (they're the theme sources,
+  not runtime state); a fresh clone needs one `bat cache --build` to register them.
 - The current theme is recorded at `~/.local/state/settheme/current`.
