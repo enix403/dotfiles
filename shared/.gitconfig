@@ -19,6 +19,7 @@
   cp = cherry-pick
   rs = reset
   sw = switch
+  swc = switch -c
   ss = stash
   tg = tag
   df = diff
