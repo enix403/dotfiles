@@ -48,7 +48,17 @@ ZSH_CACHE_DIR="$HOME/.cache/zsh"
 # run before anything that calls `compdef` (e.g. lib/directories.zsh below and
 # our custom kubectl completions).
 autoload -Uz compinit
-compinit -d "$ZSH_CACHE_DIR/zcompdump"
+# Do the full fpath security audit + dump rebuild at most once a day; otherwise
+# reuse the cached dump with -C, which skips the audit AND re-registering every
+# completion (the slow parts). (#qNmh+24) => matches only if the dump is >24h old
+# (N: no match => empty => take the fast -C branch).
+_zcompdump="$ZSH_CACHE_DIR/zcompdump"
+if [[ -n "$_zcompdump"(#qNmh+24) ]]; then
+  compinit -d "$_zcompdump"
+else
+  compinit -C -d "$_zcompdump"
+fi
+unset _zcompdump
 # bash-style completion scripts (some tools ship these)
 autoload -Uz bashcompinit && bashcompinit
 
