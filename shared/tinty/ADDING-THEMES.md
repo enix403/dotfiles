@@ -151,10 +151,12 @@ internally "TokyoNight" is fine; two *files* `tokyonight.tmTheme` is not). The
 
 ## Step 5 — register it
 
-Add a row to `registry()` in [`../bin/settheme`](../bin/settheme):
+Add a `theme` line to `registry()` in [`../bin/settheme`](../bin/settheme) — copy
+an existing line and edit the fields (spacing is free; quote the bat theme if it
+has a space):
 
 ```
-name|tinty-scheme|nvim-colorscheme|yazi-flavor|bat-theme
+theme <name> <tinty-scheme> <nvim-colorscheme> <yazi-flavor> "<bat-theme>"
 ```
 
 Then test:
@@ -187,8 +189,8 @@ curl -fsSL https://raw.githubusercontent.com/obergodmar/kanagawa-tmTheme/master/
   -o ~/dotfiles/shared/bat/themes/Kanagawa.tmTheme
 bat cache --build                 # registers it as "Kanagawa" (by filename)
 
-# 5. registry row in shared/bin/settheme:
-#    kanagawa|base16-kanagawa|kanagawa|kanagawa|Kanagawa
+# 5. registry line in shared/bin/settheme:
+#    theme kanagawa base16-kanagawa kanagawa kanagawa Kanagawa
 
 settheme kanagawa
 ```

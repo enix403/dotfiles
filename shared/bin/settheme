@@ -27,22 +27,31 @@ NVIM_CS_FILE="$HOME/.config/nvim/lua/config/colorscheme.lua"
 YAZI_THEME_FILE="$HOME/.config/yazi/theme.toml"
 BAT_CONFIG_FILE="$HOME/.config/bat/config"
 
+# The theme registry. One `theme` line per entry — copy a line and edit the five
+# fields to add one. Spacing between columns is arbitrary (shell word-splitting),
+# so alignment is purely cosmetic; just quote any field containing a space (only
+# the bat theme names do). Field meanings:
+#   name  : friendly name you pass to `settheme`
+#   tinty : `tinty list` scheme id (must have a tinted-kitty build — see ADDING-THEMES.md)
+#   nvim  : :colorscheme name         yazi : flavor dir name (minus .yazi)
+#   bat   : `bat --list-themes` name (keyed by the .tmTheme filename)
 registry() {
-  cat <<'EOF'
-catppuccin-mocha|base24-catppuccin-mocha|catppuccin-mocha|catppuccin-mocha|Catppuccin Mocha
-tokyo-night|base16-tokyo-night-dark|tokyonight-night|tokyo-night|tokyonight_night
-gruvbox|base16-gruvbox-dark-hard|gruvbox|gruvbox-dark|gruvbox-dark
-rose-pine|base16-rose-pine|rose-pine|rose-pine|rose-pine
-nord|base16-nord|nord|nord|Nord
-kanagawa|base16-kanagawa|kanagawa|kanagawa|Kanagawa
-dracula|base24-dracula|dracula|dracula|Dracula
-onedark|base16-onedark|onedark|onedark|TwoDark
-catppuccin-frappe|base24-catppuccin-frappe|catppuccin-frappe|catppuccin-frappe|Catppuccin Frappe
-catppuccin-macchiato|base24-catppuccin-macchiato|catppuccin-macchiato|catppuccin-macchiato|Catppuccin Macchiato
-catppuccin-latte|base24-catppuccin-latte|catppuccin-latte|catppuccin-latte|Catppuccin Latte
-tokyo-night-day|base16-tokyo-night-light|tokyonight-day|tokyonight-day|tokyonight_day
-rose-pine-dawn|base16-rose-pine-dawn|rose-pine-dawn|catppuccin-latte|rose-pine-dawn
-EOF
+  theme() { printf '%s|%s|%s|%s|%s\n' "$1" "$2" "$3" "$4" "$5"; }
+
+  #     name                   tinty scheme (kitty)          nvim colorscheme       yazi flavor            bat theme
+  theme catppuccin-mocha       base24-catppuccin-mocha       catppuccin-mocha       catppuccin-mocha       "Catppuccin Mocha"
+  theme tokyo-night            base16-tokyo-night-dark       tokyonight-night       tokyo-night            "tokyonight_night"
+  theme gruvbox                base16-gruvbox-dark-hard      gruvbox                gruvbox-dark           "gruvbox-dark"
+  theme rose-pine              base16-rose-pine              rose-pine              rose-pine              "rose-pine"
+  theme nord                   base16-nord                   nord                   nord                   "Nord"
+  theme kanagawa               base16-kanagawa               kanagawa               kanagawa               "Kanagawa"
+  theme dracula                base24-dracula                dracula                dracula                "Dracula"
+  theme onedark                base16-onedark                onedark                onedark                "TwoDark"
+  theme catppuccin-frappe      base24-catppuccin-frappe      catppuccin-frappe      catppuccin-frappe      "Catppuccin Frappe"
+  theme catppuccin-macchiato   base24-catppuccin-macchiato   catppuccin-macchiato   catppuccin-macchiato   "Catppuccin Macchiato"
+  theme catppuccin-latte       base24-catppuccin-latte       catppuccin-latte       catppuccin-latte       "Catppuccin Latte"
+  theme tokyo-night-day        base16-tokyo-night-light      tokyonight-day         tokyonight-day         "tokyonight_day"
+  theme rose-pine-dawn         base16-rose-pine-dawn         rose-pine-dawn         catppuccin-latte       "rose-pine-dawn"
 }
 
 current_theme() { [ -f "$STATE_FILE" ] && cat "$STATE_FILE" || true; }
