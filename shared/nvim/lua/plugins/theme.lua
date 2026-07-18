@@ -41,6 +41,9 @@ return {
   { "ellisonleao/gruvbox.nvim", lazy = true },
   { "rose-pine/neovim", name = "rose-pine", lazy = true },
   { "shaunsingh/nord.nvim", lazy = true },
+  { "rebelot/kanagawa.nvim", lazy = true },
+  { "Mofiqul/dracula.nvim", lazy = true },
+  { "navarasu/onedark.nvim", lazy = true },
 
   -- {
   --   "xiyaowong/transparent.nvim",

@@ -89,13 +89,33 @@ ya pkg add <owner/repo>
 The flavor **name** is the deployed directory name minus `.yazi`
 (e.g. `flavors/gruvbox-dark.yazi` → `gruvbox-dark`).
 
-⚠️ **Gotcha:** `ya pkg add` classifies flavor vs plugin per repo. Use a
-**single-flavor repo** (one whose root has a `flavor.toml`). A multi-flavor repo
-addressed with a subpackage (`owner/repo:variant`) gets **misfiled under
-`[[plugin.deps]]`** and never deploys to `flavors/`. If that happens, remove the
-bad `[[plugin.deps]]` entry from `package.toml` and find a single-flavor repo
-instead. Good sources: the [awesome-yazi](https://github.com/AnirudhG07/awesome-yazi)
+⚠️ **Gotcha:** `ya pkg add` classifies flavor vs plugin per package, and the
+classification is unreliable for multi-flavor repos. Always confirm it actually
+landed:
+
+```bash
+ls flavors/ | grep <name>     # must appear here (NOT under plugins/)
+```
+
+If it misfiled under `[[plugin.deps]]` (never deploys to `flavors/`), remove that
+bad entry from `package.toml` and try another repo. What actually classifies
+correctly, from experience:
+
+- ✅ **Single-flavor repos** (root has `flavor.toml`): `BennyOe/tokyo-night`,
+  `dangooddd/kanagawa`, `BennyOe/onedark`, `AdithyanA2005/nord`,
+  `bennyyip/gruvbox-dark`, `stephanbrez/rose-pine`.
+- ✅ **`yazi-rs/flavors:<variant>`** and **`kalidyasin/yazi-flavors:<variant>`**
+  subpackages classify as flavors (that's how `catppuccin-*` and `tokyonight-day`
+  are wired).
+- ❌ **`rose-pine/yazi:*`, `Reledia/flexoki.yazi:*`** and several other
+  multi-flavor repos misfile as plugins — don't use them.
+
+Good discovery sources: the [awesome-yazi](https://github.com/AnirudhG07/awesome-yazi)
 list and [yazi-rs/flavors `themes.md`](https://github.com/yazi-rs/flavors/blob/main/themes.md).
+
+If no flavor exists (common for light themes), the `yazi-flavor` column may borrow
+the closest-lightness flavor as a stand-in — e.g. `rose-pine-dawn` uses
+`catppuccin-latte` for yazi. Kitty + nvim still get the real theme.
 
 ## Step 4 — register it
 
@@ -154,8 +174,8 @@ nvim --headless "+Lazy! update" +qa            # update nvim colorscheme plugins
 ## Light themes
 
 Light variants for **bright/sunny environments** are added exactly like any other
-theme. Two are wired up (`catppuccin-latte`, `tokyo-night-day`). They're cheap
-because they reuse plugins already installed for their dark siblings:
+theme. Three are wired up (`catppuccin-latte`, `tokyo-night-day`, `rose-pine-dawn`).
+They're cheap because they reuse plugins already installed for their dark siblings:
 
 - **nvim** — a light variant of an existing plugin needs **no new plugin line**.
   `catppuccin-latte` is a variant of `catppuccin/nvim`, `tokyonight-day` of
@@ -165,6 +185,8 @@ because they reuse plugins already installed for their dark siblings:
   (`base24-catppuccin-latte` does; tokyo-night light only has `base16-tokyo-night-light`).
 - **yazi** — `yazi-rs/flavors:catppuccin-latte` and
   `kalidyasin/yazi-flavors:tokyonight-day` both classify correctly as flavors.
+  `rose-pine-dawn` has no working yazi flavor (`rose-pine/yazi` misfiles as a
+  plugin), so it borrows `catppuccin-latte` for yazi — see the Step 3 gotcha.
 
 ⚠️ **gruvbox-light is deliberately not included.** `ellisonleao/gruvbox.nvim`
 uses a single `gruvbox` colorscheme and switches light/dark via `vim.o.background`,
