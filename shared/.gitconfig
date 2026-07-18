@@ -104,18 +104,24 @@
   # Tab size
   tabs = 4
 
-# Palette-following delta theme. Colors are ANSI indices 0-15, which map onto
-# the active terminal palette (0 black, 1 red, 2 green, 3 yellow, 4 blue,
-# 5 magenta, 6 cyan, 7 white, 8-15 the bright variants). `base16` syntax theme
-# highlights code from the same 16 colors. Nothing here is theme-specific.
+# Diff theme with full-line background highlighting (mantis-shrimp style).
+#
+# The code keeps its syntax highlighting (`syntax` foreground, drawn from the
+# `base16` theme, which follows the active terminal palette). The add/remove
+# *line backgrounds* are FIXED dim hex colours — a dark green wash for additions,
+# dark maroon for removals — so the highlighting looks identical on every theme
+# and the dark bgs stay readable under any syntax colours. The `-emph` variants
+# use a brighter wash to mark the exact changed tokens within a line. Gutter line
+# numbers use ANSI red/green (1/2) so they still follow the terminal palette.
 [delta "term-ansi"]
   syntax-theme = base16
-  minus-style = 1
-  minus-emph-style = syntax 9
-  plus-style = 2
-  plus-emph-style = syntax 10
-  line-numbers-minus-style = 1
-  line-numbers-plus-style = 2
+  minus-style = syntax "#4a0f1c"
+  minus-emph-style = syntax bold "#8a1a2f"
+  plus-style = syntax "#0d3a26"
+  plus-emph-style = syntax bold "#1c6e45"
+  zero-style = syntax
+  line-numbers-minus-style = 1 bold
+  line-numbers-plus-style = 2 bold
   line-numbers-zero-style = 8
   line-numbers-left-style = 8
   line-numbers-right-style = 8

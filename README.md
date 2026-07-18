@@ -112,8 +112,10 @@ is the single source of the 16 ANSI colors and most tools just *follow* it.
   base24 schemes are preferred where available (truer bright colors), else base16.
 - **bat, delta, fzf, starship, gitui** — configured to follow the 16 ANSI colors,
   so they track kitty automatically with **no per-theme config**. `bat --theme=base16`,
-  delta's `term-ansi` feature (ANSI indices 0–15), `fzf --color=16`, starship's
-  named colors, and gitui's `ansi.ron`.
+  `fzf --color=16`, starship's named colors, and gitui's `ansi.ron`. delta's
+  `term-ansi` feature syntax-highlights from the ANSI palette too, but keeps a
+  fixed dim red/green *line-background* wash (mantis-shrimp style) so added/removed
+  lines are highlighted consistently on every theme.
 - **nvim, yazi** — keep native theme ports. `settheme` writes the nvim colorscheme
   to a gitignored `nvim/lua/config/colorscheme.lua` and repoints the yazi flavor in
   `yazi/theme.toml`. Open a new nvim/yazi to pick up the change.
