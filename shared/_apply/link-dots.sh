@@ -22,5 +22,10 @@ ln -nfrs ../dotfiles/shared/starship .
 ln -nfrs ../dotfiles/shared/gitui .
 ln -nfrs ../dotfiles/shared/omz .
 ln -nfrs ../dotfiles/shared/yazi .
+# yazi/theme.toml holds only the active flavor and is a gitignored runtime
+# artifact (written by settheme). Seed it from the committed default on a fresh
+# clone so yazi has a flavor before the first `settheme` run.
+[ -f ../dotfiles/shared/yazi/theme.toml ] || \
+  cp ../dotfiles/shared/yazi/theme.toml.default ../dotfiles/shared/yazi/theme.toml
 ln -nfrs ../dotfiles/shared/mise .
 ln -nfrs ../dotfiles/shared/fish .

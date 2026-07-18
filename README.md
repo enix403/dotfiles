@@ -127,8 +127,9 @@ is the single source of the 16 ANSI colors and most tools just *follow* it.
   `mantis-shrimp` diff theme (from `delta/themes.gitconfig`), independent of the
   terminal palette.
 - **nvim, yazi, bat** — keep native theme ports. `settheme` writes the nvim
-  colorscheme to a gitignored `nvim/lua/config/colorscheme.lua`, repoints the yazi
-  flavor in `yazi/theme.toml`, and writes the matching bat theme to a gitignored
+  colorscheme to a gitignored `nvim/lua/config/colorscheme.lua`, the yazi flavor to
+  a gitignored `yazi/theme.toml` (fresh-clone default seeded from the committed
+  `yazi/theme.toml.default`), and the matching bat theme to a gitignored
   `bat/config`. nvim/yazi need a new instance; **bat updates live** (it re-reads its
   config each run). bat *used* to follow the ANSI palette (`--theme=base16`), but
   base16's comment colour (ANSI 8) is unreadably dim on dark palettes and can't

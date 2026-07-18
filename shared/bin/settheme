@@ -176,18 +176,14 @@ apply_theme() {
   mkdir -p "$(dirname "$NVIM_CS_FILE")"
   printf 'return "%s"\n' "$nvim_cs" >"$NVIM_CS_FILE"
 
-  # 3) yazi: repoint the dark flavor (open a new yazi to pick it up).
-  if [ -f "$YAZI_THEME_FILE" ]; then
-    echo "› yazi   : flavor $yazi_flavor"
-    local tmp="${YAZI_THEME_FILE}.settheme.tmp"
-    awk -v f="$yazi_flavor" '
-      /^\[flavor\]/ { inflavor = 1 }
-      inflavor && /^[[:space:]]*dark[[:space:]]*=/ {
-        sub(/=.*/, "= \"" f "\""); inflavor = 0
-      }
-      { print }
-    ' "$YAZI_THEME_FILE" >"$tmp" && mv "$tmp" "$YAZI_THEME_FILE"
-  fi
+  # 3) yazi: write the flavor (open a new yazi to pick it up). theme.toml is a
+  #    gitignored runtime artifact (like kitty/theme.conf & nvim's colorscheme),
+  #    holding only the active flavor — so we write it whole, and it works even
+  #    when absent (fresh clone / first run). yazi.toml is the tracked config;
+  #    the fresh-clone default lives in the committed theme.toml.default.
+  echo "› yazi   : flavor $yazi_flavor"
+  mkdir -p "$(dirname "$YAZI_THEME_FILE")"
+  printf '[flavor]\ndark = "%s"\n' "$yazi_flavor" >"$YAZI_THEME_FILE"
 
   # 4) bat: write the theme into its config (read on every invocation, so all
   #    new `bat` runs pick it up immediately — even in already-open shells).

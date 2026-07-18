@@ -251,8 +251,11 @@ colorscheme string (`config.colorscheme`), so a `gruvbox` row can't express
 - The `themes/*.conf` palette files ARE tracked (they're the theme sources, like
   the bat `.tmTheme`s). `kitty/theme.conf` itself is the gitignored runtime copy.
 - Runtime artifacts are gitignored: `kitty/theme.conf`,
-  `nvim/lua/config/colorscheme.lua`, `bat/config`. The active yazi flavor lives in
-  the tracked `yazi/theme.toml` (so switching themes shows a diff there — expected).
+  `nvim/lua/config/colorscheme.lua`, `bat/config`, and `yazi/theme.toml` (the last
+  holds only the active flavor, so it's runtime state — switching themes no longer
+  shows a diff). The fresh-clone default is the committed `yazi/theme.toml.default`,
+  which `link-dots.sh` copies into place when `theme.toml` is absent (mirroring how
+  `parts/colors.conf` seeds kitty).
 - The bat `.tmTheme` files in `bat/themes/` ARE tracked (they're the theme sources,
   not runtime state); a fresh clone needs one `bat cache --build` to register them.
 - The current theme is recorded at `~/.local/state/settheme/current`.
