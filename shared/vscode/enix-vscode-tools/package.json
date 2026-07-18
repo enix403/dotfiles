@@ -30,6 +30,10 @@
       {
         "command": "enix-vscode-tools.mdclip",
         "title": "enix: mdclip"
+      },
+      {
+        "command": "enix-vscode-tools.copyGithubUrl",
+        "title": "enix: copy github url of active file"
       }
     ]
   },

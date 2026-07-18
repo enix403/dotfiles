@@ -1,4 +1,5 @@
 import * as vscode from 'vscode';
+import * as path from 'path';
 import { execFile } from 'child_process';
 
 const CLOSING: Record<string, string> = { '(': ')', '[': ']', '{': '}', '<': '>' };
@@ -29,6 +30,13 @@ function selectedLines(editor: vscode.TextEditor): string[] | null {
 }
 
 export function activate(context: vscode.ExtensionContext) {
+    const git = (dir: string, args: string[]): Promise<string> =>
+        new Promise((resolve, reject) =>
+            execFile('git', ['-C', dir, ...args], (err, stdout, stderr) =>
+                err ? reject(new Error(stderr.trim() || err.message)) : resolve(stdout.trim())
+            )
+        );
+
     const joinLines = vscode.commands.registerCommand('enix-vscode-tools.joinLinesWithSeparator', async () => {
         const editor = vscode.window.activeTextEditor;
         const lines = editor ? selectedLines(editor) : null;
@@ -108,7 +116,48 @@ export function activate(context: vscode.ExtensionContext) {
         });
     });
 
-    context.subscriptions.push(joinLines, splitIntoLines, wrapLines, appendToLines, mdclip);
+    const copyGithubUrl = vscode.commands.registerCommand('enix-vscode-tools.copyGithubUrl', async () => {
+        const editor = vscode.window.activeTextEditor;
+        if (!editor) {
+            vscode.window.showWarningMessage('No active file.');
+            return;
+        }
+
+        const filePath = editor.document.uri.fsPath;
+        const dir = path.dirname(filePath);
+
+        let gitRoot: string;
+        try {
+            gitRoot = await git(dir, ['rev-parse', '--show-toplevel']);
+        } catch {
+            vscode.window.showErrorMessage('File is not in a git repository.');
+            return;
+        }
+
+        let remoteUrl: string;
+        try {
+            remoteUrl = await git(dir, ['remote', 'get-url', 'origin']);
+        } catch {
+            vscode.window.showErrorMessage('Could not determine GitHub remote (no origin remote).');
+            return;
+        }
+
+        const match = remoteUrl.match(/github\.com[:/]([^/]+)\/([^/.]+)/);
+        if (!match) {
+            vscode.window.showErrorMessage('Remote origin is not a GitHub repository.');
+            return;
+        }
+        const [, username, repoName] = match;
+
+        const branch = await git(dir, ['rev-parse', '--abbrev-ref', 'HEAD']);
+        const relativePath = path.relative(gitRoot, filePath).split(path.sep).join('/');
+
+        const url = `https://github.com/${username}/${repoName}/tree/${branch}/${relativePath}`;
+        await vscode.env.clipboard.writeText(url);
+        vscode.window.showInformationMessage(`Copied: ${url}`);
+    });
+
+    context.subscriptions.push(joinLines, splitIntoLines, wrapLines, appendToLines, mdclip, copyGithubUrl);
 }
 
 export function deactivate() {}
