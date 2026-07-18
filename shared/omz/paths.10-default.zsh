@@ -12,6 +12,7 @@ export PATH="/usr/local/bin/override:$PATH"
 # Less important with low chance of ambigiguity. These are appended.
 # Order matters less
 export PATH="$PATH:$HOME/.cargo/bin"
+export PATH="$PATH:$HOME/.local/bin"
 
 # ----------------
 # Pyenv (TODO: get rid of it in favor of mise)
