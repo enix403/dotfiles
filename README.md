@@ -11,7 +11,8 @@ dotfiles/
 │   ├── bat/         # bat (cat replacement) config
 │   ├── bin/         # Custom scripts on PATH
 │   ├── delta/       # git-delta pager config
-│   ├── kitty/       # Kitty terminal config (with parts/ for modular includes)
+│   ├── gitui/       # gitui theme (ANSI-following, tracks the terminal palette)
+│   ├── kitty/       # Kitty terminal config (parts/ modular includes, themes/ palettes)
 │   ├── mise/        # mise runtime version manager config
 │   ├── nvim/        # Neovim config (LazyVim-based)
 │   ├── omz/         # Zsh config: aliases/paths/vars, lib/, vendored thirdparty/
@@ -89,6 +90,58 @@ LazyVim-based config at `shared/nvim/`. Plugins include:
 
 Config split into `parts/` for modular includes (fonts, colors, keybinds, etc). Includes a `pass_keys.py` script for passing keys through to Neovim.
 
+### Theming (unified via `settheme`)
+
+One command reskins the whole terminal environment:
+
+```bash
+settheme            # list themes (current marked with *)
+settheme gruvbox    # apply a theme everywhere
+```
+
+Available:
+
+- **Dark:** `catppuccin-mocha` (default), `tokyo-night`, `gruvbox`, `rose-pine`,
+  `nord`, `kanagawa`, `dracula`, `onedark`, `catppuccin-frappe`, `catppuccin-macchiato`
+- **Light** (for bright/sunny environments): `catppuccin-latte`, `tokyo-night-day`,
+  `rose-pine-dawn`
+
+The design is a **hybrid**: instead of hardcoding a palette in every tool, kitty
+is the single source of the 16 ANSI colors and most tools just *follow* it.
+
+- **kitty** — palettes are vendored in-repo as plain kitty color `.conf` files in
+  `kitty/themes/`. `settheme` copies the chosen one into a gitignored
+  `kitty/theme.conf` (`globinclude`d, so `parts/colors.conf` stays the committed
+  fallback) and live-reloads every running window via `$KITTY_LISTEN_ON`. (This
+  used to be driven by `tinty`; the palettes are now self-contained, so there's no
+  external theme-manager dependency.)
+- **fzf, starship, gitui** — configured to follow the 16 ANSI colors,
+  so they track kitty automatically with **no per-theme config**. `fzf --color=16`,
+  starship's named colors, and gitui's `ansi.ron`.
+- **delta** — intentionally left out of the theme flow. It keeps its own fixed
+  `mantis-shrimp` diff theme (from `delta/themes.gitconfig`), independent of the
+  terminal palette.
+- **nvim, yazi, bat** — keep native theme ports. `settheme` writes the nvim
+  colorscheme to a gitignored `nvim/lua/config/colorscheme.lua`, repoints the yazi
+  flavor in `yazi/theme.toml`, and writes the matching bat theme to a gitignored
+  `bat/config`. nvim/yazi need a new instance; **bat updates live** (it re-reads its
+  config each run). bat *used* to follow the ANSI palette (`--theme=base16`), but
+  base16's comment colour (ANSI 8) is unreadably dim on dark palettes and can't
+  suit both light and dark, so it's a native port with real per-theme `.tmTheme`s
+  (in `bat/themes/`) now.
+
+The theme registry (name → kitty conf / nvim colorscheme / yazi flavor / bat
+theme) lives in
+`shared/bin/settheme`. **Adding more themes** is a short, repeatable process —
+see [`shared/kitty/ADDING-THEMES.md`](shared/kitty/ADDING-THEMES.md) for the full
+runbook (with a worked example and the yazi-flavor gotchas).
+
+**Setup on a new machine:** run `shared/_apply/link-dots.sh` to symlink configs,
+then (from `shared/yazi/`) `ya pkg install` to fetch yazi flavors, and
+`bat cache --build` to register the bundled bat `.tmTheme`s. kitty palettes are
+vendored in `shared/kitty/themes/`, so there's nothing extra to install for
+theming.
+
 ### VS Code
 
 - `macos-settings.jsonc` / `linux-settings.jsonc` — per-OS settings
@@ -113,6 +166,7 @@ Located in `shared/bin/`, added to `PATH`:
 
 | Script | Description |
 |---|---|
+| `settheme` | Switch the terminal theme across all tools at once (see [Theming](#theming-unified-via-settheme)) |
 | `tunix` | Convert timestamp strings (many formats) to Unix epoch seconds |
 | `tiso` | Convert Unix epoch seconds to ISO 8601 UTC string |
 | `pull_hp` / `push_hp` | Helpers for syncing a home project |

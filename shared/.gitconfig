@@ -89,6 +89,9 @@
   path = ~/dotfiles/shared/delta/themes.gitconfig
 
 [delta]
+  # delta is intentionally NOT part of the `settheme` flow — its diff colours are
+  # its own fixed mantis-shrimp theme (from delta/themes.gitconfig), independent
+  # of the terminal palette.
   features = mantis-shrimp # set theme
 
   # use n and N to move between diff sections

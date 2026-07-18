@@ -34,7 +34,12 @@ alias free='free -h'
 alias diskusage="df -h | grep -vE \"^(tmpfs|run|dev)\" | (sed -u 1q; sort)"
 alias ddu="du -Pcshx"
 alias mnt='sudo mount -o umask=0022,gid="$GID",uid="$UID"' # mount with user previliges
-alias {bat,bt}='bat --theme="Catppuccin Mocha" --style=plain'
+# bat's theme is a settheme-managed native port (like nvim/yazi): settheme writes
+# the matching .tmTheme name into the generated ~/.config/bat/config, which bat
+# reads on every run. We deliberately do NOT force --theme here (that would
+# override the config). base16-following was dropped because its comment colour
+# (ANSI 8) is unreadably dim on dark palettes and can't suit both light and dark.
+alias {bat,bt}='bat --style=plain'
 alias feh="feh --scale-down --auto-zoom --draw-filename --action9 \";feh --bg-scale '%f'\""
 alias fd="fd --one-file-system --hidden --no-ignore-vcs"
 alias fdf="fd --one-file-system --hidden --no-ignore-vcs -t f"

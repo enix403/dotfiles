@@ -19,6 +19,7 @@ ln -nfrs ../dotfiles/shared/delta .
 ln -nfrs ../dotfiles/shared/kitty .
 ln -nfrs ../dotfiles/shared/nvim .
 ln -nfrs ../dotfiles/shared/starship .
+ln -nfrs ../dotfiles/shared/gitui .
 ln -nfrs ../dotfiles/shared/omz .
 ln -nfrs ../dotfiles/shared/yazi .
 ln -nfrs ../dotfiles/shared/mise .
