@@ -9,6 +9,6 @@ export EDITOR=nvim
 export PAGER LESS
 
 # fzf: `--color=16` draws the UI from the terminal's 16 ANSI colors, so fzf
-# follows whatever palette `settheme` (tinty) sets on kitty. Append, don't
+# follows whatever palette `settheme` sets on kitty. Append, don't
 # clobber, any FZF_DEFAULT_OPTS set elsewhere.
 export FZF_DEFAULT_OPTS="${FZF_DEFAULT_OPTS:+$FZF_DEFAULT_OPTS }--color=16"

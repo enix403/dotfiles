@@ -12,12 +12,11 @@ dotfiles/
 │   ├── bin/         # Custom scripts on PATH
 │   ├── delta/       # git-delta pager config
 │   ├── gitui/       # gitui theme (ANSI-following, tracks the terminal palette)
-│   ├── kitty/       # Kitty terminal config (with parts/ for modular includes)
+│   ├── kitty/       # Kitty terminal config (parts/ modular includes, themes/ palettes)
 │   ├── mise/        # mise runtime version manager config
 │   ├── nvim/        # Neovim config (LazyVim-based)
 │   ├── omz/         # Zsh config: aliases/paths/vars, lib/, vendored thirdparty/
 │   ├── starship/    # Starship prompt config
-│   ├── tinty/       # tinty config (base16/base24 theme manager, drives kitty)
 │   ├── vscode/      # VS Code settings (linux + macos variants) and extensions list
 │   └── yazi/        # Yazi file manager config
 ├── macos/           # macOS-only configs
@@ -110,11 +109,12 @@ Available:
 The design is a **hybrid**: instead of hardcoding a palette in every tool, kitty
 is the single source of the 16 ANSI colors and most tools just *follow* it.
 
-- **kitty** — its palette is set by [`tinty`](https://github.com/tinted-theming/tinty)
-  (a base16/base24 theme manager). `settheme` runs `tinty apply`, which writes a
-  gitignored `kitty/theme.conf` (`globinclude`d, so `parts/colors.conf` stays the
-  committed fallback) and live-reloads every running window via `$KITTY_LISTEN_ON`.
-  base24 schemes are preferred where available (truer bright colors), else base16.
+- **kitty** — palettes are vendored in-repo as plain kitty color `.conf` files in
+  `kitty/themes/`. `settheme` copies the chosen one into a gitignored
+  `kitty/theme.conf` (`globinclude`d, so `parts/colors.conf` stays the committed
+  fallback) and live-reloads every running window via `$KITTY_LISTEN_ON`. (This
+  used to be driven by `tinty`; the palettes are now self-contained, so there's no
+  external theme-manager dependency.)
 - **fzf, starship, gitui** — configured to follow the 16 ANSI colors,
   so they track kitty automatically with **no per-theme config**. `fzf --color=16`,
   starship's named colors, and gitui's `ansi.ron`.
@@ -130,16 +130,17 @@ is the single source of the 16 ANSI colors and most tools just *follow* it.
   suit both light and dark, so it's a native port with real per-theme `.tmTheme`s
   (in `bat/themes/`) now.
 
-The theme registry (name → tinty scheme / nvim colorscheme / yazi flavor / bat
+The theme registry (name → kitty conf / nvim colorscheme / yazi flavor / bat
 theme) lives in
 `shared/bin/settheme`. **Adding more themes** is a short, repeatable process —
-see [`shared/tinty/ADDING-THEMES.md`](shared/tinty/ADDING-THEMES.md) for the full
+see [`shared/kitty/ADDING-THEMES.md`](shared/kitty/ADDING-THEMES.md) for the full
 runbook (with a worked example and the yazi-flavor gotchas).
 
-**Setup on a new machine:** `brew install tinty` (or your package manager), run
-`shared/_apply/link-dots.sh` to symlink configs, then `tinty install` and
-(from `shared/yazi/`) `ya pkg install` to fetch schemes and flavors, and
-`bat cache --build` to register the bundled bat `.tmTheme`s.
+**Setup on a new machine:** run `shared/_apply/link-dots.sh` to symlink configs,
+then (from `shared/yazi/`) `ya pkg install` to fetch yazi flavors, and
+`bat cache --build` to register the bundled bat `.tmTheme`s. kitty palettes are
+vendored in `shared/kitty/themes/`, so there's nothing extra to install for
+theming.
 
 ### VS Code
 

@@ -8,14 +8,14 @@ see the [Theming section of the README](../../README.md#theming-unified-via-sett
 `settheme` maps one friendly name to four things:
 
 ```
-name | tinty-scheme | nvim-colorscheme | yazi-flavor | bat-theme
+name | kitty-conf | nvim-colorscheme | yazi-flavor | bat-theme
 ```
 
 Everything else — **fzf, starship, gitui** — follows the terminal's 16 ANSI
 colors, so it re-themes automatically the moment kitty's palette changes. **delta**
 is intentionally out of the flow (fixed mantis-shrimp). You only wire up:
 
-1. **kitty palette** — a `tinty` scheme (base16/base24)
+1. **kitty palette** — a `.conf` dropped in [`themes/`](themes)
 2. **nvim** — a colorscheme plugin + its `:colorscheme` name
 3. **yazi** — a flavor package
 4. **bat** — a `.tmTheme` name (a built-in, or one dropped in `../bat/themes/`)
@@ -29,38 +29,37 @@ Then add one row to the registry in [`../bin/settheme`](../bin/settheme).
 
 ---
 
-## Step 1 — kitty palette (tinty scheme)
+## Step 1 — kitty palette (a `.conf` in `themes/`)
 
-Browse what tinty can apply:
+kitty palettes are vendored in-repo as plain kitty color `.conf` files under
+[`themes/`](themes) (named `<friendly-name>.conf`). `settheme` copies the chosen
+one into the globinclude'd `theme.conf` and live-reloads running windows — no
+external theme manager involved. So adding a palette is just: get a `.conf`, drop
+it in `themes/`.
+
+Where to get a `.conf`:
+
+- **The theme's own kitty port** (best fidelity) — most popular themes ship one,
+  e.g. `catppuccin/kitty`, `folke/tokyonight.nvim` (`extras/kitty/`),
+  `rebelot/kanagawa.nvim` (`extras/`). Grab the raw `.conf`.
+- **base16/base24 build** — the [tinted-kitty](https://github.com/tinted-theming/tinted-kitty)
+  repo has 280+ prebuilt palettes in `colors/` (this is where the existing 13 came
+  from). Prefer the `base24-` variant if it exists (truer bright/ANSI colors),
+  else `base16-`.
 
 ```bash
-tinty list                 # 500+ schemes, prefixed base16-/base24-
-tinty list | grep -i nord  # find a family
-tinty gallery              # interactive visual browser
+# example: fetch a theme's kitty port straight into themes/
+curl -fsSL <raw-url>.conf -o ~/dotfiles/shared/kitty/themes/<name>.conf
 ```
 
-Pick the scheme id. **Prefer the `base24-` variant if it exists** (truer bright /
-ANSI colors); otherwise use `base16-`. Confirm it actually resolves:
+The file just needs the standard kitty color keys (`foreground`, `background`,
+`color0`–`color15`, `cursor`, `selection_*`, …). The `.conf` basename (minus
+`.conf`) is what you put in the registry's `kitty` column.
 
-```bash
-tinty info base24-<name>   # exits 0 if valid, non-zero if not
-tinty info base16-<name>
-```
-
-> If neither shows up, refresh the scheme list: `tinty update`.
-
-⚠️ **`tinty info` is necessary but not sufficient.** It validates the scheme
-_definition_ exists, but the palette is only applied if the **tinted-kitty
-template ships a pre-built `.conf` for that exact id**. A scheme can pass
-`tinty info` yet fail at apply time with "Theme does not exists for tinted-kitty".
-Confirm the actual file exists before registering:
->
-> ```bash
-> ls ~/.local/share/tinted-theming/tinty/repos/tinted-kitty/colors | grep -i <name>
-> ```
->
-> (This is why `tokyo-night-day` uses `base16-tokyo-night-light` — the `base24-`
-> variant validates but has no kitty build.)
+> No live-reload / apply step needed to test: `settheme <name>` copies the file
+> and repaints running kitty windows over the socket. If run outside kitty (plain
+> SSH) the repaint is skipped harmlessly and the palette still takes effect on the
+> next kitty launch.
 
 ## Step 2 — nvim colorscheme
 
@@ -156,7 +155,7 @@ an existing line and edit the fields (spacing is free; quote the bat theme if it
 has a space):
 
 ```
-theme <name> <tinty-scheme> <nvim-colorscheme> <yazi-flavor> "<bat-theme>"
+theme <name> <kitty-conf> <nvim-colorscheme> <yazi-flavor> "<bat-theme>"
 ```
 
 Then test:
@@ -172,9 +171,10 @@ Completion picks up the new name automatically (it reads `settheme --names`).
 ## Worked example: adding `kanagawa`
 
 ```bash
-# 1. kitty palette — base24 doesn't exist, base16 does:
-tinty list | grep -i kanagawa      # -> base16-kanagawa (use this)
-tinty info base16-kanagawa         # exits 0 ✓
+# 1. kitty palette — fetch a .conf into themes/ (from the theme's kitty port,
+#    or a base16/base24 build in tinted-theming/tinted-kitty):
+curl -fsSL https://raw.githubusercontent.com/tinted-theming/tinted-kitty/main/colors/base16-kanagawa.conf \
+  -o ~/dotfiles/shared/kitty/themes/kanagawa.conf
 
 # 2. nvim — add to theme.lua:  { "rebelot/kanagawa.nvim", lazy = true }
 #    (use Lazy! install to add just the new plugin — NOT sync, which updates all)
@@ -190,7 +190,7 @@ curl -fsSL https://raw.githubusercontent.com/obergodmar/kanagawa-tmTheme/master/
 bat cache --build                 # registers it as "Kanagawa" (by filename)
 
 # 5. registry line in shared/bin/settheme:
-#    theme kanagawa base16-kanagawa kanagawa kanagawa Kanagawa
+#    theme kanagawa kanagawa kanagawa kanagawa Kanagawa
 
 settheme kanagawa
 ```
@@ -200,17 +200,19 @@ settheme kanagawa
 ## Maintenance
 
 ```bash
-tinty update                                   # refresh tinty schemes + templates
 cd ~/dotfiles/shared/yazi && ya pkg upgrade    # update yazi flavors (re-pins package.toml)
 nvim --headless "+Lazy! update" +qa            # update nvim colorscheme plugins
 ```
 
+kitty palettes are vendored static `.conf`s in `themes/` — nothing to update
+unless you want to re-pull a newer upstream port.
+
 ## Removing a theme
 
 1. Delete its row from `registry()` in `../bin/settheme`.
-2. (optional) `ya pkg remove <owner/repo>` from `shared/yazi/`, delete the nvim
-   plugin line from `theme.lua`, and remove any fetched `../bat/themes/<name>.tmTheme`
-   (then `bat cache --build`).
+2. (optional) delete its `themes/<name>.conf`, `ya pkg remove <owner/repo>` from
+   `shared/yazi/`, delete the nvim plugin line from `theme.lua`, and remove any
+   fetched `../bat/themes/<name>.tmTheme` (then `bat cache --build`).
 
 ## Light themes
 
@@ -222,8 +224,9 @@ They're cheap because they reuse plugins already installed for their dark siblin
   `catppuccin-latte` is a variant of `catppuccin/nvim`, `tokyonight-day` of
   `tokyonight.nvim`, `rose-pine-dawn` of `rose-pine/neovim`. Just use the variant
   name as the `nvim-colorscheme` column.
-- **kitty** — prefer the `base24-` light scheme where tinted-kitty ships it
-  (`base24-catppuccin-latte` does; tokyo-night light only has `base16-tokyo-night-light`).
+- **kitty** — drop a light `.conf` in `themes/` like any other. The three shipped
+  ones came from base24 builds where available (`base24-catppuccin-latte`), else
+  base16 (`base16-tokyo-night-light`, `base16-rose-pine-dawn`).
 - **yazi** — `yazi-rs/flavors:catppuccin-latte` and
   `kalidyasin/yazi-flavors:tokyonight-day` both classify correctly as flavors.
   `rose-pine-dawn` has no working yazi flavor (`rose-pine/yazi` misfiles as a
@@ -242,9 +245,11 @@ colorscheme string (`config.colorscheme`), so a `gruvbox` row can't express
 
 ## Notes
 
-- The committed `../kitty/parts/colors.conf` is the fresh-clone fallback (currently
-  Catppuccin Mocha). `settheme` writes the active palette to the gitignored
-  `kitty/theme.conf`, which `globinclude` layers on top.
+- The committed `parts/colors.conf` is the fresh-clone fallback (currently
+  Catppuccin Mocha). `settheme` copies the chosen `themes/<name>.conf` into the
+  gitignored `kitty/theme.conf`, which `globinclude` layers on top.
+- The `themes/*.conf` palette files ARE tracked (they're the theme sources, like
+  the bat `.tmTheme`s). `kitty/theme.conf` itself is the gitignored runtime copy.
 - Runtime artifacts are gitignored: `kitty/theme.conf`,
   `nvim/lua/config/colorscheme.lua`, `bat/config`. The active yazi flavor lives in
   the tracked `yazi/theme.toml` (so switching themes shows a diff there — expected).
