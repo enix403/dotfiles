@@ -14,7 +14,7 @@ dotfiles/
 │   ├── kitty/       # Kitty terminal config (with parts/ for modular includes)
 │   ├── mise/        # mise runtime version manager config
 │   ├── nvim/        # Neovim config (LazyVim-based)
-│   ├── omz/         # Oh My Zsh custom dir (aliases, paths, plugins)
+│   ├── omz/         # Zsh config: aliases/paths/vars, lib/, vendored thirdparty/
 │   ├── starship/    # Starship prompt config
 │   ├── vscode/      # VS Code settings (linux + macos variants) and extensions list
 │   └── yazi/        # Yazi file manager config
@@ -26,10 +26,6 @@ dotfiles/
 │   ├── fonts/       # Font download script
 │   ├── gnome/       # GNOME keybindings and settings scripts
 │   └── zathura/     # Zathura PDF viewer config
-├── oh-my-zsh-custom/  # Git submodules for OMZ plugins
-│   └── plugins/
-│       ├── fzf-tab                 # (submodule) fzf-powered tab completion
-│       └── zsh-syntax-highlighting # (submodule) syntax highlighting
 └── install-linux.sh   # Linux bootstrap script (WIP)
 ```
 
@@ -53,12 +49,12 @@ loop in `.zshrc`, in filename order:
 (nav aliases + `auto_pushd`, interactive keybindings, completion `zstyle`s), sourced
 explicitly by `.zshrc`.
 
-Plugins (checked into `shared/omz/plugins/`, sourced by `.zshrc`):
-- `fzf-tab` — replaces zsh tab completion with fzf
-- `zsh-syntax-highlighting` — syntax highlighting in the prompt (sourced last)
-
-Plus `colored-man-pages` (vendored under `shared/omz/thirdparty/`) and
-`zsh-window-title` for terminal window titles.
+`shared/omz/thirdparty/` holds all vendored third-party zsh code (plain committed
+files — no submodules), sourced by `.zshrc`:
+- `fzf-tab/` — replaces zsh tab completion with fzf
+- `zsh-syntax-highlighting/` — syntax highlighting in the prompt (sourced last)
+- `colored-man-pages/` — colorized man pages
+- `zsh-window-title.zsh` — informative terminal window titles
 
 ### Neovim
 

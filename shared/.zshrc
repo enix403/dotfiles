@@ -65,8 +65,8 @@ source "$ZSH_CONFIG_DIR/lib/key-bindings.zsh"
 # colored-man-pages (vendored, was an OMZ plugin)
 source "$ZSH_CONFIG_DIR/thirdparty/colored-man-pages/colored-man-pages.plugin.zsh"
 
-# fzf-tab (git submodule). Must load AFTER compinit and BEFORE zsh-syntax-highlighting.
-source "$ZSH_CONFIG_DIR/plugins/fzf-tab/fzf-tab.plugin.zsh"
+# fzf-tab (vendored). Must load AFTER compinit and BEFORE zsh-syntax-highlighting.
+source "$ZSH_CONFIG_DIR/thirdparty/fzf-tab/fzf-tab.plugin.zsh"
 
 # ==========================
 # ==== Custom shell cfg ====
@@ -99,8 +99,8 @@ ZSH_HIGHLIGHT_STYLES[unknown-token]=fg=red
 ZSH_HIGHLIGHT_STYLES[comment]='fg=blue,bg=black'
 ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern)
 
-# zsh-syntax-highlighting (git submodule) MUST be sourced last.
-source "$ZSH_CONFIG_DIR/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
+# zsh-syntax-highlighting (vendored) MUST be sourced last.
+source "$ZSH_CONFIG_DIR/thirdparty/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
 
 # =======================
 # ==== Third Parties ====
