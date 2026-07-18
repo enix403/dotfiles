@@ -35,18 +35,30 @@ dotfiles/
 
 ## Notable components
 
-### Shell (Zsh + Oh My Zsh)
+### Shell (plain Zsh)
 
-Aliases and functions are split across numbered files in `shared/omz/` for load ordering:
+Config lives in `shared/.zshrc` (symlinked to `~/.zshrc`). No framework — Oh My Zsh
+was removed in favor of plain zsh; the prompt is [Starship](https://starship.rs/).
+
+Aliases and functions are split across numbered files in `shared/omz/` (still named
+`omz/` for historical reasons; symlinked to `~/.config/omz`) and auto-sourced by a glob
+loop in `.zshrc`, in filename order:
 
 - `aliases.10-default.zsh` — core aliases and functions
 - `paths.10-default.zsh` — PATH setup (Homebrew, mise, pyenv, bun, cargo)
 - `vars.10-default.zsh` — exported variables
 - `aliases.11-work.local.zsh` — work-specific aliases (not committed)
 
-Plugins (git submodules):
+`shared/omz/lib/` holds small self-contained pieces vendored from Oh My Zsh's `lib/`
+(nav aliases + `auto_pushd`, interactive keybindings, completion `zstyle`s), sourced
+explicitly by `.zshrc`.
+
+Plugins (checked into `shared/omz/plugins/`, sourced by `.zshrc`):
 - `fzf-tab` — replaces zsh tab completion with fzf
-- `zsh-syntax-highlighting` — syntax highlighting in the prompt
+- `zsh-syntax-highlighting` — syntax highlighting in the prompt (sourced last)
+
+Plus `colored-man-pages` (vendored under `shared/omz/thirdparty/`) and
+`zsh-window-title` for terminal window titles.
 
 ### Neovim
 

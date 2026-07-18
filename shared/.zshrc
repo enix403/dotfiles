@@ -26,37 +26,64 @@ setopt no_auto_remove_slash
 # remove path duplicates
 typeset -U PATH
 
-# ===================
-# ==== Oh My ZSH ====
-# ===================
+# Load $fg_bold / $bg / $reset_color color assoc arrays (used by colored-man-pages)
+autoload -U colors && colors
 
-export ZSH="$HOME/.oh-my-zsh"
-export ZSH_CUSTOM="$HOME/.config/omz"
+# ==============================
+# ==== Config / cache paths ====
+# ==============================
+# Previously $ZSH_CUSTOM under Oh My Zsh. This is just the directory holding our
+# aliases/paths/vars plus the vendored lib + plugin files.
+ZSH_CONFIG_DIR="$HOME/.config/omz"
+ZSH_CACHE_DIR="$HOME/.cache/zsh"
+[[ -d "$ZSH_CACHE_DIR" ]] || mkdir -p "$ZSH_CACHE_DIR"
 
-# Prevent OMZ from changing title. TODO: why is this here btw ? is it needed ?
-DISABLE_AUTO_TITLE="true"
+# =====================
+# ==== Completion  ====
+# =====================
+# Initialize the completion system once (cached in $ZSH_CACHE_DIR). This must
+# run before anything that calls `compdef` (e.g. lib/directories.zsh below and
+# our custom kubectl completions).
+autoload -Uz compinit
+compinit -d "$ZSH_CACHE_DIR/zcompdump"
+# bash-style completion scripts (some tools ship these)
+autoload -Uz bashcompinit && bashcompinit
 
-# Prevent OMZ from running git status for its prompts. (TODO: is this needed ?)
-DISABLE_UNTRACKED_FILES_DIRTY="true"
+# ===============================
+# ==== Vendored OMZ lib bits ====
+# ===============================
+# Small self-contained pieces we used to get from Oh My Zsh's lib/.
+# (nav aliases + auto_pushd, interactive keybindings, completion zstyles)
+source "$ZSH_CONFIG_DIR/lib/completion.zsh"
+source "$ZSH_CONFIG_DIR/lib/directories.zsh"
+source "$ZSH_CONFIG_DIR/lib/key-bindings.zsh"
 
-plugins=(
-    colored-man-pages
+# =================
+# ==== Plugins ====
+# =================
 
-    # git submodule add https://github.com/Aloxaf/fzf-tab.git omz/plugins/fzf-tab
-    fzf-tab
+# colored-man-pages (vendored, was an OMZ plugin)
+source "$ZSH_CONFIG_DIR/thirdparty/colored-man-pages/colored-man-pages.plugin.zsh"
 
-    # git submodule add https://github.com/zsh-users/zsh-syntax-highlighting.git omz/plugins/zsh-syntax-highlighting
-    # zsh-syntax-highlighting must come at end
-    zsh-syntax-highlighting
-)
+# fzf-tab (git submodule). Must load AFTER compinit and BEFORE zsh-syntax-highlighting.
+source "$ZSH_CONFIG_DIR/plugins/fzf-tab/fzf-tab.plugin.zsh"
 
-source $ZSH/oh-my-zsh.sh
+# ==========================
+# ==== Custom shell cfg ====
+# ==========================
+# Auto-source our own config files (aliases.*, paths.*, vars.*, and x-* work
+# symlinks). OMZ used to glob these out of $ZSH_CUSTOM for us; now we do it
+# directly. (N) => no error if the glob matches nothing. Sorted alphabetically,
+# preserving the numeric load-ordering in the filenames.
+for _cfg in "$ZSH_CONFIG_DIR"/*.zsh(N); do
+  source "$_cfg"
+done
+unset _cfg
 
 # ===================
 # ==== Syntax HL ====
 # ===================
-
-# Configuration for zsh-syntax-highlighting plugin above
+# Configuration for the zsh-syntax-highlighting plugin (sourced last, below).
 
 # Disable underline for paths autocompletions while typing
 (( ${+ZSH_HIGHLIGHT_STYLES} )) || typeset -A ZSH_HIGHLIGHT_STYLES
@@ -72,12 +99,15 @@ ZSH_HIGHLIGHT_STYLES[unknown-token]=fg=red
 ZSH_HIGHLIGHT_STYLES[comment]='fg=blue,bg=black'
 ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern)
 
+# zsh-syntax-highlighting (git submodule) MUST be sourced last.
+source "$ZSH_CONFIG_DIR/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
+
 # =======================
 # ==== Third Parties ====
 # =======================
 
 # --- window title script ---
-source $ZSH_CUSTOM/thirdparty/zsh-window-title.zsh
+source "$ZSH_CONFIG_DIR/thirdparty/zsh-window-title.zsh"
 
 # ======================
 # ====== Starship ======
@@ -85,10 +115,3 @@ source $ZSH_CUSTOM/thirdparty/zsh-window-title.zsh
 
 export STARSHIP_CONFIG="$HOME/.config/starship/config.toml"
 eval "$(starship init zsh)"
-
-# ===================
-# ====== Other ======
-# ===================
-
-autoload -U +X bashcompinit && bashcompinit
-autoload -U +X compinit && compinit
