@@ -34,7 +34,7 @@ autoload -U colors && colors
 # ==============================
 # Previously $ZSH_CUSTOM under Oh My Zsh. This is just the directory holding our
 # aliases/paths/vars plus the vendored lib + plugin files.
-ZSH_CONFIG_DIR="$HOME/.config/omz"
+ZSH_CONFIG_DIR="$HOME/dotfiles/shared/zsh/config"
 ZSH_CACHE_DIR="$HOME/.cache/zsh"
 [[ -d "$ZSH_CACHE_DIR" ]] || mkdir -p "$ZSH_CACHE_DIR"
 
