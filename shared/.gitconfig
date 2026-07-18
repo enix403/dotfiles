@@ -89,9 +89,10 @@
   path = ~/dotfiles/shared/delta/themes.gitconfig
 
 [delta]
-  # `term-ansi` (defined below) draws everything from the terminal's 16 ANSI
-  # colors, so delta follows whatever palette `settheme` sets on kitty.
-  features = term-ansi
+  # delta is intentionally NOT part of the `settheme` flow — its diff colours are
+  # its own fixed mantis-shrimp theme (from delta/themes.gitconfig), independent
+  # of the terminal palette.
+  features = mantis-shrimp # set theme
 
   # use n and N to move between diff sections
   navigate = true
@@ -103,33 +104,6 @@
 
   # Tab size
   tabs = 4
-
-# Diff theme with full-line background highlighting (mantis-shrimp style).
-#
-# The code keeps its syntax highlighting (`syntax` foreground, drawn from the
-# `base16` theme, which follows the active terminal palette). The add/remove
-# *line backgrounds* are FIXED dim hex colours — a dark green wash for additions,
-# dark maroon for removals — so the highlighting looks identical on every theme
-# and the dark bgs stay readable under any syntax colours. The `-emph` variants
-# use a brighter wash to mark the exact changed tokens within a line. Gutter line
-# numbers use ANSI red/green (1/2) so they still follow the terminal palette.
-[delta "term-ansi"]
-  syntax-theme = base16
-  minus-style = syntax "#4a0f1c"
-  minus-emph-style = syntax bold "#8a1a2f"
-  plus-style = syntax "#0d3a26"
-  plus-emph-style = syntax bold "#1c6e45"
-  zero-style = syntax
-  line-numbers-minus-style = 1 bold
-  line-numbers-plus-style = 2 bold
-  line-numbers-zero-style = 8
-  line-numbers-left-style = 8
-  line-numbers-right-style = 8
-  hunk-header-style = syntax bold
-  hunk-header-decoration-style = 8 box
-  file-style = 12 bold
-  file-decoration-style = 12 ul
-  blame-palette = 0 8
 
 # ====================
 # END Config for Delta
