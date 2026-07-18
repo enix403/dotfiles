@@ -57,9 +57,8 @@ order, keyed on a `base.` / `int.` scope marker:
 - `int.aliases.11-work.local.zsh` — work-specific aliases (not committed)
 
 Machine-local overrides use the same scope prefix and are gitignored: `base.x-*.zsh`,
-`int.x-*.zsh` (symlinks into a private repo) and `*.local.zsh`. A bare-named
-`x-*.zsh` compat symlink (e.g. `x-work-secrets.zsh`) exists only so `x-*` files that
-reference siblings resolve; it is not auto-sourced.
+`int.x-*.zsh` (symlinks into a private repo, synced by that repo's `shsync`) and
+`*.local.zsh`.
 
 `shared/zsh/config/lib/` holds small self-contained pieces vendored from Oh My Zsh's
 `lib/` (nav aliases + `auto_pushd`, interactive keybindings, completion `zstyle`s),
