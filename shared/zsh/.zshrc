@@ -23,8 +23,8 @@ setopt HIST_FCNTL_LOCK           # Prevent race condition truncation
 # Disable auto-removal of ending slash for directory paths when pressing space after tab completion
 setopt no_auto_remove_slash
 
-# remove path duplicates
-typeset -U PATH
+# NOTE: PATH/env setup and `typeset -U PATH` live in the base config (.zshenv),
+# which zsh always sources before this file. Everything below is interactive-only.
 
 # Load $fg_bold / $bg / $reset_color color assoc arrays (used by colored-man-pages)
 autoload -U colors && colors
@@ -33,8 +33,9 @@ autoload -U colors && colors
 # ==== Config / cache paths ====
 # ==============================
 # Previously $ZSH_CUSTOM under Oh My Zsh. This is just the directory holding our
-# aliases/paths/vars plus the vendored lib + plugin files.
-ZSH_CONFIG_DIR="$HOME/dotfiles/shared/zsh/config"
+# aliases/paths/vars plus the vendored lib + plugin files. Normally already set
+# by .zshenv; the fallback keeps this file usable if sourced on its own.
+ZSH_CONFIG_DIR="${ZSH_CONFIG_DIR:-$HOME/dotfiles/shared/zsh/config}"
 ZSH_CACHE_DIR="$HOME/.cache/zsh"
 [[ -d "$ZSH_CACHE_DIR" ]] || mkdir -p "$ZSH_CACHE_DIR"
 
@@ -71,11 +72,11 @@ source "$ZSH_CONFIG_DIR/thirdparty/fzf-tab/fzf-tab.plugin.zsh"
 # ==========================
 # ==== Custom shell cfg ====
 # ==========================
-# Auto-source our own config files (aliases.*, paths.*, vars.*, and x-* work
-# symlinks). OMZ used to glob these out of $ZSH_CUSTOM for us; now we do it
-# directly. (N) => no error if the glob matches nothing. Sorted alphabetically,
+# Auto-source our interactive config files (int.aliases.*, plus int.x-* work
+# symlinks and any int.*.local.zsh). The base.* files were already sourced by
+# .zshenv. (N) => no error if the glob matches nothing. Sorted alphabetically,
 # preserving the numeric load-ordering in the filenames.
-for _cfg in "$ZSH_CONFIG_DIR"/*.zsh(N); do
+for _cfg in "$ZSH_CONFIG_DIR"/int.*.zsh(N); do
   source "$_cfg"
 done
 unset _cfg

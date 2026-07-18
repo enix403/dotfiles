@@ -33,24 +33,40 @@ dotfiles/
 
 ### Shell (plain Zsh)
 
-Config lives in `shared/.zshrc` (symlinked to `~/.zshrc`). No framework — Oh My Zsh
-was removed in favor of plain zsh; the prompt is [Starship](https://starship.rs/).
+Config lives in `shared/zsh/` (`.zshenv`, `.zshrc`, `.zprofile` symlinked into `~`).
+No framework — Oh My Zsh was removed in favor of plain zsh; the prompt is
+[Starship](https://starship.rs/).
 
-Aliases and functions are split across numbered files in `shared/omz/` (still named
-`omz/` for historical reasons; symlinked to `~/.config/omz`) and auto-sourced by a glob
-loop in `.zshrc`, in filename order:
+The config is split into **base** (every shell — interactive, scripts, `zsh -c`,
+cron, ssh commands) and **interactive** (prompt sessions only), matching zsh's own
+startup-file model:
 
-- `aliases.10-default.zsh` — core aliases and functions
-- `paths.10-default.zsh` — PATH setup (Homebrew, mise, pyenv, bun, cargo)
-- `vars.10-default.zsh` — exported variables
-- `aliases.11-work.local.zsh` — work-specific aliases (not committed)
+- **`.zshenv`** → base. Sets `typeset -U PATH`, then sources `config/base.*.zsh`.
+  Symlinked to `~/.zshenv` (replaces the former KTMR-managed file; `brew shellenv`
+  now lives in `config/base.paths.10-default.zsh`, repo-owned).
+- **`.zshrc`** → interactive. History, `compinit`, completion, keybindings, plugins,
+  aliases, Starship. Sources `config/int.*.zsh`. zsh always reads `.zshenv` first,
+  so this file assumes base is already loaded.
 
-`shared/omz/lib/` holds small self-contained pieces vendored from Oh My Zsh's `lib/`
-(nav aliases + `auto_pushd`, interactive keybindings, completion `zstyle`s), sourced
-explicitly by `.zshrc`.
+Config files under `shared/zsh/config/` are auto-sourced by glob loops in filename
+order, keyed on a `base.` / `int.` scope marker:
 
-`shared/omz/thirdparty/` holds all vendored third-party zsh code (plain committed
-files — no submodules), sourced by `.zshrc`:
+- `base.paths.10-default.zsh` — PATH setup (Homebrew via `brew shellenv`, mise, pyenv, bun, cargo)
+- `base.vars.10-default.zsh` — exported variables (EDITOR, PAGER, …)
+- `int.aliases.10-default.zsh` — core aliases and functions
+- `int.aliases.11-work.local.zsh` — work-specific aliases (not committed)
+
+Machine-local overrides use the same scope prefix and are gitignored: `base.x-*.zsh`,
+`int.x-*.zsh` (symlinks into a private repo) and `*.local.zsh`. A bare-named
+`x-*.zsh` compat symlink (e.g. `x-work-secrets.zsh`) exists only so `x-*` files that
+reference siblings resolve; it is not auto-sourced.
+
+`shared/zsh/config/lib/` holds small self-contained pieces vendored from Oh My Zsh's
+`lib/` (nav aliases + `auto_pushd`, interactive keybindings, completion `zstyle`s),
+sourced explicitly by `.zshrc`.
+
+`shared/zsh/config/thirdparty/` holds all vendored third-party zsh code (plain
+committed files — no submodules), sourced by `.zshrc`:
 - `fzf-tab/` — replaces zsh tab completion with fzf
 - `zsh-syntax-highlighting/` — syntax highlighting in the prompt (sourced last)
 - `colored-man-pages/` — colorized man pages
