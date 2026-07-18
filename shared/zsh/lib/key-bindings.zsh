@@ -125,6 +125,26 @@ bindkey '\C-x\C-e' edit-command-line
 # file rename magick
 bindkey "^[m" copy-prev-shell-word
 
+# fzf line-editor widgets:
+#   [Ctrl-T]  fuzzy-find a file/dir and insert its path at the cursor
+#   [Alt-C]   fuzzy-find a dir and cd into it
+#   [Ctrl-R]  fuzzy history search (replaces the plain one bound above)
+# Uses fd for traversal (respects the `--hidden --no-ignore-vcs` intent).
+if (( ${+commands[fzf]} )); then
+  export FZF_CTRL_T_COMMAND='fd --type f --hidden --no-ignore-vcs --exclude .git'
+  export FZF_ALT_C_COMMAND='fd --type d --hidden --no-ignore-vcs --exclude .git'
+  # Source ONLY the key-binding widgets, not fzf's completion (fzf-tab owns
+  # completion). The shell dir sits next to the resolved fzf binary's cellar.
+  _fzf_kb="${${commands[fzf]:A}:h:h}/shell/key-bindings.zsh"
+  [[ -r "$_fzf_kb" ]] && source "$_fzf_kb"
+  unset _fzf_kb
+
+  # Remap away from fzf defaults: Ctrl-T is eaten by kitty (new tab) and there's
+  # no usable Alt/Option key. Ctrl-F/Ctrl-G are free here (history is on arrows).
+  bindkey '^F' fzf-file-widget   # fuzzy-find file/dir -> insert path at cursor
+  bindkey '^G' fzf-cd-widget     # fuzzy-find dir -> cd into it
+fi
+
 # consider emacs keybindings:
 
 #bindkey -e  ## emacs key bindings
