@@ -43,6 +43,19 @@ tinty info base16-<name>
 
 > If neither shows up, refresh the scheme list: `tinty update`.
 
+⚠️ **`tinty info` is necessary but not sufficient.** It validates the scheme
+_definition_ exists, but the palette is only applied if the **tinted-kitty
+template ships a pre-built `.conf` for that exact id**. A scheme can pass
+`tinty info` yet fail at apply time with "Theme does not exists for tinted-kitty".
+Confirm the actual file exists before registering:
+>
+> ```bash
+> ls ~/.local/share/tinted-theming/tinty/repos/tinted-kitty/colors | grep -i <name>
+> ```
+>
+> (This is why `tokyo-night-day` uses `base16-tokyo-night-light` — the `base24-`
+> variant validates but has no kitty build.)
+
 ## Step 2 — nvim colorscheme
 
 Add the colorscheme plugin to [`../nvim/lua/plugins/theme.lua`](../nvim/lua/plugins/theme.lua)
@@ -137,6 +150,28 @@ nvim --headless "+Lazy! update" +qa            # update nvim colorscheme plugins
 1. Delete its row from `registry()` in `../bin/settheme`.
 2. (optional) `ya pkg remove <owner/repo>` from `shared/yazi/` and delete the
    nvim plugin line from `theme.lua`.
+
+## Light themes
+
+Light variants for **bright/sunny environments** are added exactly like any other
+theme. Two are wired up (`catppuccin-latte`, `tokyo-night-day`). They're cheap
+because they reuse plugins already installed for their dark siblings:
+
+- **nvim** — a light variant of an existing plugin needs **no new plugin line**.
+  `catppuccin-latte` is a variant of `catppuccin/nvim`, `tokyonight-day` of
+  `tokyonight.nvim`, `rose-pine-dawn` of `rose-pine/neovim`. Just use the variant
+  name as the `nvim-colorscheme` column.
+- **kitty** — prefer the `base24-` light scheme where tinted-kitty ships it
+  (`base24-catppuccin-latte` does; tokyo-night light only has `base16-tokyo-night-light`).
+- **yazi** — `yazi-rs/flavors:catppuccin-latte` and
+  `kalidyasin/yazi-flavors:tokyonight-day` both classify correctly as flavors.
+
+⚠️ **gruvbox-light is deliberately not included.** `ellisonleao/gruvbox.nvim`
+uses a single `gruvbox` colorscheme and switches light/dark via `vim.o.background`,
+not via a distinct colorscheme name. Our `settheme`→nvim contract is a single
+colorscheme string (`config.colorscheme`), so a `gruvbox` row can't express
+"light". Supporting it would need `settheme` to also emit a `background` value and
+`theme.lua` to honor it — not worth it while other light themes cover the need.
 
 ## Notes
 

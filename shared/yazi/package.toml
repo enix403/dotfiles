@@ -42,3 +42,13 @@ hash = "6e1d257f00b540acbeb194082ce073c2"
 use = "stephanbrez/rose-pine"
 rev = "d344ce2"
 hash = "3d5aec178e860e11ab45f6189dff05ff"
+
+[[flavor.deps]]
+use = "yazi-rs/flavors:catppuccin-latte"
+rev = "4770a34"
+hash = "b8f46853c27707115f25f3423a47bd38"
+
+[[flavor.deps]]
+use = "kalidyasin/yazi-flavors:tokyonight-day"
+rev = "70fe6b4"
+hash = "c397d6bbe3dd33db38a87ad947e98047"

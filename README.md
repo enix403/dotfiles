@@ -100,7 +100,10 @@ settheme            # list themes (current marked with *)
 settheme gruvbox    # apply a theme everywhere
 ```
 
-Available: `catppuccin-mocha` (default), `tokyo-night`, `gruvbox`, `rose-pine`, `nord`.
+Available:
+
+- **Dark:** `catppuccin-mocha` (default), `tokyo-night`, `gruvbox`, `rose-pine`, `nord`
+- **Light** (for bright/sunny environments): `catppuccin-latte`, `tokyo-night-day`
 
 The design is a **hybrid**: instead of hardcoding a palette in every tool, kitty
 is the single source of the 16 ANSI colors and most tools just *follow* it.
