@@ -6,3 +6,6 @@ debug
 foo.*
 *.log
 data
+
+# Active colorscheme written by `settheme` — runtime artifact, not tracked.
+lua/config/colorscheme.lua

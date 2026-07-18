@@ -19,7 +19,14 @@ ln -nfrs ../dotfiles/shared/delta .
 ln -nfrs ../dotfiles/shared/kitty .
 ln -nfrs ../dotfiles/shared/nvim .
 ln -nfrs ../dotfiles/shared/starship .
+ln -nfrs ../dotfiles/shared/gitui .
 ln -nfrs ../dotfiles/shared/omz .
 ln -nfrs ../dotfiles/shared/yazi .
 ln -nfrs ../dotfiles/shared/mise .
 ln -nfrs ../dotfiles/shared/fish .
+
+# tinty (theme manager) expects its config at a nested path. Only the config
+# file is versioned; tinty clones the scheme/template repos into its own data
+# dir on `tinty install`.
+mkdir -p ~/.config/tinted-theming/tinty
+ln -nfrs ../dotfiles/shared/tinty/config.toml ~/.config/tinted-theming/tinty/config.toml

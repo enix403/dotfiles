@@ -1,0 +1,108 @@
+#!/usr/bin/env bash
+#
+# settheme — one command to reskin the whole terminal environment.
+#
+# Design (see dotfiles README "Theming"):
+#   * kitty is the single source of the 16 ANSI colors. `tinty apply` repaints
+#     it (base24 where available for truer bright colors, else base16) and
+#     live-reloads every running window over its socket.
+#   * bat, delta, fzf, starship and gitui are all configured to FOLLOW those
+#     ANSI colors, so they need no per-theme handling here — they just track
+#     kitty automatically.
+#   * nvim and yazi keep their own native theme ports; this script repoints
+#     them so they match the chosen scheme.
+#
+# Registry columns:  name | tinty-scheme | nvim-colorscheme | yazi-flavor
+#
+set -euo pipefail
+
+STATE_DIR="${XDG_STATE_HOME:-$HOME/.local/state}/settheme"
+STATE_FILE="$STATE_DIR/current"
+NVIM_CS_FILE="$HOME/.config/nvim/lua/config/colorscheme.lua"
+YAZI_THEME_FILE="$HOME/.config/yazi/theme.toml"
+
+registry() {
+  cat <<'EOF'
+catppuccin-mocha|base24-catppuccin-mocha|catppuccin-mocha|catppuccin-mocha
+tokyo-night|base16-tokyo-night-dark|tokyonight-night|tokyo-night
+gruvbox|base16-gruvbox-dark-hard|gruvbox|gruvbox-dark
+rose-pine|base16-rose-pine|rose-pine|rose-pine
+nord|base16-nord|nord|nord
+EOF
+}
+
+current_theme() { [ -f "$STATE_FILE" ] && cat "$STATE_FILE" || true; }
+
+lookup() { registry | awk -F'|' -v n="$1" '$1==n{print; f=1} END{exit !f}'; }
+
+list_themes() {
+  local cur; cur="$(current_theme)"
+  echo "Available themes:"
+  registry | while IFS='|' read -r name _; do
+    if [ "$name" = "$cur" ]; then echo "  * $name (current)"; else echo "    $name"; fi
+  done
+}
+
+# Machine-readable list of names, for shell completion.
+names() { registry | cut -d'|' -f1; }
+
+usage() {
+  cat <<EOF
+usage: settheme [<name>]        apply a theme across all tools
+       settheme --list          list available themes (current marked with *)
+       settheme --current       print the active theme name
+       settheme --names         print theme names, one per line (for completion)
+
+EOF
+  list_themes
+}
+
+apply_theme() {
+  local name="$1" row _ tinty_scheme nvim_cs yazi_flavor
+  if ! row="$(lookup "$name")"; then
+    echo "settheme: unknown theme '$name'" >&2
+    echo >&2
+    list_themes >&2
+    exit 1
+  fi
+  IFS='|' read -r _ tinty_scheme nvim_cs yazi_flavor <<<"$row"
+
+  # 1) Terminal palette (+ live reload of running kitty windows). The
+  #    ANSI-following tools (bat/delta/fzf/starship/gitui) inherit this for free.
+  echo "› kitty  : tinty apply $tinty_scheme"
+  tinty apply "$tinty_scheme"
+
+  # 2) nvim: write the generated colorscheme module (picked up on next launch;
+  #    running instances need :colorscheme or a restart).
+  echo "› nvim   : colorscheme $nvim_cs"
+  mkdir -p "$(dirname "$NVIM_CS_FILE")"
+  printf 'return "%s"\n' "$nvim_cs" >"$NVIM_CS_FILE"
+
+  # 3) yazi: repoint the dark flavor (open a new yazi to pick it up).
+  if [ -f "$YAZI_THEME_FILE" ]; then
+    echo "› yazi   : flavor $yazi_flavor"
+    local tmp="${YAZI_THEME_FILE}.settheme.tmp"
+    awk -v f="$yazi_flavor" '
+      /^\[flavor\]/ { inflavor = 1 }
+      inflavor && /^[[:space:]]*dark[[:space:]]*=/ {
+        sub(/=.*/, "= \"" f "\""); inflavor = 0
+      }
+      { print }
+    ' "$YAZI_THEME_FILE" >"$tmp" && mv "$tmp" "$YAZI_THEME_FILE"
+  fi
+
+  mkdir -p "$STATE_DIR"
+  printf '%s\n' "$name" >"$STATE_FILE"
+  echo
+  echo "✓ theme set to '$name'."
+  echo "  kitty updated live. Open a new nvim / yazi / gitui to pick it up."
+}
+
+case "${1:-}" in
+  ""|-h|--help)  usage ;;
+  -l|--list)     list_themes ;;
+  --current)     current_theme ;;
+  --names)       names ;;
+  -*)            echo "settheme: unknown option '$1'" >&2; echo >&2; usage >&2; exit 1 ;;
+  *)             apply_theme "$1" ;;
+esac

@@ -22,3 +22,23 @@ hash = "fbaf0adc8efc59555b748d36aab62d40"
 use = "yazi-rs/flavors:catppuccin-mocha"
 rev = "4770a34"
 hash = "7dfe41c9c3d9be76da8a844263d0bbed"
+
+[[flavor.deps]]
+use = "BennyOe/tokyo-night"
+rev = "8e6296f"
+hash = "d9da921c3bd37ba32ee27a8a7a40461f"
+
+[[flavor.deps]]
+use = "bennyyip/gruvbox-dark"
+rev = "619fdc5"
+hash = "d4c7003ec6dc4efd5d3a050d5c2f2575"
+
+[[flavor.deps]]
+use = "AdithyanA2005/nord"
+rev = "34970be"
+hash = "6e1d257f00b540acbeb194082ce073c2"
+
+[[flavor.deps]]
+use = "stephanbrez/rose-pine"
+rev = "d344ce2"
+hash = "3d5aec178e860e11ab45f6189dff05ff"

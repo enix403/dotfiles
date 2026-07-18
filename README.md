@@ -11,11 +11,13 @@ dotfiles/
 │   ├── bat/         # bat (cat replacement) config
 │   ├── bin/         # Custom scripts on PATH
 │   ├── delta/       # git-delta pager config
+│   ├── gitui/       # gitui theme (ANSI-following, tracks the terminal palette)
 │   ├── kitty/       # Kitty terminal config (with parts/ for modular includes)
 │   ├── mise/        # mise runtime version manager config
 │   ├── nvim/        # Neovim config (LazyVim-based)
 │   ├── omz/         # Zsh config: aliases/paths/vars, lib/, vendored thirdparty/
 │   ├── starship/    # Starship prompt config
+│   ├── tinty/       # tinty config (base16/base24 theme manager, drives kitty)
 │   ├── vscode/      # VS Code settings (linux + macos variants) and extensions list
 │   └── yazi/        # Yazi file manager config
 ├── macos/           # macOS-only configs
@@ -89,6 +91,42 @@ LazyVim-based config at `shared/nvim/`. Plugins include:
 
 Config split into `parts/` for modular includes (fonts, colors, keybinds, etc). Includes a `pass_keys.py` script for passing keys through to Neovim.
 
+### Theming (unified via `settheme`)
+
+One command reskins the whole terminal environment:
+
+```bash
+settheme            # list themes (current marked with *)
+settheme gruvbox    # apply a theme everywhere
+```
+
+Available: `catppuccin-mocha` (default), `tokyo-night`, `gruvbox`, `rose-pine`, `nord`.
+
+The design is a **hybrid**: instead of hardcoding a palette in every tool, kitty
+is the single source of the 16 ANSI colors and most tools just *follow* it.
+
+- **kitty** — its palette is set by [`tinty`](https://github.com/tinted-theming/tinty)
+  (a base16/base24 theme manager). `settheme` runs `tinty apply`, which writes a
+  gitignored `kitty/theme.conf` (`globinclude`d, so `parts/colors.conf` stays the
+  committed fallback) and live-reloads every running window via `$KITTY_LISTEN_ON`.
+  base24 schemes are preferred where available (truer bright colors), else base16.
+- **bat, delta, fzf, starship, gitui** — configured to follow the 16 ANSI colors,
+  so they track kitty automatically with **no per-theme config**. `bat --theme=base16`,
+  delta's `term-ansi` feature (ANSI indices 0–15), `fzf --color=16`, starship's
+  named colors, and gitui's `ansi.ron`.
+- **nvim, yazi** — keep native theme ports. `settheme` writes the nvim colorscheme
+  to a gitignored `nvim/lua/config/colorscheme.lua` and repoints the yazi flavor in
+  `yazi/theme.toml`. Open a new nvim/yazi to pick up the change.
+
+The theme registry (name → tinty scheme / nvim colorscheme / yazi flavor) lives in
+`shared/bin/settheme`. To add a theme: add a registry row, confirm `tinty info
+<scheme>` resolves, add the nvim colorscheme plugin in `nvim/lua/plugins/theme.lua`,
+and add the yazi flavor with `ya pkg add <repo>`.
+
+**Setup on a new machine:** `brew install tinty` (or your package manager), run
+`shared/_apply/link-dots.sh` to symlink configs, then `tinty install` and
+(from `shared/yazi/`) `ya pkg install` to fetch schemes and flavors.
+
 ### VS Code
 
 - `macos-settings.jsonc` / `linux-settings.jsonc` — per-OS settings
@@ -113,6 +151,7 @@ Located in `shared/bin/`, added to `PATH`:
 
 | Script | Description |
 |---|---|
+| `settheme` | Switch the terminal theme across all tools at once (see [Theming](#theming-unified-via-settheme)) |
 | `tunix` | Convert timestamp strings (many formats) to Unix epoch seconds |
 | `tiso` | Convert Unix epoch seconds to ISO 8601 UTC string |
 | `pull_hp` / `push_hp` | Helpers for syncing a home project |
