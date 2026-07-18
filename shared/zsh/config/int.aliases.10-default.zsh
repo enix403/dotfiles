@@ -183,6 +183,24 @@ alias hv='cd ~/hive'
 # ===========================
 # Dedicated aliases for each tool
 
+# ========== FZF ==========
+
+# --- File Selections (Including Gitignored Files) ---
+
+# f: Fuzzy find a single file
+alias f="fd --type f --no-ignore | fzf --preview 'bat --style=numbers --color=always --line-range :500 {}'"
+
+# fm: Fuzzy find multiple files (Space to select/deselect)
+alias fm="fd --type f --no-ignore | fzf -m --bind 'space:toggle+down' --preview 'bat --style=numbers --color=always --line-range :500 {}'"
+
+# --- Directory Selections (Including Gitignored Files) ---
+
+# d: Fuzzy find a single directory
+alias d="fd --type d --no-ignore | fzf --preview 'ls -p --color=always {}'"
+
+# dm: Fuzzy find multiple directories (Space to select/deselect)
+alias dm="fd --type d --no-ignore | fzf -m --bind 'space:toggle+down' --preview 'ls -p --color=always {}'"
+
 # ========== Git ==========
 
 alias g="git"
