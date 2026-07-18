@@ -60,12 +60,14 @@ Machine-local overrides use the same scope prefix and are gitignored: `base.x-*.
 `int.x-*.zsh` (symlinks into a private repo, synced by that repo's `shsync`) and
 `*.local.zsh`.
 
-`shared/zsh/config/lib/` holds small self-contained pieces vendored from Oh My Zsh's
-`lib/` (nav aliases + `auto_pushd`, interactive keybindings, completion `zstyle`s),
-sourced explicitly by `.zshrc`.
+`config/` holds only autoloaded files (the glob-sourced `base.*`/`int.*`). Vendored
+code lives beside it under `shared/zsh/` and is sourced explicitly by `.zshrc`:
 
-`shared/zsh/config/thirdparty/` holds all vendored third-party zsh code (plain
-committed files — no submodules), sourced by `.zshrc`:
+`shared/zsh/lib/` holds small self-contained pieces vendored from Oh My Zsh's `lib/`
+(nav aliases + `auto_pushd`, interactive keybindings, completion `zstyle`s).
+
+`shared/zsh/thirdparty/` holds all vendored third-party zsh code (plain committed
+files — no submodules):
 - `fzf-tab/` — replaces zsh tab completion with fzf
 - `zsh-syntax-highlighting/` — syntax highlighting in the prompt (sourced last)
 - `colored-man-pages/` — colorized man pages

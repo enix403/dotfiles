@@ -32,10 +32,12 @@ autoload -U colors && colors
 # ==============================
 # ==== Config / cache paths ====
 # ==============================
-# Previously $ZSH_CUSTOM under Oh My Zsh. This is just the directory holding our
-# aliases/paths/vars plus the vendored lib + plugin files. Normally already set
-# by .zshenv; the fallback keeps this file usable if sourced on its own.
-ZSH_CONFIG_DIR="${ZSH_CONFIG_DIR:-$HOME/dotfiles/shared/zsh/config}"
+# $ZSH_DIR is the zsh root; $ZSH_CONFIG_DIR/ holds the autoloaded config files
+# (base.*/int.*), while vendored lib/ and thirdparty/ live directly under
+# $ZSH_DIR. Normally already set by .zshenv; the fallbacks keep this file usable
+# if sourced on its own.
+ZSH_DIR="${ZSH_DIR:-$HOME/dotfiles/shared/zsh}"
+ZSH_CONFIG_DIR="${ZSH_CONFIG_DIR:-$ZSH_DIR/config}"
 ZSH_CACHE_DIR="$HOME/.cache/zsh"
 [[ -d "$ZSH_CACHE_DIR" ]] || mkdir -p "$ZSH_CACHE_DIR"
 
@@ -55,19 +57,19 @@ autoload -Uz bashcompinit && bashcompinit
 # ===============================
 # Small self-contained pieces we used to get from Oh My Zsh's lib/.
 # (nav aliases + auto_pushd, interactive keybindings, completion zstyles)
-source "$ZSH_CONFIG_DIR/lib/completion.zsh"
-source "$ZSH_CONFIG_DIR/lib/directories.zsh"
-source "$ZSH_CONFIG_DIR/lib/key-bindings.zsh"
+source "$ZSH_DIR/lib/completion.zsh"
+source "$ZSH_DIR/lib/directories.zsh"
+source "$ZSH_DIR/lib/key-bindings.zsh"
 
 # =================
 # ==== Plugins ====
 # =================
 
 # colored-man-pages (vendored, was an OMZ plugin)
-source "$ZSH_CONFIG_DIR/thirdparty/colored-man-pages/colored-man-pages.plugin.zsh"
+source "$ZSH_DIR/thirdparty/colored-man-pages/colored-man-pages.plugin.zsh"
 
 # fzf-tab (vendored). Must load AFTER compinit and BEFORE zsh-syntax-highlighting.
-source "$ZSH_CONFIG_DIR/thirdparty/fzf-tab/fzf-tab.plugin.zsh"
+source "$ZSH_DIR/thirdparty/fzf-tab/fzf-tab.plugin.zsh"
 
 # ==========================
 # ==== Custom shell cfg ====
@@ -101,14 +103,14 @@ ZSH_HIGHLIGHT_STYLES[comment]='fg=blue,bg=black'
 ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern)
 
 # zsh-syntax-highlighting (vendored) MUST be sourced last.
-source "$ZSH_CONFIG_DIR/thirdparty/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
+source "$ZSH_DIR/thirdparty/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
 
 # =======================
 # ==== Third Parties ====
 # =======================
 
 # --- window title script ---
-source "$ZSH_CONFIG_DIR/thirdparty/zsh-window-title.zsh"
+source "$ZSH_DIR/thirdparty/zsh-window-title.zsh"
 
 # ======================
 # ====== Starship ======
