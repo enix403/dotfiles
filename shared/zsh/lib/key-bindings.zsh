@@ -132,6 +132,7 @@ bindkey "^[m" copy-prev-shell-word
 # Uses fd for traversal (respects the `--hidden --no-ignore-vcs` intent).
 if (( ${+commands[fzf]} )); then
   export FZF_CTRL_T_COMMAND='fd --type f --hidden --no-ignore-vcs --exclude .git'
+  export FZF_CTRL_T_OPTS="--preview 'bat --style=numbers --color=always --line-range :500 {}'"
   export FZF_ALT_C_COMMAND='fd --type d --hidden --no-ignore-vcs --exclude .git'
   # Source ONLY the key-binding widgets, not fzf's completion (fzf-tab owns
   # completion). The shell dir sits next to the resolved fzf binary's cellar.
