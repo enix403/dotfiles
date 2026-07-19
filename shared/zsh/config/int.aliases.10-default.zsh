@@ -185,13 +185,23 @@ alias hv='cd ~/hive'
 
 # ========== FZF ==========
 
+# Two-column colorizer for fzf file lists: real-path TAB colored-display.
+# dirname: bold bright cyan; filename: default foreground.
+_fzf_color_paths() {
+  awk -F/ '{
+    dir=""; for(i=1;i<NF;i++) dir=dir $i "/";
+    colored = NF>1 ? "\033[1;96m" dir "\033[0m" $NF : $NF;
+    printf "%s\t%s\n", $0, colored
+  }'
+}
+
 # --- File Selections (Including Gitignored Files) ---
 
 # f: Fuzzy find a single file
-alias f="fd --type f --no-ignore | fzf --preview 'bat --style=numbers --color=always --line-range :500 {}'"
+alias f="fd --type f --no-ignore | _fzf_color_paths | fzf --ansi --delimiter='\\t' --with-nth=2 --nth=1 --preview 'bat --style=numbers --color=always --line-range :500 {1}' | cut -f1"
 
 # fm: Fuzzy find multiple files (Space to select/deselect)
-alias fm="fd --type f --no-ignore | fzf -m --bind 'space:toggle+down' --preview 'bat --style=numbers --color=always --line-range :500 {}'"
+alias fm="fd --type f --no-ignore | _fzf_color_paths | fzf -m --bind 'space:toggle+down' --ansi --delimiter='\\t' --with-nth=2 --nth=1 --preview 'bat --style=numbers --color=always --line-range :500 {1}' | cut -f1"
 
 # --- Directory Selections (Including Gitignored Files) ---
 
