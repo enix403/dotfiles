@@ -132,7 +132,6 @@ bindkey "^[m" copy-prev-shell-word
 # Uses fd for traversal (respects the `--hidden --no-ignore-vcs` intent).
 if (( ${+commands[fzf]} )); then
   export FZF_CTRL_T_COMMAND='fd --type f --hidden --no-ignore-vcs --exclude .git'
-  export FZF_CTRL_T_OPTS="--preview 'bat --style=numbers --color=always --line-range :500 {}'"
   export FZF_ALT_C_COMMAND='fd --type d --hidden --no-ignore-vcs --exclude .git'
   # Source ONLY the key-binding widgets, not fzf's completion (fzf-tab owns
   # completion). The shell dir sits next to the resolved fzf binary's cellar.
@@ -144,6 +143,33 @@ if (( ${+commands[fzf]} )); then
   # no usable Alt/Option key. Ctrl-F/Ctrl-G are free here (history is on arrows).
   bindkey '^F' fzf-file-widget   # fuzzy-find file/dir -> insert path at cursor
   bindkey '^G' fzf-cd-widget     # fuzzy-find dir -> cd into it
+
+  # Override fzf-file-widget: uses a two-column format (real-path TAB colored-display)
+  # so the search, preview, and inserted path all use the clean uncolored real path
+  # ({1}), while the list displays a dimmed dirname + normal filename ({2}).
+  fzf-file-widget() {
+    local selected
+    selected=$(
+      eval "$FZF_CTRL_T_COMMAND" | \
+        awk -F/ '{
+          dir=""; for(i=1;i<NF;i++) dir=dir $i "/";
+          colored = NF>1 ? "\033[1;96m" dir "\033[0m" $NF : $NF;
+          printf "%s\t%s\n", $0, colored
+        }' | \
+        FZF_DEFAULT_OPTS="" fzf --ansi \
+          --height "${FZF_TMUX_HEIGHT:-40%}" --reverse --bind=ctrl-z:ignore \
+          --delimiter=$'\t' --with-nth=2 --nth=1 \
+          --preview 'bat --style=numbers --color=always --line-range :500 {1}' \
+          -m | \
+        cut -f1 | \
+        while read -r item; do printf '%q ' "$item"; done
+    )
+    local ret=$?
+    LBUFFER="${LBUFFER}${selected% }"
+    zle reset-prompt
+    return $ret
+  }
+  zle -N fzf-file-widget
 fi
 
 # consider emacs keybindings:
