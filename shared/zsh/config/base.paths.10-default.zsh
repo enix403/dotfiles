@@ -54,6 +54,7 @@ _zsh_prioritize_path() {
     /opt/homebrew/opt/ruby/bin \
     "$HOME/probin" \
     "$HOME/bin" \
+    /usr/local/bin \
     /usr/local/bin/override \
     "$PYENV_ROOT/shims"
   do
