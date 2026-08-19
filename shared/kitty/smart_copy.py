@@ -37,16 +37,22 @@ def main(args):
     # Required entry point for kittens; no terminal UI needed here.
     pass
 
-
 def set_clipboard(text):
     data = text.encode()
     for cmd in _CLIPBOARD_CMDS:
         try:
-            result = subprocess.run(cmd, input=data, capture_output=True)
+            # FIX: Use DEVNULL instead of capture_output=True so that Wayland 
+            # background daemons don't keep the stdout/stderr pipes open.
+            result = subprocess.run(
+                cmd, 
+                input=data, 
+                stdout=subprocess.DEVNULL, 
+                stderr=subprocess.DEVNULL
+            )
             if result.returncode == 0:
                 return
         except FileNotFoundError:
-            continue  # binary not installed, try next
+            continue  # binary not installed, try next   
 
 
 @result_handler(no_ui=True)
