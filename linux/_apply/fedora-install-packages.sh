@@ -29,6 +29,7 @@ sudo dnf -y install \
   zathura zathura-pdf-mupdf \
   duf \
   tokei \
+  deluge \
   git-annex
 
 # COPRs

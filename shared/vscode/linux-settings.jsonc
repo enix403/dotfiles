@@ -12,11 +12,15 @@
     // ----- UI Mod from Custom UI Style Extension -----
     "custom-ui-style.font.sansSerif": "'Maple Mono', sans-serif",
 
-    "window.zoomLevel": 0.1,
+    "window.zoomLevel": 0.2,
 
-    "editor.fontFamily": "Maple Mono",
-    "editor.lineHeight": 1.45,
-    "editor.fontSize": 15,
+    // "editor.fontFamily": "Maple Mono",
+    "editor.fontFamily": "Fira Code",
+    "editor.lineHeight": 1.35,
+    "editor.fontSize": 13.5,
+    "editor.letterSpacing": -0.4,
+    "editor.fontWeight": "500",
+    "workbench.experimental.modernUI": false,
     // "editor.letterSpacing": -0.25,
     // -----------------
     // "editor.fontFamily": "Rec Mono Casual",
@@ -499,5 +503,10 @@
     // ==========================
 
     // keeping it here since vscode/cursor often like to move it to end anyway
-    "workbench.colorTheme": "Ilyat Cosmic"
+    "workbench.colorTheme": "Ilyat Cosmic",
+    "datadog.connection.notification.suppressSignInNotification": true,
+    "datadog.vscode.notification.suppressMcpMigrationMessage": true,
+    "[markdown]": {
+        "editor.defaultFormatter": "darkriszty.markdown-table-prettify"
+    }
 }

@@ -123,6 +123,10 @@ alias oty="otree -t yaml"
 
 alias rscopy="rsync --stats -haz --info=progress2 --no-i-r"
 
+if [[ "$OSTYPE" == linux* ]]; then
+  alias open="xdg-open"
+fi
+
 # alias kff="killall -9 firefox"
 
 # Print the absolute path to the given file
