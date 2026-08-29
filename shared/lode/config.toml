@@ -1,0 +1,8 @@
+# lodestone folders. See `lode add --help`.
+#
+# Prefer ~-relative paths: this file is meant to be shared across machines.
+# Machine-specific overrides belong in config.local.toml (gitignored).
+
+[folder.silvermine]
+local = "~/silvermine"
+remote = "per-gdrive:Silvermine"
