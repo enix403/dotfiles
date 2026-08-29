@@ -12,7 +12,8 @@
     "window.zoomLevel": 0.05,
     "editor.fontFamily": "Maple Mono",
     "editor.lineHeight": 1.45,
-    "editor.fontSize": 13,
+    "editor.fontSize": 14,
+    "workbench.experimental.modernUI": false,
     // "editor.letterSpacing": -0.25,
     // -----------------
     // "editor.fontFamily": "Rec Mono Casual",
@@ -778,7 +779,7 @@
     // ------- Settings Sync -------
     "settingsSync.keybindingsPerPlatform": false,
     // ------- CSV (A UI csv Viewer) -------
-    "csv.enabled": true,
+    "csv.enabled": false,
     // ------- GitLens -------
     "gitlens.currentLine.enabled": false,
     "gitlens.codeLens.authors.enabled": false,
