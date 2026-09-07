@@ -4,6 +4,8 @@
 
 [alias]
   br = branch
+  on = branch --show-current # "o" = "on branch ?"
+  oc = rev-parse --short HEAD # "oc" = "on commit ?"
   st = status --short
   stt = status
   stu = status --short --untracked=no
