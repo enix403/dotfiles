@@ -792,4 +792,6 @@
     "extensions.installCooldownHours": 72,
     "gitTreeCompare.diffMode": "full",
     "terraform.mcp.server.enable": true,
+    "intellij.region": "apac",
+    "intellij.dataSharing": "none",
 }

@@ -4,10 +4,46 @@ alias dtv='(cd "$DOTFILES_PATH"; nvim .)'
 
 # ======= Absolute Necessaties =========
 
+# normal ls
 alias ls="LC_COLLATE=C ls --color=auto -lh --group-directories-first"
 alias la="ls -A"
+
+# show just the file names
 alias l1="LC_COLLATE=C \ls --color=auto -1h --group-directories-first"
-alias la1="l1 -A"
+alias l1a="l1 -A"
+
+# show just the file absolute paths
+function _lsa_core() {
+  local include_hidden="$1"
+  shift
+
+  # 'N' = nullglob, 'D' = dotglob (include hidden files, like ls -A)
+  local glob_qual="N"
+  [[ "$include_hidden" == "true" ]] && glob_qual="ND"
+
+  local targets=()
+
+  if (( $# == 0 )); then
+    targets=( $PWD/*($glob_qual) )
+  else
+    local arg
+    for arg in "$@"; do
+      if [[ -d $arg ]]; then
+        targets+=( ${arg:A}/*($glob_qual) )
+      else
+        targets+=( ${arg:A} )
+      fi
+    done
+  fi
+
+  if (( ${#targets} > 0 )); then
+    LC_COLLATE=C \ls -1 -N --color=auto --group-directories-first -d "${targets[@]}"
+  fi
+}
+
+function ll()  { _lsa_core false "$@"; } # show regular files
+function lla() { _lsa_core true  "$@"; } # show hidden files as well
+
 alias cls="clear"
 alias {where,wr}="which"
 alias mkd="mkdir"
