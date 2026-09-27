@@ -4,6 +4,9 @@ alias dtv='(cd "$DOTFILES_PATH"; nvim .)'
 
 # ======= Absolute Necessaties =========
 
+# in some machines i get a default ll alias, don't know why
+unalias ll 2>/dev/null || true
+
 # normal ls
 alias ls="LC_COLLATE=C ls --color=auto -lh --group-directories-first"
 alias la="ls -A"

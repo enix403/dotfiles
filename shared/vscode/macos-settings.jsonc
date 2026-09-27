@@ -779,7 +779,7 @@
     // ------- Settings Sync -------
     "settingsSync.keybindingsPerPlatform": false,
     // ------- CSV (A UI csv Viewer) -------
-    "csv.enabled": false,
+    "csv.enabled": true,
     // ------- GitLens -------
     "gitlens.currentLine.enabled": false,
     "gitlens.codeLens.authors.enabled": false,
@@ -794,4 +794,5 @@
     "terraform.mcp.server.enable": true,
     "intellij.region": "apac",
     "intellij.dataSharing": "none",
+    "editor.unicodeHighlight.invisibleCharacters": false,
 }
