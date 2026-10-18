@@ -29,3 +29,9 @@ ln -nfrs ../dotfiles/shared/yazi .
   cp ../dotfiles/shared/yazi/theme.toml.default ../dotfiles/shared/yazi/theme.toml
 ln -nfrs ../dotfiles/shared/mise .
 ln -nfrs ../dotfiles/shared/fish .
+ln -nfrs ../dotfiles/shared/dcg .
+
+# ~/.claude is assembled from layered config dirs; see shared/bin/claude-layers
+mkdir -p ~/.claude
+ln -nfs ~/dotfiles/shared/claude/claude-powerline.json ~/.claude/claude-powerline.json
+~/dotfiles/shared/bin/claude-layers
