@@ -11,7 +11,8 @@ If you want to do any parsing/manipulation of JSON, use the `jq` cli tool. Avoid
 ## Commit, push and CI
 
 - On my feature branches, commit and push every change without asking, then watch the PR's CI in the background and report failures. Use Conventional Commits.
-- Stage explicit file paths. `git add -A` is blocked by dcg.
+- Stage explicit file paths rather than `git add -A`.
+- Use canonical git subcommands (`git checkout`, `git commit`, `git push`), never my personal git aliases (`git co`, `git cm`, `git ps`, ...).
 - Still ask before: pushing to the default branch, force-pushing, opening or merging a PR, or posting to external services (issue trackers, chat).
 - After each push to an open PR, update the PR description (`gh pr edit --body-file`) so it matches the code.
 
@@ -43,6 +44,7 @@ If you want to do any parsing/manipulation of JSON, use the `jq` cli tool. Avoid
 - In my shell, `mv`, `cp` (and possibly `rm`) are aliased to their `-i` variants, which hang non-interactive commands on an invisible prompt. Use `command mv -f`, `/bin/cp -f`, `command rm -f`, or the Edit/Write tools.
 - If a command is interrupted, check on-disk state (`git status`) before saying what did or didn't run.
 - dcg blocks any command containing `git push` alongside a `-f` flag, including `gh api ... -f`. Keep `git push` in its own Bash call and use `--raw-field`/`--field` with `gh api`.
+- dcg only guards irreversible operations (discarding uncommitted work, force push, pushing to master/main, deleting remote branches, `rm -rf` on `~` or `/`). A dcg block is intentional: don't rephrase the command to get around it; tell me what you wanted to run and why.
 
 ## Claude config layout
 

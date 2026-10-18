@@ -1,8 +1,13 @@
+# dcg is a hard stop for irreversible operations only. Judgment calls
+# (rebase, amend, cherry-pick, staging) are left to Claude Code's auto mode.
+
+[general]
+log_file = "~/.local/share/dcg/blocked.log"
+
 [packs]
 enabled = [
   "core.filesystem",
   "core.git",
-  "strict_git",
   "cloud.aws",
 # "infrastructure.terraform",
   "system.disk",
@@ -18,3 +23,28 @@ custom_paths = [
   "~/.config/dcg/packs/git-remote-branch-protect.yaml",
   "~/.config/dcg/packs/kubernetes-block.yaml",
 ]
+
+[policy.rules]
+# Allowed silently. rm -rf on / or ~ stays blocked.
+"core.filesystem:rm-rf-general" = "log"
+"core.filesystem:rm-r-f-separate" = "log"
+"core.filesystem:rm-recursive-force-long" = "log"
+# Recoverable via reflog / git fsck.
+"core.git:branch-force-delete" = "log"
+"core.git:stash-drop" = "log"
+
+[overrides]
+# Config dirs are tracked in dotfiles; writing into them is routine.
+allow = [
+  '^\S+(\s+\S+)*\s*>\|?\s*~/\.(claude|config)/[^\s;&|]+\s*$',
+  '^(command\s+)?mv(\s+-\S+)*\s+~/\.(claude|config)/\S+\s+~/\.(claude|config)/\S+\s*$',
+]
+
+[heredoc]
+# Heredoc bodies are mostly data (PR bodies, commit messages, files being
+# written). Only scan shell scripts.
+languages = ["bash"]
+
+[history]
+enabled = true
+database_path = "~/.local/share/dcg/history.db"

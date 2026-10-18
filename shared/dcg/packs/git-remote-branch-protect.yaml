@@ -1,10 +1,11 @@
 schema_version: 1
 id: user.git_branch_delete_protect
-name: Git Branch Delete Protection
-version: 1.0.0
+name: Git Remote Branch Protection
+version: 1.1.0
 description: |
-  Blocks all branch deletion via git push (--delete, colon-syntax),
-  git branch -D/--delete, and gh CLI api calls. Covers git aliases.
+  Blocks remote branch deletion via git push (--delete, colon-syntax) and
+  gh CLI api calls, and pushes to master/main. Covers git aliases.
+  Local branch -D is left to core.git.
 
 keywords:
   - git
@@ -12,8 +13,8 @@ keywords:
 
 safe_patterns:
   - name: push-refspec-with-source
-    pattern: '(?:^|[^[:alnum:]_-])git\s+(?:\S+\s+)*push\s+(?:\S+\s+)*\S+:\S+'
-    description: Refspec push with non-empty source (e.g. HEAD:main) is allowed
+    pattern: '(?:^|[^[:alnum:]_-])git\s+(?:\S+\s+)*push\s+(?:\S+\s+)*\S+:(?!(?:refs/heads/)?(?:master|main)(?:\s|$))\S+'
+    description: Refspec push with non-empty source (e.g. HEAD:feature) is allowed, except to master/main
 
 destructive_patterns:
   - name: push-delete-long
@@ -39,28 +40,17 @@ destructive_patterns:
     description: Colon-delete syntax (git push origin :branch) is blocked.
     explanation: |
       Pushing an empty refspec (e.g. git push origin :my-branch) deletes the remote branch.
-      This is the POSIX-style delete syntax, distinct from refspec pushes like HEAD:main
+      This is the POSIX-style delete syntax, distinct from refspec pushes like HEAD:my-branch
       which are explicitly allowed.
       Safe alternative: delete the branch via GitHub/GitLab UI.
 
-  - name: branch-force-delete
+  - name: push-default-branch
     severity: critical
-    pattern: '(?:^|[^[:alnum:]_-])git\s+(?:\S+\s+)*branch\s+(?:\S+\s+)*-[a-zA-Z]*D[a-zA-Z]*\b'
-    description: Force local branch deletion (-D) is blocked.
+    pattern: '(?:^|[^[:alnum:]_-])git\s+(?:\S+\s+)*push\s+(?:[^\s;&|]+\s+)*(?:[^\s;&|]*:)?(?:refs/heads/)?(?:master|main)(?:[\s;&|)]|$)'
+    description: Pushing to master/main is blocked.
     explanation: |
-      git branch -D force-deletes a branch regardless of merge status,
-      potentially losing unmerged commits permanently.
-      Safe alternative: use git branch -d which refuses if the branch
-      has unmerged commits.
-
-  - name: branch-delete-long
-    severity: critical
-    pattern: '(?:^|[^[:alnum:]_-])git\s+(?:\S+\s+)*branch\s+(?:\S+\s+)*--delete\b'
-    description: git branch --delete is blocked.
-    explanation: |
-      git branch --delete removes a local branch. Use git branch -d instead,
-      which checks merge status before deleting and refuses if there are
-      unmerged commits.
+      The default branch only changes through a reviewed pull request.
+      Push a feature branch and open a PR instead.
 
   - name: gh-api-delete-ref
     severity: critical
