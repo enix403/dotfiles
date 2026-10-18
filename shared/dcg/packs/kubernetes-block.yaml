@@ -1,10 +1,11 @@
 schema_version: 1
 id: user.kubernetes_block
 name: Kubernetes Command Block
-version: 1.0.0
+version: 1.1.0
 description: |
-  Blocks all Kubernetes cluster-interacting CLIs. Claude Code should
-  never interact with a Kubernetes cluster directly.
+  Blocks Kubernetes cluster-interacting CLIs. The only exceptions are
+  kubectl on the local context and read-only kubectl verbs (get, describe,
+  logs, ...) on any context, excluding secrets.
 
 keywords:
   - kubectl
@@ -24,6 +25,10 @@ safe_patterns:
   - name: kubectl-context-local
     pattern: '(?:^|[^[:alnum:]_-])kubectl\b.*--context[=\s]local\b'
     description: kubectl with --context=local targets the local dev cluster and is allowed
+
+  - name: kubectl-read-only
+    pattern: '(?:^|[^[:alnum:]_-])kubectl(?:\s+-{1,2}[a-zA-Z][\w-]*(?:[=\s](?!-)[^\s;&|]+)?)*\s+(?:get|describe|logs|top|explain|api-resources|api-versions|version|cluster-info|events|auth\s+(?:can-i|whoami)|config\s+(?:view|get-contexts|current-context|get-clusters|get-users)|rollout\s+(?:status|history))(?![\w-])(?![^;&|]*\bsecrets?\b)(?![^;&|]*\s(?:delete|apply|create|replace|patch|edit|scale|autoscale|label|annotate|set|exec|attach|cp|run|debug|expose|port-forward|proxy|drain|cordon|uncordon|taint|restart|undo|pause|resume)(?=\s|$))'
+    description: Read-only kubectl verbs are allowed on any context, except reading secrets
 
 destructive_patterns:
   - name: kubectl
