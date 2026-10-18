@@ -10,7 +10,7 @@ If you want to do any parsing/manipulation of JSON, use the `jq` cli tool. Avoid
 
 ## Commit, push and CI
 
-- On my feature branches, commit and push every change without asking, then watch the PR's CI in the background and report failures. Use Conventional Commits.
+- On my feature branches, commit and push every change without asking.
 - Stage explicit file paths rather than `git add -A`.
 - Use canonical git subcommands (`git checkout`, `git commit`, `git push`), never my personal git aliases (`git co`, `git cm`, `git ps`, ...).
 - Still ask before: pushing to the default branch, force-pushing, opening or merging a PR, or posting to external services (issue trackers, chat).
@@ -35,8 +35,6 @@ If you want to do any parsing/manipulation of JSON, use the `jq` cli tool. Avoid
 
 ## Code style
 
-- Ruby: use `["a", "b"]`, never `%w[a b]`.
-- JS/TS: use plain objects for string-keyed data; reach for `Map` only with a concrete reason.
 - Bun scripts: use `` $`...` `` only for external commands. Do logic, parsing, file I/O and exits in JS (`Bun.file`, `Bun.argv`, `Bun.env`, `process.exit`).
 
 ## Shell gotchas
