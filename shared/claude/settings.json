@@ -2,7 +2,6 @@
   "env": {
     "BASH_DEFAULT_TIMEOUT_MS": "900000",
     "BASH_MAX_TIMEOUT_MS": "7200000",
-    "ANTHROPIC_MODEL": "claude-opus-4-6[1m]",
     "ENABLE_TOOL_SEARCH": "true"
   },
   "includeCoAuthoredBy": false,
@@ -15,7 +14,7 @@
       "Write"
     ]
   },
-  "model": "sonnet",
+  "model": "opus",
   "hooks": {
     "PreToolUse": [
       {

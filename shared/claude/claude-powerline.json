@@ -14,7 +14,7 @@
             "style": "basename"
           },
           "git": {
-            "enabled": false,
+            "enabled": true,
             "showSha": false,
             "showAheadBehind": false,
             "showWorkingTree": false,
