@@ -20,6 +20,7 @@
   cm = commit
   cp = cherry-pick
   rs = reset
+  so = show
   sw = switch
   swc = switch -c
   ss = stash

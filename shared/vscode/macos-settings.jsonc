@@ -39,7 +39,11 @@
     "workbench.list.openMode": "doubleClick",
     "workbench.startupEditor": "welcomePage",
     "workbench.editorAssociations": {
-        "*.svg": "default"
+        "*.svg": "default",
+        "*.csv": "default",
+        "*.tsv": "default",
+        "*.tab": "default",
+        "*.psv": "default"
     },
     "workbench.editor.enablePreview": false,
     "workbench.editor.useModal": "off",
@@ -788,7 +792,7 @@
     "redhat.telemetry.enabled": false,
     "window.autoDetectColorScheme": false,
     "claudeCode.enableNewConversationShortcut": true,
-    "workbench.colorTheme": "Ilyat Cosmic",
+    "workbench.colorTheme": "Best Themes - Nord Cold",
     "extensions.installCooldownHours": 72,
     "gitTreeCompare.diffMode": "full",
     "terraform.mcp.server.enable": true,
