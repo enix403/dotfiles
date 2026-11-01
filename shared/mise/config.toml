@@ -4,11 +4,7 @@ pnpm = "10"
 yarn = "1.22"
 
 # Python tooling. No global Python here: projects and venvs are managed by uv
-# (shared/pylab for notebooks/scratch), and standalone CLI tools are listed
-# below. Python-based tools are pinned to a uv-managed 3.14 so their venvs
-# never sit on a system/Homebrew interpreter that can change underneath them.
+# (shared/pylab for notebooks/scratch).
 uv = "latest"
 ruff = "latest"
 black = "latest"
-"pipx:mypy" = { version = "latest", uvx_args = "--python 3.14 --managed-python" }
-"pipx:semble" = { version = "latest", uvx_args = "--python 3.14 --managed-python" }
