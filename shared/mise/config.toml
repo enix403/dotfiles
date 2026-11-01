@@ -1,12 +1,14 @@
 [tools]
 node = "24"
 pnpm = "10"
-python = "3.14"
 yarn = "1.22"
 
-# Python tooling. Interpreter versions come from mise (above); projects and
-# venvs are managed by uv; standalone CLI tools are listed here.
+# Python tooling. No global Python here: projects and venvs are managed by uv
+# (shared/pylab for notebooks/scratch), and standalone CLI tools are listed
+# below. Python-based tools are pinned to a uv-managed 3.14 so their venvs
+# never sit on a system/Homebrew interpreter that can change underneath them.
 uv = "latest"
 ruff = "latest"
 black = "latest"
-"pipx:mypy" = "latest"
+"pipx:mypy" = { version = "latest", uvx_args = "--python 3.14 --managed-python" }
+"pipx:semble" = { version = "latest", uvx_args = "--python 3.14 --managed-python" }
