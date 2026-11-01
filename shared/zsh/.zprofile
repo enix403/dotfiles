@@ -1,7 +1,3 @@
-if [[ "$HOST" == "radium-fed" && "$OSTYPE" == linux* ]]; then
-    eval "$(mise activate zsh --shims)" # for non-interactive shells
-fi
-
 # On macOS login shells, /etc/zprofile runs path_helper *after* .zshenv and
 # prepends the system dirs (/usr/bin, /bin, ...) to the front, demoting our
 # custom PATH dirs (e.g. shadowing GNU tools in /usr/local/bin/override with

@@ -14,15 +14,6 @@ PYENV_ROOT="$HOME/.pyenv"
 [[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
 [[ -d $PYENV_ROOT/bin ]] && eval "$(pyenv init - zsh)"
 
-# ----------------
-# Mise (my own one)
-
-# if [[ "$HOST" == "radium-fed" && "$OSTYPE" == linux* ]]; then
-if [[ "$OSTYPE" == linux* ]]; then
-    # for interactive shells
-    eval "$(mise activate zsh)"
-fi
-
 # ---------
 # bun
 BUN_INSTALL="$HOME/.bun"
@@ -62,3 +53,10 @@ _zsh_prioritize_path() {
   done
 }
 _zsh_prioritize_path
+
+# ----------------
+# mise: activated on every OS and in every shell (base, not interactive-only),
+# so mise tools also resolve in scripts and `zsh -c`. Runs after the PATH setup
+# above because mise itself may live in ~/.local/bin (appended above), and after
+# _zsh_prioritize_path so mise's tool dirs sit in front of Homebrew's.
+(( $+commands[mise] )) && eval "$(mise activate zsh)"
