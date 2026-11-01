@@ -1,0 +1,113 @@
+#!/usr/bin/env bash
+# git ibd: interactively pick local branches with fzf, review their merge
+# status, confirm, then delete them.
+#
+# Status of each picked branch, judged against the default branch:
+#   merged         reachable from it
+#   squash-merged  a squash of the branch is already on it, or the upstream
+#                  branch is gone from the remote (PR merged and deleted)
+#   UNMERGED       neither; deleting it loses commits (SHA is printed)
+set -euo pipefail
+
+red=$'\e[31m' green=$'\e[32m' yellow=$'\e[33m' bold=$'\e[1m' reset=$'\e[0m'
+
+git rev-parse --git-dir >/dev/null
+
+# Default branch: origin/HEAD if set, else main, else master.
+def=$(git symbolic-ref --quiet --short refs/remotes/origin/HEAD 2>/dev/null || true)
+def=${def#origin/}
+if [ -z "$def" ]; then
+    for b in main master; do
+        if git show-ref --verify --quiet "refs/heads/$b" || git show-ref --verify --quiet "refs/remotes/origin/$b"; then
+            def=$b
+            break
+        fi
+    done
+fi
+[ -n "$def" ] || { echo "git ibd: cannot determine the default branch" >&2; exit 1; }
+
+# Compare against origin's copy when available (it's usually the freshest).
+if git show-ref --verify --quiet "refs/remotes/origin/$def"; then
+    base="origin/$def"
+else
+    base=$def
+fi
+
+# Branches checked out in any worktree (including the current one) can't be deleted.
+busy=$(git worktree list --porcelain | sed -n 's|^branch refs/heads/||p')
+
+candidates=$(
+    git for-each-ref --sort=-committerdate --format='%(refname:short)' refs/heads/ |
+        while IFS= read -r b; do
+            [ "$b" = "$def" ] && continue
+            printf '%s\n' "$busy" | grep -qxF -- "$b" && continue
+            printf '%s\n' "$b"
+        done
+)
+[ -n "$candidates" ] || { echo "No deletable branches."; exit 0; }
+
+picked=$(
+    printf '%s\n' "$candidates" |
+        fzf --height 60% --layout=reverse --multi --bind "space:toggle+down" --border \
+            --header "SPACE to select branches to DELETE (commits not on $base shown on the right)" \
+            --preview "git log --color=always --format='%C(yellow)%h%C(reset) %s %C(dim)(%cr)%C(reset)' $base..{} --" \
+            --preview-window "right:60%"
+) || true
+[ -n "$picked" ] || { echo "Nothing selected."; exit 0; }
+
+status_of() {
+    local b=$1 mb squash
+    if git merge-base --is-ancestor "$b" "$base"; then
+        echo merged
+        return
+    fi
+    # Squash detection: build a throwaway commit holding the branch's whole
+    # diff since the merge base, and ask git cherry whether an equivalent
+    # patch already exists on the base.
+    mb=$(git merge-base "$base" "$b" 2>/dev/null || true)
+    if [ -n "$mb" ]; then
+        squash=$(git commit-tree "$b^{tree}" -p "$mb" -m _)
+        if [ "$(git cherry "$base" "$squash" | cut -c1)" = "-" ]; then
+            echo squash-merged
+            return
+        fi
+    fi
+    if [ "$(git for-each-ref --format='%(upstream:track)' "refs/heads/$b")" = "[gone]" ]; then
+        echo squash-merged
+        return
+    fi
+    echo UNMERGED
+}
+
+echo
+echo "${bold}Branches to delete${reset} (compared with $base):"
+names=() shas=()
+unmerged=0
+while IFS= read -r b; do
+    st=$(status_of "$b")
+    sha=$(git rev-parse --short "$b")
+    case $st in
+        merged)        color=$green ;;
+        squash-merged) color=$yellow ;;
+        *)             color=$red
+                       unmerged=$((unmerged + 1))
+                       st="UNMERGED, $(git rev-list --count "$base..$b") commits not on $base" ;;
+    esac
+    printf '  %s  %s  %s%s%s\n' "$sha" "$b" "$color" "$st" "$reset"
+    names+=("$b")
+    shas+=("$sha")
+done <<<"$picked"
+
+echo
+[ "$unmerged" -gt 0 ] && echo "${red}${bold}$unmerged unmerged branch(es) selected; their commits will only be reachable by SHA.${reset}"
+printf 'Delete %d branch(es)? [y/N] ' "${#names[@]}"
+read -r answer </dev/tty
+case $answer in
+    y|Y) ;;
+    *) echo "Aborted."; exit 1 ;;
+esac
+
+for i in "${!names[@]}"; do
+    git branch -D -- "${names[$i]}" >/dev/null
+    echo "Deleted ${names[$i]} (was ${shas[$i]}); restore with: git branch ${names[$i]} ${shas[$i]}"
+done
