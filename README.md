@@ -158,11 +158,17 @@ Located in `shared/bin/`, added to `PATH`:
 | `tunix` | Convert timestamp strings (many formats) to Unix epoch seconds |
 | `tiso` | Convert Unix epoch seconds to ISO 8601 UTC string |
 | `batt` | One-line laptop battery status (`-v` for the full report); handy over SSH |
+| `defaults-diff` | macOS: show which `defaults` keys a System Settings change touched (`snap`, change, then run) |
 | `pull_hp` / `push_hp` | Helpers for syncing a home project |
 
 ### mise (runtime manager)
 
 Global tool versions pinned in `shared/mise/config.toml` (node, pnpm, python, yarn).
+
+## macOS setup
+
+See [`macos/MACOS.md`](macos/MACOS.md): Homebrew (`macos/Brewfile`), System Settings
+as code (`macos/defaults.sh`), and the manual steps.
 
 ## Linux setup (Fedora)
 

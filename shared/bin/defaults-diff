@@ -1,0 +1,42 @@
+#!/usr/bin/env bash
+# defaults-diff: find which `defaults` keys a System Settings change touches.
+#   defaults-diff snap   save a snapshot of every preference domain
+#   (change something in System Settings or an app)
+#   defaults-diff        diff the current state against the snapshot
+# Read-only: it never writes preferences.
+set -euo pipefail
+
+[ "$(uname -s)" = Darwin ] || { echo "defaults-diff: macOS only" >&2; exit 1; }
+
+dir="${TMPDIR:-/tmp}/defaults-diff"
+
+# snapshot <dest>: one file per domain, user and -currentHost
+snapshot() {
+    local dest=$1 host d
+    command rm -rf "$dest"
+    for host in user currentHost; do
+        mkdir -p "$dest/$host"
+        local flag=(); [ $host = currentHost ] && flag=(-currentHost)
+        { echo NSGlobalDomain; defaults "${flag[@]}" domains | sed 's/, /\n/g'; } |
+            while IFS= read -r d; do
+                [ -n "$d" ] && defaults "${flag[@]}" read "$d" >"$dest/$host/$d" 2>/dev/null || true
+            done
+    done
+}
+
+case "${1:-}" in
+    snap)
+        snapshot "$dir/before"
+        echo "Snapshot saved ($(ls "$dir/before/user" | wc -l | tr -d ' ') domains). Make your change, then run: defaults-diff"
+        ;;
+    "")
+        [ -d "$dir/before" ] || { echo "No snapshot; run: defaults-diff snap" >&2; exit 1; }
+        snapshot "$dir/after"
+        # Drop timestamp/analytics churn that changes on its own
+        out=$(diff -ru "$dir/before" "$dir/after" |
+            grep -vE 'Heartbeat|Analytics|analytics|LastUpdate|lastUpdate|Timestamp|-stamp"? =' |
+            sed "s|$dir/||g" || true)
+        if grep -qE '^[-+] ' <<<"$out"; then echo "$out"; else echo "No changes."; fi
+        ;;
+    *) echo "usage: defaults-diff [snap]" >&2; exit 2 ;;
+esac
