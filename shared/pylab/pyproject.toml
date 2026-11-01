@@ -1,0 +1,20 @@
+# Personal notebook/scratch environment, identical on every machine.
+# `uv sync` here builds .venv; the ipy/jl/jconv aliases point into it.
+[project]
+name = "pylab"
+version = "0"
+requires-python = ">=3.14,<3.15"
+dependencies = [
+    "ipython>=9.18.0",
+    "jupyterlab>=4.6.5",
+    "matplotlib>=3.11.2",
+    "plotly>=7.1.0",
+    "scipy>=1.18.1",
+    "tqdm>=4.70.1",
+]
+
+[tool.uv]
+package = false
+# Use uv-managed Pythons only, so the venv never sits on a Homebrew/system
+# interpreter that can be upgraded underneath it.
+python-preference = "only-managed"

@@ -431,19 +431,14 @@ alias be="bundle exec"
 
 # ========== Python and Related ==========
 
-function py() {
-  if command -v python >/dev/null 2>&1; then
-    python "$@"
-  elif command -v python3 >/dev/null 2>&1; then
-    python3 "$@"
-  else
-    echo "❌ Neither 'python' nor 'python3' is available in PATH." >&2
-    return 1
-  fi
-}
-alias ipy="ipython"
-alias jl="jupyter-lab"
-alias jconv="jupyter nbconvert --to script"
+# py and the notebook tools run from the personal lab venv (shared/pylab,
+# built with `uv sync`), so they work the same regardless of which Python is
+# on PATH. Add packages with `uv add` in shared/pylab, not pip.
+PYLAB_BIN="$DOTFILES_PATH/shared/pylab/.venv/bin"
+alias py="$PYLAB_BIN/python"
+alias ipy="$PYLAB_BIN/ipython"
+alias jl="$PYLAB_BIN/jupyter-lab"
+alias jconv="$PYLAB_BIN/jupyter nbconvert --to script"
 
 # ========== Bazel ==========
 
