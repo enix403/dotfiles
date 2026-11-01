@@ -56,6 +56,18 @@ The file just needs the standard kitty color keys (`foreground`, `background`,
 `color0`–`color15`, `cursor`, `selection_*`, …). The `.conf` basename (minus
 `.conf`) is what you put in the registry's `kitty` column.
 
+Then run the palette builder (idempotent, rewrites every `themes/*.conf`):
+
+```bash
+bun ~/dotfiles/shared/kitty/build-palettes.ts
+```
+
+It appends a generated `color16`–`color255` block to each palette. Dark themes
+get the stock xterm values (so switching back from a light theme resets them).
+Light themes get a 256-color palette derived from their own colors, and their
+`color1`–`color15` are darkened (hue kept) until they're readable: ≥ 4.5:1
+against the background (`color8` ≥ 4:1) and ≥ 3:1 against `selection_background`.
+
 > No live-reload / apply step needed to test: `settheme <name>` copies the file
 > and repaints running kitty windows over the socket. If run outside kitty (plain
 > SSH) the repaint is skipped harmlessly and the palette still takes effect on the
@@ -224,9 +236,23 @@ They're cheap because they reuse plugins already installed for their dark siblin
   `catppuccin-latte` is a variant of `catppuccin/nvim`, `tokyonight-day` of
   `tokyonight.nvim`, `rose-pine-dawn` of `rose-pine/neovim`. Just use the variant
   name as the `nvim-colorscheme` column.
-- **kitty** — drop a light `.conf` in `themes/` like any other. The three shipped
-  ones came from base24 builds where available (`base24-catppuccin-latte`), else
-  base16 (`base16-tokyo-night-light`, `base16-rose-pine-dawn`).
+- **kitty** — **don't use base16/base24 builds for light themes.** They set
+  `color0`/`color8` to near-background shades (so autosuggestions and comments
+  vanish), and base16 Tokyo Night Light even maps red to navy. The three shipped
+  ones are hand-written from each theme's own palette and upstream kitty port
+  (linked in each file's header) using this ANSI layout:
+  - `color0` = a surface just darker than the background. Dark-assuming apps
+    paint "black" backgrounds with it, so it must stay light.
+  - `color8` = dim text, `color7` = muted text, `color15` = foreground. "White"
+    text has to stay readable.
+  - `selection_foreground none` with a light `selection_background`, so selected
+    text keeps its colors.
+  - `background_opacity 1.0`. A translucent light background over a dark desktop
+    turns grey. `settheme` applies it live, and the dark themes fall back to the
+    0.82 in `parts/appearance.conf`.
+
+  Then run `build-palettes.ts` (Step 1) to enforce contrast and generate the
+  256-color block.
 - **yazi** — `yazi-rs/flavors:catppuccin-latte` and
   `kalidyasin/yazi-flavors:tokyonight-day` both classify correctly as flavors.
   `rose-pine-dawn` has no working yazi flavor (`rose-pine/yazi` misfiles as a

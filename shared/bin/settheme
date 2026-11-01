@@ -27,9 +27,12 @@ STATE_DIR="${XDG_STATE_HOME:-$HOME/.local/state}/settheme"
 STATE_FILE="$STATE_DIR/current"
 KITTY_THEMES_DIR="$HOME/.config/kitty/themes"
 KITTY_THEME_FILE="$HOME/.config/kitty/theme.conf"
+KITTY_APPEARANCE_FILE="$HOME/.config/kitty/parts/appearance.conf"
 NVIM_CS_FILE="$HOME/.config/nvim/lua/config/colorscheme.lua"
 YAZI_THEME_FILE="$HOME/.config/yazi/theme.toml"
 BAT_CONFIG_FILE="$HOME/.config/bat/config"
+POWERLINE_BASE_CONFIG="$HOME/.claude/claude-powerline.json"
+POWERLINE_CONFIG_FILE="$STATE_DIR/claude-powerline.json"
 
 # The theme registry. One `theme` line per entry — copy a line and edit the five
 # fields to add one. Spacing between columns is arbitrary (shell word-splitting),
@@ -56,6 +59,65 @@ registry() {
   theme catppuccin-latte       catppuccin-latte       catppuccin-latte       catppuccin-latte       "Catppuccin Latte"
   theme tokyo-night-day        tokyo-night-day        tokyonight-day         tokyonight-day         "tokyonight_day"
   theme rose-pine-dawn         rose-pine-dawn         rose-pine-dawn         catppuccin-latte       "rose-pine-dawn"
+}
+
+# Light palettes carry `background_opacity 1.0` (a translucent light background
+# over a dark desktop turns grey and kills contrast); dark ones fall back to the
+# translucency in parts/appearance.conf. Needs `dynamic_background_opacity yes`.
+set_opacity() {
+  local op
+  op="$(awk '$1=="background_opacity"{print $2; exit}' "$1")"
+  [ -n "$op" ] || op="$(awk '$1=="background_opacity"{print $2; exit}' "$KITTY_APPEARANCE_FILE")"
+  [ -z "$op" ] || kitten @ set-background-opacity -a "$op" >/dev/null 2>&1 || true
+}
+
+conf_val() { awk -v k="$1" '$1==k{print $2; exit}' "$2"; }
+
+# A palette is light when its background's perceived brightness is above half.
+is_light() {
+  local h; h="$(conf_val background "$1")"; h=${h#\#}
+  (( (16#${h:0:2} * 299 + 16#${h:2:2} * 587 + 16#${h:4:2} * 114) / 1000 > 128 ))
+}
+
+# The tracked claude-powerline config with a "custom" theme built from a light
+# kitty palette: light surfaces (color0 / selection_background) as segment
+# backgrounds, ANSI accents (contrast-tuned by build-palettes.ts) as text.
+powerline_light_config() {
+  local c="$1" bg s1 s2
+  bg="$(conf_val background "$c")"; s1="$(conf_val color0 "$c")"; s2="$(conf_val selection_background "$c")"
+  jq --arg bg "$bg" --arg s1 "$s1" --arg s2 "$s2" \
+     --arg fg "$(conf_val foreground "$c")" --arg red "$(conf_val color1 "$c")" \
+     --arg green "$(conf_val color2 "$c")" --arg yellow "$(conf_val color3 "$c")" \
+     --arg blue "$(conf_val color4 "$c")" --arg magenta "$(conf_val color5 "$c")" \
+     --arg cyan "$(conf_val color6 "$c")" '
+    .theme = "custom" |
+    .colors.custom = {
+      directory:       {bg: $s2, fg: $blue},
+      git:             {bg: $s1, fg: $green},
+      model:           {bg: $s2, fg: $magenta},
+      session:         {bg: $s1, fg: $cyan},
+      block:           {bg: $s2, fg: $blue},
+      today:           {bg: $s1, fg: $cyan},
+      tmux:            {bg: $s1, fg: $green},
+      context:         {bg: $s2, fg: $fg},
+      contextWarning:  {bg: $yellow, fg: $bg},
+      contextCritical: {bg: $red, fg: $bg},
+      metrics:         {bg: $s1, fg: $fg},
+      version:         {bg: $s2, fg: $magenta},
+      env:             {bg: $s1, fg: $magenta},
+      weekly:          {bg: $s2, fg: $cyan},
+      agent:           {bg: $s1, fg: $magenta},
+      thinking:        {bg: $s1, fg: $magenta},
+      cacheTimer:      {bg: $s2, fg: $green}
+    }' "$POWERLINE_BASE_CONFIG"
+}
+
+# Transient repaint of every window to a palette (no disk write), for --pick.
+preview_palette() {
+  local conf="$KITTY_THEMES_DIR/$1.conf"
+  [ -f "$conf" ] || return 0
+  kitten @ set-colors -a "$conf" >/dev/null 2>&1 || true
+  set_opacity "$conf"
 }
 
 current_theme() { [ -f "$STATE_FILE" ] && cat "$STATE_FILE" || true; }
@@ -118,7 +180,7 @@ pick() {
       --layout=reverse --height=100% --cycle --no-multi \
       --preview='settheme --swatch {}' \
       --preview-window='down,7,border-top' \
-      --bind="focus:execute-silent(kitten @ set-colors -a $KITTY_THEMES_DIR/{}.conf >/dev/null 2>&1)" \
+      --bind="focus:execute-silent(settheme --preview-palette {})" \
       --header='↑↓ live preview · enter: apply · esc: cancel')" || sel=""
 
   if [ -n "$sel" ]; then
@@ -126,9 +188,7 @@ pick() {
     apply_theme "$sel"
   else
     # Aborted: undo the transient preview by re-applying the entry palette.
-    if [ -n "$orig" ] && [ -f "$KITTY_THEMES_DIR/$orig.conf" ]; then
-      kitten @ set-colors -a "$KITTY_THEMES_DIR/$orig.conf" >/dev/null 2>&1 || true
-    fi
+    [ -z "$orig" ] || preview_palette "$orig"
     echo "settheme: cancelled${orig:+ — restored '$orig'}."
   fi
 }
@@ -169,6 +229,7 @@ apply_theme() {
   mkdir -p "$(dirname "$KITTY_THEME_FILE")"
   cp -f "$kitty_src" "$KITTY_THEME_FILE"
   kitten @ set-colors -a -c "$KITTY_THEME_FILE" >/dev/null 2>&1 || true
+  set_opacity "$KITTY_THEME_FILE"
 
   # 2) nvim: write the generated colorscheme module (picked up on next launch;
   #    running instances need :colorscheme or a restart).
@@ -193,7 +254,20 @@ apply_theme() {
   mkdir -p "$(dirname "$BAT_CONFIG_FILE")"
   printf -- '--theme="%s"\n' "$bat_theme" >"$BAT_CONFIG_FILE"
 
+  # 5) claude-powerline: its built-in themes are dark (or white text on pastels),
+  #    so light themes get a copy of the tracked config with a custom theme drawn
+  #    from the kitty palette. Dark themes use the tracked config as-is. The
+  #    statusLine command picks the generated copy when present; it re-renders on
+  #    the next Claude Code update, no restart needed.
   mkdir -p "$STATE_DIR"
+  if is_light "$KITTY_THEME_FILE"; then
+    echo "› claude : powerline palette-derived (light)"
+    powerline_light_config "$KITTY_THEME_FILE" >"$POWERLINE_CONFIG_FILE"
+  else
+    echo "› claude : powerline tracked config"
+    rm -f "$POWERLINE_CONFIG_FILE"
+  fi
+
   printf '%s\n' "$name" >"$STATE_FILE"
   echo
   echo "✓ theme set to '$name'."
@@ -204,6 +278,7 @@ case "${1:-}" in
   ""|-h|--help)  usage ;;
   -p|--pick)     pick ;;
   --swatch)      swatch "${2:-}" ;;
+  --preview-palette) preview_palette "${2:-}" ;;
   -l|--list)     list_themes ;;
   --current)     current_theme ;;
   --names)       names ;;

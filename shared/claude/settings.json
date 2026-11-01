@@ -151,7 +151,7 @@
   },
   "statusLine": {
     "type": "command",
-    "command": "claude-powerline"
+    "command": "c=\"${XDG_STATE_HOME:-$HOME/.local/state}/settheme/claude-powerline.json\"; [ -f \"$c\" ] || c=\"$HOME/.claude/claude-powerline.json\"; exec claude-powerline --config=\"$c\""
   },
   "enabledPlugins": {
     "gopls-lsp@claude-plugins-official": true,
@@ -164,5 +164,5 @@
     }
   },
   "tui": "fullscreen",
-  "theme": "dark"
+  "theme": "auto"
 }

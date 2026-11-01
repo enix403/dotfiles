@@ -119,10 +119,18 @@ is the single source of the 16 ANSI colors and most tools just *follow* it.
   `kitty/theme.conf` (`globinclude`d, so `parts/colors.conf` stays the committed
   fallback) and live-reloads every running window via `$KITTY_LISTEN_ON`. (This
   used to be driven by `tinty`; the palettes are now self-contained, so there's no
-  external theme-manager dependency.)
+  external theme-manager dependency.) `kitty/build-palettes.ts` post-processes the
+  palettes: light themes get readable ANSI text colors plus a 256-color palette
+  derived from the theme, so 256-color apps don't leave dark patches. Light themes
+  are also drawn opaque.
 - **fzf, starship, gitui** — configured to follow the 16 ANSI colors,
   so they track kitty automatically with **no per-theme config**. `fzf --color=16`,
   starship's named colors, and gitui's `ansi.ron`.
+- **Claude Code** — `"theme": "auto"` picks light/dark from the terminal
+  background. The claude-powerline built-ins are all dark, so for light themes
+  `settheme` writes a palette-derived config to
+  `~/.local/state/settheme/claude-powerline.json`, which the statusLine command
+  prefers over the tracked `claude/claude-powerline.json`.
 - **delta** — intentionally left out of the theme flow. It keeps its own fixed
   `mantis-shrimp` diff theme (from `delta/themes.gitconfig`), independent of the
   terminal palette.
