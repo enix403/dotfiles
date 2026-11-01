@@ -1,60 +1,70 @@
 #!/usr/bin/env bash
+# Fedora packages. Safe to re-run.
+set -euo pipefail
 
-sudo dnf -y install fedora-workstation-repositories
+src="$(cd "$(dirname "$0")/../etc" && pwd)"
 
-sudo dnf -y install \
-  git-credential-oauth \
-  git-credential-libsecret \
-  neovim \
-  clang \
-  urar \
-  zsh \
-  git-lfs \
-  bat \
-  jq \
-  ncdu \
-  qpdf \
-  fastfetch \
-  kitty \
-  htop \
-  fzf \
-  git-delta \
-  darkhttpd \
-  wev \
-  gnome-extensions-app \
-  kruler \
-  gpick \
-  gparted \
-  vlc \
-  zathura zathura-pdf-mupdf \
-  duf \
-  tokei \
-  deluge \
-  git-annex
+# Not wanted:
+#   PackageKit-command-not-found: "did you mean" package lookup on unknown commands
+#   zsh-syntax-highlighting: vendored in shared/zsh/thirdparty instead
+sudo dnf -y remove PackageKit-command-not-found zsh-syntax-highlighting
 
-# COPRs
-sudo dnf -y copr enable atim/starship && sudo dnf -y install starship
-sudo dnf -y copr enable keefle/glow && sudo dnf -y install glow
-sudo dnf -y copr enable lihaohong/yazi && sudo dnf -y install yazi
-sudo dnf -y copr enable jdxcode/mise && sudo dnf -y install mise
+# Third-party repos
+sudo dnf -y install fedora-workstation-repositories # provides google-chrome
+sudo dnf -y config-manager setopt google-chrome.enabled=1
+sudo install -D -m 644 "$src/yum.repos.d/my-vscode.repo" /etc/yum.repos.d/my-vscode.repo
+sudo install -D -m 644 "$src/yum.repos.d/beekeeper-studio.repo" /etc/yum.repos.d/beekeeper-studio.repo
+sudo dnf -y copr enable atim/starship
+sudo dnf -y copr enable keefle/glow
+sudo dnf -y copr enable lihaohong/yazi
+sudo dnf -y copr enable jdxcode/mise
 
-# Google Chrome
-sudo dnf -y config-manager setopt google-chrome.enabled=1 && sudo dnf -y install google-chrome-stable
+packages=(
+    # shell / cli
+    zsh
+    neovim
+    git-lfs
+    git-delta
+    git-annex
+    git-credential-oauth
+    git-credential-libsecret
+    bat
+    fzf
+    jq
+    htop
+    ncdu
+    duf
+    tokei
+    fastfetch
+    qpdf
+    unar
+    rclone
+    darkhttpd
+    wev
+    clang
+    starship # copr
+    glow     # copr
+    yazi     # copr
+    mise     # copr
 
-# Fonts
-sudo dnf -y install fira-code-fonts open-sans-fonts
+    # gui
+    kitty
+    code             # repo
+    google-chrome-stable
+    beekeeper-studio # repo
+    gnome-extensions-app
+    kruler
+    gpick
+    gparted
+    vlc
+    deluge
+    zathura
+    zathura-pdf-mupdf
 
-: '
-manual install
-    bun (website, bash install script)
-    typst (website, exe)
-    ngrok (website, exe)
-    popsicle-bin (github releases, AppImage)
-    mongodb-compass (website, rpm file)
+    # fonts (nerd fonts: linux/fonts/download-fonts.sh)
+    fira-code-fonts
+    open-sans-fonts
+)
+sudo dnf -y install "${packages[@]}"
 
-rpm repo install
-
-    code: sudo rpm --import https://packages.microsoft.com/keys/microsoft.asc && echo -e "[code]\nname=Visual Studio Code\nbaseurl=https://packages.microsoft.com/yumrepos/vscode\nenabled=1\nautorefresh=1\ntype=rpm-md\ngpgcheck=1\ngpgkey=https://packages.microsoft.com/keys/microsoft.asc" | sudo tee /etc/yum.repos.d/vscode.repo > /dev/null
-
-    beekeeper-studio: sudo rpm --import https://rpm.beekeeperstudio.io/beekeeper.key && sudo curl -o /etc/yum.repos.d/my-beekeeper-studio.repo https://rpm.beekeeperstudio.io/beekeeper-studio.repo
-'
+# Manual installs: see linux/FEDORA.md

@@ -15,19 +15,21 @@ dotfiles/
 │   ├── kitty/       # Kitty terminal config (parts/ modular includes, themes/ palettes)
 │   ├── mise/        # mise runtime version manager config
 │   ├── nvim/        # Neovim config (LazyVim-based)
-│   ├── omz/         # Zsh config: aliases/paths/vars, lib/, vendored thirdparty/
 │   ├── starship/    # Starship prompt config
 │   ├── vscode/      # VS Code settings (linux + macos variants) and extensions list
-│   └── yazi/        # Yazi file manager config
-├── macos/           # macOS-only configs
+│   ├── yazi/        # Yazi file manager config
+│   ├── zsh/         # Zsh config: aliases/paths/vars, lib/, vendored thirdparty/
+│   └── _apply/      # link-dots.sh, setup-tools.sh (lib.sh: safe link helper)
+├── macos/           # macOS-only configs (_apply/link-dots.sh, Brewfile)
 │   ├── aerospace/   # AeroSpace tiling window manager config
 │   └── karabiner/   # Karabiner-Elements key remapping (generated via Python)
-├── linux/           # Linux-only configs
+├── linux/           # Linux-only configs (_apply/: packages, system settings, links; etc/: files copied into /etc)
 │   ├── _retire/     # Archived configs (i3, polybar, rofi, picom)
 │   ├── fonts/       # Font download script
 │   ├── gnome/       # GNOME keybindings and settings scripts
 │   └── zathura/     # Zathura PDF viewer config
-└── install-linux.sh   # Linux bootstrap script (WIP)
+├── install-linux.sh # Fedora bootstrap (see linux/FEDORA.md)
+└── install-macos.sh # macOS: Homebrew packages, links, tools
 ```
 
 ## Notable components
@@ -150,11 +152,11 @@ theme) lives in
 see [`shared/kitty/ADDING-THEMES.md`](shared/kitty/ADDING-THEMES.md) for the full
 runbook (with a worked example and the yazi-flavor gotchas).
 
-**Setup on a new machine:** run `shared/_apply/link-dots.sh` to symlink configs,
-then (from `shared/yazi/`) `ya pkg install` to fetch yazi flavors, and
-`bat cache --build` to register the bundled bat `.tmTheme`s. kitty palettes are
-vendored in `shared/kitty/themes/`, so there's nothing extra to install for
-theming.
+**Setup on a new machine:** `install-linux.sh` / `install-macos.sh` cover it:
+`shared/_apply/link-dots.sh` symlinks the configs and seeds `yazi/theme.toml`,
+and `shared/_apply/setup-tools.sh` runs `bat cache --build` to register the
+bundled bat `.tmTheme`s. yazi flavors/plugins and kitty palettes are vendored,
+so there's nothing extra to install for theming.
 
 ### VS Code
 
@@ -189,12 +191,8 @@ Located in `shared/bin/`, added to `PATH`:
 
 Global tool versions pinned in `shared/mise/config.toml` (node, pnpm, python, yarn).
 
-## Linux packages (Fedora)
+## Linux setup (Fedora)
 
-Installed via `linux/_apply/fedora-install-packages.sh`:
-
-**dnf:** neovim, zsh, kitty, bat, fzf, git-delta, jq, htop, ncdu, vlc, zathura, tokei, fastfetch, and more
-
-**COPRs:** starship, glow, yazi, mise
-
-**Manual installs** (documented in the script): bun, typst, ngrok, mongodb-compass, popsicle
+See [`linux/FEDORA.md`](linux/FEDORA.md): packages (`linux/_apply/fedora-install-packages.sh`),
+system settings (`linux/_apply/fedora-system-settings.sh`, files under `linux/etc/`),
+and the manual steps.

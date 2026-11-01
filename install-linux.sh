@@ -1,29 +1,25 @@
 #!/usr/bin/env bash
+# Bootstrap a fresh Fedora Workstation. Every step is safe to re-run; existing
+# files that would be replaced by a symlink are moved aside, not deleted.
+# Manual steps: linux/FEDORA.md
+set -euo pipefail
+cd "$(dirname "$0")"
 
-echo -e '\033[1mImportant ==>\033[0m This script assumes that you have cloned this dotfiles repository as ~/dotfiles. If this is not the case, then this script will not work. Please abort\n'
-echo -e '\033[1mThis script will change your current confiuration. Make sure to take a backup before proceeding.\033[0m'
-echo -ne '\033[1mDo you want to continue? [y/N]: \033[0m'
-read -r
-echo
-if [[ ! $REPLY =~ ^[Yy]$ ]]
-then
-    echo "Operation aborted"
-    [[ "$0" = "$BASH_SOURCE" ]] && exit 1 || return 1
-fi
+[ "$(uname -s)" = Linux ] || { echo "install-linux.sh: not Linux" >&2; exit 1; }
 
-# TODO, uncomment this.
-exit
+echo -e '\033[1mThis will install packages, change system settings and replace configs with symlinks into this repo.\033[0m'
+echo -ne '\033[1mContinue? [y/N]: \033[0m'
+read -r reply
+[[ $reply =~ ^[Yy]$ ]] || { echo "Aborted."; exit 1; }
 
-./shared/_apply/install-omz.sh
-./shared/_apply/link-dots.sh
+step() { echo -e "\n\033[1m==> $1\033[0m"; }
 
-./linux/_apply/link-dots.sh
-./linux/_apply/fedora-install-packages.sh
-./linux/_apply/mise-install-packages.sh
-./linux/_apply/fedora-system-settings.sh
+step "Packages";        ./linux/_apply/fedora-install-packages.sh
+step "System settings"; ./linux/_apply/fedora-system-settings.sh
+step "Link dotfiles";   ./shared/_apply/link-dots.sh; ./linux/_apply/link-dots.sh
+step "Tools";           ./shared/_apply/setup-tools.sh
+step "Fonts";           ./linux/fonts/download-fonts.sh
+step "GNOME";           ./linux/gnome/gnome-settings.sh; ./linux/gnome/gnome-keybinds.sh
+step "VS Code";         ./shared/vscode/setup-vscode.sh
 
-./linux/fonts/download-fonts.sh
-./linux/gnome/gnome-keybinds.sh
-./linux/gnome/gnome-settings.sh
-
-./shared/vscode/setup-vscode.sh
+step "Done. Remaining manual steps: linux/FEDORA.md"

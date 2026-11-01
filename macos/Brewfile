@@ -1,0 +1,77 @@
+# Personal Homebrew packages: `brew bundle --no-upgrade --file macos/Brewfile`
+# (install-macos.sh runs it). Installs what's missing; never upgrades or removes.
+#
+# Not here on purpose:
+#   - runtimes managed by mise (shared/mise/config.toml): node, pnpm, yarn, uv, ...
+#   - mise itself: installed with `curl https://mise.run | sh` into ~/.local/bin
+#   - apps installed outside Homebrew (VS Code, Karabiner, browsers, ...)
+#   - work tooling
+#
+# Third-party taps must be trusted before Homebrew loads their casks; see
+# TRUSTED_TAPS in install-macos.sh.
+
+tap "homebrew-zathura/zathura"
+tap "nikitabobko/tap"
+tap "macos-fuse-t/cask"
+tap "minchenlee/tap"
+
+# ---- shell / cli
+brew "coreutils"
+brew "bat"
+brew "fd"
+brew "fzf"
+brew "ripgrep"
+brew "tree"
+brew "htop"
+brew "ncdu"
+brew "duf"
+brew "tokei"
+brew "wget"
+brew "rsync"
+brew "flock"
+brew "fswatch"
+brew "watchman"
+brew "direnv"
+brew "starship"
+brew "neovim"
+brew "yazi"
+brew "glow"
+brew "otree"
+brew "csvlens"
+brew "ansifilter"
+brew "dtrx"
+brew "sevenzip"
+brew "darkhttpd"
+brew "rclone"
+brew "sccache"
+brew "pre-commit"
+
+# ---- git
+brew "gh"
+brew "gitui"
+brew "git-delta"
+brew "git-lfs"
+brew "git-annex"
+brew "git-credential-oauth"
+
+# ---- documents / media
+brew "typst"
+brew "qpdf"
+brew "poppler"
+brew "exiftool"
+brew "imagemagick"
+brew "ffmpeg"
+brew "chafa"
+brew "homebrew-zathura/zathura/zathura-pdf-mupdf" # pulls in zathura
+
+# ---- apps
+cask "kitty"
+cask "nikitabobko/tap/aerospace"
+cask "scroll-reverser"
+cask "notunes"
+cask "fuse-t"
+cask "macos-fuse-t/cask/fuse-t-sshfs"
+cask "minchenlee/tap/c9watch"
+
+# ---- fonts
+cask "font-maple-mono"

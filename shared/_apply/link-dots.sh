@@ -1,37 +1,37 @@
 #!/usr/bin/env bash
+# Symlink the cross-platform configs. Safe to re-run; see link() in lib.sh.
+set -euo pipefail
+source "$(dirname "$0")/lib.sh"
+S="$DOTFILES/shared"
 
-# inside home
-cd ~
-ln -nfrs ./dotfiles/shared/bin .
-ln -nfrs ./dotfiles/shared/.gitconfig .
-# zsh startup files now live under shared/zsh/. .zshenv holds the base config
-# (all shells); it replaces the former KTMR-managed ~/.zshenv (brew shellenv is
-# now in the repo). .zshrc is interactive-only.
-ln -nfrs ./dotfiles/shared/zsh/.zshenv .
-ln -nfrs ./dotfiles/shared/zsh/.zprofile .
-ln -nfrs ./dotfiles/shared/zsh/.zshrc .
+# ~
+link "$S/bin"            ~/bin
+link "$S/.gitconfig"     ~/.gitconfig
+# zsh startup files: .zshenv holds the base config (all shells), .zshrc is
+# interactive-only.
+link "$S/zsh/.zshenv"    ~/.zshenv
+link "$S/zsh/.zprofile"  ~/.zprofile
+link "$S/zsh/.zshrc"     ~/.zshrc
 
-# inside ~/.config
-cd ~/.config
-ln -nfrs ../dotfiles/shared/alacritty .
-ln -nfrs ../dotfiles/shared/bat .
-ln -nfrs ../dotfiles/shared/delta .
-ln -nfrs ../dotfiles/shared/kitty .
-ln -nfrs ../dotfiles/shared/nvim .
-ln -nfrs ../dotfiles/shared/starship .
-ln -nfrs ../dotfiles/shared/gitui .
-ln -nfrs ../dotfiles/shared/omz .
-ln -nfrs ../dotfiles/shared/yazi .
+# ~/.config
+for app in alacritty bat delta dcg gitui kitty lode nvim starship yazi; do
+    link "$S/$app" ~/.config/$app
+done
 # yazi/theme.toml holds only the active flavor and is a gitignored runtime
 # artifact (written by settheme). Seed it from the committed default on a fresh
 # clone so yazi has a flavor before the first `settheme` run.
-[ -f ../dotfiles/shared/yazi/theme.toml ] || \
-  cp ../dotfiles/shared/yazi/theme.toml.default ../dotfiles/shared/yazi/theme.toml
-ln -nfrs ../dotfiles/shared/mise .
-ln -nfrs ../dotfiles/shared/fish .
-ln -nfrs ../dotfiles/shared/dcg .
+[ -f "$S/yazi/theme.toml" ] || cp "$S/yazi/theme.toml.default" "$S/yazi/theme.toml"
 
-# ~/.claude is assembled from layered config dirs; see shared/bin/claude-layers
-mkdir -p ~/.claude
-ln -nfs ~/dotfiles/shared/claude/claude-powerline.json ~/.claude/claude-powerline.json
-~/dotfiles/shared/bin/claude-layers
+# mise: a conf.d drop-in, so a machine-local ~/.config/mise/config.toml can
+# exist alongside it (and wins on conflicts).
+link "$S/mise/config.toml" ~/.config/mise/conf.d/personal.toml
+
+# IPython
+link "$S/ipython/profile_default/ipython_config.py" ~/.ipython/profile_default/ipython_config.py
+link "$S/ipython/themes"                            ~/.ipython/themes
+
+# Claude Code: ~/.claude is assembled from layered config dirs; see shared/bin/claude-layers
+if command -v claude >/dev/null; then
+    link "$S/claude/claude-powerline.json" ~/.claude/claude-powerline.json
+    "$S/bin/claude-layers" || echo "warning: claude-layers failed; fix and re-run it" >&2
+fi
