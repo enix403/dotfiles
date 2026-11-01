@@ -1,36 +1,8 @@
 # dotfiles
 
-Personal dotfiles for macOS and Linux (Fedora/GNOME), managed via symlinks.
-
-## Structure
-
-```
-dotfiles/
-├── shared/          # Cross-platform configs (symlinked into ~ and ~/.config)
-│   ├── alacritty/   # Alacritty terminal config
-│   ├── bat/         # bat (cat replacement) config
-│   ├── bin/         # Custom scripts on PATH
-│   ├── delta/       # git-delta pager config
-│   ├── gitui/       # gitui theme (ANSI-following, tracks the terminal palette)
-│   ├── kitty/       # Kitty terminal config (parts/ modular includes, themes/ palettes)
-│   ├── mise/        # mise runtime version manager config
-│   ├── nvim/        # Neovim config (LazyVim-based)
-│   ├── starship/    # Starship prompt config
-│   ├── vscode/      # VS Code settings (linux + macos variants) and extensions list
-│   ├── yazi/        # Yazi file manager config
-│   ├── zsh/         # Zsh config: aliases/paths/vars, lib/, vendored thirdparty/
-│   └── _apply/      # link-dots.sh, setup-tools.sh (lib.sh: safe link helper)
-├── macos/           # macOS-only configs (_apply/link-dots.sh, Brewfile)
-│   ├── aerospace/   # AeroSpace tiling window manager config
-│   └── karabiner/   # Karabiner-Elements key remapping (generated via Python)
-├── linux/           # Linux-only configs (_apply/: packages, system settings, links; etc/: files copied into /etc)
-│   ├── _retire/     # Archived configs (i3, polybar, rofi, picom)
-│   ├── fonts/       # Font download script
-│   ├── gnome/       # GNOME keybindings and settings scripts
-│   └── zathura/     # Zathura PDF viewer config
-├── install-linux.sh # Fedora bootstrap (see linux/FEDORA.md)
-└── install-macos.sh # macOS: Homebrew packages, links, tools
-```
+Personal dotfiles for macOS and Linux (Fedora/GNOME), managed via symlinks:
+cross-platform configs in `shared/`, OS-specific ones in `macos/` and `linux/`,
+bootstrapped by `install-macos.sh` / `install-linux.sh`.
 
 ## Notable components
 
