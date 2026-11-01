@@ -6,14 +6,6 @@ if [[ "$OSTYPE" == darwin* ]]; then
     [[ -x /opt/homebrew/bin/brew ]] && eval "$(/opt/homebrew/bin/brew shellenv)"
 fi
 
-# ----------------
-# Pyenv (TODO: get rid of it in favor of mise)
-
-# brew install openssl readline sqlite3 xz tcl-tk@8 libb2 zstd zlib pkgconfig pyenv
-PYENV_ROOT="$HOME/.pyenv"
-[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
-[[ -d $PYENV_ROOT/bin ]] && eval "$(pyenv init - zsh)"
-
 # ---------
 # bun
 BUN_INSTALL="$HOME/.bun"
@@ -46,8 +38,7 @@ _zsh_prioritize_path() {
     "$HOME/probin" \
     "$HOME/bin" \
     /usr/local/bin \
-    /usr/local/bin/override \
-    "$PYENV_ROOT/shims"
+    /usr/local/bin/override
   do
     [[ -d "$d" ]] && export PATH="$d:$PATH"
   done

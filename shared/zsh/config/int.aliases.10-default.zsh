@@ -431,10 +431,12 @@ alias be="bundle exec"
 
 # ========== Python and Related ==========
 
-# py and the notebook tools run from the personal lab venv (shared/pylab,
-# built with `uv sync`), so they work the same regardless of which Python is
-# on PATH. Add packages with `uv add` in shared/pylab, not pip.
-PYLAB_BIN="$DOTFILES_PATH/shared/pylab/.venv/bin"
+# py and the notebook tools run from "the lab": ~/.local/share/pylab, a
+# machine-local symlink to whichever venv is the lab on this machine (by
+# default shared/pylab/.venv; another project's .venv where that project is
+# the lab). Fixed path, so it doesn't matter which Python is on PATH. Add
+# packages with `uv add` in the lab's project, not pip.
+PYLAB_BIN="$HOME/.local/share/pylab/bin"
 alias py="$PYLAB_BIN/python"
 alias ipy="$PYLAB_BIN/ipython"
 alias jl="$PYLAB_BIN/jupyter-lab"

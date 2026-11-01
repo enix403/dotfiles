@@ -659,7 +659,7 @@
         "default": "right",
         "jupyter-notebook": "right"
     },
-    "python.defaultInterpreterPath": "/Users/qateef.ahmad/.pyenv/versions/3.11.14/bin/python",
+    "python.defaultInterpreterPath": "/Users/qateef.ahmad/.local/share/pylab/bin/python",
     "python.terminal.activateEnvironment": false,
     // ------- Dart -------
     "dart.flutterCreateAndroidLanguage": "java",

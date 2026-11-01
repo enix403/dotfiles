@@ -1,5 +1,8 @@
-# Personal notebook/scratch environment, identical on every machine.
-# `uv sync` here builds .venv; the ipy/jl/jconv aliases point into it.
+# Default notebook/scratch environment ("the lab"). `uv sync` here builds
+# .venv, and ~/.local/share/pylab symlinks to it; the py/ipy/jl/jconv aliases
+# and VS Code's default interpreter use that link. On a machine where another
+# project is the lab, point the link at that project's .venv instead and don't
+# sync this one.
 [project]
 name = "pylab"
 version = "0"

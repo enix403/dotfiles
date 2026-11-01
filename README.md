@@ -52,7 +52,7 @@ startup-file model:
 Config files under `shared/zsh/config/` are auto-sourced by glob loops in filename
 order, keyed on a `base.` / `int.` scope marker:
 
-- `base.paths.10-default.zsh` — PATH setup (Homebrew via `brew shellenv`, mise, pyenv, bun, cargo)
+- `base.paths.10-default.zsh` — PATH setup (Homebrew via `brew shellenv`, bun, cargo, mise)
 - `base.vars.10-default.zsh` — exported variables (EDITOR, PAGER, …)
 - `int.aliases.10-default.zsh` — core aliases and functions
 - `int.aliases.11-work.local.zsh` — work-specific aliases (not committed)
