@@ -157,6 +157,7 @@ Located in `shared/bin/`, added to `PATH`:
 | `settheme` | Switch the terminal theme across all tools at once (see [Theming](#theming-unified-via-settheme)) |
 | `tunix` | Convert timestamp strings (many formats) to Unix epoch seconds |
 | `tiso` | Convert Unix epoch seconds to ISO 8601 UTC string |
+| `batt` | One-line laptop battery status (`-v` for the full report); handy over SSH |
 | `pull_hp` / `push_hp` | Helpers for syncing a home project |
 
 ### mise (runtime manager)

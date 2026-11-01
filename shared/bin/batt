@@ -1,0 +1,40 @@
+#!/usr/bin/env bash
+# batt: one-line laptop battery summary. `batt -v` for the full report.
+#   Linux: upower (falls back to /sys/class/power_supply)
+#   macOS: pmset
+set -euo pipefail
+
+verbose=0
+[ "${1:-}" = "-v" ] && verbose=1
+
+if [ "$(uname -s)" = Darwin ]; then
+    if [ $verbose = 1 ]; then pmset -g batt; else pmset -g batt | sed -n 2p | sed -E 's/^.*\)[[:space:]]*//; s/ present: (true|false)//; s/%; /% /; s/; /, /g'; fi
+    exit
+fi
+
+if command -v upower >/dev/null && dev=$(upower -e | grep -m1 BAT); then
+    if [ $verbose = 1 ]; then upower -i "$dev"; exit; fi
+    upower -i "$dev" | awk -F': *' '
+        { gsub(/^[ \t]+/, "", $1) }
+        $1 == "percentage"    { pct = $2 }
+        $1 == "state"         { state = $2 }
+        $1 == "time to empty" { left = $2 " left" }
+        $1 == "time to full"  { left = $2 " to full" }
+        $1 == "energy-rate"   { rate = $2 }
+        $1 == "capacity"      { health = $2 }
+        $1 == "charge-cycles" { cycles = $2 }
+        END {
+            out = pct " " state
+            if (left != "")   out = out ", " left
+            if (rate != "" && rate + 0 > 0) out = out ", " rate
+            if (health != "") out = out " | health " health
+            if (cycles != "" && cycles != "N/A") out = out ", " cycles " cycles"
+            print out
+        }'
+    exit
+fi
+
+# Fallback: sysfs
+bat=$(ls -d /sys/class/power_supply/BAT* 2>/dev/null | head -1)
+[ -n "$bat" ] || { echo "batt: no battery found" >&2; exit 1; }
+echo "$(cat "$bat/capacity")% $(tr '[:upper:]' '[:lower:]' < "$bat/status")"
